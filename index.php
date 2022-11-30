@@ -20,9 +20,9 @@
         <nav>
             <img class="logo" src="assets/icons/logo.png">
             <ul>
-                <li><button class="ba" type="button"><a href="vista/guest/product.php">INMUEBLES</a></button></li>
-                <li><button class="ba" type="button"><a href="vista/guest/login.php">INGRESAR</a></button></li>
-                <li><button class="bb" type="button"><a href="vista/guest/singin.php">PUBLICA TU INMUEBLE</a></button></li>
+                <li><button class="ba" type="button"><a href="view/guest/product.php">INMUEBLES</a></button></li>
+                <li><button class="ba" type="button"><a href="view/guest/login.php">INGRESAR</a></button></li>
+                <li><button class="bb" type="button"><a href="view/guest/singin.php">PUBLICA TU INMUEBLE</a></button></li>
             </ul>
         </nav>
 

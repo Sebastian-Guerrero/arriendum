@@ -1,7 +1,3 @@
-<?php
-include("../../conectar2.php");
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -18,7 +14,7 @@ include("../../conectar2.php");
 
         <form class="login-form" action="recuperarcontra.php" method="POST">
             <p class="name">Restablecer Cuenta</p>
-            <p>Ingrese por favor el correo con el que se haya registrado</p>
+            <p>Se enviara tu contraseña por correo</p>
             <br>
             <hr>
             <input type="email" placeholder="Email:" name="email_user" required/>

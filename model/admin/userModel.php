@@ -1,5 +1,5 @@
 <?php
-    class Usuario{
+    class User{
                 public $numeroDocumento;
                 public $rolUsuario;
                 public $tipoDocumento;

@@ -1,9 +1,9 @@
 <?php
 
 include("../../connect/conectar.php");
-include("../../controlador/user/usuarioControlador.php");
+include("../../controller/user/userController.php");
 
-$obj = new Usuario();
+$obj = new User();
 if($_POST)
 {
 
