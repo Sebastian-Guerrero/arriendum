@@ -1,7 +1,7 @@
 <?php
-include('../../modelo/user/galeriaModelo.php');
+include('../../model/user/galeriaModel.php');
 
-$obj = new Galeria();
+$obj = new Galery();
 if($_POST)
 {
     $obj->id_galery_property = $_POST['id_galery_property'];

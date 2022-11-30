@@ -1,5 +1,5 @@
 <?php
-	class Inmueble{
+	class Property{
 		public $id_property;
 		public $id_user;
 		public $state_property;

@@ -1,5 +1,5 @@
 <?php
-    class Galeria{
+    class Galery{
                   public $id_galery_property;
                   public $id_property;
                   public $name_galery_property;

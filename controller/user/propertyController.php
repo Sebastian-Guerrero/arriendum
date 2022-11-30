@@ -1,7 +1,7 @@
 <?php
-include ("../../modelo/user/inmuebleModelo.php");
+include ("../../model/user/propertyModel.php");
 
-$obj = new Inmueble();
+$obj = new Property();
 if($_POST)
 {
 

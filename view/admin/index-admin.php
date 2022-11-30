@@ -228,7 +228,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 			<!-- Content -->
 			<div class="full-box tile-container">
 
-				<a href="admin/inm-list.php" class="tile">
+				<a href="inm-list.php" class="tile">
 					<div class="tile-tittle">INMUEBLES</div>
 					<div class="tile-icon">
 						<i class="fas fa-store-alt fa-fw"></i>
@@ -237,7 +237,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 				</a>
 
 
-				<a href="admin/user-list.php" class="tile">
+				<a href="user-list.php" class="tile">
 					<div class="tile-tittle">USUARIOS</div>
 					<div class="tile-icon">
 						<i class="fas fa-users fa-fw"></i>

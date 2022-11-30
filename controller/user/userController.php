@@ -1,7 +1,7 @@
 <?php
-include('../../modelo/user/usuarioModelo.php');
+include('../../model/user/usuarioModel.php');
 
-$obj = new Usuario();
+$obj = new User();
 if($_POST)
 {
     $obj->id_user = $_POST['id_user'];

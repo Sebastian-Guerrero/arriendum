@@ -1,5 +1,5 @@
 <?php
-    class Usuario{
+    class User{
                 public $id_user;
                 public $state_user;
                 public $rol_user;

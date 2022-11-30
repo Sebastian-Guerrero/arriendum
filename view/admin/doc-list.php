@@ -1,11 +1,11 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/documentoControlador.php");
+include("../../controller/admin/documentController.php");
 
-$obj = new Documento();
+$obj = new Document();
 if($_POST){
 
-	$obj->idDocumento = $_POST['idDocumento'];
+	$obj->id_type_document = $_POST['id_type_document'];
 
 }
 
