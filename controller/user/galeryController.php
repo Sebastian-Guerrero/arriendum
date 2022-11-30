@@ -1,5 +1,5 @@
 <?php
-include('../../model/user/galeriaModel.php');
+include('../../model/user/galeryModel.php');
 
 $obj = new Galery();
 if($_POST)

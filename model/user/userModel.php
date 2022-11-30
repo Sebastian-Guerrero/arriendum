@@ -11,7 +11,7 @@
                 public $password_user;
                 public $create_user;
                 public $update_user;
-
+                
                     function agregar(){
                                         $conet = new Conexion();
                                         $c = $conet->conectando();

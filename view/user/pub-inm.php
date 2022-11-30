@@ -1,8 +1,8 @@
 <?php
   include("../../connect/conectar.php");
-  include("../../controlador/user/inmuebleControlador.php");
+  include("../../controller/user/propertyController.php");
 
-$obj = new Inmueble();
+$obj = new Property();
 if($_POST)
 {
 

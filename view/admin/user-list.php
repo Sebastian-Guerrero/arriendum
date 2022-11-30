@@ -1,16 +1,16 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/usuarioControlador.php");
+include("../../controller/admin/userController.php");
 
-$obj = new Usuario();
+$obj = new User();
 if($_POST){
 
-	$obj->numeroDocumento = $_POST['numeroDocumento'];
+	$obj->id_user = $_POST['id_user'];
 }
 
 $conet = new Conexion();
 $c = $conet->conectando();
-$query="select count(*) as totalRegistros from usuario";
+$query="select count(*) as totalRegistros from user";
 $resultado = mysqli_query($c, $query);
 $arreglo = mysqli_fetch_array($resultado); 
 $totalRegistros = $arreglo['totalRegistros'];
@@ -33,11 +33,11 @@ $totalPaginas=ceil($totalRegistros/$maximoRegistros);
 
 if(isset($_POST['search'])){
     echo "llegue";
-    $query2="select * from usuario where nombreUsuario like '%$obj->nombreUsuario%' limit $desde,$maximoRegistros";
+    $query2="select * from user where nombreUsuario like '%$obj->nombreUsuario%' limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }else{
-    $query2="select * from usuario limit $desde,$maximoRegistros ";
+    $query2="select * from user limit $desde,$maximoRegistros ";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }
@@ -281,9 +281,10 @@ if(isset($_POST['search'])){
 					<table class="table table-dark table-sm">
 						<thead>
 							<tr class="text-center roboto-medium">
-								<th>NUMERO DE IDENTIDAD</th>
-								<th>ROL USUARIO</th>
-								<th>TIPO DOCUMENTO</th>
+								<th>ID</th>
+								<th>ESTADO</th>
+								<th>ROL</th>
+								<th>DOCUMENTO</th>
 								<th>NOMBRE</th>
 								<th>APELLIDO</th>
 								<th>CELULAR</th>
@@ -318,6 +319,7 @@ if(isset($_POST['search'])){
 								<td><?php echo $arreglo2[5] ?></td>
 								<td><?php echo $arreglo2[6] ?></td>
 								<td><?php echo $arreglo2[7] ?></td>
+								<td><?php echo $arreglo2[8] ?></td>
 								<td>
 									<a  class="btn btn-success" href="<?php 
 										if($arreglo2[0]<>''){
@@ -329,16 +331,17 @@ if(isset($_POST['search'])){
 								</td>
 								<td>
 									<form action="" name="eliminarUsuario" method="POST">
-										<input type="hidden" name="numeroDocumento" value="<?php echo $arreglo2[0] ?>"></input>
-										<input type="hidden" name="rolUsuario"></input>
-										<input type="hidden" name="tipoDocumento"></input>
-										<input type="hidden" name="nombreUsuario"></input>
-										<input type="hidden" name="apellidoUsuario"></input>
-										<input type="hidden" name="emailUsuario"></input>
-										<input type="hidden" name="contraUsuario"></input>
-										<input type="hidden" name="celUsuario"></input>
-										<input type="hidden" name="fechaCUsuario"></input>
-										<input type="hidden" name="fechaAUsuario"></input>
+										<input type="hidden" name="id_user" value="<?php echo $arreglo2[0] ?>"></input>
+										<input type="hidden" name="state_user"></input>
+										<input type="hidden" name="rol_user"></input>
+										<input type="hidden" name="type_document"></input>
+										<input type="hidden" name="name_user"></input>
+										<input type="hidden" name="lastname_user"></input>
+										<input type="hidden" name="phone_user"></input>
+										<input type="hidden" name="email_user"></input>
+										<input type="hidden" name="password_user"></input>
+										<input type="hidden" name="create_user"></input>
+										<input type="hidden" name="update_user"></input>
 										<button type="submit" name="elimina" class="btn btn-warning">
 		  									<i class="far fa-trash-alt"></i>
 										</button>

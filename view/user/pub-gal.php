@@ -1,8 +1,8 @@
 <?php
   include("../../connect/conectar.php");
-  include("../../controlador/user/galeriaControlador.php");
+  include("../../controller/user/galeryController.php");
 
-$obj = new Galeria();
+$obj = new Galery();
 if($_POST)
 {
   $obj->id_galery_property = $_POST['id_galery_property'];

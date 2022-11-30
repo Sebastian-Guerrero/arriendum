@@ -1,22 +1,35 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/usuarioControlador.php");
+include("../../controller/admin/userController.php");
 
-$obj = new Usuario();
+$obj = new User();
 if($_POST){
 
-    $obj->numeroDocumento = $_POST['numeroDocumento'];
-	$obj->rolUsuario = $_POST['rolUsuario'];
-    $obj->tipoDocumento = $_POST['tipoDocumento'];
-    $obj->nombreUsuario = $_POST['nombreUsuario'];
-    $obj->apellidoUsuario = $_POST['apellidoUsuario'];
-    $obj->emailUsuario = $_POST['emailUsuario'];
-    $obj->contraUsuario = $_POST['contraUsuario'];
-    $obj->celUsuario = $_POST['celUsuario'];
-    $obj->fechaCUsuario = $_POST['fechaCUsuario'];
-    $obj->fechaAUsuario = $_POST['fechaAUsuario'];
+    $obj->id_user = $_POST['id_user'];
+    $obj->state_user = $_POST['state_user'];
+    $obj->rol_user = $_POST['rol_user'];
+    $obj->type_document = $_POST['type_document'];
+    $obj->name_user = $_POST['name_user'];
+    $obj->lastname_user = $_POST['lastname_user'];
+    $obj->phone_user = $_POST['phone_user'];
+    $obj->email_user = $_POST['email_user'];
+    $obj->password_user = $_POST['password_user'];
+    $obj->create_user = $_POST['create_user'];
+    $obj->update_user = $_POST['update_user'];
 
 }
+
+$conet = new Conexion();
+$c = $conet->conectando();
+
+$query ="SELECT * FROM rol_user";
+$result = mysqli_query($c, $query);
+$fila = mysqli_fetch_array($result);
+
+$query1 ="SELECT * FROM type_document";
+$result1 = mysqli_query($c, $query1);
+$fila1 = mysqli_fetch_array($result1);
+
 date_default_timezone_set('America/Bogota');
 $fecha = Date('Y-m-d H:i:s');
 
@@ -262,28 +275,62 @@ $fecha = Date('Y-m-d H:i:s');
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">NUMERO DE IDENTIFICACION:</label>
-										<input type="number" class="form-control" name="numeroDocumento" id="numeroDocumento" required>
+										<input type="number" class="form-control" name="id_user" id="id_user" required>
 									</div>
 								</div>
 
+								<input type="hidden" name="state_user" id="state_user" value="1">
+
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<select class="form-control" name="rolUsuario" id="rolUsuario" required>
+										<select class="form-control" name="rol_user" id="rol_user" required>
 											<option selected disabled>SELECCIONE ROL DE USUARIO:</option>
-											<option value="1">Administrador</option>
-											<option value="2">Usuario</option>
+												<?php
+													do {
+													$id = $fila['id_rol_user'];
+													$name = $fila['name_rol_user'];
+
+													if ($id==0) {
+														echo "<option>No hay registros</option>";
+													}else {
+														echo "<option value=$id>$name</option>";
+													}
+
+													}while($fila = mysqli_fetch_array($result));			 	
+														$row = mysqli_num_rows($result);
+														$rows = 0;
+													if($rows>0){
+														mysqli_data_seek($result, 0);
+														$fila = mysqli_fetch_array($result);
+													}
+												?>
 										</select>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<select class="form-control" name="tipoDocumento" id="tipoDocumento" required>
+										<select class="form-control" name="type_document" id="type_document" required>
 											<option selected disabled>SELECCIONE TIPO DE DOCUMENTO:</option>
-											<option value="1">Cedula de Ciudadania</option>
-											<option value="2">Tarjeta de Identidad</option>
-											<option value="3">Cedula Extranjeria</option>
-											<option value="4">Registro Civil</option>
+											<?php
+												do {
+												$id1 = $fila1['id_type_document'];
+												$name1 = $fila1['name_type_document'];
+
+												if ($id1==0) {
+													echo "<option>No hay registros</option>";
+												}else {
+													echo "<option value=$id1>$name1</option>";
+												}
+
+												}while($fila1 = mysqli_fetch_array($result1));			 	
+													$row1 = mysqli_num_rows($result1);
+													$rows1 = 0;
+												if($rows1>0){
+													mysqli_data_seek($result1, 0);
+													$fila1 = mysqli_fetch_array($result1);
+												}
+											?>
 										</select>
 									</div>
 								</div>
@@ -291,41 +338,41 @@ $fecha = Date('Y-m-d H:i:s');
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">NOMBRE:</label>
-										<input type="text" class="form-control" name="nombreUsuario" id="nombreUsuario" required>
+										<input type="text" class="form-control" name="name_user" id="name_user" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">APELLIDO:</label>
-										<input type="text"  class="form-control" name="apellidoUsuario" id="apellidoUsuario" required>
+										<input type="text"  class="form-control" name="lastname_user" id="lastname_user" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">NUMERO DE CELULAR:</label>
-										<input type="number"  class="form-control" name="celUsuario" id="celUsuario" required>
+										<input type="number"  class="form-control" name="phone_user" id="phone_user" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">EMAIL:</label>
-										<input type="email" class="form-control" name="emailUsuario" id="emailUsuario" required>
+										<input type="email" class="form-control" name="email_user" id="email_user" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">CONTRASEÑA:</label>
-										<input type="password" class="form-control" name="contraUsuario" id="contraUsuario" required>
+										<input type="password" class="form-control" name="password_user" id="password_user" required>
 									</div>
 								</div>
 
-								<input type="hidden" name="fechaCUsuario" id="fechaCUsuario" value="<?php echo $fecha ?>">
+								<input type="hidden" name="create_user" id="create_user" value="<?php echo $fecha ?>">
 
-								<input type="hidden" name="fechaAUsuario" id="fechaAUsuario" value="<?php echo $fecha ?>">
+								<input type="hidden" name="update_user" id="update_user" value="<?php echo $fecha ?>">
 
 							</div>
 						</div> 
