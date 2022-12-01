@@ -1,13 +1,21 @@
 <?php
 include("../../connect/conectar.php");
 
+session_start();
+$name_user = $_SESSION['name_user'];
+$lastname_user = $_SESSION['lastname_user'];
+
+if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
+	header("Location: ../guest/login.php");
+}
+
 if($_POST){
-	$obj->nombreDocumento = $_POST['nombreDocumento'];
+	$obj->id_type_document = $_POST['id_type_document'];
 }
 
 $conet = new Conexion();
 $c = $conet->conectando();
-$query="select count(*) as totalRegistros from tipo_documento";
+$query="select count(*) as totalRegistros from type_document";
 $resultado = mysqli_query($c, $query);
 $arreglo = mysqli_fetch_array($resultado); 
 $totalRegistros = $arreglo['totalRegistros'];
@@ -26,12 +34,11 @@ $totalPaginas=ceil($totalRegistros/$maximoRegistros);
 
 
 if(isset($_POST['search'])){
-    echo "llegue";
-    $query2="select * from tipo_documento where nom_tipo_doc like '%$obj->nombreDocumento%' limit $desde,$maximoRegistros";
+    $query2="select * from type_document where id_type_document like '%$obj->id_type_document%' limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }else{
-    $query2="select * from tipo_documento limit $desde,$maximoRegistros";
+    $query2="select * from type_document limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }
@@ -80,7 +87,7 @@ if(isset($_POST['search'])){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
 						Administrador
 					</figcaption>
@@ -277,8 +284,8 @@ if(isset($_POST['search'])){
 						<div class="row justify-content-md-center">
 							<div class="col-12 col-md-6">
 								<div class="form-group">
-									<label for="inputSearch" class="bmd-label-floating">INGRESA NOMBRE DE TIPO DOCUMENTO</label>
-									<input class="form-control me-2" type="search" name="nombreDocumento" aria-label="Search">
+									<label for="inputSearch" class="bmd-label-floating">INGRESA CODIGO DE TIPO DOCUMENTO</label>
+									<input class="form-control me-2" type="search" name="id_type_document" aria-label="Search">
 								</div>
 							</div>
 							<div class="col-12">

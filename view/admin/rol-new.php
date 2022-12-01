@@ -1,11 +1,12 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/rolControlador.php");
+include("../../controller/admin/rolController.php");
+
 $obj = new Rol();
 if($_POST){
 
-	$obj->idRol = $_POST['idRol'];
-    $obj->nombreRol = $_POST['nombreRol'];
+	$obj->idRol = $_POST['id_rol_user'];
+    $obj->nombreRol = $_POST['name_rol_user'];
 
 }
 ?>
@@ -52,7 +53,7 @@ if($_POST){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
 						Administrador
 					</figcaption>
@@ -248,17 +249,12 @@ if($_POST){
 						<div class="container-fluid">
 							<div class="row">
 
-                            <div class="col-12 col-md-6">
-									<div class="form-group">
-										<label class="bmd-label-floating">CODIGO DE ROL USUARIO</label>
-										<input type="number" class="form-control" name="idRol" id="idRol" required>
-									</div>
-								</div>
-								
+							<input type="hidden" name="id_rol_user" id="id_rol_user">
+
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">NOMBRE PARA UN ROL USUARIO</label>
-										<input type="text" class="form-control" name="nombreRol" id="nombreRol" required>
+										<input type="text" class="form-control" name="name_rol_user" id="name_rol_user" required>
 									</div>
 								</div>
                 

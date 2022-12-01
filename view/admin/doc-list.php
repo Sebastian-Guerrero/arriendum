@@ -92,7 +92,7 @@ if(isset($_POST['search'])){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
 						Administrador
 					</figcaption>
@@ -316,8 +316,8 @@ if(isset($_POST['search'])){
 								</td>
 								<td>
 									<form action="" name="eliminarDocumento" method="POST">
-										<input type="hidden" name="idDocumento" value="<?php echo $arreglo2[0] ?>"></input>
-										<input type="hidden" name="nombreDocumento"></input>
+										<input type="hidden" name="id_type_document" value="<?php echo $arreglo2[0] ?>"></input>
+										<input type="hidden" name="name_type_document"></input>
 										<button type="submit" name="elimina" class="btn btn-warning">
 		  									<i class="far fa-trash-alt"></i>
 										</button>

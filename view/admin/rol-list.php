@@ -5,13 +5,13 @@ include("../../controller/admin/rolController.php");
 $obj = new Rol();
 if($_POST){
 
-	$obj->idRol = $_POST['idRol'];
+	$obj->idRol = $_POST['id_rol_user'];
 
 }
 
 $conet = new Conexion();
 $c = $conet->conectando();
-$query="select count(*) as totalRegistros from rol";
+$query="select count(*) as totalRegistros from rol_user";
 $resultado = mysqli_query($c, $query);
 $arreglo = mysqli_fetch_array($resultado); 
 $totalRegistros = $arreglo['totalRegistros'];
@@ -31,11 +31,11 @@ $totalPaginas=ceil($totalRegistros/$maximoRegistros);
 
 if(isset($_POST['search'])){
     echo "llegue";
-    $query2="select * from rol where nombreRol like '%$obj->nombreRol%' limit $desde,$maximoRegistros";
+    $query2="select * from rol_user where nombreRol like '%$obj->name_rol_user%' limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }else{
-    $query2="select * from rol limit $desde,$maximoRegistros ";
+    $query2="select * from rol_user limit $desde,$maximoRegistros ";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }
@@ -84,7 +84,7 @@ if(isset($_POST['search'])){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
 						Administrador
 					</figcaption>
@@ -277,8 +277,8 @@ if(isset($_POST['search'])){
 					<table class="table table-dark table-sm">
 						<thead>
 							<tr class="text-center roboto-medium">
-								<th>ID ROL USUARIO</th>
-								<th>ROL USUARIO</th>
+								<th>ID ROL</th>
+								<th>NOMBRE ROL</th>
 								<th>ACTUALIZAR</th>
 								<th>ELIMINAR</th>
 							</tr>
@@ -302,14 +302,18 @@ if(isset($_POST['search'])){
 								<td><?php echo $arreglo2[0] ?></td>
 								<td><?php echo $arreglo2[1] ?></td>
 								<td>
-									<a href="rol-update.php" class="btn btn-success">
-	  									<i class="fas fa-sync-alt"></i>	
+									<a  class="btn btn-success" href="<?php 
+										if($arreglo2[0]<>''){
+											echo "rol-update.php?key=".urlencode($arreglo2[0]) ;
+										}
+																		?>" >
+										<i class="fas fa-sync-alt"></i>	
 									</a>
 								</td>
 								<td>
 									<form action="" name="eliminarRol" method="POST">
-										<input type="hidden" name="idRol" value="<?php echo $arreglo2[0] ?>"></input>
-										<input type="hidden" name="nombreRol"></input>
+										<input type="hidden" name="id_rol_user" value="<?php echo $arreglo2[0] ?>"></input>
+										<input type="hidden" name="name_rol_user"></input>
 										<button type="submit" name="elimina" class="btn btn-warning">
 		  									<i class="far fa-trash-alt"></i>
 										</button>

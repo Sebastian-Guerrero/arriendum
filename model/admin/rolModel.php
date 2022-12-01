@@ -24,11 +24,11 @@
 
                     function modificar(){$c = new Conexion();
                                           $cone = $c->conectando();
-                                          $sql = "SELECT * FROM rol_user WHERE name_rol_user ='$this->name_rol_user'";
+                                          $sql = "SELECT * FROM rol_user WHERE id_rol_user ='$this->id_rol_user'";
                                           $r = mysqli_query($cone,$sql);
                                           if(!mysqli_fetch_array($r))
                                          {
-                                         echo "<script> alert('El Nombre del Rol que intenta Modificar ya Existe')</script>";
+                                         echo "<script> alert('El Rol no se puede Modificar')</script>";
                                          }
                                          else
                                             {
@@ -36,8 +36,7 @@
                                                                      name_rol_user = '$this->name_rol_user'
                                                                      WHERE id_rol_user = '$this->id_rol_user'";
                                             mysqli_query($cone,$id);
-                                            echo "<script> alert('El nombre del rol ha sido modificado')</script>";				
-                                               
+                                            echo "<script> alert('El nombre del Rol ha sido modificado')</script>";				
                                          }
 
                     }   

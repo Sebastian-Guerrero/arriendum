@@ -1,13 +1,26 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/rolControlador.php");
+include("../../controller/admin/rolController.php");
+
 $obj = new Rol();
 if($_POST){
 
-	$obj->idRol = $_POST['idRol'];
-    $obj->nombreRol = $_POST['nombreRol'];
+	$obj->id_rol_user = $_POST['id_rol_user'];
+    $obj->name_rol_user = $_POST['name_rol_user'];
 
 }
+
+$key=$_GET['key'];
+$conet = new Conexion();
+$c = $conet->conectando();
+
+$query="SELECT * FROM rol_user WHERE id_rol_user = '$key'";
+$resultado = mysqli_query($c, $query);
+$arreglo = mysqli_fetch_array($resultado); 
+
+$obj->id_rol_user = $arreglo[0];
+$obj->name_rol_user = $arreglo[1];
+
 
 ?>
 <!DOCTYPE html>
@@ -52,7 +65,7 @@ if($_POST){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
 						Administrador
 					</figcaption>
@@ -243,23 +256,18 @@ if($_POST){
 			<div class="container-fluid">
 				<form class="form-neon" action="" method="POST" autocomplete="off">
 					<fieldset>
-						<legend class="text-center"><i class="fas fa-user-tag"></i> &nbsp; Ingresa el Codigo del Rol Usuario</legend>
-						<p class="text-center">Para Actualizar</p>
+						<legend class="text-center"><i class="fas fa-user-tag"></i> &nbsp; Actualizar Rol</legend>
 
 						<div class="container-fluid">
 							<div class="row">
 
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										<label class="bmd-label-floating">CODIGO DE ROL USUARIO</label>
-										<input type="number" class="form-control" name="idRol" id="idRol">
-									</div>
-								</div>
+								<input type="hidden" name="id_rol_user" id="id_rol_user" value ="<?php echo $obj->id_rol_user ?>">
+
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">NUEVO NOMBRE PARA ROL USUARIO</label>
-										<input type="text" class="form-control" name="nombreRol" id="nombreRol">
+										<input type="text" class="form-control" name="name_rol_user" id="name_rol_user" value ="<?php echo $obj->name_rol_user ?>" required>
 									</div>
 								</div>
 

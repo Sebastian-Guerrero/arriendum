@@ -2,6 +2,13 @@
 include("../../connect/conectar.php");
 include("../../controlador/admin/inmuebleControlador.php");
 
+session_start();
+$name_user = $_SESSION['name_user'];
+$lastname_user = $_SESSION['lastname_user'];
+
+if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
+	header("Location: ../guest/login.php");
+}
 
 $obj = new Inmueble();
 if($_POST)

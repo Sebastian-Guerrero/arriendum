@@ -1,12 +1,20 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/documentoControlador.php");
+include("../../controller/admin/documentController.php");
 
-$obj = new Documento();
+session_start();
+$name_user = $_SESSION['name_user'];
+$lastname_user = $_SESSION['lastname_user'];
+
+if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
+	header("Location: ../guest/login.php");
+}
+
+$obj = new Document();
 if($_POST){
 
-	$obj->idDocumento = $_POST['idDocumento'];
-    $obj->nombreDocumento = $_POST['nombreDocumento'];
+	$obj->id_type_document = $_POST['id_type_document'];
+    $obj->name_type_document = $_POST['name_type_document'];
 
 }
 ?>
@@ -53,7 +61,7 @@ if($_POST){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
 						Administrador
 					</figcaption>
@@ -246,25 +254,15 @@ if($_POST){
 					<fieldset>
 						<legend class="text-center"><i class="fas fa-id-card"></i> &nbsp; Registrar Tipo Documento</legend>
 
-						<div class="container-fluid">
-							<div class="row">
-							<div class="col-12 col-md-6">
-									<div class="form-group">
-										<label class="bmd-label-floating">CODIGO DE TIPO DOCUMENTO</label>
-										<input type="number" class="form-control" name="idDocumento" id="idDocumento" required>
-									</div>
-								</div>
-
+								<input type="hidden" name="id_type_document" id="id_type_document">
 	
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label class="bmd-label-floating">NOMBRE PARA TIPO DOCUMENTO</label>
-										<input type="text" class="form-control" name="nombreDocumento" id="nombreDocumento" required>
+										<label class="bmd-label-floating">NOMBRE PARA TIPO DOCUMENTO:</label>
+										<input type="text" class="form-control" name="name_type_document" id="name_type_document" required>
 									</div>
 								</div>
-                
-							</div>
-						</div> 
+
 					</fieldset>
 					<br>
 					<p class="text-center" style="margin-top: 40px;">

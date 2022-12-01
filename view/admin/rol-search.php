@@ -2,12 +2,12 @@
 include("../../connect/conectar.php");
 
 if($_POST){
-	$obj->idRol = $_POST['idRol'];
+	$obj->id_rol_user = $_POST['id_rol_user'];
 }
 
 $conet = new Conexion();
 $c = $conet->conectando();
-$query="select count(*) as totalRegistros from rol";
+$query="select count(*) as totalRegistros from rol_user";
 $resultado = mysqli_query($c, $query);
 $arreglo = mysqli_fetch_array($resultado); 
 $totalRegistros = $arreglo['totalRegistros'];
@@ -27,11 +27,11 @@ $totalPaginas=ceil($totalRegistros/$maximoRegistros);
 
 if(isset($_POST['search'])){
     echo "llegue";
-    $query2="select * from rol where id_rol like '%$obj->idRol%' limit $desde,$maximoRegistros";
+    $query2="select * from rol_user where id_rol_user like '%$obj->id_rol_user%' limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }else{
-    $query2="select * from rol limit $desde,$maximoRegistros";
+    $query2="select * from rol_user limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }
@@ -80,7 +80,7 @@ if(isset($_POST['search'])){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
 						Administrador
 					</figcaption>
@@ -278,7 +278,7 @@ if(isset($_POST['search'])){
 							<div class="col-12 col-md-6">
 								<div class="form-group">
 									<label for="inputSearch" class="bmd-label-floating">Ingresa el Codigo del Rol Usuario</label>
-									<input class="form-control me-2" type="search" name="idRol" aria-label="Search">
+									<input class="form-control me-2" type="search" name="id_rol_user" aria-label="Search">
 								</div>
 							</div>
 							<div class="col-12">
@@ -296,8 +296,8 @@ if(isset($_POST['search'])){
 					<table class="table table-dark table-sm">
 						<thead>
 							<tr class="text-center roboto-medium">
-								<th>ID ROL USUARIO</th>
-								<th>ROL USUARIO</th>
+								<th>ID ROL</th>
+								<th>NOMBRE ROL</th>
 							</tr>
 						</thead>
 						<tbody>
