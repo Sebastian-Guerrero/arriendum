@@ -31,7 +31,6 @@
 									                            move_uploaded_file($_FILES['name_galery_property']['tmp_name'],$ruta);
 
                                              $id = "UPDATE galery SET
-                                                                     id_galeria = '$id_galery_property->id_galery_property',
                                                                      nom_galeria = '$ruta'
                                                                      WHERE id_galeria = '$this->id_galery_property'";
                                              mysqli_query($cone,$id);

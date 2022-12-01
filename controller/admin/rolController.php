@@ -1,10 +1,11 @@
 <?php
-include('../../modelo/admin/rolModelo.php');
+include('../../model/admin/rolModel.php');
+
 $obj = new Rol();
 if($_POST){
 
-    $obj->idRol = $_POST['idRol'];
-    $obj->nombreRol = $_POST['nombreRol'];
+    $obj->id_rol_user = $_POST['id_rol_user'];
+    $obj->name_rol_user = $_POST['name_rol_user'];
     
 }
 

@@ -1,79 +1,76 @@
 <?php
-	class Inmueble{
+	class Property{
+					public $id_property;
+					public $id_user;
+					public $state_property;
+					public $direction_property;
+					public $type_property;
+					public $option_property;
+					public $location_property;
+					public $neighborhood_property;
+					public $information_property;
+					public $description_property;
+					public $cost_property;
+					public $create_property;	
+					public $update_property;
 
-		public $id_inm;
-		public $id_usuario;
-		public $estado_inm;
-		public $direccion_inm;
-		public $tipo_inm;
-		public $opcion_inm;
-        public $localidad_inm;
-        public $barrio_inm;
-		public $inf_inm;
-		public $desc_inm;
-        public $precio_inm;
-		public $fechaC_inm;	
-		public $fechaA_inm;	
-
-                 function agregar(){
-					$c = new Conexion();
-					$cone = $c->conectando();
-                    $insertar = "insert into inmueble values('$this->id_inm',
-																			'$this->id_usuario',
-																			'$this->estado_inm',
-																			'$this->direccion_inm',
-                                                                            '$this->tipo_inm',
-                                                                            '$this->opcion_inm',
-                                                                            '$this->localidad_inm',
-                                                                            '$this->barrio_inm',
-																			'$this->inf_inm',
-																			'$this->desc_inm',
-																			'$this->precio_inm',
-																			'$this->fechaC_inm',
-																			'$this->fechaA_inm'
-                    )";    
-					mysqli_query($cone,$insertar);	
-					echo "<script> alert('El Usuario a registrado un Inmueble')</script>";
-								
-					}									
+					function agregar(){
+						$c = new Conexion();
+						$cone = $c->conectando();
+						$insertar = "INSERT INTO property values('$this->id_property',
+																'$this->id_user',
+																'$this->state_property',
+																'$this->direction_property',
+																'$this->type_property',
+																'$this->option_property',
+																'$this->location_property',
+																'$this->neighborhood_property',
+																'$this->information_property',
+																'$this->description_property',
+																'$this->cost_property',
+																'$this->create_property',
+																'$this->update_property'
+																)";    
+						mysqli_query($cone,$insertar);	
+						header("location: pub-gal.php");
+						}									
 				 				
 
 				function modificar(){$c = new Conexion();
 								$cone = $c->conectando();
-								$sql = "select * from inmueble where id_inm ='$this->id_inm'";
+								$sql = "SELECT * FROM property WHERE id_property ='$this->id_property'";
 								$r = mysqli_query($cone,$sql);
 								if(!mysqli_fetch_array($r)){
-							echo "<script> alert('El Usuario ha Modificado Inmueble')</script>";
+							echo "<script> alert('Ya Existe esta Modificacion del Inmueble')</script>";
 							}else{
-								$id = "update inmueble set
-														id_inm = '$this->id_inm',
-														estado_inm = '$this->estado_inm',
-														direccion_inm = '$this->direccion_inm',
-														tipo_inm = '$this->tipo_inm',
-														opcion_inm = '$this->opcion_inm',
-														localidad_inm = '$this->localidad_inm',
-														barrio_inm = '$this->barrio_inm',
-														inf_inm = '$this->inf_inm',
-														desc_inm = '$this->desc_inm',
-														precio_inm = '$this->precio_inm',
-														fechaA_inm = '$this->fechaA_inm' 
-														where id_inm = '$this->id_inm'";
+								$id = "UPDATE property SET
+														state_property = '$this->state_property',
+														direction_property = '$this->direction_property',
+														type_property = '$this->type_property',
+														option_property = '$this->option_property',
+														location_property = '$this->location_property',
+														neighborhood_property = '$this->neighborhood_property',
+														information_property = '$this->information_property',
+														description_property = '$this->description_property',
+														cost_property = '$this->cost_property',
+														update_property = '$this->update_property' 
+														WHERE id_property = '$this->id_property'";
 								mysqli_query($cone,$id);
-								echo "<script> alert('El Usuario Modifico un Inmueble ')</script>";
+								echo "<script> alert('El Inmueble ha sido Modificado')</script>";
 							}
 				 }
 
 				function eliminar(){
 								$c = new Conexion();
 								$cone = $c->conectando();
-								$sql= "delete from inmueble where id_inm ='$this->id_inm'";
+								$sql= "DELETE FROM property WHERE id_property ='$this->id_property'";
 								if(mysqli_query($cone,$sql))
 								{
 								echo "<script> alert('El Inmueble fue Eliminado del Sistema');</script>";
 								}
 								else
 									{
-									echo"<script> alert('Atencion  no se puede eliminar el Registro debido a que tiene datos relacionadas')</script>";
+									echo"<script> alert('Atencion no se puede eliminar el Registro debido a que tiene datos relacionadas')</script>";
 									}
 			    }
 			}

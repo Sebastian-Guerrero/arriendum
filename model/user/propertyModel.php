@@ -1,18 +1,18 @@
 <?php
 	class Property{
-		public $id_property;
-		public $id_user;
-		public $state_property;
-		public $direction_property;
-		public $type_property;
-		public $option_property;
-        public $location_property;
-        public $neighborhood_property;
-		public $information_property;
-		public $description_property;
-        public $cost_property;
-		public $create_property;	
-		public $update_property;	
+				public $id_property;
+				public $id_user;
+				public $state_property;
+				public $direction_property;
+				public $type_property;
+				public $option_property;
+				public $location_property;
+				public $neighborhood_property;
+				public $information_property;
+				public $description_property;
+				public $cost_property;
+				public $create_property;	
+				public $update_property;	
 
                  function agregar(){
 					$c = new Conexion();

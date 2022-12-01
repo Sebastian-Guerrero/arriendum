@@ -1,22 +1,22 @@
 <?php
-    class Estado{
-                  public $idEstado;
-                  public $nombreEstado;
+    class State{
+                  public $id_state_property;
+                  public $name_state_property;
 
                     function agregar(){
                                         $conet = new Conexion();
                                         $c = $conet->conectando();
-                                        $query = "select * from estado_inmueble where nom_estado_inm = '$this->nombreEstado'";
+                                        $query = "SELECT * FROM state_property where name_state_property = '$this->name_state_property'";
                                         $ejecuta = mysqli_query($c, $query);
                                         if(mysqli_fetch_array($ejecuta)){
-                                           echo "<script> alert('El Estado ya Existe en el Sistema')</script>";
+                                           echo "<script> alert('El Estado del Inmueble ya Existe en el Sistema')</script>";
                                         }else{
-                                           $insertar = "insert into estado_inmueble value(
-                                                                                    '$this->idEstado',
-                                                                                    '$this->nombreEstado'                            
+                                           $insertar = "INSERT INTO state_property VALUE(
+                                                                                    '$this->id_state_property',
+                                                                                    '$this->name_state_property'                            
                                            )";
                                            mysqli_query($c,$insertar);
-                                           echo "<script> alert('El Estado fue Creado en el Sistema')</script>";
+                                           echo "<script> alert('El Estado de Inmueble fue Creado en el Sistema')</script>";
                                             
                                         }
 
@@ -24,20 +24,19 @@
 
                     function modificar(){$c = new Conexion();
                                           $cone = $c->conectando();
-                                          $sql = "select * from estado_inmueble where id_estado_inm ='$this->idEstado'";
+                                          $sql = "SELECT * FROM state_property WHERE name_state_property ='$this->name_state_property'";
                                           $r = mysqli_query($cone,$sql);
                                           if(!mysqli_fetch_array($r))
                                          {
-                                         echo "<script> alert('El resultado a Modificar ya existe')</script>";
+                                         echo "<script> alert('El Nombre del Estado de Inmueble que intenta Modificar ya Existe')</script>";
                                          }
                                          else
                                             {
-                                            $id = "update estado_inmueble set
-                                                   id_estado_inm = '$this->idEstado',
-                                                   nom_estado_inm = '$this->nombreEstado'
-                                                   where id_estado_inm = '$this->idEstado'";
+                                            $id = "UPDATE state_property SET
+                                                   name_state_property = '$this->name_state_property'
+                                                   WHERE id_state_property = '$this->id_state_property'";
                                             mysqli_query($cone,$id);
-                                            echo "<script> alert('El resultado fue Modificado ')</script>";				
+                                            echo "<script> alert('El Nombre del Estado de Inmueble ha sido Modificado')</script>";				
                                                
                                          }
 
@@ -46,14 +45,14 @@
                     function eliminar(){
                                        $c = new Conexion();
                                        $cone = $c->conectando();
-                                       $sql= "delete from estado_inmueble where id_estado_inm ='$this->idEstado'";
+                                       $sql= "DELETE FROM state_property WHERE id_state_property ='$this->id_state_property'";
                                        if(mysqli_query($cone,$sql))
                                        {
-                                       echo "<script> alert('El resultado fue Eliminado del Sistema de Información');</script>";
+                                       echo "<script> alert('El Estado de Inmueble fue Eliminado del Sistema);</script>";
                                        }
                                           else
                                              {
-                                             echo"<script> alert('Atencion  no se puede eliminar el Registro debido a que tiene datos relacionadas')</script>";
+                                             echo"<script> alert('Atencion no se puede eliminar el Estado de Inmueble debido a que tiene datos relacionadas')</script>";
                                              }
                                     }
 

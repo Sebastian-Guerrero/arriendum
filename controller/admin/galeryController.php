@@ -1,12 +1,12 @@
 <?php
-include('../../modelo/admin/galeriaModelo.php');
+include('../../model/admin/galeryModel.php');
 
-$obj = new Galeria();
+$obj = new Galery();
 if($_POST){
 
-    $obj->idGaleria = $_POST['idGaleria'];
-    $obj->id_inm = $_POST['id_inm'];
-    $obj->nombreGaleria = $_FILES['nombreGaleria']['tmp_name'];
+    $obj->id_galery_property = $_POST['id_galery_property'];
+    $obj->id_property = $_POST['id_property'];
+    $obj->name_galery_property = $_FILES['name_galery_property']['tmp_name'];
 }
 
 if(isset($_POST['guarda'])){

@@ -1,11 +1,11 @@
 <?php
-include('../../modelo/admin/estadoModelo.php');
+include('../../model/admin/stateModel.php');
 
-$obj = new Estado();
+$obj = new State();
 if($_POST){
 
-    $obj->idEstado = $_POST['idEstado'];
-    $obj->nombreEstado = $_POST['nombreEstado'];
+    $obj->id_state_property = $_POST['id_state_property'];
+    $obj->name_state_property = $_POST['name_state_property'];
 
 }
 

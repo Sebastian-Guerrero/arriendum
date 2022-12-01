@@ -2,6 +2,14 @@
 include("../../connect/conectar.php");
 include("../../controller/admin/userController.php");
 
+session_start();
+$name_user = $_SESSION['name_user'];
+$lastname_user = $_SESSION['lastname_user'];
+
+if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
+	header("Location: ../guest/login.php");
+}
+
 $obj = new User();
 if($_POST){
 
@@ -77,16 +85,16 @@ $fecha = Date('Y-m-d H:i:s');
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
-						Administrador
+						<?php echo "$name_user $lastname_user";?>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
 				<nav class="full-box nav-lateral-menu">
 				<ul>
 						<li>
-							<a href="../index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
+							<a href="index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
 						</li>
 
 						<li>
@@ -268,7 +276,7 @@ $fecha = Date('Y-m-d H:i:s');
 			<div class="container-fluid">
 				<form action="" name="agregarUsuario"  class="form-neon" autocomplete="off" method="POST">
 					<fieldset>
-						<legend class="text-center"><i class="fas fa-user"></i> &nbsp; Registro de Usuario</legend>
+						<legend class="text-center"><i class="fas fa-user"></i> &nbsp; Registrar Usuario</legend>
 						<div class="container-fluid">
 							<div class="row">
 
@@ -284,7 +292,7 @@ $fecha = Date('Y-m-d H:i:s');
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<select class="form-control" name="rol_user" id="rol_user" required>
-											<option selected disabled>SELECCIONE ROL DE USUARIO:</option>
+											<option selected disabled>SELECCIONE ROL DEl USUARIO:</option>
 												<?php
 													do {
 													$id = $fila['id_rol_user'];

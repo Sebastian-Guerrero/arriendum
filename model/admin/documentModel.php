@@ -25,16 +25,15 @@
 
                     function modificar(){$c = new Conexion();
                                           $cone = $c->conectando();
-                                          $sql = "SELECT * FROM type_document WHERE id_type_document ='$this->name_type_document'";
+                                          $sql = "SELECT * FROM type_document WHERE name_type_document ='$this->name_type_document'";
                                           $r = mysqli_query($cone,$sql);
                                           if(!mysqli_fetch_array($r))
                                          {
-                                         echo "<script> alert('El Tipo de Documento a Modificar ya existe')</script>";
+                                         echo "<script> alert('El Nombre del Tipo de Documento que intenta Modificar ya Existe')</script>";
                                          }
                                          else
                                             {
                                             $id = "UPDATE tipo_documento SET
-                                                   id_type_document = '$this->id_type_document',
                                                    nom_tipo_doc = '$this->name_type_document'
                                                    WHERE id_type_document = '$this->id_type_document'";
                                             mysqli_query($cone,$id);
@@ -54,7 +53,7 @@
                                        }
                                           else
                                              {
-                                             echo"<script> alert('Atencion  no se puede eliminar el Registro debido a que tiene datos relacionadas')</script>";
+                                             echo"<script> alert('Atencion no se puede eliminar el Tipo de Documento debido a que tiene datos relacionadas')</script>";
                                              }
                                     }
 

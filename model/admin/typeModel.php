@@ -1,19 +1,19 @@
  <?php
-    class Tipo{
-                  public $idTipo;
-                  public $nombreTipo;
+    class Type{
+                  public $id_type_property;
+                  public $name_type_property;
 
                     function agregar(){
                                         $conet = new Conexion();
                                         $c = $conet->conectando();
-                                        $query = "select * from tipo_inmueble where nom_tipo_inm = '$this->nombreTipo'";
+                                        $query = "SELECT * FROM type_property where name_type_property = '$this->name_type_property'";
                                         $ejecuta = mysqli_query($c, $query);
                                         if(mysqli_fetch_array($ejecuta)){
                                            echo "<script> alert('El Tipo de Inmueble ya Existe en el Sistema')</script>";
                                         }else{
-                                           $insertar = "insert into tipo_inmueble value(
-                                                                                    '$this->idTipo',
-                                                                                    '$this->nombreTipo'                            
+                                           $insertar = "INSERT INTO type_property VALUE(
+                                                                                    '$this->id_type_property',
+                                                                                    '$this->name_type_property'                            
                                            )";
                                            mysqli_query($c,$insertar);
                                            echo "<script> alert('El Tipo de Inmueble fue Creado en el Sistema')</script>";
@@ -24,20 +24,19 @@
 
                     function modificar(){$c = new Conexion();
                                           $cone = $c->conectando();
-                                          $sql = "select * from tipo_inmueble where id_tipo_inm ='$this->idTipo'";
+                                          $sql = "SELECT * FROM type_property where name_type_property ='$this->name_type_property'";
                                           $r = mysqli_query($cone,$sql);
                                           if(!mysqli_fetch_array($r))
                                          {
-                                         echo "<script> alert('El resultado a Modificar ya existe')</script>";
+                                         echo "<script> alert('El Nombre del Tipo de Inmueble que intenta Modificar ya Existe')</script>";
                                          }
                                          else
                                             {
-                                            $id = "update tipo_inmueble set
-                                                   id_tipo_inm = '$this->idTipo',
-                                                   nom_tipo_inm = '$this->nombreTipo'
-                                                   where id_tipo_inm = '$this->idTipo'";
+                                            $id = "UPDATE type_property SET
+                                                   name_type_property = '$this->name_type_property'
+                                                   WHERE id_type_property = '$this->id_type_property'";
                                             mysqli_query($cone,$id);
-                                            echo "<script> alert('El resultado  fue Modificado ')</script>";				
+                                            echo "<script> alert('El Nombre del Tipo de Inmueble ha sido Modificado')</script>";				
                                                
                                          }
 
@@ -46,14 +45,14 @@
                     function eliminar(){
                                        $c = new Conexion();
                                        $cone = $c->conectando();
-                                       $sql= "delete from tipo_inmueble where id_tipo_inm='$this->idTipo'";
+                                       $sql= "DELETE FROM type_property WHERE id_type_property='$this->id_type_property'";
                                        if(mysqli_query($cone,$sql))
                                        {
-                                       echo "<script> alert('El resultado fue Eliminado del Sistema de Información');</script>";
+                                       echo "<script> alert('El Tipo de Inmueble fue Eliminado del Sistema de Información');</script>";
                                        }
                                           else
                                              {
-                                             echo"<script> alert('Atencion  no se puede eliminar el Registro debido a que tiene datos relacionadas')</script>";
+                                             echo"<script> alert('Atencion no se puede eliminar el Tipo de Inmueble debido a que tiene datos relacionadas')</script>";
                                              }
                                     }
 

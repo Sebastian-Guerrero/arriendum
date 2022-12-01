@@ -1,20 +1,29 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/usuarioControlador.php");
+include("../../controller/admin/userController.php");
 
-$obj = new Usuario();
+session_start();
+$name_user = $_SESSION['name_user'];
+$lastname_user = $_SESSION['lastname_user'];
+
+if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
+	header("Location: ../guest/login.php");
+}
+
+$obj = new User();
 if($_POST){
 
-    $obj->numeroDocumento = $_POST['numeroDocumento'];
-	$obj->rolUsuario = $_POST['rolUsuario'];
-    $obj->tipoDocumento = $_POST['tipoDocumento'];
-    $obj->nombreUsuario = $_POST['nombreUsuario'];
-    $obj->apellidoUsuario = $_POST['apellidoUsuario'];
-    $obj->emailUsuario = $_POST['emailUsuario'];
-    $obj->contraUsuario = $_POST['contraUsuario'];
-    $obj->celUsuario = $_POST['celUsuario'];
-    $obj->fechaCUsuario = $_POST['fechaCUsuario'];
-    $obj->fechaAUsuario = $_POST['fechaAUsuario'];
+    $obj->id_user = $_POST['id_user'];
+    $obj->state_user = $_POST['state_user'];
+    $obj->rol_user = $_POST['rol_user'];
+    $obj->type_document = $_POST['type_document'];
+    $obj->name_user = $_POST['name_user'];
+    $obj->lastname_user = $_POST['lastname_user'];
+    $obj->phone_user = $_POST['phone_user'];
+    $obj->email_user = $_POST['email_user'];
+    $obj->password_user = $_POST['password_user'];
+    $obj->create_user = $_POST['create_user'];
+    $obj->update_user = $_POST['update_user'];
 
 }
 
@@ -25,26 +34,28 @@ $fecha = Date('Y-m-d H:i:s');
 $key=$_GET['key'];
 $conet = new Conexion();
 $c = $conet->conectando();
-$query="select * from usuario where num_id_usuario = '$key'";
+
+$query="SELECT * FROM user WHERE id_user = '$key'";
 $resultado = mysqli_query($c, $query);
 $arreglo = mysqli_fetch_array($resultado); 
 
-$obj->numeroDocumento = $arreglo[0];
-$obj->rolUsuario = $arreglo[1];
-$obj->tipoDocumento = $arreglo[2];
-$obj->nombreUsuario = $arreglo[3];
-$obj->apellidoUsuario = $arreglo[4];
-$obj->emailUsuario = $arreglo[6];
-$obj->contraUsuario = $arreglo[7];
-$obj->celUsuario = $arreglo[5];
-$obj->fechaCUsuario = $arreglo[8];
-$obj->fechaAUsuario = $arreglo[9];
+$obj->id_user = $arreglo[0];
+$obj->state_user = $arreglo[1];
+$obj->rol_user = $arreglo[2];
+$obj->type_document = $arreglo[3];
+$obj->name_user = $arreglo[4];
+$obj->lastname_user = $arreglo[5];
+$obj->phone_user = $arreglo[6];
+$obj->email_user = $arreglo[7];
+$obj->password_user = $arreglo[8];
+$obj->create_user = $arreglo[9];
+$obj->update_user = $arreglo[10];
 
-$query1="select * from rol";
+$query1="SELECT * FROM rol_user";
 $resultado1 = mysqli_query($c, $query1);
 $arreglo1 = mysqli_fetch_array($resultado1); 
 
-$query3="select * from tipo_documento";
+$query3="SELECT * FROM type_document";
 $resultado3 = mysqli_query($c, $query3);
 $arreglo3 = mysqli_fetch_array($resultado3); 
 
@@ -91,9 +102,9 @@ $arreglo3 = mysqli_fetch_array($resultado3);
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
-						Administrador
+						<?php echo "$name_user $lastname_user";?>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
@@ -291,7 +302,7 @@ $arreglo3 = mysqli_fetch_array($resultado3);
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">NUMERO DE IDENTIFICACION:</label>
-										<input type="number" class="form-control" name="numeroDocumento" id="numeroDocumento"  value="<?php echo $obj->numeroDocumento; ?>" required>
+										<input type="number" class="form-control" name="numeroDocumento" id="numeroDocumento"  value="<?php echo $obj->id_user; ?>" required>
 									</div>
 								</div>
 
@@ -302,14 +313,14 @@ $arreglo3 = mysqli_fetch_array($resultado3);
 												 <?php
 												 	$conet = new Conexion();
 													 $c = $conet->conectando();
-													 $query2="SELECT * from rol where id_rol = $obj->rolUsuario";
+													 $query2="SELECT * FROM rol_user WHERE id_rol_user = '$obj->rol_user'";
 													 $resultado2 = mysqli_query($c, $query2);
 													 $arreglo2 = mysqli_fetch_row($resultado2); 
 													 echo $arreglo2[1];
 													do{
-														$id = $arreglo1['id_rol'];
-														$nombre=$arreglo1['nom_rol'];
-														if($id==$obj->rolUsuario){
+														$id = $arreglo1['id_rol_user'];
+														$nombre=$arreglo1['name_rol_user'];
+														if($id==$obj->rol_user){
 															echo "<option value=$id=>$nombre";
 														}else{
 															echo "<option value=$id>$nombre";
@@ -334,18 +345,18 @@ $arreglo3 = mysqli_fetch_array($resultado3);
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<select class="form-control" name="tipoDocumento" id="tipoDocumento" required>
-											<option selected disabled>Seleccione Tipo de Documento:</option>
 											<option>
 											<?php
 												 	$conet = new Conexion();
 													 $c = $conet->conectando();
-													 $query4="SELECT * from tipo_documento where id_tipo_doc = $obj->tipoDocumento";
+													 $query4="SELECT * FROM type_document WHERE id_type_document = '$obj->type_document'";
 													 $resultado4 = mysqli_query($c, $query4);
-													 $arreglo4 = mysqli_fetch_row($resultado4);						 
+													 $arreglo4 = mysqli_fetch_row($resultado4);	
+													 echo $arreglo4[1];					 
 													do{
-														$id = $arreglo3['id_tipo_doc'];
-														$nombre=$arreglo3['nom_tipo_doc'];
-														if($id==$obj->tipoDocumento){
+														$id = $arreglo3['id_type_document'];
+														$nombre=$arreglo3['name_type_document'];
+														if($id==$obj->type_document){
 															echo "<option value=$id=>$nombre";
 														}else{
 															echo "<option value=$id>$nombre";
@@ -372,14 +383,14 @@ $arreglo3 = mysqli_fetch_array($resultado3);
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">NOMBRE:</label>
-										<input type="text" class="form-control" name="nombreUsuario" id="nombreUsuario" value ="<?php echo $obj->nombreUsuario ?>" required>
+										<input type="text" class="form-control" name="nombreUsuario" id="nombreUsuario" value ="<?php echo $obj->name_user ?>" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">APELLIDO:</label>
-										<input type="text" class="form-control" name="apellidoUsuario" id="apellidoUsuario" value="<?php echo $obj->apellidoUsuario ?>" required>
+										<input type="text" class="form-control" name="apellidoUsuario" id="apellidoUsuario" value="<?php echo $obj->lastname_user ?>" required>
 									</div>
 								</div>
 

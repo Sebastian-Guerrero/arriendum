@@ -1,10 +1,11 @@
 <?php
-include('../../modelo/admin/tipoModelo.php');
-$obj = new Tipo();
+include('../../model/admin/typeModel.php');
+
+$obj = new Type();
 if($_POST){
 
-    $obj->idTipo = $_POST['idTipo'];
-    $obj->nombreTipo = $_POST['nombreTipo'];
+    $obj->id_type_property = $_POST['id_type_property'];
+    $obj->name_type_property = $_POST['name_type_property'];
     
 }
 

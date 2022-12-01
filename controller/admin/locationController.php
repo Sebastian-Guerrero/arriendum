@@ -1,11 +1,11 @@
 <?php
-include('../../model/admin/localidadModelo.php');
+include('../../model/admin/locationModel.php');
 
 $obj = new Location();
 if($_POST){
 
-    $obj->idLocalidad = $_POST['idLocalidad'];
-    $obj->nombreLocalidad = $_POST['nombreLocalidad'];
+    $obj->id_location_property = $_POST['id_location_property'];
+    $obj->name_location_property = $_POST['name_location_property'];
 
 }
 

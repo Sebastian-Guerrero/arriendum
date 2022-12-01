@@ -34,7 +34,7 @@
                                                             '$this->update_user'                           
                                                           )";
                        mysqli_query($c,$insertar);
-                       echo "<script> alert('Nuevo usuario creado en el sistema')'</script>";
+                       echo "<script> alert('Nuevo usuario creado en el sistema')</script>";
                     }
                     
                   }
@@ -47,16 +47,17 @@
                                          echo "<script> alert('El Usuario no Existe en el Sistema')</script>";
                                          }else{
                                            $id = "UPDATE user SET
-                                                                  num_id_usuario = '$this->numeroDocumento',
-                                                                  rol_usuario = '$this->rolUsuario',
-                                                                  id_tipo_doc = '$this->tipoDocumento',
-                                                                  nombre_usuario = '$this->nombreUsuario',
-                                                                  apellido_usuario = '$this->apellidoUsuario',
-                                                                  celular_usuario = '$this->celUsuario',
-                                                                  email_usuario = '$this->emailUsuario',
-                                                                  contrasena_usuario = '$encriptarpassword',
-                                                                  fechaA_usuario = '$this->fechaAUsuario' 
-                                                                  WHERE num_id_usuario = '$this->numeroDocumento'";
+                                                                  id_user = '$this->id_user',
+                                                                  state_user = '$this->state_user',
+                                                                  rol_user = '$this->rol_user',
+                                                                  type_document = '$this->type_document',
+                                                                  name_user = '$this->name_user',
+                                                                  lastname_user = '$this->lastname_user',
+                                                                  phone_user = '$this->phone_user',
+                                                                  email_user = '$this->email_user',
+                                                                  password_user = '$this->password_user',
+                                                                  update_user = '$this->update_user' 
+                                                                  WHERE id_user = '$this->id_user'";
                                             echo $id;
                                             mysqli_query($cone,$id);
                                             echo "<script> alert('El Usuario fue Modificado ')</script>";

@@ -28,12 +28,11 @@
                                           $r = mysqli_query($cone,$sql);
                                           if(!mysqli_fetch_array($r))
                                          {
-                                         echo "<script> alert('La modificcacion de la Localidad ya existe')</script>";
+                                         echo "<script> alert('El Nombre de la Localidad que intenta Modificar ya Existe')</script>";
                                          }
                                          else
                                             {
-                                            $id = "UPDATE localidad_inmueble SET
-                                                   id_Location_property = '$this->id_Location_property',
+                                            $id = "UPDATE location_property SET
                                                    name_location_property = '$this->name_location_property'
                                                    WHERE id_localidad_inm = '$this->id_Location_property'";
                                             mysqli_query($cone,$id);
@@ -53,7 +52,7 @@
                                        }
                                           else
                                              {
-                                             echo"<script> alert('Atencion  no se puede eliminar el Registro debido a que tiene datos relacionadas')</script>";
+                                             echo"<script> alert('Atencion no se puede eliminar la Localidad debido a que tiene datos relacionadas')</script>";
                                              }
                                     }
 

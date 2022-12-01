@@ -1,7 +1,16 @@
 <?php
 include("../../connect/conectar.php");
 
-if($_POST){
+session_start();
+$name_user = $_SESSION['name_user'];
+$lastname_user = $_SESSION['lastname_user'];
+
+if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
+	header("Location: ../guest/login.php");
+}
+
+if($_POST)
+{
 	$obj->id_user = $_POST['id_user'];
 }
 
@@ -14,7 +23,7 @@ $arreglo = mysqli_fetch_array($resultado);
 $totalRegistros = $arreglo['totalRegistros'];
 //echo $totalRegistros;
 
-$maximoRegistros = 10;
+$maximoRegistros = 5;
 //echo $totalRegistros;
 if(empty($_GET['pagina'])){
     $pagina=1;
@@ -27,8 +36,7 @@ $totalPaginas=ceil($totalRegistros/$maximoRegistros);
 
 
 if(isset($_POST['search'])){
-    echo "llegue";
-    $query2="select * from user where id_user like '%$obj->idUsuario%' limit $desde,$maximoRegistros";
+    $query2="select * from user where id_user like '%$obj->id_user%' limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }else{
@@ -81,16 +89,16 @@ if(isset($_POST['search'])){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
-						Administrador
+						<?php echo "$name_user $lastname_user";?>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
 				<nav class="full-box nav-lateral-menu">
 				<ul>
 						<li>
-							<a href="../index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
+							<a href="index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
 						</li>
 
 						<li>
@@ -278,7 +286,7 @@ if(isset($_POST['search'])){
 						<div class="row justify-content-md-center">
 							<div class="col-12 col-md-6">
 								<div class="form-group">
-									<label class="bmd-label-floating">INGRESA NUMERO DE IDENTIFICACION</label>
+									<label class="bmd-label-floating">NUMERO DE IDENTIFICACION:</label>
 									<input class="form-control me-2" type="search" name="id_user" aria-label="Search">
 								</div>
 							</div>
@@ -306,8 +314,8 @@ if(isset($_POST['search'])){
 								<th>CELULAR</th>
 								<th>EMAIL</th>
 								<th>CONTRASEÑA</th>
-								<th>ACTUALIZAR</th>
-								<th>ELIMINAR</th>
+								<th>FECHA CREACION</th>
+								<th>FECHA ACTUALIZACION</th>
 							</tr>
 						</thead>
 						<tbody>
