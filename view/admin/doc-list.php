@@ -2,6 +2,14 @@
 include("../../connect/conectar.php");
 include("../../controller/admin/documentController.php");
 
+session_start();
+$name_user = $_SESSION['name_user'];
+$lastname_user = $_SESSION['lastname_user'];
+
+if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
+	header("Location: ../guest/login.php");
+}
+
 $obj = new Document();
 if($_POST){
 
@@ -11,7 +19,8 @@ if($_POST){
 
 $conet = new Conexion();
 $c = $conet->conectando();
-$query="select count(*) as totalRegistros from tipo_documento";
+
+$query="select count(*) as totalRegistros from type_document";
 $resultado = mysqli_query($c, $query);
 $arreglo = mysqli_fetch_array($resultado); 
 $totalRegistros = $arreglo['totalRegistros'];
@@ -30,11 +39,11 @@ $totalPaginas=ceil($totalRegistros/$maximoRegistros);
 
 
 if(isset($_POST['search'])){
-    $query2="select * from tipo_documento where nombreDocumento like '%$obj->nombreDocumento%' limit $desde,$maximoRegistros";
+    $query2="select * from type_document where name_type_document like '%$obj->nombreDocumento%' limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }else{
-    $query2="select * from tipo_documento limit $desde,$maximoRegistros ";
+    $query2="select * from type_document limit $desde,$maximoRegistros ";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }

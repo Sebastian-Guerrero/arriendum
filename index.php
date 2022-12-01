@@ -1,15 +1,3 @@
-<?php
-include("connect/conectar.php");
-
-$conet = new Conexion();
-$c = $conet->conectando();
-
-$query = "SELECT * FROM property LIMIT 3";
-$result = mysqli_query($c, $query); 
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -19,20 +7,17 @@ $result = mysqli_query($c, $query);
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Arriendum</title>
     <link rel="stylesheet" href="config/css/estilos.css"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="config/css/productos.css"/>
 </head>
 
 <body>
     <header>
-      <img class="logo" src="assets/icons/logo.png">
 
-      <nav>
+        <nav>
+      <img class="logo" src="assets/icons/logo.png">
         <ul>
-          <li><button class="ba" type="button"><a href="view/guest/index.php">INICIO</a></button></li>
           <li><button class="ba" type="button"><a href="view/guest/product.php">INMUEBLES</button></li>
-          <li><button class="bb" type="button"><a href="view/guest/singin.php">PUBLICA TU INMUEBLE</a></button></li>
+          <li><button class="ba" type="button"><a href="view/guest/login.php">INGRESA</a></button></li>
+          <li><button class="bb" type="button"><a href="view/guest/singin.php">REGISTRATE</a></button></li>
         </ul>
     </nav>
                 
@@ -49,6 +34,7 @@ $result = mysqli_query($c, $query);
                     style="stroke: none; fill: #fff;"></path>
             </svg></div>
     </header>
+
     <main>
         <section class="nosotros">
             <section class="contenedor sobre-nosotros">
@@ -57,13 +43,13 @@ $result = mysqli_query($c, $query);
             <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="assets/img/casa1.jpg" class="d-block w-100" alt="...">
+              <img src="assets/img/img/casa1.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-              <img src="assets/img/casa 2.jpg" class="d-block w-100" alt="...">
+              <img src="assets/img/img/casa 2.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-              <img src="assets/img/casa 3.jpg" class="d-block w-100" alt="...">
+              <img src="assets/img/img/casa 3.jpg" class="d-block w-100" alt="...">
               </div>
               </div>
           </div>
@@ -77,133 +63,32 @@ $result = mysqli_query($c, $query);
           </button>
             </section>
         </section>
-        <h2 class="titulo">Inmuebles para el publico</h2>
-        <div class="productos">
-        <?php
-        
-        while ($fila = mysqli_fetch_array($result)) {
-            $img = $fila['id_property'];
-            $estado = $fila['state_property'];
-            $tipo = $fila['type_property'];
-            $opcion = $fila['option_property'];
-            $localidad = $fila['location_property'];
-        ?>
-            
-            <div class="card">
 
-                <?php
-
-                $query5 = "SELECT name_galery_property FROM galery_property WHERE id_property = $img";
-                $result5 = mysqli_query($c, $query5);
-                $fila5 = mysqli_fetch_array($result5); 
-
-                ?>
-                
-                <img src="<?php echo $fila5['name_galery_property']; ?>">
-
-                <?php
-                
-                $query1 = "SELECT name_state_property FROM state_property WHERE id_state_property = $estado";
-                $result1 = mysqli_query($c, $query1);
-                $fila1 = mysqli_fetch_array($result1);
-
-                ?>
-
-                <h4><?php echo $fila1['name_state_property']; ?></h4>
-
-                <br>
-
-                <?php
-
-                $query2 = "SELECT name_type_property FROM type_property WHERE id_type_property= $tipo";
-                $result2 = mysqli_query($c, $query2);
-                $fila2 = mysqli_fetch_array($result2);
-
-                ?>
-
-                <p>Tipo: <?php echo $fila2['name_type_property']; ?></p>
-
-                <?php
-
-                $query3 = "SELECT name_option_property FROM option_property WHERE id_option_property = $opcion";
-                $result3 = mysqli_query($c, $query3);
-                $fila3 = mysqli_fetch_array($result3);
-
-                ?>
-
-                <p>Inmueble para: <?php echo $fila3['name_option_property']; ?></p>
-
-                <?php
-
-                $query4 = "SELECT name_location_property FROM location_property WHERE id_location_property = $localidad";
-                $result4 = mysqli_query($c, $query4);
-                $fila4 = mysqli_fetch_array($result4);
-                
-                ?>
-
-                <p>Localidad: <?php echo $fila4['name_location_property']; ?></p>
-
-                <p>Barrio: <?php echo $fila['neighborhood_property']; ?></p>
-
-                <p>Dirreccion: <?php echo $fila['direction_property']; ?></p>
-
-                <p>Precio: <?php echo $fila['cost_property']; ?></p>
-
-<br>
-
-                <a href="#">Mas Informacion...</a>
-
-            </div>
-            
-        <?php
-        }
-        ?>
-
-        </div>
         <section class="clients">
-            <section class="clientes contenedor">
-            <h2 class="titulo">Que dicen nuestros clientes</h2>
-            <div class="cards">
-                <div class="card">
-                    <img src="assets/img/hombre perfil.jpg" alt="">
-                    <div class="contenido-texto-card">
-                        <h4>Jersson</h4>
-                        <p>plataform is super easy to use and is getting better and more versatile all the time !</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="assets/img/mujer perfil.jpg" alt="">
-                    <div class="contenido-texto-card">
-                        <h4> gabriela </h4>
-                        <p>plataform is super easy to use and is getting better and more versatile all the time!</p>
-                    </div>
-                </div>
-            </div>
-            </section>
+    
         </section>
+
         <section class="about-services">
             <div class="contenedor">
                 <h2 class="titulo">Puedes Encontrar Tu Lugar en:</h2>
                 <div class="servicio-cont">
                     <div class="servicio-ind" >
-                        <img  src="assets/img/ciudadbolivar.jpg" alt="" >
+                        <img  src="assets/img/img/ciudadbolivar.jpg" alt="" >
                         <br>
                         <br>
-                        <a href="vistas/productos1.php" type="button" class="btn btn-outline-secondary"><h4>Ciudad Bolivar</h4></a>  
-                    
+                        <h4>Ciudad Bolivar</h4>  
                     </div>
                     <div class="servicio-ind">
-                        <img src="assets/img/kennedy.jpg" alt="">
+                        <img src="assets/img/img/kennedy.jpg" alt="">
                         <br>
                         <br>
-                        <a href="vistas/productos1.php" type="button" class="btn btn-outline-secondary"><h4>Kennedy</h4></a>                    
+                        <h4>Kennedy</h4>                 
                     </div>
                     <div class="servicio-ind">
-                        <img src="assets/img/bosa.jpg" alt="">
+                        <img src="assets/img/img/bosa.jpg" alt="">
                         <br>
                         <br>
-                        <a href="vistas/productos1.php" type="button" class="btn btn-outline-secondary"><h4>BOSA</h4></a>  
-                     
+                        <h4>Bosa</h4> 
                     </div>
                 </div>
             </div>

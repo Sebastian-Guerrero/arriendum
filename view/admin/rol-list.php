@@ -1,6 +1,6 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/rolControlador.php");
+include("../../controller/admin/rolController.php");
 
 $obj = new Rol();
 if($_POST){

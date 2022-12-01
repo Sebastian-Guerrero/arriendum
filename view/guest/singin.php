@@ -54,7 +54,7 @@ $fecha = Date('Y-m-d H:i:s');
         <ul>
           <li><button class="ba" type="button"><a href="../../index.php">INICIO</a></button></li>
           <li><button class="ba" type="button"><a href="product.php">INMUEBLES</button></li>
-          <li><button class="ba" type="button"><a href="login.php">INGRESAR</a></button></li>
+          <li><button class="ba" type="button"><a href="login.php">INGRESA</a></button></li>
         </ul>
     </nav>
 

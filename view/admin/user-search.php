@@ -2,12 +2,13 @@
 include("../../connect/conectar.php");
 
 if($_POST){
-	$obj->idUsuario = $_POST['idUsuario'];
+	$obj->id_user = $_POST['id_user'];
 }
 
 $conet = new Conexion();
 $c = $conet->conectando();
-$query="select count(*) as totalRegistros from usuario";
+
+$query="select count(*) as totalRegistros from user";
 $resultado = mysqli_query($c, $query);
 $arreglo = mysqli_fetch_array($resultado); 
 $totalRegistros = $arreglo['totalRegistros'];
@@ -27,11 +28,11 @@ $totalPaginas=ceil($totalRegistros/$maximoRegistros);
 
 if(isset($_POST['search'])){
     echo "llegue";
-    $query2="select * from usuario where num_id_usuario like '%$obj->idUsuario%' limit $desde,$maximoRegistros";
+    $query2="select * from user where id_user like '%$obj->idUsuario%' limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }else{
-    $query2="select * from usuario limit $desde,$maximoRegistros";
+    $query2="select * from user limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }
@@ -278,7 +279,7 @@ if(isset($_POST['search'])){
 							<div class="col-12 col-md-6">
 								<div class="form-group">
 									<label class="bmd-label-floating">INGRESA NUMERO DE IDENTIFICACION</label>
-									<input class="form-control me-2" type="search" name="idUsuario" aria-label="Search">
+									<input class="form-control me-2" type="search" name="id_user" aria-label="Search">
 								</div>
 							</div>
 							<div class="col-12">
@@ -296,16 +297,17 @@ if(isset($_POST['search'])){
 					<table class="table table-dark table-sm">
 						<thead>
 							<tr class="text-center roboto-medium">
-								<th>NUMERO DE IDENTIFICACION</th>
-								<th>ROL USUARIO</th>
-								<th>TIPO DOCUMENTO</th>
+								<th>ID</th>
+								<th>ESTADO</th>
+								<th>ROL</th>
+								<th>DOCUMENTO</th>
 								<th>NOMBRE</th>
 								<th>APELLIDO</th>
 								<th>CELULAR</th>
 								<th>EMAIL</th>
 								<th>CONTRASEÑA</th>
-								<th>FECHA DE CREACION</th>
-								<th>FECHA DE ACTUALIZACION</th>
+								<th>ACTUALIZAR</th>
+								<th>ELIMINAR</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -334,6 +336,7 @@ if(isset($_POST['search'])){
 								<td><?php echo $arreglo2[7] ?></td>
 								<td><?php echo $arreglo2[8] ?></td>
 								<td><?php echo $arreglo2[9] ?></td>
+								<td><?php echo $arreglo2[10] ?></td>
 							</tr>
 							<?php
                             }while($arreglo2 = mysqli_fetch_array($resultado2));

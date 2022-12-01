@@ -34,7 +34,7 @@
                                                                                   '$this->update_user'                           
                                                                                 )";
                                              mysqli_query($c,$insertar);
-                                             echo "<script> alert('Bienvenido $this->name_user');window.location='../../vista/guest/login.php'</script>";
+                                             echo "<script> alert('Bienvenido $this->name_user');window.location='../../view/guest/login.php'</script>";
                                              //header("location:../../vista/user/login.php");
                                           }
                                           
