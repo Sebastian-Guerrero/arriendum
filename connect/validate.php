@@ -24,17 +24,17 @@ $_SESSION['lastname_user'] = $lastname_user;
 if (($fila['rol_user']==1)&&(password_verify($password_user, $fila['password_user']))) 
 {
     $_SESSION['logueado'] = true;
-    header("location: ../vista/admin/index-admin.php");
+    header("location: ../view/admin/index-admin.php");
 }
 elseif (($fila['rol_user']==2)&&(password_verify($password_user, $fila['password_user']))) 
 {
     $_SESSION['logueado'] = true;
-    header("location: ../vista/user/index-user.php");
+    header("location: ../view/user/index-user.php");
 }
 else 
 {
     $_SESSION['logueado'] = false;
-    echo "<script> alert('Atencion, correo electronico o contraseña incorrectos, por favor vuelva intentarlo.');window.location= '../vista/guest/login.php' </script>";
+    echo "<script> alert('Atencion, correo electronico o contraseña incorrectos, por favor vuelva intentarlo.');window.location= '../view/guest/login.php' </script>";
 
     
 }

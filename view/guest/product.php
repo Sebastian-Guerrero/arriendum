@@ -34,34 +34,7 @@ $result = mysqli_query($c, $query);
             </ul>
         </nav>
 
-    <div class="filtro">
-        <div class="form">    
-        <p class="name">CATALOGO DE INMUEBLES</p>
-        <form>
-            <div class="select">
-                <select>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                </select>
-            </div>
-            <div class="select">
-                <select>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                </select>
-            </div>
-            <div class="select">
-                <select>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                </select>
-            </div>
-        <form>
-        </div>
-    </div>
+   
 
     <section class="catalogo">
         <div class="productos">

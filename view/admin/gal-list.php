@@ -1,17 +1,17 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/galeriaControlador.php");
+include("../../controller/admin/galeriaControlador.php");
 
 $obj = new Galeria();
 if($_POST){
 
-    $obj->idGaleria = $_POST['idGaleria'];
+    $obj->idGaleria = $_POST['id_galery_property'];
 
 }
 
 $conet = new Conexion();
 $c = $conet->conectando();
-$query="select count(*) as totalRegistros from galeria";
+$query="select count(*) as totalRegistros from galery_property";
 $resultado = mysqli_query($c, $query);
 $arreglo = mysqli_fetch_array($resultado); 
 $totalRegistros = $arreglo['totalRegistros'];
@@ -31,11 +31,11 @@ $totalPaginas=ceil($totalRegistros/$maximoRegistros);
 
 if(isset($_POST['search'])){
     echo "llegue";
-    $query2="select * from galeria where id_galeria like '%$obj->nombidGaleriareDocumento%' limit $desde,$maximoRegistros";
+    $query2="select * from galery_property where id_galery_property like '%$obj->nombidGaleriareDocumento%' limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }else{
-    $query2="select * from galeria limit $desde,$maximoRegistros ";
+    $query2="select * from galery_property limit $desde,$maximoRegistros ";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }

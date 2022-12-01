@@ -1,5 +1,5 @@
 <?php
-include('../../modelo/user/usuarioModelo.php');
+include('../../model/user/usuarioModelo.php');
 
 $obj = new Usuario();
 if($_POST)

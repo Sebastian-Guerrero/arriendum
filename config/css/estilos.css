@@ -486,4 +486,16 @@ footer{
     .titulo-final{
         font-size: 20px;
     }
+
+    .porros{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .pepe{
+        width: 100px;
+        height: 50px;
+        margin-left: 80px;
+    }
 }

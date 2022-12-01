@@ -1,6 +1,6 @@
 <?php
   include("../../connect/conectar.php");
-  include("../../controlador/user/galeriaControlador.php");
+  include("../../controller/user/galeriaControlador.php");
 
 $obj = new Galeria();
 if($_POST)

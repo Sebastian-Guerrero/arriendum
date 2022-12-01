@@ -1,5 +1,5 @@
 <?php
-include ("../../modelo/user/inmuebleModelo.php");
+include ("../../model/user/inmuebleModelo.php");
 
 $obj = new Inmueble();
 if($_POST)
