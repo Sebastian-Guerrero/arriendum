@@ -1,17 +1,17 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/localidadControlador.php");
+include("../../controller/admin/localidadControlador.php");
 
 $obj = new Localidad();
 if($_POST){
 
-	$obj->idLocalidad = $_POST['idLocalidad'];
+	$obj->idLocalidad = $_POST['id_location_property'];
 
 }
 
 $conet = new Conexion();
 $c = $conet->conectando();
-$query="select count(*) as totalRegistros from localidad_inmueble";
+$query="select count(*) as totalRegistros from location_property";
 $resultado = mysqli_query($c, $query);
 $arreglo = mysqli_fetch_array($resultado); 
 $totalRegistros = $arreglo['totalRegistros'];
@@ -31,11 +31,11 @@ $totalPaginas=ceil($totalRegistros/$maximoRegistros);
 
 if(isset($_POST['search'])){
     echo "llegue";
-    $query2="select * from localidad_inmueble where nombreDocumento like '%$obj->nombreDocumento%' limit $desde,$maximoRegistros";
+    $query2="select * from location_property where nombreDocumento like '%$obj->nombreDocumento%' limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }else{
-    $query2="select * from localidad_inmueble limit $desde,$maximoRegistros ";
+    $query2="select * from location_property limit $desde,$maximoRegistros ";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }

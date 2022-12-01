@@ -1,16 +1,16 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/inmuebleControlador.php");
+include("../../controller/admin/inmuebleControlador.php");
 
 if($_POST)
 {
-	$obj->id_inm = $_POST['id_inm'];
+	$obj->id_inm = $_POST['id_property'];
     
 }
 
 $conec = new Conexion();
 $c = $conec->conectando();
-$query = "select count(*) as totalRegistros from inmueble";
+$query = "select count(*) as totalRegistros from property";
 $resultado = mysqli_query($c,$query);
 $arreglo = mysqli_fetch_array($resultado);
 $totalRegistros = $arreglo['totalRegistros'];
@@ -27,17 +27,17 @@ $desde = ($pagina-1)*$maximoRegistros;
 $totalPaginas=ceil($totalRegistros/$maximoRegistros);
 //echo $totalPaginas;
 
-$query2="select * from inmueble limit $desde,$maximoRegistros";
+$query2="select * from property limit $desde,$maximoRegistros";
 $resultado2=mysqli_query($c,$query2);
 $arreglo2= mysqli_fetch_array($resultado2);
 
 if(isset($_POST['search'])){
     //echo "llegue";
-    $query2="select * from inmueble where id_usuario like '%$obj->id_usuario%' limit $desde,$maximoRegistros";
+    $query2="select * from property where id_user like '%$obj->id_usuario%' limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }else{
-    $query2="select * from inmueble limit $desde,$maximoRegistros ";
+    $query2="select * from property limit $desde,$maximoRegistros ";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }
@@ -87,7 +87,7 @@ if(isset($_POST['search'])){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
 						Administrador
 					</figcaption>
@@ -96,7 +96,7 @@ if(isset($_POST['search'])){
 				<nav class="full-box nav-lateral-menu">
 				<ul>
 						<li>
-							<a href="../index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
+							<a href="../admin/index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
 						</li>
 
 						<li>

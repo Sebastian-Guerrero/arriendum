@@ -1,5 +1,5 @@
 <?php
-include('../../modelo/admin/localidadModelo.php');
+include('../../model/admin/localidadModelo.php');
 
 $obj = new Localidad();
 if($_POST){

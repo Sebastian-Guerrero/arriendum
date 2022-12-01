@@ -1,11 +1,11 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/localidadControlador.php");
+include("../../controller/admin/localidadControlador.php");
 
 $obj = new Localidad();
 if($_POST){
 
-	$obj->idLocalidad = $_POST['idLocalidad'];
+	$obj->idLocalidad = $_POST['id_location_property'];
     $obj->nombreLocalidad = $_POST['nombreLocalidad'];
 
 }

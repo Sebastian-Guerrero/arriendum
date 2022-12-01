@@ -1,13 +1,13 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/galeriaControlador.php");
+include("../../controller/admin/galeriaControlador.php");
 
 $obj = new Galeria();
 if($_POST){
 
-    $obj->idGaleria = $_POST['idGaleria'];
-    $obj->id_inm = $_POST['id_inm'];
-    $obj->nombreGaleria = $_FILES['nombreGaleria']['tmp_name'];
+    $obj->idGaleria = $_POST['id_galery_property'];
+    $obj->id_inm = $_POST['id_property'];
+    $obj->nombreGaleria = $_FILES['name_galery_property']['tmp_name'];
 }
 
 ?>
@@ -54,7 +54,7 @@ if($_POST){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
 						Administrador
 					</figcaption>
@@ -63,7 +63,7 @@ if($_POST){
 				<nav class="full-box nav-lateral-menu">
 				<ul>
 						<li>
-							<a href="../index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
+							<a href="../admin/index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
 						</li>
 
 						<li>
