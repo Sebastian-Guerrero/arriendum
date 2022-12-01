@@ -58,7 +58,6 @@
                                                                   password_user = '$this->password_user',
                                                                   update_user = '$this->update_user' 
                                                                   WHERE id_user = '$this->id_user'";
-                                            echo $id;
                                             mysqli_query($cone,$id);
                                             echo "<script> alert('El Usuario fue Modificado ')</script>";
                                          }

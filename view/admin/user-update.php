@@ -59,6 +59,10 @@ $query3="SELECT * FROM type_document";
 $resultado3 = mysqli_query($c, $query3);
 $arreglo3 = mysqli_fetch_array($resultado3); 
 
+$query5="SELECT * FROM state_user";
+$resultado5 = mysqli_query($c, $query5);
+$arreglo5 = mysqli_fetch_array($resultado5); 
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -293,8 +297,7 @@ $arreglo3 = mysqli_fetch_array($resultado3);
 			<div class="container-fluid">
 				<form class="form-neon" action="" method="POST" autocomplete="off">
 					<fieldset>
-						<legend class="text-center"><i class="fas fa-user"></i> &nbsp; Ingresa el Número de Identificación</legend>
-						<p class="text-center">Para Actualizar Usuario</p>
+						<legend class="text-center"><i class="fas fa-user"></i> &nbsp; Actualizar Usuario</legend>
 
 						<div class="container-fluid">
 							<div class="row">
@@ -302,13 +305,49 @@ $arreglo3 = mysqli_fetch_array($resultado3);
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">NUMERO DE IDENTIFICACION:</label>
-										<input type="number" class="form-control" name="numeroDocumento" id="numeroDocumento"  value="<?php echo $obj->id_user; ?>" required>
+										<input type="number" class="form-control" name="id_user" id="id_user"  value="<?php echo $obj->id_user; ?>" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<select class="form-control" name="rolUsuario" id="rolUsuario" required>
+										<select class="form-control" name="state_user" id="state_user" required>
+											<option>
+												 <?php
+												 	$conet = new Conexion();
+													 $c = $conet->conectando();
+													 $query6="SELECT * FROM state_user WHERE id_state_user = '$obj->state_user'";
+													 $resultado6 = mysqli_query($c, $query6);
+													 $arreglo6 = mysqli_fetch_row($resultado6); 
+													 echo $arreglo5[1];
+													do{
+														$id = $arreglo5['id_state_user'];
+														$nombre=$arreglo5['name_state_user'];
+														if($id==$obj->state_user){
+															echo "<option value=$id=>$nombre";
+														}else{
+															echo "<option value=$id>$nombre";
+														}
+
+													}while($arreglo5 = mysqli_fetch_array($resultado5));			 	
+													$row = mysqli_num_rows($resultado1);
+													$rows=0;
+													if($rows>0){
+														mysqli_data_seek($resultado, 0);
+														$arreglo5 = mysqli_fetch_array($resultado5);
+													}
+												
+												 ?>
+										
+										</option>
+											
+										</select>
+									</div>
+								</div>
+
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<select class="form-control" name="rol_user" id="rol_user" required>
 											<option>
 												 <?php
 												 	$conet = new Conexion();
@@ -344,7 +383,7 @@ $arreglo3 = mysqli_fetch_array($resultado3);
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<select class="form-control" name="tipoDocumento" id="tipoDocumento" required>
+										<select class="form-control" name="type_document" id="type_document" required>
 											<option>
 											<?php
 												 	$conet = new Conexion();
@@ -383,41 +422,40 @@ $arreglo3 = mysqli_fetch_array($resultado3);
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">NOMBRE:</label>
-										<input type="text" class="form-control" name="nombreUsuario" id="nombreUsuario" value ="<?php echo $obj->name_user ?>" required>
+										<input type="text" class="form-control" name="name_user" id="name_user" value ="<?php echo $obj->name_user ?>" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">APELLIDO:</label>
-										<input type="text" class="form-control" name="apellidoUsuario" id="apellidoUsuario" value="<?php echo $obj->lastname_user ?>" required>
+										<input type="text" class="form-control" name="lastname_user" id="lastname_user" value="<?php echo $obj->lastname_user ?>" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">CELULAR:</label>
-										<input type="number" class="form-control" name="celUsuario" id="celUsuario"  value="<?php echo $obj->celUsuario ?>" required>
+										<input type="number" class="form-control" name="phone_user" id="phone_user"  value="<?php echo $obj->phone_user ?>" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">EMAIL:</label>
-										<input type="email" class="form-control" name="emailUsuario" id="emailUsuario" value="<?php  echo $obj->emailUsuario  ?>" required>
+										<input type="email" class="form-control" name="email_user" id="email_user" value="<?php  echo $obj->email_user  ?>" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">CONTRASEÑA:</label>
-										<input type="password" class="form-control" name="contraUsuario" id="contraUsuario" value="<?php echo $obj->contraUsuario ?>" required>
+										<input type="password" class="form-control" name="password_user" id="password_user" required>
 									</div>
 								</div>
 
-								<input type="hidden" name="fechaCUsuario" id="fechaCUsuario">
-
-								<input type="hidden" name="fechaAUsuario" id="fechaAUsuario" value="<?php echo $fecha ?>">
+								<input type="hidden" name="create_user" id="create_user">
+								<input type="hidden" name="update_user" id="update_user" value="<?php echo $fecha ?>">
 
 							</div>
 						</div>
