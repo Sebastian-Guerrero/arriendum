@@ -1,6 +1,6 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/documentoControlador.php");
+include("../../controller/admin/documentController.php");
 
 session_start();
 $name_user = $_SESSION['name_user'];
@@ -10,13 +10,24 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 	header("Location: ../guest/login.php");
 }
 
-$obj = new Documento();
+$obj = new Document();
 if($_POST){
 
-	$obj->idDocumento = $_POST['idDocumento'];
-    $obj->nombreDocumento = $_POST['nombreDocumento'];
+	$obj->id_type_document = $_POST['id_type_document'];
+    $obj->name_type_document = $_POST['name_type_document'];
 
 }
+
+$key=$_GET['key'];
+$conet = new Conexion();
+$c = $conet->conectando();
+
+$query="SELECT * FROM type_document WHERE id_type_document = '$key'";
+$resultado = mysqli_query($c, $query);
+$arreglo = mysqli_fetch_array($resultado); 
+
+$obj->id_type_document = $arreglo[0];
+$obj->name_type_document = $arreglo[1];
 
 ?>
 <!DOCTYPE html>
@@ -61,9 +72,9 @@ if($_POST){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
-						Administrador
+						<?php echo "$name_user $lastname_user";?>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
@@ -253,22 +264,16 @@ if($_POST){
 				<form class="form-neon" action="" method="POST" autocomplete="off">
 					<fieldset>
 						<legend class="text-center"><i class="fas fa-id-card"></i> &nbsp; Ingresa el Codigo de Tipo Documento</legend>
-						<p class="text-center">Para Actualizar</p>
 
 						<div class="container-fluid">
 							<div class="row">
 
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										<label class="bmd-label-floating">CODIGO DEL TIPO DOCUMENTO</label>
-										<input type="number" class="form-control" name="idDocumento" id="idDocumento">
-									</div>
-								</div>
+								<input type="hidden" name="id_type_document" id="id_type_document" value ="<?php echo $obj->id_type_document ?>">
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label class="bmd-label-floating">NUEVO NOMBRE PARA TIPO DOCUMENTO</label>
-										<input type="text" class="form-control" name="nombreDocumento" id="nombreDocumento">
+										<label class="bmd-label-floating">NUEVO NOMBRE PARA TIPO DOCUMENTO:</label>
+										<input type="text" class="form-control" name="name_type_document" id="name_type_document" value ="<?php echo $obj->name_type_document ?>">
 									</div>
 								</div>
 

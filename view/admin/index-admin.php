@@ -80,6 +80,21 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 						</li>
 
 						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-user-tag"></i> &nbsp; ESTADO USUARIO<i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="rol-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Estado Usuario</a>
+								</li>
+								<li>
+									<a href="rol-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista Estado Usuario</a>
+								</li>
+								<li>
+									<a href="rol-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Estado Usuario</a>
+								</li>
+							</ul>
+						</li>
+
+						<li>
 							<a href="#" class="nav-btn-submenu"><i class="fas fa-user-tag"></i> &nbsp; ROL USUARIO<i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
@@ -210,7 +225,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 				<a href="#" class="float-left show-nav-lateral">
 					<i class="fas fa-exchange-alt"></i>
 				</a>
-				<a href="../index.php">
+				<a href="../user/index-user.php">
 					<i class="fas fa-pager"></i>
 				</a>
 				<a href="#" class="btn-exit-system">

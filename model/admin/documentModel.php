@@ -25,19 +25,19 @@
 
                     function modificar(){$c = new Conexion();
                                           $cone = $c->conectando();
-                                          $sql = "SELECT * FROM type_document WHERE name_type_document ='$this->name_type_document'";
+                                          $sql = "SELECT * FROM type_document WHERE id_type_document ='$this->id_type_document'";
                                           $r = mysqli_query($cone,$sql);
                                           if(!mysqli_fetch_array($r))
                                          {
-                                         echo "<script> alert('El Nombre del Tipo de Documento que intenta Modificar ya Existe')</script>";
+                                         echo "<script> alert('El Tipo de Documento no se puede Modificar')</script>";
                                          }
                                          else
                                             {
-                                            $id = "UPDATE tipo_documento SET
-                                                   nom_tipo_doc = '$this->name_type_document'
+                                            $id = "UPDATE type_document SET
+                                                   name_type_document = '$this->name_type_document'
                                                    WHERE id_type_document = '$this->id_type_document'";
                                             mysqli_query($cone,$id);
-                                            echo "<script> alert('El Tipo de Documento fue Modificado ')</script>";				
+                                            echo "<script> alert('El nombre del Tipo de Documento fue Modificado')</script>";				
                                                
                                          }
 

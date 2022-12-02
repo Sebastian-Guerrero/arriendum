@@ -1,7 +1,16 @@
 <?php
 include("../../connect/conectar.php");
 
+session_start();
+$name_user = $_SESSION['name_user'];
+$lastname_user = $_SESSION['lastname_user'];
+
+if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
+	header("Location: ../guest/login.php");
+}
+
 if($_POST){
+	
 	$obj->id_rol_user = $_POST['id_rol_user'];
 }
 
@@ -82,7 +91,7 @@ if(isset($_POST['search'])){
 				<figure class="full-box nav-lateral-avatar">
 					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
-						Administrador
+						<?php echo "$name_user $lastname_user";?>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>

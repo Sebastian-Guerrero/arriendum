@@ -94,7 +94,7 @@ if(isset($_POST['search'])){
 				<figure class="full-box nav-lateral-avatar">
 					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
-						Administrador
+						<?php echo "$name_user $lastname_user";?>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
@@ -310,8 +310,12 @@ if(isset($_POST['search'])){
 								<td><?php echo $arreglo2[0] ?></td>
 								<td><?php echo $arreglo2[1] ?></td>
 								<td>
-									<a href="doc-update.php" class="btn btn-success">
-	  									<i class="fas fa-sync-alt"></i>	
+									<a  class="btn btn-success" href="<?php 
+										if($arreglo2[0]<>''){
+											echo "doc-update.php?key=".urlencode($arreglo2[0]) ;
+										}
+																		?>" >
+										<i class="fas fa-sync-alt"></i>	
 									</a>
 								</td>
 								<td>

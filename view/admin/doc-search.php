@@ -89,7 +89,7 @@ if(isset($_POST['search'])){
 				<figure class="full-box nav-lateral-avatar">
 					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
-						Administrador
+						<?php echo "$name_user $lastname_user";?>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
