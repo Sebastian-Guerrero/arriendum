@@ -34,7 +34,6 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 
         <nav>
             <img class="logo" src="../../assets/icons/logo.png">
-						<h1><?php echo "$name_user $lastname_user";?></h1>
             <ul>
                 <li><button class="ba" type="button"><a href="product.php">INMUEBLES</a></button></li>
                 <li><button class="bb" type="button"><a href="pub-inm.php">PUBLICAR INMUEBLE</a></button></li>
@@ -43,8 +42,8 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
         </nav>
 
         <section class="textos-header">
-            <h1>BIENVENIDO A</h1>
-            <h2>ARRIENDUM</h2>
+            <h1>BIENVENIDO</h1>
+            <h2><?php echo "$name_user $lastname_user";?></h2>
         </section>
 
         <div class="wave" style="height: 150px; overflow: hidden;">
