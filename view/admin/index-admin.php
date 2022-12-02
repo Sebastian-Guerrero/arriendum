@@ -64,6 +64,8 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 							<a href="#"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
 						</li>
 
+						<br>
+
 						<li>
 							<a href="#" class="nav-btn-submenu"><i class="fas fa-user"></i> &nbsp; USUARIO <i class="fas fa-chevron-down"></i></a>
 							<ul>
@@ -80,16 +82,16 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-user-tag"></i> &nbsp; ESTADO USUARIO<i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-user-check"></i> &nbsp; ESTADO USUARIO<i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
-									<a href="rol-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Estado Usuario</a>
+									<a href="sta-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Estado Usuario</a>
 								</li>
 								<li>
-									<a href="rol-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista Estado Usuario</a>
+									<a href="sta-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista Estado Usuario</a>
 								</li>
 								<li>
-									<a href="rol-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Estado Usuario</a>
+									<a href="sta-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Estado Usuario</a>
 								</li>
 							</ul>
 						</li>
@@ -124,8 +126,10 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 							</ul>
 						</li>
 
+						<br>
+
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-city"></i> &nbsp; INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-house-user"></i> &nbsp; INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="inm-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Inmueble</a>
@@ -140,7 +144,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-check"></i> &nbsp; ESTADO INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-house-damage"></i> &nbsp; ESTADO INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="est-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Estado Inmueble</a>
@@ -155,7 +159,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-list"></i> &nbsp; TIPO INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-warehouse"></i> &nbsp; TIPO INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="tipo-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Tipo Inmueble</a>
@@ -170,7 +174,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-laptop-house"></i> &nbsp; OPCION INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-handshake"></i> &nbsp; OPCION INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="opc-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Opcion Inmueble</a>
@@ -246,7 +250,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 				<a href="inm-list.php" class="tile">
 					<div class="tile-tittle">INMUEBLES</div>
 					<div class="tile-icon">
-						<i class="fas fa-store-alt fa-fw"></i>
+						<i class="fas fa-city"></i>
 						<!--<p># Registrados</p>-->
 					</div>
 				</a>

@@ -11,13 +11,12 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 
 if($_POST){
 
-	$obj->nombreOpcion = $_POST['nombreOpcion'];
-
+	$obj->id_state_user = $_POST['id_state_user'];
 }
 
 $conet = new Conexion();
 $c = $conet->conectando();
-$query="select count(*) as totalRegistros from opcion_inmueble";
+$query="select count(*) as totalRegistros from state_user";
 $resultado = mysqli_query($c, $query);
 $arreglo = mysqli_fetch_array($resultado); 
 $totalRegistros = $arreglo['totalRegistros'];
@@ -36,25 +35,23 @@ $totalPaginas=ceil($totalRegistros/$maximoRegistros);
 
 
 if(isset($_POST['search'])){
-    echo "llegue";
-    $query2="select * from opcion_inmueble where nom_opcion_inm like '%$obj->nombreOpcion%' limit $desde,$maximoRegistros";
+    $query2="select * from state_user where id_state_user like '%$obj->id_state_user%' limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }else{
-    $query2="select * from opcion_inmueble limit $desde,$maximoRegistros ";
+    $query2="select * from state_user limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Opcion Inmueble</title>
+	<title>Estado Usuario</title>
 
 	<!-- Normalize V8.0.1 -->
 	<link rel="stylesheet" href="../../config/css/normalize.css">
@@ -91,9 +88,9 @@ if(isset($_POST['search'])){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
-						Administrador
+						<?php echo "$name_user $lastname_user";?>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
@@ -279,36 +276,36 @@ if(isset($_POST['search'])){
 			<!-- Page header -->
 			<div class="full-box page-header">
 				<h3 class="text-center">
-					<i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR OPCION INMUEBLE 
+					<i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR ESTADO USUARIO 
 				</h3>
 			</div>
 
 			<div class="container-fluid">
 				<ul class="full-box list-unstyled page-nav-tabs">
 					<li>
-						<a href="opc-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR OPCION INMUEBLE</a>
+						<a href="sta-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR ESTADO USUARIO</a>
 					</li>
 					<li>
-						<a href="opc-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA OPCION INMUEBLE</a>
+						<a href="sta-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA ESTADO USUARIO</a>
 					</li>
 					<li>
-						<a class="active" href="doc-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR OPCION INMUEBLE</a>
+						<a class="active" href="doc-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR ESTADO USUARIO</a>
 					</li>
 				</ul>	
 			</div>
+
+
 			
-
-
+<form action="" name="documento" method="POST" autocomplete="off">
 			<!-- Content here-->
-			<form action="" name="opcion" method="POST" autocomplete="off">
 			<div class="container-fluid">
 				<form class="form-neon" action="" role="search" autocomplete="off">
 					<div class="container-fluid">
 						<div class="row justify-content-md-center">
 							<div class="col-12 col-md-6">
 								<div class="form-group">
-									<label for="inputSearch" class="bmd-label-floating">INGRESA NOMBRE DE OPCION INMUEBLE</label>
-									<input class="form-control me-2" type="search" name="nombreOpcion" aria-label="Search">
+									<label for="inputSearch" class="bmd-label-floating">INGRESA CODIGO DE ESTADO USUARIO:</label>
+									<input class="form-control me-2" type="search" name="id_state_user" aria-label="Search">
 								</div>
 							</div>
 							<div class="col-12">
@@ -326,8 +323,8 @@ if(isset($_POST['search'])){
 					<table class="table table-dark table-sm">
 						<thead>
 							<tr class="text-center roboto-medium">
-								<th>ID OPCION INMUEBLE</th>
-								<th>OPCION INMUEBLE</th>
+								<th>ID ESTADO USUARIO</th>
+								<th>ESTADO USUARIO</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -398,6 +395,7 @@ if(isset($_POST['search'])){
 
 		</section>
 	</main>
+	
 	
 	<!--=============================================
 	=            Include JavaScript files           =

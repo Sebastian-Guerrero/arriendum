@@ -34,7 +34,7 @@
                                                             '$this->update_user'                           
                                                           )";
                        mysqli_query($c,$insertar);
-                       echo "<script> alert('Nuevo usuario creado en el sistema')</script>";
+                       echo "<script> alert('Nuevo usuario creado en el sistema');</script>";
                     }
                     
                   }
@@ -44,7 +44,7 @@
                                           $sql = "SELECT * FROM user WHERE id_user = '$this->id_user'";
                                           $r = mysqli_query($cone,$sql);
                                           if(!mysqli_fetch_array($r)){
-                                         echo "<script> alert('El Usuario no Existe en el Sistema')</script>";
+                                         echo "<script> alert('El Usuario no Existe en el Sistema');</script>";
                                          }else{
                                            $id = "UPDATE user SET
                                                                   id_user = '$this->id_user',
@@ -59,7 +59,7 @@
                                                                   update_user = '$this->update_user' 
                                                                   WHERE id_user = '$this->id_user'";
                                             mysqli_query($cone,$id);
-                                            echo "<script> alert('El Usuario fue Modificado ')</script>";
+                                            echo "<script> alert('El Usuario fue Modificado ');</script>";
                                          }
                                        }
    
@@ -73,7 +73,7 @@
                                        }
                                           else
                                              {
-                                             echo"<script> alert('Atencion no se puede eliminar al Usuario debido a que tiene datos relacionadas')</script>";
+                                             echo"<script> alert('Atencion no se puede eliminar al Usuario debido a que tiene datos relacionadas');window.location='user-list.php'</script>";
                                              }
                                        }
 

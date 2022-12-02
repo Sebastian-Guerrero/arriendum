@@ -1,5 +1,6 @@
 <?php
 include("../../connect/conectar.php");
+include("../../controller/admin/stateUController.php");
 
 session_start();
 $name_user = $_SESSION['name_user'];
@@ -9,15 +10,17 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 	header("Location: ../guest/login.php");
 }
 
+$obj = new StateU();
 if($_POST){
 
-	$obj->nombreOpcion = $_POST['nombreOpcion'];
+	$obj->id_state_user = $_POST['id_state_user'];
 
 }
 
 $conet = new Conexion();
 $c = $conet->conectando();
-$query="select count(*) as totalRegistros from opcion_inmueble";
+
+$query="select count(*) as totalRegistros from state_user";
 $resultado = mysqli_query($c, $query);
 $arreglo = mysqli_fetch_array($resultado); 
 $totalRegistros = $arreglo['totalRegistros'];
@@ -36,25 +39,23 @@ $totalPaginas=ceil($totalRegistros/$maximoRegistros);
 
 
 if(isset($_POST['search'])){
-    echo "llegue";
-    $query2="select * from opcion_inmueble where nom_opcion_inm like '%$obj->nombreOpcion%' limit $desde,$maximoRegistros";
+    $query2="select * from state_user where name_state_user like '%$obj->name_state_user%' limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }else{
-    $query2="select * from opcion_inmueble limit $desde,$maximoRegistros ";
+    $query2="select * from state_user limit $desde,$maximoRegistros ";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Opcion Inmueble</title>
+	<title>Estado Usuario</title>
 
 	<!-- Normalize V8.0.1 -->
 	<link rel="stylesheet" href="../../config/css/normalize.css">
@@ -91,9 +92,9 @@ if(isset($_POST['search'])){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
-						Administrador
+						<?php echo "$name_user $lastname_user";?>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
@@ -268,7 +269,7 @@ if(isset($_POST['search'])){
 				<a href="#" class="float-left show-nav-lateral">
 					<i class="fas fa-exchange-alt"></i>
 				</a>
-				<a href="../index.php">
+				<a href="../../index.php">
 					<i class="fas fa-pager"></i>
 				</a>
 				<a href="#" class="btn-exit-system">
@@ -279,55 +280,34 @@ if(isset($_POST['search'])){
 			<!-- Page header -->
 			<div class="full-box page-header">
 				<h3 class="text-center">
-					<i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR OPCION INMUEBLE 
+					<i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA ESTADO USUARIO
 				</h3>
 			</div>
 
 			<div class="container-fluid">
 				<ul class="full-box list-unstyled page-nav-tabs">
 					<li>
-						<a href="opc-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR OPCION INMUEBLE</a>
+						<a href="sta-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR ESTADO USUARIO</a>
 					</li>
 					<li>
-						<a href="opc-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA OPCION INMUEBLE</a>
+						<a class="active" href="#"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA ESTADO USUARIO</a>
 					</li>
 					<li>
-						<a class="active" href="doc-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR OPCION INMUEBLE</a>
+						<a href="sta-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR ESTADO USUARIO</a>
 					</li>
 				</ul>	
 			</div>
-			
 
-
-			<!-- Content here-->
-			<form action="" name="opcion" method="POST" autocomplete="off">
-			<div class="container-fluid">
-				<form class="form-neon" action="" role="search" autocomplete="off">
-					<div class="container-fluid">
-						<div class="row justify-content-md-center">
-							<div class="col-12 col-md-6">
-								<div class="form-group">
-									<label for="inputSearch" class="bmd-label-floating">INGRESA NOMBRE DE OPCION INMUEBLE</label>
-									<input class="form-control me-2" type="search" name="nombreOpcion" aria-label="Search">
-								</div>
-							</div>
-							<div class="col-12">
-								<p class="text-center" style="margin-top: 40px;">
-									<button type="submit" class="btn btn-raised btn-info" name="search"><i class="fas fa-search"></i> &nbsp; BUSCAR</button>
-								</p>
-							</div>
-						</div>
-					</div>
-				</form>
-			</div>
-
+			<!-- Content -->
 			<div class="container-fluid">
 				<div class="table-responsive">
 					<table class="table table-dark table-sm">
 						<thead>
 							<tr class="text-center roboto-medium">
-								<th>ID OPCION INMUEBLE</th>
-								<th>OPCION INMUEBLE</th>
+								<th>ID ESTADO USUARIO</th>
+								<th>ESTADO USUARIO</th>
+								<th>ACTUALIZAR</th>
+								<th>ELIMINAR</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -348,6 +328,24 @@ if(isset($_POST['search'])){
 							<tr class="text-center" >
 								<td><?php echo $arreglo2[0] ?></td>
 								<td><?php echo $arreglo2[1] ?></td>
+								<td>
+									<a  class="btn btn-success" href="<?php 
+										if($arreglo2[0]<>''){
+											echo "sta-update.php?key=".urlencode($arreglo2[0]) ;
+										}
+																		?>" >
+										<i class="fas fa-sync-alt"></i>	
+									</a>
+								</td>
+								<td>
+									<form action="" name="" method="POST">
+										<input type="hidden" name="id_state_user" value="<?php echo $arreglo2[0] ?>"></input>
+										<input type="hidden" name="name_state_user"></input>
+										<button type="submit" name="elimina" class="btn btn-warning">
+		  									<i class="far fa-trash-alt"></i>
+										</button>
+									</form>
+								</td>
 							</tr>
 							<?php
                             }while($arreglo2 = mysqli_fetch_array($resultado2));
@@ -391,13 +389,10 @@ if(isset($_POST['search'])){
                     ?>
                 </ul>
             </nav>
-</form>
-			</div>
-
-
-
-		</section>
+			</div>				
+	</section>
 	</main>
+	
 	
 	<!--=============================================
 	=            Include JavaScript files           =

@@ -1,6 +1,6 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/inmuebleControlador.php");
+include("../../controller/admin/propertyController.php");
 
 session_start();
 $name_user = $_SESSION['name_user'];
@@ -10,15 +10,16 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 	header("Location: ../guest/login.php");
 }
 
+$obj = new Property();
 if($_POST)
 {
-	$obj->id_inm = $_POST['id_inm'];
+	$obj->id_property = $_POST['id_property'];
     
 }
 
 $conec = new Conexion();
 $c = $conec->conectando();
-$query = "select count(*) as totalRegistros from inmueble";
+$query = "select count(*) as totalRegistros from property";
 $resultado = mysqli_query($c,$query);
 $arreglo = mysqli_fetch_array($resultado);
 $totalRegistros = $arreglo['totalRegistros'];
@@ -35,17 +36,17 @@ $desde = ($pagina-1)*$maximoRegistros;
 $totalPaginas=ceil($totalRegistros/$maximoRegistros);
 //echo $totalPaginas;
 
-$query2="select * from inmueble limit $desde,$maximoRegistros";
+$query2="select * from property limit $desde,$maximoRegistros";
 $resultado2=mysqli_query($c,$query2);
 $arreglo2= mysqli_fetch_array($resultado2);
 
 if(isset($_POST['search'])){
     //echo "llegue";
-    $query2="select * from inmueble where id_usuario like '%$obj->id_usuario%' limit $desde,$maximoRegistros";
+    $query2="select * from property where id_property like '%$obj->id_property%' limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }else{
-    $query2="select * from inmueble limit $desde,$maximoRegistros ";
+    $query2="select * from property limit $desde,$maximoRegistros ";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }
@@ -95,17 +96,19 @@ if(isset($_POST['search'])){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
-						Administrador
+						<?php echo "$name_user $lastname_user";?>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
 				<nav class="full-box nav-lateral-menu">
 				<ul>
 						<li>
-							<a href="../index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
+							<a href="index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
 						</li>
+
+						<br>
 
 						<li>
 							<a href="#" class="nav-btn-submenu"><i class="fas fa-user"></i> &nbsp; USUARIO <i class="fas fa-chevron-down"></i></a>
@@ -123,7 +126,22 @@ if(isset($_POST['search'])){
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-user-tag"></i> &nbsp; ROL USUARIO <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-user-check"></i> &nbsp; ESTADO USUARIO<i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="sta-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Estado Usuario</a>
+								</li>
+								<li>
+									<a href="sta-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista Estado Usuario</a>
+								</li>
+								<li>
+									<a href="sta-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Estado Usuario</a>
+								</li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-user-tag"></i> &nbsp; ROL USUARIO<i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="rol-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Rol Usuario</a>
@@ -144,7 +162,7 @@ if(isset($_POST['search'])){
 									<a href="doc-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Tipo Documento</a>
 								</li>
 								<li>
-									<a href="doc-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista Tipo Documento</a>
+									<a href="doc-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista Tipo Documentos</a>
 								</li>
 								<li>
 									<a href="doc-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Tipo Documento</a>
@@ -152,23 +170,25 @@ if(isset($_POST['search'])){
 							</ul>
 						</li>
 
+						<br>
+
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-city"></i> &nbsp; INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-house-user"></i> &nbsp; INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="inm-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Inmueble</a>
 								</li>
 								<li>
-									<a href="inm-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista inmueble</a>
+									<a href="inm-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista Inmueble</a>
 								</li>
 								<li>
-									<a href="inm-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar inmueble</a>
+									<a href="inm-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Inmueble</a>
 								</li>
 							</ul>
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-check"></i> &nbsp; ESTADO INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-house-damage"></i> &nbsp; ESTADO INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="est-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Estado Inmueble</a>
@@ -183,7 +203,7 @@ if(isset($_POST['search'])){
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-list"></i> &nbsp; TIPO INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-warehouse"></i> &nbsp; TIPO INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="tipo-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Tipo Inmueble</a>
@@ -198,7 +218,7 @@ if(isset($_POST['search'])){
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-laptop-house"></i> &nbsp; OPCION INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-handshake"></i> &nbsp; OPCION INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="opc-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Opcion Inmueble</a>
@@ -290,7 +310,7 @@ if(isset($_POST['search'])){
 					<table class="table table-dark table-sm">
 						<thead>
 							<tr class="text-center roboto-medium">
-								<th>CODIGO INMUEBLE</th>
+								<th>ID INMUEBLE</th>
 								<th>USUARIO</th>
 								<th>ESTADO</th>
 								<th>DIRECCION</th>
@@ -339,19 +359,19 @@ if(isset($_POST['search'])){
 								</td>
 								<td>
 									<form action="" name="eliminaInmueble" method="POST">
-										<input type="hidden" name="id_inm" value="<?php echo $arreglo2[0];?>">
-										<input type="hidden" name="id_usuario"></input>
-										<input type="hidden" name="estado_inm"></input>
-										<input type="hidden" name="direccion_inm"></input>
-										<input type="hidden" name="tipo_inm"></input>
-										<input type="hidden" name="opcion_inm"></input>
-										<input type="hidden" name="localidad_inm"></input>
-										<input type="hidden" name="barrio_inm"></input>
-										<input type="hidden" name="inf_inm"></input>
-										<input type="hidden" name="desc_inm"></input>
-										<input type="hidden" name="precio_inm"></input>
-										<input type="hidden" name="fechaC_inm"></input>
-										<input type="hidden" name="fechaA_inm"></input>
+										<input type="hidden" name="id_property" value="<?php echo $arreglo2[0];?>">
+										<input type="hidden" name="id_user"></input>
+										<input type="hidden" name="state_property"></input>
+										<input type="hidden" name="direction_property"></input>
+										<input type="hidden" name="type_property"></input>
+										<input type="hidden" name="option_property"></input>
+										<input type="hidden" name="location_property"></input>
+										<input type="hidden" name="neighborhood_property"></input>
+										<input type="hidden" name="information_property"></input>
+										<input type="hidden" name="description_property"></input>
+										<input type="hidden" name="cost_property"></input>
+										<input type="hidden" name="create_property"></input>
+										<input type="hidden" name="update_property"></input>
 										<button type="submit" class="btn btn-warning" name="elimina">
 		  									<i class="far fa-trash-alt"></i>
 										</button>

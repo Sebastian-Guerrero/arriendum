@@ -1,5 +1,6 @@
 <?php
 include("../../connect/conectar.php");
+include("../../controller/admin/stateUController.php");
 
 session_start();
 $name_user = $_SESSION['name_user'];
@@ -9,52 +10,32 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 	header("Location: ../guest/login.php");
 }
 
+$obj = new StateU();
 if($_POST){
 
-	$obj->nombreOpcion = $_POST['nombreOpcion'];
+	$obj->id_state_user = $_POST['id_state_user'];
+    $obj->name_state_user = $_POST['name_state_user'];
 
 }
 
+$key=$_GET['key'];
 $conet = new Conexion();
 $c = $conet->conectando();
-$query="select count(*) as totalRegistros from opcion_inmueble";
+
+$query="SELECT * FROM state_user WHERE id_state_user = '$key'";
 $resultado = mysqli_query($c, $query);
 $arreglo = mysqli_fetch_array($resultado); 
-$totalRegistros = $arreglo['totalRegistros'];
-//echo $totalRegistros;
 
-$maximoRegistros = 10;
-//echo $totalRegistros;
-if(empty($_GET['pagina'])){
-    $pagina=1;
-}else{
-    $pagina=$_GET['pagina'];
-}
-$desde = ($pagina-1)*$maximoRegistros;
-$totalPaginas=ceil($totalRegistros/$maximoRegistros);
-//echo $totalPaginas;
-
-
-if(isset($_POST['search'])){
-    echo "llegue";
-    $query2="select * from opcion_inmueble where nom_opcion_inm like '%$obj->nombreOpcion%' limit $desde,$maximoRegistros";
-    $resultado2=mysqli_query($c,$query2);
-    $arreglo2 = mysqli_fetch_array($resultado2);
-}else{
-    $query2="select * from opcion_inmueble limit $desde,$maximoRegistros ";
-    $resultado2=mysqli_query($c,$query2);
-    $arreglo2 = mysqli_fetch_array($resultado2);
-}
+$obj->id_state_user = $arreglo[0];
+$obj->name_state_user = $arreglo[1];
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Opcion Inmueble</title>
+	<title>Estado Usuario</title>
 
 	<!-- Normalize V8.0.1 -->
 	<link rel="stylesheet" href="../../config/css/normalize.css">
@@ -91,9 +72,9 @@ if(isset($_POST['search'])){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
-						Administrador
+						<?php echo "$name_user $lastname_user";?>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
@@ -279,125 +260,53 @@ if(isset($_POST['search'])){
 			<!-- Page header -->
 			<div class="full-box page-header">
 				<h3 class="text-center">
-					<i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR OPCION INMUEBLE 
+					<i class="fas fa-sync-alt fa-fw"></i> &nbsp; ACTUALIZAR ESTADO USUARIO
 				</h3>
 			</div>
 
 			<div class="container-fluid">
 				<ul class="full-box list-unstyled page-nav-tabs">
 					<li>
-						<a href="opc-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR OPCION INMUEBLE</a>
+						<a href="sta-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR ESTADO USUARIO</a>
 					</li>
 					<li>
-						<a href="opc-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA OPCION INMUEBLE</a>
+						<a href="sta-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA ESTADO USUARIO</a>
 					</li>
 					<li>
-						<a class="active" href="doc-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR OPCION INMUEBLE</a>
+						<a href="sta-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR ESTADO USUARIO</a>
 					</li>
 				</ul>	
 			</div>
 			
-
-
 			<!-- Content here-->
-			<form action="" name="opcion" method="POST" autocomplete="off">
 			<div class="container-fluid">
-				<form class="form-neon" action="" role="search" autocomplete="off">
-					<div class="container-fluid">
-						<div class="row justify-content-md-center">
-							<div class="col-12 col-md-6">
-								<div class="form-group">
-									<label for="inputSearch" class="bmd-label-floating">INGRESA NOMBRE DE OPCION INMUEBLE</label>
-									<input class="form-control me-2" type="search" name="nombreOpcion" aria-label="Search">
+				<form class="form-neon" action="" method="POST" autocomplete="off">
+					<fieldset>
+						<legend class="text-center"><i class="fas fa-id-card"></i> &nbsp; Ingresa el Codigo de Tipo Documento</legend>
+
+						<div class="container-fluid">
+							<div class="row">
+
+								<input type="hidden" name="id_state_user" id="id_state_user" value ="<?php echo $obj->id_state_user ?>">
+
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label class="bmd-label-floating">NUEVO NOMBRE PARA ESTADO USUARIO:</label>
+										<input type="text" class="form-control" name="name_state_user" id="name_state_user" value ="<?php echo $obj->name_state_user ?>">
+									</div>
 								</div>
-							</div>
-							<div class="col-12">
-								<p class="text-center" style="margin-top: 40px;">
-									<button type="submit" class="btn btn-raised btn-info" name="search"><i class="fas fa-search"></i> &nbsp; BUSCAR</button>
-								</p>
+
 							</div>
 						</div>
-					</div>
+					</fieldset>
+					<p class="text-center" style="margin-top: 40px;">
+						<button type="submit" name="modifica" class="btn btn-raised btn-success btn-sm"><i class="fas fa-sync-alt"></i> &nbsp; ACTUALIZAR</button>
+					</p>
 				</form>
 			</div>
-
-			<div class="container-fluid">
-				<div class="table-responsive">
-					<table class="table table-dark table-sm">
-						<thead>
-							<tr class="text-center roboto-medium">
-								<th>ID OPCION INMUEBLE</th>
-								<th>OPCION INMUEBLE</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<?php
-                            		if($arreglo2==0){
-                                	//echo "No hay registro";
-                            	?>
-                            	<div class="alert alert-success" role="alert">
-                                	<?php echo "No hay registros" ?>
-                            	</div>
-                            	<?php
-                            	}
-                             	else{
-                                	do{
-                            ?>
-							</tr>
-							<tr class="text-center" >
-								<td><?php echo $arreglo2[0] ?></td>
-								<td><?php echo $arreglo2[1] ?></td>
-							</tr>
-							<?php
-                            }while($arreglo2 = mysqli_fetch_array($resultado2));
-                       		}
-                        	?>
-						</tbody>
-					</table>
-				</div>
-				<nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                    <?php 
-                    if($pagina!=1){
-                    ?>
-                    <li class="page-item ">
-                        <a class="page-link" href="?pagina=<?php echo 1; ?>"><</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="?pagina=<?php echo $pagina-1; ?>"><<</a>
-                    </li>
-                    <?php
-                    }
-                    for($i=1; $i<=$totalPaginas; $i++){
-                        if($i==$pagina){
-                            echo'<li class="page-item active" aria-current="page"><a class="page-link" href="?pagina='.$i.'">'.$i.'</a></li>';    
-                        }
-                        else{
-                            echo'<li class="page-item "><a class="page-link" href="?pagina='.$i.'">'.$i.'</a></li>'; 
-                        }
-                    }
-                    if($pagina !=$totalPaginas){
-                    ?>
-                    
-                    <li class="page-item">
-                        <a class="page-link" href="?pagina=<?php echo $pagina+1; ?>">>></a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="?pagina=<?php echo $totalPaginas; ?>">></a>
-                    </li>
-                    <?php
-                    }
-                    ?>
-                </ul>
-            </nav>
-</form>
-			</div>
-
-
-
 		</section>
 	</main>
+	
 	
 	<!--=============================================
 	=            Include JavaScript files           =

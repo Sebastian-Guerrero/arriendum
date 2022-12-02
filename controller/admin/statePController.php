@@ -1,7 +1,7 @@
 <?php
-include('../../model/admin/stateModel.php');
+include('../../model/admin/statePModel.php');
 
-$obj = new State();
+$obj = new StateP();
 if($_POST){
 
     $obj->id_state_property = $_POST['id_state_property'];

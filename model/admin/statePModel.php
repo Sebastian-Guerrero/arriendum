@@ -1,5 +1,5 @@
 <?php
-    class State{
+    class StateP{
                   public $id_state_property;
                   public $name_state_property;
 
