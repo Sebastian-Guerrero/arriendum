@@ -6,7 +6,7 @@ if($_POST){
 
     $obj->idGaleria = $_POST['id_galery_property'];
     $obj->id_inm = $_POST['id_property'];
-    $obj->nombreGaleria = $_FILES['name_galery_proerty']['tmp_name'];
+    $obj->nombreGaleria = $_FILES['name_galery_property']['tmp_name'];
 }
 
 if(isset($_POST['guarda'])){

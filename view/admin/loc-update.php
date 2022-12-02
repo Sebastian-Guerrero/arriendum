@@ -1,12 +1,12 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/localidadControlador.php");
+include("../../controller/admin/localidadControlador.php");
 
 $obj = new Localidad();
 if($_POST){
 
-	$obj->idLocalidad = $_POST['idLocalidad'];
-    $obj->nombreLocalidad = $_POST['nombreLocalidad'];
+	$obj->idLocalidad = $_POST['id_location_property'];
+    $obj->nombreLocalidad = $_POST['name_location_property'];
 
 }
 
@@ -62,7 +62,7 @@ if($_POST){
 				<nav class="full-box nav-lateral-menu">
 				<ul>
 						<li>
-							<a href="../index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
+							<a href="../admin/index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
 						</li>
 
 						<li>

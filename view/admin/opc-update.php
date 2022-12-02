@@ -1,12 +1,12 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/opcionControlador.php");
+include("../../controller/admin/opcionControlador.php");
 
 $obj = new Opcion();
 if($_POST){
 
-	$obj->idOpcion = $_POST['idOpcion'];
-    $obj->nombreOpcion = $_POST['nombreOpcion'];
+	$obj->idOpcion = $_POST['id_option_property'];
+    $obj->nombreOpcion = $_POST['name_option_property'];
 
 }
 
@@ -53,7 +53,7 @@ if($_POST){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
 						Administrador
 					</figcaption>
@@ -62,7 +62,7 @@ if($_POST){
 				<nav class="full-box nav-lateral-menu">
 				<ul>
 						<li>
-							<a href="../index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
+							<a href="../view/index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
 						</li>
 
 						<li>

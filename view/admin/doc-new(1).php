@@ -1,45 +1,14 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controller/admin/opcionControlador.php");
+include("../../controlador/admin/documentoControlador.php");
 
-$obj = new Opcion();
+$obj = new Documento();
 if($_POST){
 
-	$obj->idOpcion = $_POST['id_option_property'];
+	$obj->idDocumento = $_POST['idDocumento'];
+    $obj->nombreDocumento = $_POST['nombreDocumento'];
 
 }
-
-$conet = new Conexion();
-$c = $conet->conectando();
-$query="select count(*) as totalRegistros from option_property";
-$resultado = mysqli_query($c, $query);
-$arreglo = mysqli_fetch_array($resultado); 
-$totalRegistros = $arreglo['totalRegistros'];
-//echo $totalRegistros;
-
-$maximoRegistros = 5;
-//echo $totalRegistros;
-if(empty($_GET['pagina'])){
-    $pagina=1;
-}else{
-    $pagina=$_GET['pagina'];
-}
-$desde = ($pagina-1)*$maximoRegistros;
-$totalPaginas=ceil($totalRegistros/$maximoRegistros);
-//echo $totalPaginas;
-
-
-if(isset($_POST['search'])){
-    echo "llegue";
-    $query2="select * from option_property where nombreOpcion like '%$obj->nombreOpcion%' limit $desde,$maximoRegistros";
-    $resultado2=mysqli_query($c,$query2);
-    $arreglo2 = mysqli_fetch_array($resultado2);
-}else{
-    $query2="select * from option_property limit $desde,$maximoRegistros ";
-    $resultado2=mysqli_query($c,$query2);
-    $arreglo2 = mysqli_fetch_array($resultado2);
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +16,7 @@ if(isset($_POST['search'])){
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Opcion Inmueble</title>
+	<title>Tipo Documento</title>
 
 	<!-- Normalize V8.0.1 -->
 	<link rel="stylesheet" href="../../config/css/normalize.css">
@@ -84,7 +53,7 @@ if(isset($_POST['search'])){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
 						Administrador
 					</figcaption>
@@ -253,116 +222,59 @@ if(isset($_POST['search'])){
 			<!-- Page header -->
 			<div class="full-box page-header">
 				<h3 class="text-center">
-					<i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA OPCION INMUEBLE
+					<i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR TIPO DOCUMENTO
 				</h3>
 			</div>
 
 			<div class="container-fluid">
 				<ul class="full-box list-unstyled page-nav-tabs">
 					<li>
-						<a href="opc-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR OPCION INMUEBLE</a>
+						<a class="active" href="client-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR TIPO DOCUMENTO</a>
 					</li>
 					<li>
-						<a class="active" href="#"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA OPCION INMUEBLE</a>
+						<a href="doc-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA TIPO DOCUMENTO</a>
 					</li>
 					<li>
-						<a href="opc-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR OPCION INMUEBLE</a>
+						<a href="doc-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR TIPO DOCUMENTO</a>
 					</li>
 				</ul>	
 			</div>
-
-
-			<form action="" name="documento" Method="POST">
-			<!-- Content -->
+			
+			<!-- Content here-->
 			<div class="container-fluid">
-				<div class="table-responsive">
-					<table class="table table-dark table-sm">
-						<thead>
-							<tr class="text-center roboto-medium">
-								<th>ID OPCION INMUEBLE</th>
-								<th>OPCION INMUEBLE</th>
-								<th>ACTUALIZAR</th>
-								<th>ELIMINAR</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<?php
-                            		if($arreglo2==0){
-                                	//echo "No hay registro";
-                            	?>
-                            	<div class="alert alert-success" role="alert">
-                                	<?php echo "No hay registros" ?>
-                            	</div>
-                            	<?php
-                            	}
-                             	else{
-                                	do{
-                            ?>
-							</tr>
-							<tr class="text-center" >
-								<td><?php echo $arreglo2[0] ?></td>
-								<td><?php echo $arreglo2[1] ?></td>
-								<td>
-									<a href="opc-update.php" class="btn btn-success">
-	  									<i class="fas fa-sync-alt"></i>	
-									</a>
-								</td>
-								<td>
-									<form action="" name="eliminarOpcion" method="POST">
-										<input type="hidden" name="idOpcion" value="<?php echo $arreglo2[0] ?>"></input>
-										<input type="hidden" name="nombreOpcion"></input>
-										<button type="submit" name="elimina" class="btn btn-warning">
-		  									<i class="far fa-trash-alt"></i>
-										</button>
-									</form>
-								</td>
-							</tr>
-							<?php
-                            }while($arreglo2 = mysqli_fetch_array($resultado2));
-                       		}
-                        	?>
-						</tbody>
-					</table>
-				</div>
-				<nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                    <?php 
-                    if($pagina!=1){
-                    ?>
-                    <li class="page-item ">
-                        <a class="page-link" href="?pagina=<?php echo 1; ?>"><</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="?pagina=<?php echo $pagina-1; ?>"><<</a>
-                    </li>
-                    <?php
-                    }
-                    for($i=1; $i<=$totalPaginas; $i++){
-                        if($i==$pagina){
-                            echo'<li class="page-item active" aria-current="page"><a class="page-link" href="?pagina='.$i.'">'.$i.'</a></li>';    
-                        }
-                        else{
-                            echo'<li class="page-item "><a class="page-link" href="?pagina='.$i.'">'.$i.'</a></li>'; 
-                        }
-                    }
-                    if($pagina !=$totalPaginas){
-                    ?>
-                    
-                    <li class="page-item">
-                        <a class="page-link" href="?pagina=<?php echo $pagina+1; ?>">>></a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="?pagina=<?php echo $totalPaginas; ?>">></a>
-                    </li>
-                    <?php
-                    }
-                    ?>
-                </ul>
-            </nav>
-			</div>
-		</form>				
-	</section>
+				<form action="" name="agregarDocumento"  class="form-neon" autocomplete="off" method="POST">
+					<fieldset>
+						<legend class="text-center"><i class="fas fa-id-card"></i> &nbsp; Registrar Tipo Documento</legend>
+
+						<div class="container-fluid">
+							<div class="row">
+							<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label class="bmd-label-floating">CODIGO DE TIPO DOCUMENTO</label>
+										<input type="number" class="form-control" name="idDocumento" id="idDocumento" required>
+									</div>
+								</div>
+
+	
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label class="bmd-label-floating">NOMBRE PARA TIPO DOCUMENTO</label>
+										<input type="text" class="form-control" name="nombreDocumento" id="nombreDocumento" required>
+									</div>
+								</div>
+                
+							</div>
+						</div> 
+					</fieldset>
+					<br>
+					<p class="text-center" style="margin-top: 40px;">
+						<button type="reset" class="btn btn-raised btn-secondary btn-sm"><i class="fas fa-paint-roller"></i> &nbsp; LIMPIAR</button>
+						&nbsp; &nbsp;
+						<button type="submit" class="btn btn-raised btn-info btn-sm" name="guarda"><i class="far fa-save"></i> &nbsp; GUARDAR</button>
+					</p>
+				</form>
+
+		</section>
 	</main>
 	
 	

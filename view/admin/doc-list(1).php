@@ -1,23 +1,23 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controller/admin/opcionControlador.php");
+include("../../controlador/admin/documentoControlador.php");
 
-$obj = new Opcion();
+$obj = new Documento();
 if($_POST){
 
-	$obj->idOpcion = $_POST['id_option_property'];
+	$obj->idDocumento = $_POST['idDocumento'];
 
 }
 
 $conet = new Conexion();
 $c = $conet->conectando();
-$query="select count(*) as totalRegistros from option_property";
+$query="select count(*) as totalRegistros from tipo_documento";
 $resultado = mysqli_query($c, $query);
 $arreglo = mysqli_fetch_array($resultado); 
 $totalRegistros = $arreglo['totalRegistros'];
 //echo $totalRegistros;
 
-$maximoRegistros = 5;
+$maximoRegistros = 10;
 //echo $totalRegistros;
 if(empty($_GET['pagina'])){
     $pagina=1;
@@ -30,12 +30,11 @@ $totalPaginas=ceil($totalRegistros/$maximoRegistros);
 
 
 if(isset($_POST['search'])){
-    echo "llegue";
-    $query2="select * from option_property where nombreOpcion like '%$obj->nombreOpcion%' limit $desde,$maximoRegistros";
+    $query2="select * from tipo_documento where nombreDocumento like '%$obj->nombreDocumento%' limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }else{
-    $query2="select * from option_property limit $desde,$maximoRegistros ";
+    $query2="select * from tipo_documento limit $desde,$maximoRegistros ";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }
@@ -47,7 +46,7 @@ if(isset($_POST['search'])){
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Opcion Inmueble</title>
+	<title>Tipo Documento</title>
 
 	<!-- Normalize V8.0.1 -->
 	<link rel="stylesheet" href="../../config/css/normalize.css">
@@ -84,14 +83,14 @@ if(isset($_POST['search'])){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
 						Administrador
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
 				<nav class="full-box nav-lateral-menu">
-				<ul>
+					<ul>
 						<li>
 							<a href="../index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
 						</li>
@@ -242,7 +241,7 @@ if(isset($_POST['search'])){
 				<a href="#" class="float-left show-nav-lateral">
 					<i class="fas fa-exchange-alt"></i>
 				</a>
-				<a href="../index.php">
+				<a href="../../index.php">
 					<i class="fas fa-pager"></i>
 				</a>
 				<a href="#" class="btn-exit-system">
@@ -253,34 +252,32 @@ if(isset($_POST['search'])){
 			<!-- Page header -->
 			<div class="full-box page-header">
 				<h3 class="text-center">
-					<i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA OPCION INMUEBLE
+					<i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA TIPO DOCUMENTO
 				</h3>
 			</div>
 
 			<div class="container-fluid">
 				<ul class="full-box list-unstyled page-nav-tabs">
 					<li>
-						<a href="opc-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR OPCION INMUEBLE</a>
+						<a href="doc-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR TIPO DOCUMENTO</a>
 					</li>
 					<li>
-						<a class="active" href="#"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA OPCION INMUEBLE</a>
+						<a class="active" href="#"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA TIPO DOCUMENTO</a>
 					</li>
 					<li>
-						<a href="opc-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR OPCION INMUEBLE</a>
+						<a href="doc-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR TIPO DOCUMENTO</a>
 					</li>
 				</ul>	
 			</div>
 
-
-			<form action="" name="documento" Method="POST">
 			<!-- Content -->
 			<div class="container-fluid">
 				<div class="table-responsive">
 					<table class="table table-dark table-sm">
 						<thead>
 							<tr class="text-center roboto-medium">
-								<th>ID OPCION INMUEBLE</th>
-								<th>OPCION INMUEBLE</th>
+								<th>ID TIPO DOCUMENTO</th>
+								<th>TIPO DOCUMENTO</th>
 								<th>ACTUALIZAR</th>
 								<th>ELIMINAR</th>
 							</tr>
@@ -304,14 +301,14 @@ if(isset($_POST['search'])){
 								<td><?php echo $arreglo2[0] ?></td>
 								<td><?php echo $arreglo2[1] ?></td>
 								<td>
-									<a href="opc-update.php" class="btn btn-success">
+									<a href="doc-update.php" class="btn btn-success">
 	  									<i class="fas fa-sync-alt"></i>	
 									</a>
 								</td>
 								<td>
-									<form action="" name="eliminarOpcion" method="POST">
-										<input type="hidden" name="idOpcion" value="<?php echo $arreglo2[0] ?>"></input>
-										<input type="hidden" name="nombreOpcion"></input>
+									<form action="" name="eliminarDocumento" method="POST">
+										<input type="hidden" name="idDocumento" value="<?php echo $arreglo2[0] ?>"></input>
+										<input type="hidden" name="nombreDocumento"></input>
 										<button type="submit" name="elimina" class="btn btn-warning">
 		  									<i class="far fa-trash-alt"></i>
 										</button>
@@ -360,8 +357,7 @@ if(isset($_POST['search'])){
                     ?>
                 </ul>
             </nav>
-			</div>
-		</form>				
+			</div>				
 	</section>
 	</main>
 	

@@ -1,12 +1,12 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/tipoControlador.php");
+include("../../controller/admin/tipoControlador.php");
 
 $obj = new Tipo();
 if($_POST){
 
-	$obj->idTipo = $_POST['idTipo'];
-    $obj->nombreTipo = $_POST['nombreTipo'];
+	$obj->idTipo = $_POST['id_type_property'];
+    $obj->nombreTipo = $_POST['name_type_property'];
 
 }
 
@@ -53,7 +53,7 @@ if($_POST){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
 						Administrador
 					</figcaption>
@@ -62,7 +62,7 @@ if($_POST){
 				<nav class="full-box nav-lateral-menu">
 				<ul>
 						<li>
-							<a href="../index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
+							<a href="../admin/index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
 						</li>
 
 						<li>

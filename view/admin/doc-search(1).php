@@ -1,23 +1,19 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controller/admin/opcionControlador.php");
 
-$obj = new Opcion();
 if($_POST){
-
-	$obj->idOpcion = $_POST['id_option_property'];
-
+	$obj->nombreDocumento = $_POST['nombreDocumento'];
 }
 
 $conet = new Conexion();
 $c = $conet->conectando();
-$query="select count(*) as totalRegistros from option_property";
+$query="select count(*) as totalRegistros from tipo_documento";
 $resultado = mysqli_query($c, $query);
 $arreglo = mysqli_fetch_array($resultado); 
 $totalRegistros = $arreglo['totalRegistros'];
 //echo $totalRegistros;
 
-$maximoRegistros = 5;
+$maximoRegistros = 10;
 //echo $totalRegistros;
 if(empty($_GET['pagina'])){
     $pagina=1;
@@ -31,11 +27,11 @@ $totalPaginas=ceil($totalRegistros/$maximoRegistros);
 
 if(isset($_POST['search'])){
     echo "llegue";
-    $query2="select * from option_property where nombreOpcion like '%$obj->nombreOpcion%' limit $desde,$maximoRegistros";
+    $query2="select * from tipo_documento where nom_tipo_doc like '%$obj->nombreDocumento%' limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }else{
-    $query2="select * from option_property limit $desde,$maximoRegistros ";
+    $query2="select * from tipo_documento limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }
@@ -47,7 +43,7 @@ if(isset($_POST['search'])){
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Opcion Inmueble</title>
+	<title>Tipo Documento</title>
 
 	<!-- Normalize V8.0.1 -->
 	<link rel="stylesheet" href="../../config/css/normalize.css">
@@ -84,7 +80,7 @@ if(isset($_POST['search'])){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
 						Administrador
 					</figcaption>
@@ -253,36 +249,55 @@ if(isset($_POST['search'])){
 			<!-- Page header -->
 			<div class="full-box page-header">
 				<h3 class="text-center">
-					<i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA OPCION INMUEBLE
+					<i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR TIPO DOCUMENTO 
 				</h3>
 			</div>
 
 			<div class="container-fluid">
 				<ul class="full-box list-unstyled page-nav-tabs">
 					<li>
-						<a href="opc-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR OPCION INMUEBLE</a>
+						<a href="doc-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; AGREGAR TIPO DOCUMENTO</a>
 					</li>
 					<li>
-						<a class="active" href="#"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA OPCION INMUEBLE</a>
+						<a href="doc-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; LISTA TIPO DOCUMENTO</a>
 					</li>
 					<li>
-						<a href="opc-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR OPCION INMUEBLE</a>
+						<a class="active" href="doc-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR TIPO DOCUMENTO</a>
 					</li>
 				</ul>	
 			</div>
 
 
-			<form action="" name="documento" Method="POST">
-			<!-- Content -->
+			
+<form action="" name="documento" method="POST" autocomplete="off">
+			<!-- Content here-->
+			<div class="container-fluid">
+				<form class="form-neon" action="" role="search" autocomplete="off">
+					<div class="container-fluid">
+						<div class="row justify-content-md-center">
+							<div class="col-12 col-md-6">
+								<div class="form-group">
+									<label for="inputSearch" class="bmd-label-floating">INGRESA NOMBRE DE TIPO DOCUMENTO</label>
+									<input class="form-control me-2" type="search" name="nombreDocumento" aria-label="Search">
+								</div>
+							</div>
+							<div class="col-12">
+								<p class="text-center" style="margin-top: 40px;">
+									<button type="submit" class="btn btn-raised btn-info" name="search"><i class="fas fa-search"></i> &nbsp; BUSCAR</button>
+								</p>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
 			<div class="container-fluid">
 				<div class="table-responsive">
 					<table class="table table-dark table-sm">
 						<thead>
 							<tr class="text-center roboto-medium">
-								<th>ID OPCION INMUEBLE</th>
-								<th>OPCION INMUEBLE</th>
-								<th>ACTUALIZAR</th>
-								<th>ELIMINAR</th>
+								<th>ID TIPO DOCUMENTO</th>
+								<th>TIPO DOCUMENTO</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -303,20 +318,6 @@ if(isset($_POST['search'])){
 							<tr class="text-center" >
 								<td><?php echo $arreglo2[0] ?></td>
 								<td><?php echo $arreglo2[1] ?></td>
-								<td>
-									<a href="opc-update.php" class="btn btn-success">
-	  									<i class="fas fa-sync-alt"></i>	
-									</a>
-								</td>
-								<td>
-									<form action="" name="eliminarOpcion" method="POST">
-										<input type="hidden" name="idOpcion" value="<?php echo $arreglo2[0] ?>"></input>
-										<input type="hidden" name="nombreOpcion"></input>
-										<button type="submit" name="elimina" class="btn btn-warning">
-		  									<i class="far fa-trash-alt"></i>
-										</button>
-									</form>
-								</td>
 							</tr>
 							<?php
                             }while($arreglo2 = mysqli_fetch_array($resultado2));
@@ -360,9 +361,12 @@ if(isset($_POST['search'])){
                     ?>
                 </ul>
             </nav>
+</form>
 			</div>
-		</form>				
-	</section>
+
+
+
+		</section>
 	</main>
 	
 	

@@ -1,46 +1,44 @@
 <?php
 	class Inmueble{
-
-		public $id_inm;
-		public $id_usuario;
-		public $estado_inm;
-		public $direccion_inm;
-		public $tipo_inm;
-		public $opcion_inm;
-        public $localidad_inm;
-        public $barrio_inm;
-		public $inf_inm;
-		public $desc_inm;
-        public $precio_inm;
-		public $fechaC_inm;	
-		public $fechaA_inm;	
+		public $id_property;
+		public $id_user;
+		public $state_property;
+		public $direction_property;
+		public $type_property;
+		public $option_property;
+        public $location_property;
+        public $neighborhood_property;
+		public $information_property;
+		public $description_property;
+        public $cost_property;
+		public $create_property;	
+		public $update_property;	
 
                  function agregar(){
 					$c = new Conexion();
 					$cone = $c->conectando();
-                    $insertar = "insert into property values('$this->id_inm',
-																			'$this->id_usuario',
-																			'$this->estado_inm',
-																			'$this->direccion_inm',
-                                                                            '$this->tipo_inm',
-                                                                            '$this->opcion_inm',
-                                                                            '$this->localidad_inm',
-                                                                            '$this->barrio_inm',
-																			'$this->inf_inm',
-																			'$this->desc_inm',
-																			'$this->precio_inm',
-																			'$this->fechaC_inm',
-																			'$this->fechaA_inm'
-                    )";    
+                    $insertar = "INSERT INTO property values('$this->id_property',
+															'$this->id_user',
+															'$this->state_property',
+															'$this->direction_property',
+                                                            '$this->type_property',
+                                                            '$this->option_property',
+                                                            '$this->location_property',
+                                                            '$this->neighborhood_property',
+															'$this->information_property',
+															'$this->description_property',
+															'$this->cost_property',
+															'$this->create_property',
+															'$this->update_property'
+                    										)";    
 					mysqli_query($cone,$insertar);	
-					echo "<script> alert('El Usuario a registrado un Inmueble')</script>";
-								
+					header("location: pub-gal.php");
 					}									
 				 				
 
 				function modificar(){$c = new Conexion();
 								$cone = $c->conectando();
-								$sql = "select * from property where id_property ='$this->id_inm'";
+								$sql = "select * from inmueble where id_inm ='$this->id_inm'";
 								$r = mysqli_query($cone,$sql);
 								if(!mysqli_fetch_array($r)){
 							echo "<script> alert('El Usuario ha Modificado Inmueble')</script>";
