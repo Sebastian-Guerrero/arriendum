@@ -131,8 +131,18 @@ $result = mysqli_query($c, $query);
 
         </div>
     </section>
-
-    <footer>  
+    <footer >  
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
         <div class="contenedor-footer">
             <div class="content-foo">
                 <h4>Phone</h4>

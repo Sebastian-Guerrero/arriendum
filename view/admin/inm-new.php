@@ -7,19 +7,19 @@ $obj = new Inmueble();
 if($_POST)
 {
 
-	$obj->id_inm = $_POST['id_inm'];
-    $obj->id_usuario = $_POST['id_usuario'];
-    $obj->estado_inm = $_POST['estado_inm'];
-    $obj->direccion_inm = $_POST['direccion_inm'];
-    $obj->tipo_inm = $_POST['tipo_inm'];
-    $obj->opcion_inm = $_POST['opcion_inm'];
+	$obj->id_property = $_POST['id_property'];
+    $obj->id_user = $_POST['id_user'];
+    $obj->state_property = $_POST['state_property'];
+    $obj->direction_property = $_POST['direction_property'];
+    $obj->type_property = $_POST['type_property'];
+    $obj->option_property = $_POST['option_property'];
     $obj->localidad_inm = $_POST['localidad_inm'];
-    $obj->barrio_inm = $_POST['barrio_inm'];
-    $obj->inf_inm = $_POST['inf_inm'];
-    $obj->desc_inm = $_POST['desc_inm'];
-    $obj->precio_inm = $_POST['precio_inm'];
-    $obj->fechaC_inm = $_POST['fechaC_inm'];
-    $obj->fechaA_inm = $_POST['fechaA_inm'];
+    $obj->neighborhood_property = $_POST['neighborhood_property'];
+    $obj->information_property = $_POST['information_property'];
+    $obj->description_property = $_POST['description_property'];
+    $obj->cost_property = $_POST['cost_property'];
+    $obj->create_property = $_POST['create_property'];
+    $obj->update_property = $_POST['update_property'];
 
 }
 
@@ -78,7 +78,7 @@ $fecha = Date('Y-m-d H:i:s');
 				<nav class="full-box nav-lateral-menu">
 				<ul>
 						<li>
-							<a href="index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
+							<a href="../index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
 						</li>
 
 						<li>
@@ -266,27 +266,34 @@ $fecha = Date('Y-m-d H:i:s');
 						<div class="container-fluid">
 							<div class="row">
 
-								<input type="hidden" name="id_inm" id="id_inm">
+								<input type="hidden" name="id_property" id="id_property">
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">NUMERO DE IDENTIFICACION:</label>
-										<input type="number" class="form-control" name="id_usuario" id="id_usuario" required>
+										<input type="number" class="form-control" name="id_user" id="id_user" required>
 									</div>
 								</div>
-							
-								<input type="hidden" name="estado_inm" id="estado_inm" value="1">
-
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<select class="form-control" name="state_property" id="state_property" required>
+											<option selected disabled>ESTADO DEL INMUEBLE</option>
+											<option value="1">Disponible</option>
+											<option value="2">Arrendado </option>
+											<option value="3">Vendido</option>
+										</select>
+									</div>
+								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">DIRRECION:</label>
-										<input type="text" class="form-control" name="direccion_inm" id="direccion_inm" required>
+										<input type="text" class="form-control" name="direction_property" id="direction_property" required>
 									</div>
 								</div>
 					
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<select class="form-control" name="tipo_inm" id="tipo_inm" required>
+										<select class="form-control" name="type_property" id="type_property" required>
 											<option selected disabled>TIPO INMUEBLE:</option>
 											<option value="1">Apartamento</option>
 											<option value="2">Casa</option>
@@ -298,7 +305,7 @@ $fecha = Date('Y-m-d H:i:s');
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<select class="form-control" name="opcion_inm" id="opcion_inm" required>
+										<select class="form-control" name="option_property" id="option_property" required>
 											<option selected disabled>OPCION INMUEBLE:</option>
 											<option value="1">Arrendar</option>
 											<option value="2">Vender</option>
@@ -309,7 +316,7 @@ $fecha = Date('Y-m-d H:i:s');
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label  class="bmd-label-floating">LOCALIDAD:</label>
-										<select class="form-control" name="localidad_inm" id="localidad_inm" required>
+										<select class="form-control" name="location_property" id="location_property" required>
 											<option selected disabled>Seleccione la localidad:</option>
 											<option value="1">Usaquén</option>
 											<option value="2">Chapinero</option>
@@ -338,34 +345,34 @@ $fecha = Date('Y-m-d H:i:s');
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label  class="bmd-label-floating">BARRIO:</label>
-										<input type="text" class="form-control" name="barrio_inm" id="barrio_inm" required>
+										<input type="text" class="form-control" name="neighborhood_property" id="neighborhood_property" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">INFORMACION TECNICA:</label>
-										<input type="text" class="form-control" name="inf_inm" id="inf_inm" required>
+										<input type="text" class="form-control" name="information_property" id="information_property" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label  class="bmd-label-floating">DESCRIPCION:</label>
-										<input type="text" class="form-control" name="desc_inm" id="desc_inm" required>
+										<input type="text" class="form-control" name="description_property" id="description_property" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">PRECIO DE LA PROPIEDAD:</label>
-										<input type="number" class="form-control" name="precio_inm" id="precio_inm" required>
+										<input type="number" class="form-control" name="cost_property" id="cost_property" required>
 									</div>
 								</div>
 
-								<input type="hidden" name="fechaC_inm" id="fechaC_inm" value="<?php echo $fecha ?>">
+								<input type="hidden" name="create_property" id="create_property" value="<?php echo $fecha ?>">
 
-								<input type="hidden" name="fechaA_inm" id="fechaA_inm" value="<?php echo $fecha ?>">
+								<input type="hidden" name="update_property" id="update_property" value="<?php echo $fecha ?>">
 
 						</div> 
 					<p class="text-center" style="margin-top: 40px;">

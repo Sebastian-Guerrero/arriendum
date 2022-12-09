@@ -4,7 +4,7 @@ include("../../controller/admin/inmuebleControlador.php");
 
 if($_POST)
 {
-	$obj->id_inm = $_POST['id_property'];
+	$obj->id_property = $_POST['id_property'];
     
 }
 
@@ -96,7 +96,7 @@ if(isset($_POST['search'])){
 				<nav class="full-box nav-lateral-menu">
 				<ul>
 						<li>
-							<a href="../admin/index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
+							<a href="../index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
 						</li>
 
 						<li>
@@ -325,25 +325,29 @@ if(isset($_POST['search'])){
 								<td><?php echo $arreglo2[9];?></td>
 								<td><?php echo $arreglo2[10];?></td>
 								<td>
-									<a href="inm-update.php" class="btn btn-success">
+									<a class="btn btn-success" href="<?php 
+										if($arreglo2[0]<>''){
+											echo "inm-update.php?key=".urlencode($arreglo2[0]);
+									}
+									?>">>
 	  									<i class="fas fa-sync-alt"></i>	
 									</a>
 								</td>
 								<td>
 									<form action="" name="eliminaInmueble" method="POST">
-										<input type="hidden" name="id_inm" value="<?php echo $arreglo2[0];?>">
-										<input type="hidden" name="id_usuario"></input>
-										<input type="hidden" name="estado_inm"></input>
-										<input type="hidden" name="direccion_inm"></input>
-										<input type="hidden" name="tipo_inm"></input>
-										<input type="hidden" name="opcion_inm"></input>
-										<input type="hidden" name="localidad_inm"></input>
-										<input type="hidden" name="barrio_inm"></input>
-										<input type="hidden" name="inf_inm"></input>
-										<input type="hidden" name="desc_inm"></input>
-										<input type="hidden" name="precio_inm"></input>
-										<input type="hidden" name="fechaC_inm"></input>
-										<input type="hidden" name="fechaA_inm"></input>
+										<input type="hidden" name="id_property" value="<?php echo $arreglo2[0];?>">
+										<input type="hidden" name="id_user"></input>
+										<input type="hidden" name="state_property"></input>
+										<input type="hidden" name="direction_property"></input>
+										<input type="hidden" name="type_property"></input>
+										<input type="hidden" name="option_property"></input>
+										<input type="hidden" name="location_property"></input>
+										<input type="hidden" name="neighborhood_property"></input>
+										<input type="hidden" name="information_property"></input>
+										<input type="hidden" name="description_property"></input>
+										<input type="hidden" name="cost_property"></input>
+										<input type="hidden" name="create_property"></input>
+										<input type="hidden" name="update_property"></input>
 										<button type="submit" class="btn btn-warning" name="elimina">
 		  									<i class="far fa-trash-alt"></i>
 										</button>

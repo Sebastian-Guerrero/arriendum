@@ -1,17 +1,17 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/opcionControlador.php");
+include("../../controller/admin/opcionControlador.php");
 
 $obj = new Opcion();
 if($_POST){
 
-	$obj->idOpcion = $_POST['idOpcion'];
+	$obj->idOpcion = $_POST['id_option_property'];
 
 }
 
 $conet = new Conexion();
 $c = $conet->conectando();
-$query="select count(*) as totalRegistros from opcion_inmueble";
+$query="select count(*) as totalRegistros from option_property";
 $resultado = mysqli_query($c, $query);
 $arreglo = mysqli_fetch_array($resultado); 
 $totalRegistros = $arreglo['totalRegistros'];
@@ -31,11 +31,11 @@ $totalPaginas=ceil($totalRegistros/$maximoRegistros);
 
 if(isset($_POST['search'])){
     echo "llegue";
-    $query2="select * from opcion_inmueble where nombreOpcion like '%$obj->nombreOpcion%' limit $desde,$maximoRegistros";
+    $query2="select * from option_property where nombreOpcion like '%$obj->nombreOpcion%' limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }else{
-    $query2="select * from opcion_inmueble limit $desde,$maximoRegistros ";
+    $query2="select * from option_property limit $desde,$maximoRegistros ";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }
@@ -84,7 +84,7 @@ if(isset($_POST['search'])){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
 						Administrador
 					</figcaption>

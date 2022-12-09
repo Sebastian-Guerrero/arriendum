@@ -5,7 +5,7 @@ include("../../controller/admin/galeriaControlador.php");
 $obj = new Galeria();
 if($_POST){
 
-    $obj->idGaleria = $_POST['id_galery_property'];
+    $obj->id_galery_property = $_POST['id_galery_property'];
 
 }
 
@@ -304,15 +304,19 @@ if(isset($_POST['search'])){
 								<td><?php echo $arreglo2[1] ?></td>
                                 <td><img src="<?php echo $arreglo2[2] ?>" width ="120px" height="70px" ></td>
 								<td>
-									<a href="gal-update.php" class="btn btn-success">
+									<a  class="btn btn-success" href="<?php
+										if($arreglo2[0]<>''){
+											echo "gal-update.php?key=".urlencode($arreglo2[0]);
+										}
+										?>">
 	  									<i class="fas fa-sync-alt"></i>	
 									</a>
 								</td>
 								<td>
 									<form action="" name="eliminarDocumento" method="POST">
-										<input type="hidden" name="idGaleria" value="<?php echo $arreglo2[0] ?>"></input>
-										<input type="hidden" name="id_inm"></input>
-										<input type="hidden" name="nombreGaleria"></input>
+										<input type="hidden" name="id_galery_property" value="<?php echo $arreglo2[0] ?>"></input>
+										<input type="hidden" name="id_property"></input>
+										<input type="hidden" name="name_galery_property"></input>
 										<button type="submit" name="elimina" class="btn btn-warning">
 		  									<i class="far fa-trash-alt"></i>
 										</button>

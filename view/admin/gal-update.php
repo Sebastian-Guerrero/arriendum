@@ -5,10 +5,21 @@ include("../../controller/admin/galeriaControlador.php");
 $obj = new Galeria();
 if($_POST){
 
-    $obj->idGaleria = $_POST['id_galery_property'];
-	$obj->id_inm = $_POST['id_property'];
-    $obj->nombreGaleria = $_FILES['name_galery_property']['tmp_name'];
+    $obj->id_galery_property = $_POST['id_galery_property'];
+	$obj->id_property = $_POST['id_property'];
+    $obj->name_galery_property = $_FILES['name_galery_property']['tmp_name'];
 }
+
+$key=$_GET['key'];
+$conet = new Conexion();
+$c = $conet->conectando();
+$query="select * from galery_property where id_galery_property = '$key'";
+$resultado = mysqli_query($c, $query);
+$arreglo = mysqli_fetch_array($resultado); 
+
+$obj->id_galery_property = $arreglo[0];
+$obj->id_property = $arreglo[1];
+$obj->name_galery_property= $arreglo[2];
 
 ?>
 <!DOCTYPE html>
@@ -53,7 +64,7 @@ if($_POST){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
+				<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
 						Administrador
 					</figcaption>
@@ -253,16 +264,16 @@ if($_POST){
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">CODIGO DEL GALERIA INMUEBLE</label>
-										<input type="number" class="form-control" name="idGaleria" id="idGaleria">
+										<input type="number" class="form-control" name="id_galery_property" id="id_galery_property" value="<?php echo $obj->id_galery_property; ?>">
 									</div>
 								</div>
 
-								<input type="hidden" name="id_inm" id="id_inm">
+								<input type="hidden" name="id_property" id="id_property" value="<?php echo $obj->id_property; ?>">
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">IMAGEN INMUEBLE:</label>
-										<input type="file" class="form-control" name="nombreGaleria" id="nombreGaleria">
+										<input type="file" class="form-control" name="name_galery_property" id="name_galery_property" value="<?php echo $obj->name_galery_property; ?>">
 									</div>
 								</div>
 

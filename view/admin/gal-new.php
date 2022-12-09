@@ -5,9 +5,9 @@ include("../../controller/admin/galeriaControlador.php");
 $obj = new Galeria();
 if($_POST){
 
-    $obj->idGaleria = $_POST['id_galery_property'];
-    $obj->id_inm = $_POST['id_property'];
-    $obj->nombreGaleria = $_FILES['name_galery_property']['tmp_name'];
+    $obj->id_galery_property = $_POST['id_galery_property'];
+    $obj->id_property = $_POST['id_property'];
+    $obj->name_galery_property = $_FILES['name_galery_property']['tmp_name'];
 }
 
 ?>
@@ -255,14 +255,14 @@ if($_POST){
 							    <div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">CODIGO INMUEBLE:</label>
-										<input type="number" class="form-control" name="id_inm" id="id_inm" required>
+										<input type="number" class="form-control" name="id_property" id="id_property" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">IMAGEN INMUEBLE:</label>
-										<input type="file" class="form-control" name="nombreGaleria" id="nombreGaleria" required>
+										<input type="file" class="form-control" name="name_galery_property" id="name_galery_property" required>
 									</div>
 								</div>
                 

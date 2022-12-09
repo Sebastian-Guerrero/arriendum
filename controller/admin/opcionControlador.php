@@ -1,10 +1,10 @@
 <?php
-include('../../modelo/admin/opcionModelo.php');
+include('../../model/admin/opcionModelo.php');
 $obj = new Opcion();
 if($_POST){
 
-    $obj->idOpcion = $_POST['idOpcion'];
-    $obj->nombreOpcion = $_POST['nombreOpcion'];
+    $obj->idOpcion = $_POST['id_option_property'];
+    $obj->nombreOpcion = $_POST['name_option_property'];
     
 }
 

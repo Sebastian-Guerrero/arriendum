@@ -5,19 +5,19 @@ $obj = new Inmueble();
 if($_POST)
 {
 
-	$obj->id_inm = $_POST['id_inm'];
-    $obj->id_usuario = $_POST['id_usuario'];
-    $obj->estado_inm = $_POST['estado_inm'];
-    $obj->direccion_inm = $_POST['direccion_inm'];
-    $obj->tipo_inm = $_POST['tipo_inm'];
-    $obj->opcion_inm = $_POST['opcion_inm'];
-    $obj->localidad_inm = $_POST['localidad_inm'];
-    $obj->barrio_inm = $_POST['barrio_inm'];
-    $obj->inf_inm = $_POST['inf_inm'];
-    $obj->desc_inm = $_POST['desc_inm'];
-    $obj->precio_inm = $_POST['precio_inm'];
-    $obj->fechaC_inm = $_POST['fechaC_inm'];
-    $obj->fechaA_inm = $_POST['fechaA_inm'];
+	$obj->id_property = $_POST['id_property'];
+    $obj->id_user = $_POST['id_user'];
+    $obj->state_property = $_POST['state_property'];
+    $obj->direction_property = $_POST['direction_property'];
+    $obj->type_property = $_POST['type_property'];
+    $obj->option_property = $_POST['option_property'];
+    $obj->location_property = $_POST['location_property'];
+    $obj->neighborhood_property = $_POST['neighborhood_property'];
+    $obj->information_property = $_POST['information_property'];
+    $obj->description_property = $_POST['description_property'];
+    $obj->cost_property = $_POST['cost_property'];
+    $obj->create_property = $_POST['create_property'];
+    $obj->update_property = $_POST['update_property'];
 
 }
 

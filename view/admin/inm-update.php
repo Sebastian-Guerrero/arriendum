@@ -1,29 +1,65 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/inmuebleControlador.php");
+include("../../controller/admin/inmuebleControlador.php");
 
 $obj = new Inmueble();
 if($_POST){
 
-	$obj->id_inm = $_POST['id_inm'];
-    $obj->id_usuario = $_POST['id_usuario'];
-    $obj->estado_inm = $_POST['estado_inm'];
-    $obj->direccion_inm = $_POST['direccion_inm'];
-    $obj->tipo_inm = $_POST['tipo_inm'];
-    $obj->opcion_inm = $_POST['opcion_inm'];
-    $obj->localidad_inm = $_POST['localidad_inm'];
-    $obj->barrio_inm = $_POST['barrio_inm'];
-    $obj->inf_inm = $_POST['inf_inm'];
-    $obj->desc_inm = $_POST['desc_inm'];
-    $obj->precio_inm = $_POST['precio_inm'];
-    $obj->fechaC_inm = $_POST['fechaC_inm'];
-    $obj->fechaA_inm = $_POST['fechaA_inm'];
-
+	$obj->id_property = $_POST['id_property'];
+    $obj->id_user = $_POST['id_user'];
+    $obj->state_property = $_POST['state_property'];
+    $obj->direction_property = $_POST['direction_property'];
+    $obj->type_property = $_POST['type_property'];
+    $obj->option_property = $_POST['option_property'];
+    $obj->location_property = $_POST['location_property'];
+    $obj->neighborhood_property = $_POST['neighborhood_property'];
+    $obj->information_property = $_POST['information_property'];
+    $obj->description_property = $_POST['description_property'];
+    $obj->cost_property = $_POST['cost_property'];
+    $obj->create_property = $_POST['create_property'];
+    $obj->update_property = $_POST['update_property'];
 
 }
 
 date_default_timezone_set('America/Bogota');
 $fecha = Date('Y-m-d H:i:s');
+
+$key=$_GET['key'];
+$conet = new Conexion();
+$c = $conet->conectando();
+$query="select * from property where id_property='$key'";
+$resultado = mysqli_query($c, $query);
+$arreglo = mysqli_fetch_array($resultado); 
+
+$obj->id_property  = $arreglo[0];
+$obj->id_user = $arreglo[1];
+$obj->state_property  = $arreglo[2];
+$obj->direction_property = $arreglo[3];
+$obj->type_property = $arreglo[4];
+$obj->option_porperty = $arreglo[5];
+$obj->location_property = $arreglo[6];
+$obj->neighborhood_property = $arreglo[7];
+$obj->information_property = $arreglo[8];
+$obj->description_property = $arreglo[9];
+$obj->cost_property = $arreglo[10];
+$obj->create_property = $arreglo[11];
+$obj->update_property = $arreglo[12];
+
+$query1="select * from state_property ";
+$resultado1 = mysqli_query($c, $query1);
+$arreglo1 = mysqli_fetch_array($resultado1); 
+
+$query3="select * from type_property  ";
+$resultado3 = mysqli_query($c, $query3);
+$arreglo3 = mysqli_fetch_array($resultado3); 
+
+$query5="select * from option_property  ";
+$resultado5 = mysqli_query($c, $query5);
+$arreglo5 = mysqli_fetch_array($resultado5); 
+
+$query7="select * from location_property  ";
+$resultado7 = mysqli_query($c, $query7);
+$arreglo7 = mysqli_fetch_array($resultado7); 
 
 ?>
 <!DOCTYPE html>
@@ -68,7 +104,7 @@ $fecha = Date('Y-m-d H:i:s');
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
 						Administrador
 					</figcaption>
@@ -77,7 +113,7 @@ $fecha = Date('Y-m-d H:i:s');
 				<nav class="full-box nav-lateral-menu">
 				<ul>
 						<li>
-							<a href="../index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
+							<a href="index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
 						</li>
 
 						<li>
@@ -268,48 +304,116 @@ $fecha = Date('Y-m-d H:i:s');
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">CODIGO INMUEBLE:</label>
-										<input type="number" class="form-control" name="id_inm" id="id_inm" required>
+										<input type="number" class="form-control" name="id_property" id="id_property" value="<?php echo $obj->id_property; ?>" required>
 									</div>
 								</div>
-
+								</div>
+								<div class="col-12 col-md-6">
+									<div class="form-group">						
+										<input type="number" class="form-control" name="id_user" id="id_user" value="<?php echo $obj->id_user; ?>">
+									</div>
+								</div>	
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<select class="form-control" name="estado_inm" id="estado_inm" required>
-											<option selected disabled>ESTADO INMUEBLE:</option>
-											<option value="1">Disponible</option>
-											<option value="2">Arrendado</option>
-											<option value="2">Vendido</option>
+										<select class="form-control" name="state_property" id="state_property" required>
+										<?php
+											$conet = new Conexion();
+											 $c = $conet->conectando();
+											 $query2="SELECT * from state_property where id_state_property = $obj->state_property" ;
+											 $resultado2 = mysqli_query($c, $query2);
+											 $arreglo2 = mysqli_fetch_row($resultado2);
+											 $pene =$arreglo2[1];
+											 echo "<option selected disabled value=$pene>$arreglo2[1]</option>";
+										 
+											do{
+													$id = $arreglo1['id_state_property'];
+													$nombre=$arreglo1['name_state_property'];
+													if($id==$obj->state_property){
+														echo "<option value=$id=>$nombre";
+													}else{
+														echo "<option value=$id>$nombre";
+													}
+
+
+												}while($arreglo1 = mysqli_fetch_array($resultado1));			 	
+												$row = mysqli_num_rows($resultado1);
+												$rows=0;
+												if($rows>0){
+													mysqli_data_seek($resultado, 0);
+													$arreglo1 = mysqli_fetch_array($resultado1);
+												}		
+										?>
 										</select>
-									</div>
-								</div>
-
-								<input type="hidden" name="id_usuario" id="id_usuario">
-
+									</div>			
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">DIRECCION:</label>
-										<input type="text" class="form-control" name="direccion_inm" id="direccion_inm" required>
+										<input type="text" class="form-control" name="direction_property" id="direction_proeprty" value="<?php echo $arreglo[3]; ?>"required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<select class="form-control" name="tipo_inm" id="tipo_inm" required>
-											<option selected disabled>TIPO INMUEBLE:</option>
-											<option value="1">Apartamento</option>
-											<option value="2">Casa</option>
-											<option value="3">Finca</option>
-											<option value="4">Lote</option>
+										<select class="form-control" name="type_property" id="type_property" required>
+											<?php
+											$conet = new Conexion();
+											 $c = $conet->conectando();
+											 $query4="SELECT * from type_property where id_type_property= $obj->type_property";
+											 $resultado4 = mysqli_query($c, $query4);
+											 $arreglo4 = mysqli_fetch_row($resultado4); 
+											 echo "<option selected disabled value= $arreglo[4]>$arreglo4[1]</option>";
+											do{
+													$id = $arreglo3['id_type_property'];
+													$nombre=$arreglo3['name_type_property'];
+													if($id==$obj->state_property){
+														echo "<option value=$id=>$nombre";
+													}else{
+														echo "<option value=$id>$nombre";
+													}
+
+												}while($arreglo3 = mysqli_fetch_array($resultado3));			 	
+												$row = mysqli_num_rows($resultado3);
+												$rows=0;
+												if($rows>0){
+													mysqli_data_seek($resultado, 0);
+													$arreglo3 = mysqli_fetch_array($resultado3);
+												}		
+										?>
+
+										</option>	
 										</select>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<select class="form-control" name="opcion_inm" id="opcion_inm" required>
-											<option selected disabled>OPCION INMUEBLE:</option>
-											<option value="1">Arrendar</option>
-											<option value="2">Vender</option>
+										<select class="form-control" name="option_property" id="option_property" required>
+											<?php
+											$conet = new Conexion();
+											 $c = $conet->conectando();
+											 $query6="SELECT * from option_property where id_option_property= $obj->option_property";
+											 $resultado6 = mysqli_query($c, $query6);
+											 $arreglo6 = mysqli_fetch_row($resultado6); 
+											 echo "<option selected disabled value=$arreglo[5]>$arreglo6[1]</option>";
+							 
+											do{
+													$id = $arreglo5['id_option_property'];
+													$nombre=$arreglo5['name_option_property'];
+													if($id==$obj->state_property){
+														echo "<option value=$id=>$nombre";
+													}else{
+														echo "<option value=$id>$nombre";
+													}
+
+												}while($arreglo5 = mysqli_fetch_array($resultado5));			 	
+												$row = mysqli_num_rows($resultado5);
+												$rows=0;
+												if($rows>0){
+													mysqli_data_seek($resultado, 0);
+													$arreglo5 = mysqli_fetch_array($resultado5);
+												}		
+										?>	
+										</option>
 										</select>
 									</div>
 								</div>
@@ -317,28 +421,33 @@ $fecha = Date('Y-m-d H:i:s');
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label  class="bmd-label-floating">LOCALIDAD:</label>
-										<select class="form-control" name="localidad_inm" id="localidad_inm" required>
-											<option selected disabled>LOCALIDAD INMUEBLE:</option>
-											<option value="1">Usaquén</option>
-											<option value="2">Chapinero</option>
-											<option value="3">Santa Fe</option>
-											<option value="4">San Cristóbal</option>
-											<option value="5">Usme</option>
-											<option value="6">Tunjuelito</option>
-											<option value="7">Bosa</option>
-											<option value="8">Kennedy</option>
-											<option value="9">Fontibón</option>
-											<option value="10">Engativá</option>
-											<option value="11">Suba</option>
-											<option value="12">Barrios Unidos</option>
-											<option value="13">Teusaquillo</option>
-											<option value="14">Los Mártires</option>
-											<option value="15">Antonio Nariño</option>
-											<option value="16">Puente Aranda</option>
-											<option value="17">Candelaria</option>
-											<option value="18">Rafael Uribe Uribe</option>
-											<option value="19">Ciudad Bolívar</option>
-											<option value="20">Sumapaz</option>
+										<select class="form-control" name="location_property" id="location_property" required>
+										<?php
+											$conet = new Conexion();
+											 $c = $conet->conectando();
+											 $query8="SELECT * from location_property where id_location_property= $obj->location_property";
+											 $resultado8 = mysqli_query($c, $query8);
+											 $arreglo8 = mysqli_fetch_row($resultado8); 
+											 echo "<option selected disabled value=$arreglo[6]>$arreglo8[1]</option>";
+										
+											do{
+													$id = $arreglo7['id_location_property'];
+													$nombre=$arreglo7['name_location_property'];
+													if($id==$obj->state_property){
+														echo "<option value=$id=>$nombre";
+													}else{
+														echo "<option value=$id>$nombre";
+													}
+
+												}while($arreglo7 = mysqli_fetch_array($resultado7));			 	
+												$row = mysqli_num_rows($resultado5);
+												$rows=0;
+												if($rows>0){
+													mysqli_data_seek($resultado, 0);
+													$arreglo7 = mysqli_fetch_array($resultado7);
+												}
+										?>
+										</option>
 										</select>
 									</div>
 								</div>
@@ -346,34 +455,34 @@ $fecha = Date('Y-m-d H:i:s');
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label  class="bmd-label-floating">BARRIO:</label>
-										<input type="text" class="form-control" name="barrio_inm" id="barrio_inm" required>
+										<input type="text" class="form-control" name="neighborhood_property" id="neighborhood_property" value="<?php echo $arreglo[7] ?>" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">INFORMACION TECNICA:</label>
-										<input type="text" class="form-control" name="inf_inm" id="inf_inm" required>
+										<input type="text" class="form-control" name="information_property" id="information_property" value="<?php echo $arreglo[8] ?>" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label  class="bmd-label-floating">DESCRIPCION:</label>
-										<input type="text" class="form-control" name="desc_inm" id="desc_inm" required>
+										<input type="text" class="form-control" name="description_property" id="description_property" value="<?php echo $arreglo[9] ?>" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">PRECIO DE LA PROPIEDAD:</label>
-										<input type="number" class="form-control" name="precio_inm" id="precio_inm" required>
+										<input type="number" class="form-control" name="cost_proeprty" id="cost_proeprty" value="<?php echo $obj->cost_proeprty; ?>" required>
 									</div>
 								</div>
 
-								<input type="hidden" name="fechaC_inm" id="fechaC_inm">
+								<input type="hidden" name="create_property" id="create_property">
 
-								<input type="hidden" name="fechaA_inm" id="fechaA_inm" value="<?php echo $fecha ?>">
+								<input type="hidden" name="update_property" id="update_property" value="<?php echo $update_property ?>">
 
 							</div>
 						</div>
