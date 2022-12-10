@@ -403,14 +403,17 @@ $arreglo5 = mysqli_fetch_array($resultado5);
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<select class="form-control" name="type_document" id="type_document" required>
-											<option>
 											<?php
 												 	$conet = new Conexion();
 													 $c = $conet->conectando();
 													 $query4="SELECT * FROM type_document WHERE id_type_document = '$obj->type_document'";
 													 $resultado4 = mysqli_query($c, $query4);
-													 $arreglo4 = mysqli_fetch_row($resultado4);	
-													 echo $arreglo4[1];					 
+													 $arreglo4 = mysqli_fetch_row($resultado4);
+
+													?>
+													<option value="<?php echo $arreglo[3]; ?>"><?php echo $arreglo4[1]; ?></option>
+													<?php
+
 													do{
 														$id = $arreglo3['id_type_document'];
 														$nombre=$arreglo3['name_type_document'];
@@ -419,7 +422,6 @@ $arreglo5 = mysqli_fetch_array($resultado5);
 														}else{
 															echo "<option value=$id>$nombre";
 														}
-
 
 													}while($arreglo3 = mysqli_fetch_array($resultado3));			 	
 													$row = mysqli_num_rows($resultado3);
@@ -430,10 +432,6 @@ $arreglo5 = mysqli_fetch_array($resultado5);
 													}
 												
 												 ?>
-											
-
-											</option>
-											
 										</select>
 									</div>
 								</div>

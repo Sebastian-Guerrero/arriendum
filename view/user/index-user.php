@@ -33,7 +33,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
     <header>
 
         <nav>
-            <img class="logo" src="../../assets/icons/logo.png">
+            <img class="logo" src="../../assets/icons/logo.png" alt="logo-arriendum">
             <ul>
                 <li><button class="ba" type="button"><a href="product.php">INMUEBLES</a></button></li>
                 <li><button class="bb" type="button"><a href="pub-inm.php">PUBLICAR INMUEBLE</a></button></li>
