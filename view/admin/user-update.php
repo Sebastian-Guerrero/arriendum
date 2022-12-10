@@ -1,20 +1,29 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/usuarioControlador.php");
+include("../../controller/admin/userController.php");
 
-$obj = new Usuario();
+session_start();
+$name_user = $_SESSION['name_user'];
+$lastname_user = $_SESSION['lastname_user'];
+
+if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
+	header("Location: ../guest/login.php");
+}
+
+$obj = new User();
 if($_POST){
 
-    $obj->numeroDocumento = $_POST['numeroDocumento'];
-	$obj->rolUsuario = $_POST['rolUsuario'];
-    $obj->tipoDocumento = $_POST['tipoDocumento'];
-    $obj->nombreUsuario = $_POST['nombreUsuario'];
-    $obj->apellidoUsuario = $_POST['apellidoUsuario'];
-    $obj->emailUsuario = $_POST['emailUsuario'];
-    $obj->contraUsuario = $_POST['contraUsuario'];
-    $obj->celUsuario = $_POST['celUsuario'];
-    $obj->fechaCUsuario = $_POST['fechaCUsuario'];
-    $obj->fechaAUsuario = $_POST['fechaAUsuario'];
+    $obj->id_user = $_POST['id_user'];
+    $obj->state_user = $_POST['state_user'];
+    $obj->rol_user = $_POST['rol_user'];
+    $obj->type_document = $_POST['type_document'];
+    $obj->name_user = $_POST['name_user'];
+    $obj->lastname_user = $_POST['lastname_user'];
+    $obj->phone_user = $_POST['phone_user'];
+    $obj->email_user = $_POST['email_user'];
+    $obj->password_user = $_POST['password_user'];
+    $obj->create_user = $_POST['create_user'];
+    $obj->update_user = $_POST['update_user'];
 
 }
 
@@ -25,28 +34,35 @@ $fecha = Date('Y-m-d H:i:s');
 $key=$_GET['key'];
 $conet = new Conexion();
 $c = $conet->conectando();
-$query="select * from usuario where num_id_usuario = '$key'";
+
+$query="SELECT * FROM user WHERE id_user = '$key'";
 $resultado = mysqli_query($c, $query);
 $arreglo = mysqli_fetch_array($resultado); 
 
-$obj->numeroDocumento = $arreglo[0];
-$obj->rolUsuario = $arreglo[1];
-$obj->tipoDocumento = $arreglo[2];
-$obj->nombreUsuario = $arreglo[3];
-$obj->apellidoUsuario = $arreglo[4];
-$obj->emailUsuario = $arreglo[6];
-$obj->contraUsuario = $arreglo[7];
-$obj->celUsuario = $arreglo[5];
-$obj->fechaCUsuario = $arreglo[8];
-$obj->fechaAUsuario = $arreglo[9];
+$obj->id_user = $arreglo[0];
+$obj->state_user = $arreglo[1];
+$obj->rol_user = $arreglo[2];
+$obj->type_document = $arreglo[3];
+$obj->name_user = $arreglo[4];
+$obj->lastname_user = $arreglo[5];
+$obj->phone_user = $arreglo[6];
+$obj->email_user = $arreglo[7];
+$obj->password_user = $arreglo[8];
+$obj->update_user = $arreglo[10];
 
-$query1="select * from rol";
+$query1="SELECT * FROM rol_user";
 $resultado1 = mysqli_query($c, $query1);
 $arreglo1 = mysqli_fetch_array($resultado1); 
 
-$query3="select * from tipo_documento";
+$query3="SELECT * FROM type_document";
 $resultado3 = mysqli_query($c, $query3);
 $arreglo3 = mysqli_fetch_array($resultado3); 
+
+$query5="SELECT * FROM state_user";
+$resultado5 = mysqli_query($c, $query5);
+$arreglo5 = mysqli_fetch_array($resultado5); 
+
+
 
 ?>
 <!DOCTYPE html>
@@ -91,17 +107,19 @@ $arreglo3 = mysqli_fetch_array($resultado3);
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
-						Administrador
+						<?php echo "$name_user $lastname_user";?>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
 				<nav class="full-box nav-lateral-menu">
 				<ul>
 						<li>
-							<a href="../index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
+							<a href="index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
 						</li>
+
+						<br>
 
 						<li>
 							<a href="#" class="nav-btn-submenu"><i class="fas fa-user"></i> &nbsp; USUARIO <i class="fas fa-chevron-down"></i></a>
@@ -119,7 +137,22 @@ $arreglo3 = mysqli_fetch_array($resultado3);
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-user-tag"></i> &nbsp; ROL USUARIO <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-user-check"></i> &nbsp; ESTADO USUARIO<i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="sta-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Estado Usuario</a>
+								</li>
+								<li>
+									<a href="sta-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista Estado Usuario</a>
+								</li>
+								<li>
+									<a href="sta-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Estado Usuario</a>
+								</li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-user-tag"></i> &nbsp; ROL USUARIO<i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="rol-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Rol Usuario</a>
@@ -140,7 +173,7 @@ $arreglo3 = mysqli_fetch_array($resultado3);
 									<a href="doc-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Tipo Documento</a>
 								</li>
 								<li>
-									<a href="doc-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista Tipo Documento</a>
+									<a href="doc-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista Tipo Documentos</a>
 								</li>
 								<li>
 									<a href="doc-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Tipo Documento</a>
@@ -148,23 +181,25 @@ $arreglo3 = mysqli_fetch_array($resultado3);
 							</ul>
 						</li>
 
+						<br>
+
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-city"></i> &nbsp; INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-house-user"></i> &nbsp; INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="inm-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Inmueble</a>
 								</li>
 								<li>
-									<a href="inm-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista inmueble</a>
+									<a href="inm-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista Inmueble</a>
 								</li>
 								<li>
-									<a href="inm-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar inmueble</a>
+									<a href="inm-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Inmueble</a>
 								</li>
 							</ul>
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-check"></i> &nbsp; ESTADO INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-house-damage"></i> &nbsp; ESTADO INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="est-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Estado Inmueble</a>
@@ -179,7 +214,7 @@ $arreglo3 = mysqli_fetch_array($resultado3);
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-list"></i> &nbsp; TIPO INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-warehouse"></i> &nbsp; TIPO INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="tipo-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Tipo Inmueble</a>
@@ -194,7 +229,7 @@ $arreglo3 = mysqli_fetch_array($resultado3);
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-laptop-house"></i> &nbsp; OPCION INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-handshake"></i> &nbsp; OPCION INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="opc-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Opcion Inmueble</a>
@@ -282,8 +317,7 @@ $arreglo3 = mysqli_fetch_array($resultado3);
 			<div class="container-fluid">
 				<form class="form-neon" action="" method="POST" autocomplete="off">
 					<fieldset>
-						<legend class="text-center"><i class="fas fa-user"></i> &nbsp; Ingresa el Número de Identificación</legend>
-						<p class="text-center">Para Actualizar Usuario</p>
+						<legend class="text-center"><i class="fas fa-user"></i> &nbsp; Actualizar Usuario</legend>
 
 						<div class="container-fluid">
 							<div class="row">
@@ -291,25 +325,61 @@ $arreglo3 = mysqli_fetch_array($resultado3);
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">NUMERO DE IDENTIFICACION:</label>
-										<input type="number" class="form-control" name="numeroDocumento" id="numeroDocumento"  value="<?php echo $obj->numeroDocumento; ?>" required>
+										<input type="number" class="form-control" name="id_user" id="id_user"  value="<?php echo $obj->id_user; ?>" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<select class="form-control" name="rolUsuario" id="rolUsuario" required>
+										<select class="form-control" name="state_user" id="state_user" required>
 											<option>
 												 <?php
 												 	$conet = new Conexion();
 													 $c = $conet->conectando();
-													 $query2="SELECT * from rol where id_rol = $obj->rolUsuario";
+													 $query6="SELECT * FROM state_user WHERE id_state_user = '$obj->state_user'";
+													 $resultado6 = mysqli_query($c, $query6);
+													 $arreglo6 = mysqli_fetch_row($resultado6); 
+													 echo $arreglo5[1];
+													do{
+														$id = $arreglo5['id_state_user'];
+														$nombre=$arreglo5['name_state_user'];
+														if($id==$obj->state_user){
+															echo "<option value=$id=>$nombre";
+														}else{
+															echo "<option value=$id>$nombre";
+														}
+
+													}while($arreglo5 = mysqli_fetch_array($resultado5));			 	
+													$row = mysqli_num_rows($resultado1);
+													$rows=0;
+													if($rows>0){
+														mysqli_data_seek($resultado, 0);
+														$arreglo5 = mysqli_fetch_array($resultado5);
+													}
+												
+												 ?>
+										
+										</option>
+											
+										</select>
+									</div>
+								</div>
+
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<select class="form-control" name="rol_user" id="rol_user" required>
+											<option>
+												 <?php
+												 	$conet = new Conexion();
+													 $c = $conet->conectando();
+													 $query2="SELECT * FROM rol_user WHERE id_rol_user = '$obj->rol_user'";
 													 $resultado2 = mysqli_query($c, $query2);
 													 $arreglo2 = mysqli_fetch_row($resultado2); 
 													 echo $arreglo2[1];
 													do{
-														$id = $arreglo1['id_rol'];
-														$nombre=$arreglo1['nom_rol'];
-														if($id==$obj->rolUsuario){
+														$id = $arreglo1['id_rol_user'];
+														$nombre=$arreglo1['name_rol_user'];
+														if($id==$obj->rol_user){
 															echo "<option value=$id=>$nombre";
 														}else{
 															echo "<option value=$id>$nombre";
@@ -333,19 +403,19 @@ $arreglo3 = mysqli_fetch_array($resultado3);
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<select class="form-control" name="tipoDocumento" id="tipoDocumento" required>
-											<option selected disabled>Seleccione Tipo de Documento:</option>
+										<select class="form-control" name="type_document" id="type_document" required>
 											<option>
 											<?php
 												 	$conet = new Conexion();
 													 $c = $conet->conectando();
-													 $query4="SELECT * from tipo_documento where id_tipo_doc = $obj->tipoDocumento";
+													 $query4="SELECT * FROM type_document WHERE id_type_document = '$obj->type_document'";
 													 $resultado4 = mysqli_query($c, $query4);
-													 $arreglo4 = mysqli_fetch_row($resultado4);						 
+													 $arreglo4 = mysqli_fetch_row($resultado4);	
+													 echo $arreglo4[1];					 
 													do{
-														$id = $arreglo3['id_tipo_doc'];
-														$nombre=$arreglo3['nom_tipo_doc'];
-														if($id==$obj->tipoDocumento){
+														$id = $arreglo3['id_type_document'];
+														$nombre=$arreglo3['name_type_document'];
+														if($id==$obj->type_document){
 															echo "<option value=$id=>$nombre";
 														}else{
 															echo "<option value=$id>$nombre";
@@ -361,8 +431,6 @@ $arreglo3 = mysqli_fetch_array($resultado3);
 													}
 												
 												 ?>
-											
-
 											</option>
 											
 										</select>
@@ -372,41 +440,40 @@ $arreglo3 = mysqli_fetch_array($resultado3);
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">NOMBRE:</label>
-										<input type="text" class="form-control" name="nombreUsuario" id="nombreUsuario" value ="<?php echo $obj->nombreUsuario ?>" required>
+										<input type="text" class="form-control" name="name_user" id="name_user" value ="<?php echo $obj->name_user ?>" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">APELLIDO:</label>
-										<input type="text" class="form-control" name="apellidoUsuario" id="apellidoUsuario" value="<?php echo $obj->apellidoUsuario ?>" required>
+										<input type="text" class="form-control" name="lastname_user" id="lastname_user" value="<?php echo $obj->lastname_user ?>" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">CELULAR:</label>
-										<input type="number" class="form-control" name="celUsuario" id="celUsuario"  value="<?php echo $obj->celUsuario ?>" required>
+										<input type="number" class="form-control" name="phone_user" id="phone_user"  value="<?php echo $obj->phone_user ?>" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">EMAIL:</label>
-										<input type="email" class="form-control" name="emailUsuario" id="emailUsuario" value="<?php  echo $obj->emailUsuario  ?>" required>
+										<input type="email" class="form-control" name="email_user" id="email_user" value="<?php  echo $obj->email_user  ?>" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">CONTRASEÑA:</label>
-										<input type="password" class="form-control" name="contraUsuario" id="contraUsuario" value="<?php echo $obj->contraUsuario ?>" required>
+										<input type="password" class="form-control" name="password_user" id="password_user" required>
 									</div>
 								</div>
 
-								<input type="hidden" name="fechaCUsuario" id="fechaCUsuario">
-
-								<input type="hidden" name="fechaAUsuario" id="fechaAUsuario" value="<?php echo $fecha ?>">
+								<input type="hidden" name="create_user" id="create_user">
+								<input type="hidden" name="update_user" id="update_user" value="<?php echo $fecha ?>">
 
 							</div>
 						</div>
