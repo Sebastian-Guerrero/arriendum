@@ -37,7 +37,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
             <ul>
                 <li><button class="ba" type="button"><a href="product.php">INMUEBLES</a></button></li>
                 <li><button class="bb" type="button"><a href="pub-inm.php">PUBLICAR INMUEBLE</a></button></li>
-                <li><a href="profile.php"><i class="fas fa-user-circle"></i></a></li>
+                <li><a href="profile.php?id_user=<?php echo $_SESSION['id_user']; ?>"><i class="fas fa-user-circle"></i></a></li>
                 <li><a href="../../connect/logout.php" class="btn-exit-system"><i class="fas fa-power-off"></i></a></li>
             </ul>
         </nav>
