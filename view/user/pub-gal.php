@@ -13,7 +13,7 @@ if($_POST)
 session_start();
 $id_user = $_SESSION['id_user'];
 $name_user = $_SESSION['name_user'];
-$lastname_user = $_SESSION['lastname_user'];
+
 
 if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
   header("Location: ../guest/login.php");

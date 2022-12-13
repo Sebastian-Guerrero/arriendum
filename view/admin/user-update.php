@@ -48,7 +48,10 @@ $obj->lastname_user = $arreglo[5];
 $obj->phone_user = $arreglo[6];
 $obj->email_user = $arreglo[7];
 $obj->password_user = $arreglo[8];
+<<<<<<< HEAD
 $obj->create_user = $arreglo[9];
+=======
+>>>>>>> 40521a0a68616cf85771e5d17214e73c8eefce6e
 $obj->update_user = $arreglo[10];
 
 $query1="SELECT * FROM rol_user";
@@ -63,6 +66,11 @@ $query5="SELECT * FROM state_user";
 $resultado5 = mysqli_query($c, $query5);
 $arreglo5 = mysqli_fetch_array($resultado5); 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 40521a0a68616cf85771e5d17214e73c8eefce6e
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -430,8 +438,6 @@ $arreglo5 = mysqli_fetch_array($resultado5);
 													}
 												
 												 ?>
-											
-
 											</option>
 											
 										</select>

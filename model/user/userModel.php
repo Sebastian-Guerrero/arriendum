@@ -43,23 +43,19 @@
 
                     function modificar(){$c = new Conexion();
                                           $cone = $c->conectando();
-                                          $sql = "select * from usuario where num_id_usuario ='$this->numeroDocumento'";
+                                          $sql = "select * from user where id_user ='$this->id_user'";
                                           $r = mysqli_query($cone,$sql);
                                           if(!mysqli_fetch_array($r)){
                                          echo "<script> alert('El Usuario no Existe en el Sistema')</script>";
                                          }else{
-                                           $encriptarpassword = password_hash($this->contraUsuario, PASSWORD_DEFAULT);
-                                           $id = "update usuario set
-                                                                  num_id_usuario = '$this->numeroDocumento',
-                                                                  rol_usuario = '$this->rolUsuario',
-                                                                  id_tipo_doc = '$this->tipoDocumento',
-                                                                  nombre_usuario = '$this->nombreUsuario',
-                                                                  apellido_usuario = '$this->apellidoUsuario',
-                                                                  celular_usuario = '$this->celUsuario',
-                                                                  email_usuario = '$this->emailUsuario',
-                                                                  contrasena_usuario = '$encriptarpassword',
-                                                                  fechaA_usuario = '$this->fechaAUsuario' 
-                                                                  where num_id_usuario = '$this->numeroDocumento'";
+                                           $id = "update user set
+                                                                  type_document = '$this->type_document',
+                                                                  name_user = '$this->name_user',
+                                                                  lastname_user = '$this->lastname_user',
+                                                                  phone_user = '$this->phone_user',
+                                                                  email_user = '$this->email_user',
+                                                                  update_user = '$this->update_user' 
+                                                                  where id_user = '$this->id_user'";
                                             echo $id;
                                             mysqli_query($cone,$id);
                                             echo "<script> alert('El Usuario fue Modificado ')</script>";

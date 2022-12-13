@@ -41,6 +41,7 @@ $result = mysqli_query($c, $query);
             <ul>
                 <li><button class="ba" type="button"><a href="index-user.php">INICIO</a></button></li>
                 <li><button class="bb" type="button"><a href="pub-inm.php">PUBLICAR INMUEBLE</a></button></li>
+                <li><button class="ba" type="button"><a href="myperfile.php?id_user=<?php echo $_SESSION['id_user']; ?>">MI PERFIL</a></button></li>
                 <li><a href="../../connect/logout.php" class="btn-exit-system"><i class="fas fa-power-off"></i></a></li>
             </ul>
         </nav>

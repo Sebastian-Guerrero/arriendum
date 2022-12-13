@@ -29,7 +29,11 @@ if(isset($_POST['guarda'])){
    
 }
 
-if(isset($_POST['modifica'])){
+if(isset($_POST['modifica_usuario'])){
+    $obj->modificar();
+}
+
+if(isset($_POST['modifica_usuario'])){
     $obj->modificar();
 }
 
