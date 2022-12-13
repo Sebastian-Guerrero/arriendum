@@ -70,10 +70,10 @@ $fecha = Date('Y-m-d H:i:s');
 <body>
     <nav>
         <img class="logo" src="../../assets/icons/logo.png">
-        <h1><?php echo "$name_user $lastname_user";?><h1>
         <ul>
             <li><button class="ba" type="button"><a href="index-user.php">INICIO</a></button></li>
             <li><button class="ba" type="button"><a href="product.php">INMUEBLES</a></button></li>
+            <li><a href="profile.php"><i class="fas fa-user-circle"></i></a></li>
             <li><a href="../../connect/logout.php" class="btn-exit-system"><i class="fas fa-power-off"></i></a></li>
         </ul>
     </nav>
