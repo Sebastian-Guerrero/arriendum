@@ -24,7 +24,7 @@
 
                     function modificar(){$c = new Conexion();
                                           $cone = $c->conectando();
-                                          $sql = "SELECT * FROM location_property WHERE name_location_property ='$this->name_location_property'";
+                                          $sql = "SELECT * FROM location_property WHERE id_location_property ='$this->id_location_property'";
                                           $r = mysqli_query($cone,$sql);
                                           if(!mysqli_fetch_array($r))
                                          {
@@ -34,7 +34,7 @@
                                             {
                                             $id = "UPDATE location_property SET
                                                    name_location_property = '$this->name_location_property'
-                                                   WHERE id_localidad_inm = '$this->id_Location_property'";
+                                                   WHERE id_location_property = '$this->id_location_property'";
                                             mysqli_query($cone,$id);
                                             echo "<script> alert('La Localidad fue Modificada')</script>";				
                                                
@@ -45,7 +45,7 @@
                     function eliminar(){
                                        $c = new Conexion();
                                        $cone = $c->conectando();
-                                       $sql= "delete from localidad_inmueble where id_localidad_inm ='$this->idLocalidad'";
+                                       $sql= "delete from location_property where id_location_property ='$this->id_location_property'";
                                        if(mysqli_query($cone,$sql))
                                        {
                                        echo "<script> alert('El resultado fue Eliminado del Sistema de Información');</script>";

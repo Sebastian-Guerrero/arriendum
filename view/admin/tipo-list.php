@@ -1,6 +1,6 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/tipoControlador.php");
+include("../../controller/admin/typeController.php");
 
 session_start();
 $name_user = $_SESSION['name_user'];
@@ -10,16 +10,16 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 	header("Location: ../guest/login.php");
 }
 
-$obj = new Tipo();
+$obj = new Type();
 if($_POST){
 
-	$obj->idTipo = $_POST['idTipo'];
+	$obj->id_type_property = $_POST['id_type_property'];
 
 }
 
 $conet = new Conexion();
 $c = $conet->conectando();
-$query="select count(*) as totalRegistros from tipo_inmueble";
+$query="select count(*) as totalRegistros from type_property";
 $resultado = mysqli_query($c, $query);
 $arreglo = mysqli_fetch_array($resultado); 
 $totalRegistros = $arreglo['totalRegistros'];
@@ -39,11 +39,11 @@ $totalPaginas=ceil($totalRegistros/$maximoRegistros);
 
 if(isset($_POST['search'])){
     echo "llegue";
-    $query2="select * from tipo_inmueble where nombreTipo like '%$obj->nombreTipo%' limit $desde,$maximoRegistros";
+    $query2="select * from type_property where id_type_property like '%$obj->id_type_property%' limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }else{
-    $query2="select * from tipo_inmueble limit $desde,$maximoRegistros ";
+    $query2="select * from type_property limit $desde,$maximoRegistros ";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }
@@ -92,9 +92,9 @@ if(isset($_POST['search'])){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
-						Administrador
+						<?php echo "$name_user $lastname_user";?>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
@@ -264,13 +264,10 @@ if(isset($_POST['search'])){
 		</section>
 
 		<!-- Page content -->
-<section class="full-box page-content">
+		<section class="full-box page-content">
 			<nav class="full-box navbar-info">
 				<a href="#" class="float-left show-nav-lateral">
 					<i class="fas fa-exchange-alt"></i>
-				</a>
-				<a href="../index.php">
-					<i class="fas fa-pager"></i>
 				</a>
 				<a href="#" class="btn-exit-system">
 					<i class="fas fa-power-off"></i>
@@ -329,14 +326,18 @@ if(isset($_POST['search'])){
 								<td><?php echo $arreglo2[0] ?></td>
 								<td><?php echo $arreglo2[1] ?></td>
 								<td>
-									<a href="tipo-update.php" class="btn btn-success">
-	  									<i class="fas fa-sync-alt"></i>	
+									<a  class="btn btn-success" href="<?php 
+										if($arreglo2[0]<>''){
+											echo "tipo-update.php?key=".urlencode($arreglo2[0]) ;
+										}
+																		?>" >
+										<i class="fas fa-sync-alt"></i>	
 									</a>
 								</td>
 								<td>
 									<form action="" name="eliminarTipo" method="POST">
-										<input type="hidden" name="idTipo" value="<?php echo $arreglo2[0] ?>"></input>
-										<input type="hidden" name="nombreTipo"></input>
+										<input type="hidden" name="id_type_property" value="<?php echo $arreglo2[0] ?>"></input>
+										<input type="hidden" name="name_type_property"></input>
 										<button type="submit" name="elimina" class="btn btn-warning">
 		  									<i class="far fa-trash-alt"></i>
 										</button>

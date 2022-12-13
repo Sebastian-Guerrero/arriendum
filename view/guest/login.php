@@ -29,7 +29,7 @@
 
       <form class="login-form" action="../../connect/validate.php" method="POST">
 
-        <p class="name">Iniciar Sesion</p>
+        <p class="name">Inicia Sesion</p>
 
         <hr>
 
@@ -42,8 +42,6 @@
         <div>
         <br>
         <button type="submit">Ingresar</button>
-        <p class="message">No te has registrado? <a href="singin.php">Crear Cuenta</a></p>
-        <p class="message">Has olvidado tu contraseña? <a href="recuperarContraseña.php">Recuperar contraseña</a></p>
         </br>
  
       </form>
