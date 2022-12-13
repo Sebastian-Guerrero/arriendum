@@ -330,15 +330,17 @@ $arreglo5 = mysqli_fetch_array($resultado5);
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
+										<label  class="bmd-label-floating">ESTADO DEL USUARIO:</label>
 										<select class="form-control" name="state_user" id="state_user" required>
-											<option>
 												 <?php
 												 	$conet = new Conexion();
 													 $c = $conet->conectando();
 													 $query6="SELECT * FROM state_user WHERE id_state_user = '$obj->state_user'";
 													 $resultado6 = mysqli_query($c, $query6);
 													 $arreglo6 = mysqli_fetch_row($resultado6); 
-													 echo $arreglo5[1];
+													 ?>
+														<option value="<?php echo $arreglo[1]; ?>"><?php echo $arreglo6[1]; ?></option>
+													<?php
 													do{
 														$id = $arreglo5['id_state_user'];
 														$nombre=$arreglo5['name_state_user'];
@@ -357,24 +359,23 @@ $arreglo5 = mysqli_fetch_array($resultado5);
 													}
 												
 												 ?>
-										
-										</option>
-											
 										</select>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
+										<label  class="bmd-label-floating">ROL DE USUARIO:</label>
 										<select class="form-control" name="rol_user" id="rol_user" required>
-											<option>
 												 <?php
 												 	$conet = new Conexion();
 													 $c = $conet->conectando();
 													 $query2="SELECT * FROM rol_user WHERE id_rol_user = '$obj->rol_user'";
 													 $resultado2 = mysqli_query($c, $query2);
 													 $arreglo2 = mysqli_fetch_row($resultado2); 
-													 echo $arreglo2[1];
+													 ?>
+														<option value="<?php echo $arreglo[2]; ?>"><?php echo $arreglo2[1]; ?></option>
+													<?php
 													do{
 														$id = $arreglo1['id_rol_user'];
 														$nombre=$arreglo1['name_rol_user'];
@@ -392,16 +393,14 @@ $arreglo5 = mysqli_fetch_array($resultado5);
 														$arreglo1 = mysqli_fetch_array($resultado1);
 													}
 												
-												 ?>
-										
-										</option>
-											
+												 ?>	
 										</select>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
+										<label  class="bmd-label-floating">TIPO DE DOCUMENTO:</label>
 										<select class="form-control" name="type_document" id="type_document" required>
 											<?php
 												 	$conet = new Conexion();

@@ -33,17 +33,17 @@ if($_POST)
 $conet = new Conexion();
 $c = $conet->conectando();
 
-$query1="SELECT * FROM type_property";
-$resultado1 = mysqli_query($c, $query1);
-$arreglo1 = mysqli_fetch_array($resultado1); 
+$query ="SELECT * FROM type_property";
+$result = mysqli_query($c, $query);
+$fila = mysqli_fetch_array($result);
 
-$query3="SELECT * FROM option_property";
-$resultado3 = mysqli_query($c, $query3);
-$arreglo3 = mysqli_fetch_array($resultado3); 
+$query1 ="SELECT * FROM option_property";
+$result1 = mysqli_query($c, $query1);
+$fila1 = mysqli_fetch_array($result1);
 
-$query5="SELECT * FROM location_property";
-$resultado5 = mysqli_query($c, $query5);
-$arreglo5 = mysqli_fetch_array($resultado5);
+$query2 ="SELECT * FROM location_property";
+$result2 = mysqli_query($c, $query2);
+$fila2 = mysqli_fetch_array($result2);
 
 date_default_timezone_set('America/Bogota');
 $fecha = Date('Y-m-d H:i:s');
@@ -307,32 +307,32 @@ $fecha = Date('Y-m-d H:i:s');
 						<div class="container-fluid">
 							<div class="row">
 
-								<input type="hidden" name="id_inm" id="id_inm">
+								<input type="hidden" name="id_property" id="id_property">
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label class="bmd-label-floating">NUMERO DE IDENTIFICACION:</label>
-										<input type="number" class="form-control" name="id_usuario" id="id_usuario" required>
+										<label class="bmd-label-floating">NUMERO DE IDENTIFICACION DEL USUARIO:</label>
+										<input type="number" class="form-control" name="id_user" id="id_user" required>
 									</div>
 								</div>
 							
-								<input type="hidden" name="estado_inm" id="estado_inm" value="1">
+								<input type="hidden" name="state_property" id="state_property" value="1">
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label class="bmd-label-floating">DIRRECION:</label>
-										<input type="text" class="form-control" name="direccion_inm" id="direccion_inm" required>
+										<label class="bmd-label-floating">DIRRECION DEL INMUEBLE:</label>
+										<input type="text" class="form-control" name="direction_property" id="direction_property" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<select class="form-control" name="rol_user" id="rol_user" required>
-											<option selected disabled>SELECCIONE ROL DEl USUARIO:</option>
+										<select class="form-control" name="type_property" id="type_property" required>
+											<option selected disabled>TIPO DEL INMUEBLE:</option>
 												<?php
 													do {
-													$id = $fila['id_rol_user'];
-													$name = $fila['name_rol_user'];
+													$id = $fila['id_type_property'];
+													$name = $fila['name_type_property'];
 
 													if ($id==0) {
 														echo "<option>No hay registros</option>";
@@ -351,25 +351,30 @@ $fecha = Date('Y-m-d H:i:s');
 										</select>
 									</div>
 								</div>
-					
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										<select class="form-control" name="tipo_inm" id="tipo_inm" required>
-											<option selected disabled>TIPO INMUEBLE:</option>
-											<option value="1">Apartamento</option>
-											<option value="2">Casa</option>
-											<option value="3">Finca</option>
-											<option value="4">Lote</option>
-										</select>
-									</div>
-								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<select class="form-control" name="opcion_inm" id="opcion_inm" required>
-											<option selected disabled>OPCION INMUEBLE:</option>
-											<option value="1">Arrendar</option>
-											<option value="2">Vender</option>
+										<select class="form-control" name="option_property" id="option_property" required>
+										<option selected disabled>INMUEBLE DESTINADO A:</option>
+											<?php
+												do {
+												$id1 = $fila1['id_option_property'];
+												$name1 = $fila1['name_option_property'];
+
+												if ($id1==0) {
+													echo "<option>No hay registros</option>";
+												}else {
+													echo "<option value=$id1>$name1</option>";
+												}
+
+												}while($fila1 = mysqli_fetch_array($result1));			 	
+													$row1 = mysqli_num_rows($result1);
+													$rows1 = 0;
+												if($rows1>0){
+													mysqli_data_seek($result1, 0);
+													$fila1 = mysqli_fetch_array($result1);
+												}
+											?>
 										</select>
 									</div>
 								</div>
@@ -377,28 +382,27 @@ $fecha = Date('Y-m-d H:i:s');
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label  class="bmd-label-floating">LOCALIDAD:</label>
-										<select class="form-control" name="localidad_inm" id="localidad_inm" required>
-											<option selected disabled>Seleccione la localidad:</option>
-											<option value="1">Usaquén</option>
-											<option value="2">Chapinero</option>
-											<option value="3">Santa Fe</option>
-											<option value="4">San Cristóbal</option>
-											<option value="5">Usme</option>
-											<option value="6">Tunjuelito</option>
-											<option value="7">Bosa</option>
-											<option value="8">Kennedy</option>
-											<option value="9">Fontibón</option>
-											<option value="10">Engativá</option>
-											<option value="11">Suba</option>
-											<option value="12">Barrios Unidos</option>
-											<option value="13">Teusaquillo</option>
-											<option value="14">Los Mártires</option>
-											<option value="15">Antonio Nariño</option>
-											<option value="16">Puente Aranda</option>
-											<option value="17">Candelaria</option>
-											<option value="18">Rafael Uribe Uribe</option>
-											<option value="19">Ciudad Bolívar</option>
-											<option value="20">Sumapaz</option>
+										<select class="form-control" name="location_property" id="location_property" required>
+										<option selected disabled>LOCALIDAD DEL INMUEBLE:</option>
+										<?php
+											do {
+											$id2 = $fila2['id_location_property'];
+											$name2 = $fila2['name_location_property'];
+
+											if ($id2==0) {
+												echo "<option>No hay registros</option>";
+											}else {
+												echo "<option value=$id2>$name2</option>";
+											}
+
+											}while($fila2 = mysqli_fetch_array($result2));			 	
+												$row2 = mysqli_num_rows($result2);
+												$rows2 = 0;
+											if($rows2>0){
+												mysqli_data_seek($result2, 0);
+												$fila2 = mysqli_fetch_array($result2);
+											}
+										?>
 										</select>
 									</div>
 								</div>
@@ -406,34 +410,34 @@ $fecha = Date('Y-m-d H:i:s');
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label  class="bmd-label-floating">BARRIO:</label>
-										<input type="text" class="form-control" name="barrio_inm" id="barrio_inm" required>
+										<input type="text" class="form-control" name="neighborhood_property" id="neighborhood_property" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">INFORMACION TECNICA:</label>
-										<input type="text" class="form-control" name="inf_inm" id="inf_inm" required>
+										<input type="text" class="form-control" name="information_property" id="information_property" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label  class="bmd-label-floating">DESCRIPCION:</label>
-										<input type="text" class="form-control" name="desc_inm" id="desc_inm" required>
+										<input type="text" class="form-control" name="description_property" id="description_property" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">PRECIO DE LA PROPIEDAD:</label>
-										<input type="number" class="form-control" name="precio_inm" id="precio_inm" required>
+										<input type="number" class="form-control" name="cost_property" id="cost_property" required>
 									</div>
 								</div>
 
-								<input type="hidden" name="fechaC_inm" id="fechaC_inm" value="<?php echo $fecha ?>">
+								<input type="hidden" name="create_property" id="create_property" value="<?php echo $fecha ?>">
 
-								<input type="hidden" name="fechaA_inm" id="fechaA_inm" value="<?php echo $fecha ?>">
+								<input type="hidden" name="update_property" id="update_property" value="<?php echo $fecha ?>">
 
 						</div> 
 					<p class="text-center" style="margin-top: 40px;">

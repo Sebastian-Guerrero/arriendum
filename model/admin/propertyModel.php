@@ -15,28 +15,34 @@
 					public $update_property;
 
 					function agregar(){
-						$c = new Conexion();
-						$cone = $c->conectando();
-						$insertar = "INSERT INTO property values('$this->id_property',
-																'$this->id_user',
-																'$this->state_property',
-																'$this->direction_property',
-																'$this->type_property',
-																'$this->option_property',
-																'$this->location_property',
-																'$this->neighborhood_property',
-																'$this->information_property',
-																'$this->description_property',
-																'$this->cost_property',
-																'$this->create_property',
-																'$this->update_property'
-																)";    
-						mysqli_query($cone,$insertar);	
-						header("location: pub-gal.php");
+						$conet = new Conexion();
+						$c = $conet->conectando();
+						$query = "SELECT * FROM user WHERE id_user = '$this->id_user'";
+						$ejecuta = mysqli_query($c, $query);
+						if(mysqli_fetch_array($ejecuta)){
+							$insertar = "INSERT INTO property values('$this->id_property',
+																	'$this->id_user',
+																	'$this->state_property',
+																	'$this->direction_property',
+																	'$this->type_property',
+																	'$this->option_property',
+																	'$this->location_property',
+																	'$this->neighborhood_property',
+																	'$this->information_property',
+																	'$this->description_property',
+																	'$this->cost_property',
+																	'$this->create_property',
+																	'$this->update_property'
+																	)";    
+						mysqli_query($c,$insertar);
+						echo "<script> alert('Inmueble creado');</script>";
+						}else{
+							echo "<script> alert('El Usuario no existe en el sistema')</script>";
 						}									
-				 				
+					}
 
-				function modificar(){$c = new Conexion();
+				function modificar(){
+								$c = new Conexion();
 								$cone = $c->conectando();
 								$sql = "SELECT * FROM property WHERE id_property ='$this->id_property'";
 								$r = mysqli_query($cone,$sql);

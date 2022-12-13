@@ -353,8 +353,12 @@ if(isset($_POST['search'])){
 								<td><?php echo $arreglo2[9];?></td>
 								<td><?php echo $arreglo2[10];?></td>
 								<td>
-									<a href="inm-update.php" class="btn btn-success">
-	  									<i class="fas fa-sync-alt"></i>	
+									<a  class="btn btn-success" href="<?php 
+										if($arreglo2[0]<>''){
+												echo "inm-update.php?key=".urlencode($arreglo2[0]) ;
+											}
+										?>" >
+										<i class="fas fa-sync-alt"></i>	
 									</a>
 								</td>
 								<td>

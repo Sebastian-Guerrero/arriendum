@@ -304,7 +304,7 @@ if(isset($_POST['search'])){
 						<div class="row justify-content-md-center">
 							<div class="col-12 col-md-6">
 								<div class="form-group">
-									<label class="bmd-label-floating">INGRESA NUMERO DE IDENTIFICACION</label>
+									<label class="bmd-label-floating">INGRESA NUMERO DE IDENTIFICACION:</label>
 									<input class="form-control me-2" type="search" name="id_user" aria-label="Search">
 								</div>
 							</div>
@@ -323,7 +323,7 @@ if(isset($_POST['search'])){
 					<table class="table table-dark table-sm">
 						<thead>
 							<tr class="text-center roboto-medium">
-								<th>CODIGO INMUEBLE</th>
+								<th>ID INMUEBLE</th>
 								<th>USUARIO</th>
 								<th>ESTADO</th>
 								<th>DIRECCION</th>

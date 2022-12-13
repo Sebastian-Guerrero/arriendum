@@ -1,6 +1,6 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/estadoControlador.php");
+include("../../controller/admin/statePController.php");
 
 session_start();
 $name_user = $_SESSION['name_user'];
@@ -10,11 +10,11 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 	header("Location: ../guest/login.php");
 }
 
-$obj = new Estado();
+$obj = new StateP();
 if($_POST){
 
-	$obj->idEstado = $_POST['idEstado'];
-    $obj->nombreEstado = $_POST['nombreEstado'];
+	$obj->id_state_property = $_POST['id_state_property'];
+	$obj->name_state_property = $_POST['name_state_property'];
 
 }
 ?>
@@ -61,9 +61,9 @@ if($_POST){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
-						Administrador
+						<?php echo "$name_user $lastname_user";?>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
@@ -275,20 +275,16 @@ if($_POST){
 
 						<div class="container-fluid">
 							<div class="row">
-							<div class="col-12 col-md-6">
-									<div class="form-group">
-										<label class="bmd-label-floating">CODIGO DEL ESTADO INMUEBLE</label>
-										<input type="number" class="form-control" name="idEstado" id="idEstado" required>
-									</div>
-								</div>
 
+							<input type="hidden" name="id_state_property" id="id_state_property">
 	
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label class="bmd-label-floating">NOMBRE PARA ESTADO INMUEBLE</label>
-										<input type="text" class="form-control" name="nombreEstado" id="nombreEstado" required>
+										<label class="bmd-label-floating">NOMBRE PARA ESTADO INMUEBLE:</label>
+										<input type="text" class="form-control" name="name_state_property" id="name_state_property" required>
 									</div>
 								</div>
+
                 
 							</div>
 						</div> 

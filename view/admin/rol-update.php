@@ -287,7 +287,10 @@ $obj->name_rol_user = $arreglo[1];
 						<div class="container-fluid">
 							<div class="row">
 
-								<input type="hidden" name="id_rol_user" id="id_rol_user" value ="<?php echo $obj->id_rol_user ?>">
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label class="bmd-label-floating">USUARIO:</label>
+										<input type="hidden" name="id_rol_user" id="id_rol_user" value ="<?php echo $obj->id_rol_user ?>">
 
 
 								<div class="col-12 col-md-6">

@@ -1,6 +1,6 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/estadoControlador.php");
+include("../../controller/admin/statePController.php");
 
 session_start();
 $name_user = $_SESSION['name_user'];
@@ -10,16 +10,16 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 	header("Location: ../guest/login.php");
 }
 
-$obj = new Estado();
+$obj = new StateP();
 if($_POST){
 
-	$obj->idEstado = $_POST['idEstado'];
+	$obj->id_state_property = $_POST['id_state_property'];
 
 }
 
 $conet = new Conexion();
 $c = $conet->conectando();
-$query="select count(*) as totalRegistros from estado_inmueble";
+$query="select count(*) as totalRegistros from state_property";
 $resultado = mysqli_query($c, $query);
 $arreglo = mysqli_fetch_array($resultado); 
 $totalRegistros = $arreglo['totalRegistros'];
@@ -38,12 +38,11 @@ $totalPaginas=ceil($totalRegistros/$maximoRegistros);
 
 
 if(isset($_POST['search'])){
-    echo "llegue";
-    $query2="select * from estado_inmueble where nombreEstado like '%$obj->nombreEstado%' limit $desde,$maximoRegistros";
+    $query2="select * from state_property where name_state_property like '%$obj->name_state_property%' limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }else{
-    $query2="select * from estado_inmueble limit $desde,$maximoRegistros ";
+    $query2="select * from state_property limit $desde,$maximoRegistros ";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }
@@ -92,9 +91,9 @@ if(isset($_POST['search'])){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
-						Administrador
+						<?php echo "$name_user $lastname_user";?>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
@@ -331,14 +330,18 @@ if(isset($_POST['search'])){
 								<td><?php echo $arreglo2[0] ?></td>
 								<td><?php echo $arreglo2[1] ?></td>
 								<td>
-									<a href="est-update.php" class="btn btn-success">
-	  									<i class="fas fa-sync-alt"></i>	
+								<a  class="btn btn-success" href="<?php 
+										if($arreglo2[0]<>''){
+											echo "est-update.php?key=".urlencode($arreglo2[0]) ;
+										}
+																		?>" >
+										<i class="fas fa-sync-alt"></i>	
 									</a>
 								</td>
 								<td>
 									<form action="" name="eliminarDocumento" method="POST">
-										<input type="hidden" name="idEstado" value="<?php echo $arreglo2[0] ?>"></input>
-										<input type="hidden" name="nombreEstado"></input>
+										<input type="hidden" name="id_state_property" value="<?php echo $arreglo2[0] ?>"></input>
+										<input type="hidden" name="name_state_property"></input>
 										<button type="submit" name="elimina" class="btn btn-warning">
 		  									<i class="far fa-trash-alt"></i>
 										</button>

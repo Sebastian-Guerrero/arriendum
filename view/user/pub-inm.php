@@ -118,7 +118,7 @@ $fecha = Date('Y-m-d H:i:s');
         </div>
 
         <div class="select" >
-          <select name="option_property" required="">
+          <select name="option_property" required>
             <option selected disabled>INMUEBLE DESTINADO A:</option>
             <?php
                 do {
