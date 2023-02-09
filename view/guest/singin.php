@@ -1,9 +1,9 @@
 <?php
 
 include("../../connect/conectar.php");
-include("../../controlador/user/usuarioControlador.php");
+include("../../controller/user/userController.php");
 
-$obj = new Usuario();
+$obj = new User();
 if($_POST)
 {
 
@@ -54,7 +54,7 @@ $fecha = Date('Y-m-d H:i:s');
         <ul>
           <li><button class="ba" type="button"><a href="../../index.php">INICIO</a></button></li>
           <li><button class="ba" type="button"><a href="product.php">INMUEBLES</button></li>
-          <li><button class="ba" type="button"><a href="login.php">INGRESAR</a></button></li>
+          <li><button class="ba" type="button"><a href="login.php">INGRESA</a></button></li>
         </ul>
     </nav>
 
@@ -62,12 +62,12 @@ $fecha = Date('Y-m-d H:i:s');
 
     <div class="form">
 
-      <form class="register-form" action="" method="POST">
+      <form class="register-form" action="" autocomplete="off" method="POST">
         <p class="name">Registro</p>
         <hr>
         <div class="select">
-          <select name="type_document">
-            <option selected disabled>Seleciona Tipo Documento:</option>
+          <select name="type_document" required>
+          <option value="1" selected disabled>Selecciona Tipo de Documento:
             <?php
                 do {
                   $id = $fila['id_type_document'];
@@ -87,23 +87,22 @@ $fecha = Date('Y-m-d H:i:s');
                     $fila = mysqli_fetch_array($result);
                 }
               ?>
+              </option>
           </select>
         </div>
         <input type="hidden" name="rol_user" value="2">
         <input type="hidden" name="state_user" value="1">
         <br>                                                     
-        <input type="number" placeholder="Numero Identificacion" name="id_user" required/>                                      
-        <input type="text" placeholder="Nombre" name="name_user" required/>
-        <input type="text" placeholder="Apellido" name="lastname_user" required/>
-        <input type="number" placeholder="Celular" name="phone_user" required/>
-        <input type="email" placeholder="Correo Electronico" name="email_user" required/>
-        <input type="password" placeholder="Contraseña" name="password_user" required/>
-        <input type="password" placeholder="Verifica tu Contraseña" name="verify_password" required/>
+        <input type="number" placeholder="Numero Identificacion:" name="id_user" required/>                                      
+        <input type="text" placeholder="Nombre:" name="name_user" required/>
+        <input type="text" placeholder="Apellido:" name="lastname_user" required/>
+        <input type="number" placeholder="Celular:" name="phone_user" required/>
+        <input type="email" placeholder="Email:" name="email_user" required/>
+        <input type="password" placeholder="Contraseña:" name="password_user" required/>
+        <input type="password" placeholder="Verifica tu Contraseña:" name="verify_password" required/>
         <input type="hidden" name="create_user" value="<?php echo $fecha;?>">
         <input type="hidden" name="update_user" value="<?php echo $fecha;?>">
         <button type="submit" name="guarda">Crear</button>
-        <p class="message">¡Ya tienes cuenta? <a href="login.php">Iniciar Sesion</a></p>
-        
       </form>
 
     </div>

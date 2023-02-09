@@ -29,39 +29,10 @@ $result = mysqli_query($c, $query);
             <img class="logo" src="../../assets/icons/logo.png">
             <ul>
                 <li><button class="ba" type="button"><a href="../../index.php">INICIO</a></button></li>
-                <li><button class="ba" type="button"><a href="login.php">INGRESAR</a></button></li>
-                <li><button class="bb" type="button"><a href="singin.php">PUBLICA TU INMUEBLE</a></button></li>
+                <li><button class="ba" type="button"><a href="login.php">INGRESA</a></button></li>
+                <li><button class="bb" type="button"><a href="singin.php">REGISTRATE</a></button></li>
             </ul>
         </nav>
-
-    <div class="filtro">
-        <div class="form">    
-        <p class="name">CATALOGO DE INMUEBLES</p>
-        <form>
-            <div class="select">
-                <select>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                </select>
-            </div>
-            <div class="select">
-                <select>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                </select>
-            </div>
-            <div class="select">
-                <select>
-                    <option></option>
-                    <option></option>
-                    <option></option>
-                </select>
-            </div>
-        <form>
-        </div>
-    </div>
 
     <section class="catalogo">
         <div class="productos">

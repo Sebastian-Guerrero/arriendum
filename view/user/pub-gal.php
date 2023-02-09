@@ -1,8 +1,8 @@
 <?php
   include("../../connect/conectar.php");
-  include("../../controlador/user/galeriaControlador.php");
+  include("../../controller/user/galeryController.php");
 
-$obj = new Galeria();
+$obj = new Galery();
 if($_POST)
 {
   $obj->id_galery_property = $_POST['id_galery_property'];
@@ -46,10 +46,6 @@ $fila = mysqli_fetch_array($result);
 <body>
     <nav>
         <img class="logo" src="../../assets/icons/logo.png">
-        <h1><?php echo "$name_user $lastname_user";?><h1>
-        <ul>
-    
-        </ul>
     </nav>
 
     <div class="login-page">
