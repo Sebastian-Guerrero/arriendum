@@ -119,7 +119,23 @@ $result = mysqli_query($c, $query);
 
 <br>
 
-                <a href="#">Mas Informacion...</a>
+                <div class="boton-modal">
+                    <label for="btn-modal">
+                        Abrir Modal
+                    </label>
+                </div>
+
+                <input type="checkbox" id="btn-modal">
+                    <div class="container-modal">
+                        <div class="content-modal">
+                            <h2>¡Bienvenido!</h2>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur, nostrum!</p>
+                            <div class="btn-cerrar">
+                                <label for="btn-modal">Cerrar</label>
+                            </div>
+                        </div>
+                        <label for="btn-modal" class="cerrar-modal"></label>
+                    </div>
 
             </div>
             
@@ -129,6 +145,27 @@ $result = mysqli_query($c, $query);
 
         </div>
     </section>
+
+    <!--Boton-->
+    <div class="boton-modal">
+        <label for="btn-modal">
+            Abrir Modal
+        </label>
+    </div>
+<!--Fin de Boton-->
+<!--Ventana Modal-->
+    <input type="checkbox" id="btn-modal">
+    <div class="container-modal">
+        <div class="content-modal">
+            <h2>¡Bienvenido!</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur, nostrum!</p>
+            <div class="btn-cerrar">
+                <label for="btn-modal">Cerrar</label>
+            </div>
+        </div>
+        <label for="btn-modal" class="cerrar-modal"></label>
+    </div>
+<!--Fin de Ventana Modal-->
 
     <footer>  
         <div class="contenedor-footer">
