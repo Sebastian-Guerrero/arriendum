@@ -63,8 +63,7 @@ if(isset($_POST['search'])){
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">   
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"/>
+ 
     <link rel="stylesheet" href="../../config/css/estilos.css"/>
     <link rel="stylesheet" href="../../config/css/productos.css"/>
     <link rel="stylesheet" href="../../config/a/css/all.css">
@@ -167,6 +166,7 @@ if(isset($_POST['search'])){
                                             <?php
 
                                             while ($fila = mysqli_fetch_array($result)) {
+                                                $id = $fila['id_user'];
                                                 $img = $fila['id_property'];
                                                 $estado = $fila['state_property'];
                                                 $tipo = $fila['type_property'];
@@ -196,7 +196,7 @@ if(isset($_POST['search'])){
 
                                                     <h4><?php echo $fila1['name_state_property']; ?></h4>
 
-                                                    <br>
+                                                  <br>
 
                                                     <?php
 
@@ -227,17 +227,64 @@ if(isset($_POST['search'])){
                                                     ?>
 
                                                     <p>Localidad: <?php echo $fila4['name_location_property']; ?></p>
+                                                    
+                                                    <p>Barrio: <?php echo $fila['neighborhood_property']; ?></p>
 
-                                        <br>
+                                                    <p>Dirreccion: <?php echo $fila['direction_property']; ?></p>
 
-                                                    <a href="../../view/user/pepe.php">Mas Informacion...</a>
+                                                    <p>Precio: <?php echo $fila['cost_property']; ?></p>
+
+                                                    <div class="boton-modal">
+                                                        <label for="btn-modal">
+                                                            Mas Informacion...
+                                                        </label>
+                                                    </div>
 
                                                 </div>
-                                                
                                             <?php
                                             }
                                             ?>
-                                                    
+                                                 <?php
+
+$query6 = "SELECT * FROM user WHERE id_user = $id";
+$result6 = mysqli_query($c, $query6);
+$fila6 = mysqli_fetch_array($result6); 
+
+?>
+
+<input type="checkbox" id="btn-modal">
+<div class="container-modal">
+<div class="content-modal">
+<h2>Inmueble: <?php echo $fila['id_property']; ?> - Dueño: <?php echo $fila6['name_user']; ?> <?php echo $fila6['lastname_user']; ?></h2>
+
+<div class="mi">
+<img src="<?php echo $fila5['name_galery_property']; ?>">
+</div>
+<h3>Datos del Dueño:</h3>
+
+<p class="pi"><b>Celular:</b> <?php echo $fila6['phone_user']; ?></p>
+
+<p class="pf"><b>Email:</b> <?php echo $fila6['email_user']; ?></p>
+
+<h3>Datos de la Propiedad:</h3>
+
+<p class="pi"><b>Localidad:</b> <?php echo $fila4['name_location_property']; ?></p>
+
+<p><b>Barrio:</b> <?php echo $fila['neighborhood_property']; ?></p>
+
+<p><b>Dirreccion:</b> <?php echo $fila['direction_property']; ?></p>
+
+<p><b>Informacion:</b> <?php echo $fila['information_property']; ?></p>
+
+<p><b>Descripcion:</b> <?php echo $fila['description_property']; ?></p>
+
+<p class="pf"><b>Precio:</b> <?php echo $fila['cost_property']; ?></p>
+<div class="btn-cerrar">
+    <label for="btn-modal">Cerrar</label>
+</div>
+</div>
+<label for="btn-modal" class="cerrar-modal"></label>
+</div>    
                                                     <?php
                                                     }
                                                     ?>   
@@ -277,7 +324,8 @@ if(isset($_POST['search'])){
                             }
                             ?>		
 		</section>
-    <footer style="margin-top: 80px;">  
+
+ <footer>  
         <div class="contenedor-footer">
             <div class="content-foo">
                 <h4>Phone</h4>
