@@ -19,7 +19,9 @@
       <img class="logo" src="../../assets/icons/logo.png">
         <ul>
           <li><button class="ba" type="button"><a href="../../index.php">INICIO</a></button></li>
+
           <li><button class="ba" type="button"><a href="product.php">INMUEBLES</button></li>
+
           <li><button class="bb" type="button"><a href="singin.php">REGISTRATE</a></button></li>
         </ul>
     </nav>
