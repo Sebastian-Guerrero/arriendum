@@ -10,12 +10,13 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 }
 
 if($_POST){
-	$obj->nombreEstado = $_POST['nombreEstado'];
+
+	$obj->id_state_property = $_POST['id_state_property'];
 }
 
 $conet = new Conexion();
 $c = $conet->conectando();
-$query="select count(*) as totalRegistros from estado_inmueble";
+$query="select count(*) as totalRegistros from state_property";
 $resultado = mysqli_query($c, $query);
 $arreglo = mysqli_fetch_array($resultado); 
 $totalRegistros = $arreglo['totalRegistros'];
@@ -35,11 +36,11 @@ $totalPaginas=ceil($totalRegistros/$maximoRegistros);
 
 if(isset($_POST['search'])){
     echo "llegue";
-    $query2="select * from estado_inmueble where nom_estado_inm like '%$obj->nombreEstado%' limit $desde,$maximoRegistros";
+    $query2="select * from state_property where id_state_property like '%$obj->id_state_property%' limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }else{
-    $query2="select * from estado_inmueble limit $desde,$maximoRegistros";
+    $query2="select * from state_property limit $desde,$maximoRegistros";
     $resultado2=mysqli_query($c,$query2);
     $arreglo2 = mysqli_fetch_array($resultado2);
 }
@@ -89,9 +90,9 @@ if(isset($_POST['search'])){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
-						Administrador
+						<?php echo "$name_user $lastname_user";?>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
@@ -261,13 +262,10 @@ if(isset($_POST['search'])){
 		</section>
 
 		<!-- Page content -->
-<section class="full-box page-content">
+		<section class="full-box page-content">
 			<nav class="full-box navbar-info">
 				<a href="#" class="float-left show-nav-lateral">
 					<i class="fas fa-exchange-alt"></i>
-				</a>
-				<a href="../index.php">
-					<i class="fas fa-pager"></i>
 				</a>
 				<a href="#" class="btn-exit-system">
 					<i class="fas fa-power-off"></i>
@@ -305,8 +303,8 @@ if(isset($_POST['search'])){
 						<div class="row justify-content-md-center">
 							<div class="col-12 col-md-6">
 								<div class="form-group">
-									<label for="inputSearch" class="bmd-label-floating">INGRESA NOMBRE DE ESTADO INMUEBLE</label>
-									<input class="form-control me-2" type="search" name="nombreEstado" aria-label="Search">
+									<label for="inputSearch" class="bmd-label-floating">INGRESA CODIGO DE ESTADO INMUEBLE:</label>
+									<input class="form-control me-2" type="search" name="id_state_property" aria-label="Search">
 								</div>
 							</div>
 							<div class="col-12">

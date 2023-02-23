@@ -70,11 +70,10 @@ $fecha = Date('Y-m-d H:i:s');
 <body>
     <nav>
         <img class="logo" src="../../assets/icons/logo.png">
-        <h1><?php echo "$name_user $lastname_user";?><h1>
         <ul>
             <li><button class="ba" type="button"><a href="index-user.php">INICIO</a></button></li>
             <li><button class="ba" type="button"><a href="product.php">INMUEBLES</a></button></li>
-            <li><button class="ba" type="button"><a href="myperfile.php?id_user=<?php echo $_SESSION['id_user']; ?>">MI PERFIL</a></button></li>
+            <li><button class="ba" type="button"><a href="../../view/user/profile.php?id_user=<?php echo $_SESSION['id_user']; ?>">MI PERFIL </a></button></li>
             <li><a href="../../connect/logout.php" class="btn-exit-system"><i class="fas fa-power-off"></i></a></li>
         </ul>
     </nav>
@@ -119,7 +118,7 @@ $fecha = Date('Y-m-d H:i:s');
         </div>
 
         <div class="select" >
-          <select name="option_property" required="">
+          <select name="option_property" required>
             <option selected disabled>INMUEBLE DESTINADO A:</option>
             <?php
                 do {

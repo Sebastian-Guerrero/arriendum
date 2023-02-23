@@ -48,10 +48,7 @@ $obj->lastname_user = $arreglo[5];
 $obj->phone_user = $arreglo[6];
 $obj->email_user = $arreglo[7];
 $obj->password_user = $arreglo[8];
-<<<<<<< HEAD
 $obj->create_user = $arreglo[9];
-=======
->>>>>>> 40521a0a68616cf85771e5d17214e73c8eefce6e
 $obj->update_user = $arreglo[10];
 
 $query1="SELECT * FROM rol_user";
@@ -66,11 +63,6 @@ $query5="SELECT * FROM state_user";
 $resultado5 = mysqli_query($c, $query5);
 $arreglo5 = mysqli_fetch_array($resultado5); 
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 40521a0a68616cf85771e5d17214e73c8eefce6e
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -286,13 +278,10 @@ $arreglo5 = mysqli_fetch_array($resultado5);
 		</section>
 
 		<!-- Page content -->
-<section class="full-box page-content">
+		<section class="full-box page-content">
 			<nav class="full-box navbar-info">
 				<a href="#" class="float-left show-nav-lateral">
 					<i class="fas fa-exchange-alt"></i>
-				</a>
-				<a href="../../index.php">
-					<i class="fas fa-pager"></i>
 				</a>
 				<a href="#" class="btn-exit-system">
 					<i class="fas fa-power-off"></i>
@@ -332,21 +321,23 @@ $arreglo5 = mysqli_fetch_array($resultado5);
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">NUMERO DE IDENTIFICACION:</label>
-										<input type="number" class="form-control" name="id_user" id="id_user"  value="<?php echo $obj->id_user; ?>" required>
+										<input type="number" readonly class="form-control" name="id_user" id="id_user"  value="<?php echo $obj->id_user; ?>">
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
+										<label  class="bmd-label-floating">ESTADO DEL USUARIO:</label>
 										<select class="form-control" name="state_user" id="state_user" required>
-											<option>
 												 <?php
 												 	$conet = new Conexion();
 													 $c = $conet->conectando();
 													 $query6="SELECT * FROM state_user WHERE id_state_user = '$obj->state_user'";
 													 $resultado6 = mysqli_query($c, $query6);
 													 $arreglo6 = mysqli_fetch_row($resultado6); 
-													 echo $arreglo5[1];
+													 ?>
+														<option value="<?php echo $arreglo[1]; ?>"><?php echo $arreglo6[1]; ?></option>
+													<?php
 													do{
 														$id = $arreglo5['id_state_user'];
 														$nombre=$arreglo5['name_state_user'];
@@ -365,24 +356,23 @@ $arreglo5 = mysqli_fetch_array($resultado5);
 													}
 												
 												 ?>
-										
-										</option>
-											
 										</select>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
+										<label  class="bmd-label-floating">ROL DE USUARIO:</label>
 										<select class="form-control" name="rol_user" id="rol_user" required>
-											<option>
 												 <?php
 												 	$conet = new Conexion();
 													 $c = $conet->conectando();
 													 $query2="SELECT * FROM rol_user WHERE id_rol_user = '$obj->rol_user'";
 													 $resultado2 = mysqli_query($c, $query2);
 													 $arreglo2 = mysqli_fetch_row($resultado2); 
-													 echo $arreglo2[1];
+													 ?>
+														<option value="<?php echo $arreglo[2]; ?>"><?php echo $arreglo2[1]; ?></option>
+													<?php
 													do{
 														$id = $arreglo1['id_rol_user'];
 														$nombre=$arreglo1['name_rol_user'];
@@ -400,25 +390,26 @@ $arreglo5 = mysqli_fetch_array($resultado5);
 														$arreglo1 = mysqli_fetch_array($resultado1);
 													}
 												
-												 ?>
-										
-										</option>
-											
+												 ?>	
 										</select>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
+										<label  class="bmd-label-floating">TIPO DE DOCUMENTO:</label>
 										<select class="form-control" name="type_document" id="type_document" required>
-											<option>
 											<?php
 												 	$conet = new Conexion();
 													 $c = $conet->conectando();
 													 $query4="SELECT * FROM type_document WHERE id_type_document = '$obj->type_document'";
 													 $resultado4 = mysqli_query($c, $query4);
-													 $arreglo4 = mysqli_fetch_row($resultado4);	
-													 echo $arreglo4[1];					 
+													 $arreglo4 = mysqli_fetch_row($resultado4);
+
+													?>
+													<option value="<?php echo $arreglo[3]; ?>"><?php echo $arreglo4[1]; ?></option>
+													<?php
+
 													do{
 														$id = $arreglo3['id_type_document'];
 														$nombre=$arreglo3['name_type_document'];
@@ -427,7 +418,6 @@ $arreglo5 = mysqli_fetch_array($resultado5);
 														}else{
 															echo "<option value=$id>$nombre";
 														}
-
 
 													}while($arreglo3 = mysqli_fetch_array($resultado3));			 	
 													$row = mysqli_num_rows($resultado3);
@@ -438,8 +428,6 @@ $arreglo5 = mysqli_fetch_array($resultado5);
 													}
 												
 												 ?>
-											</option>
-											
 										</select>
 									</div>
 								</div>

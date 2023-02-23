@@ -206,3 +206,8 @@ select::-ms-expand {
   .container .info span .fa {
     color: #EF3B3A;
   }
+  .contra{
+    color: #00ADB5;
+    margin-top: -30px;
+    margin-left: -88px;
+    }

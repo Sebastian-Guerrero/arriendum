@@ -33,10 +33,6 @@ if(isset($_POST['modifica_usuario'])){
     $obj->modificar();
 }
 
-if(isset($_POST['modifica_usuario'])){
-    $obj->modificar();
-}
-
 if(isset($_POST['elimina'])){
     $obj->eliminar();
 }

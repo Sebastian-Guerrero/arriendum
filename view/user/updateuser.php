@@ -16,7 +16,6 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 date_default_timezone_set('America/Bogota');
 $fecha = Date('Y-m-d H:i:s');
 
-$id_user=$_GET['id_user'];
 $conet = new Conexion();
 $c = $conet->conectando();
 
@@ -36,13 +35,6 @@ $arreglo3 = mysqli_fetch_array($resultado3);
 $query5="SELECT * FROM state_user";
 $resultado5 = mysqli_query($c, $query5);
 $arreglo5 = mysqli_fetch_array($resultado5); 
-
-
-
-if($_SESSION['id_user'] != $id_user) {
-    echo "<script> alert('Usted esta intentando entrar a otra cuenta');window.location= '../../index.php' </script>";
-    session_destroy();
-}
 
 
 $obj->id_user = $arreglo[0];
@@ -83,7 +75,7 @@ $obj->update_user = $arreglo[10];
     <header>
         <nav>
             <img class="logo" src="../../assets/icons/logo.png">
-            <h1><?php echo "$name_user $lastname_user";?><h1>
+            <h1><?php echo "$name_user";?><h1>
             <ul>
                 <li><button class="ba" type="button"><a href="index-user.php">INICIO</a></button></li>
                 <li><button class="ba" type="button"><a href="product.php">INMUEBLES</a></button></li>
@@ -147,9 +139,6 @@ $obj->update_user = $arreglo[10];
                 <button type="submit" name="modifica_usuario">Actualizar perfil</button>
                 <br>
                 <br>
-                <a  href="cambiarcontra.php?id_user=<?php echo $_SESSION['id_user']; ?>">
-                <button type="button" >Cambiar contraseña</button>   
-                </a>
                 
         </form>
     </div>

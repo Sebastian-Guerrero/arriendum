@@ -1,6 +1,6 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/tipoControlador.php");
+include("../../controller/admin/typeController.php");
 
 session_start();
 $name_user = $_SESSION['name_user'];
@@ -10,13 +10,14 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 	header("Location: ../guest/login.php");
 }
 
-$obj = new Tipo();
+$obj = new Type();
 if($_POST){
 
-	$obj->idTipo = $_POST['idTipo'];
-    $obj->nombreTipo = $_POST['nombreTipo'];
+	$obj->id_type_property = $_POST['id_type_property'];
+    $obj->name_type_property = $_POST['name_type_property'];
 
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -61,9 +62,9 @@ if($_POST){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
-						Administrador
+						<?php echo "$name_user $lastname_user";?>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
@@ -232,13 +233,10 @@ if($_POST){
 		</section>
 
 		<!-- Page content -->
-<section class="full-box page-content">
+		<section class="full-box page-content">
 			<nav class="full-box navbar-info">
 				<a href="#" class="float-left show-nav-lateral">
 					<i class="fas fa-exchange-alt"></i>
-				</a>
-				<a href="../index.php">
-					<i class="fas fa-pager"></i>
 				</a>
 				<a href="#" class="btn-exit-system">
 					<i class="fas fa-power-off"></i>
@@ -274,18 +272,13 @@ if($_POST){
 
 						<div class="container-fluid">
 							<div class="row">
-							<div class="col-12 col-md-6">
-									<div class="form-group">
-										<label class="bmd-label-floating">CODIGO DE TIPO INMUEBLE</label>
-										<input type="number" class="form-control" name="idTipo" id="idTipo" required>
-									</div>
-								</div>
 
-	
+								<input type="hidden" name="id_type_property" id="id_type_property" required>
+
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">NOMBRE PARA TIPO INMUEBLE</label>
-										<input type="text" class="form-control" name="nombreTipo" id="nombreTipo" required>
+										<input type="text" class="form-control" name="name_type_property" id="name_type_property" required>
 									</div>
 								</div>
                 

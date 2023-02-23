@@ -13,7 +13,7 @@ if($_POST)
 session_start();
 $id_user = $_SESSION['id_user'];
 $name_user = $_SESSION['name_user'];
-
+$lastname_user = $_SESSION['lastname_user'];
 
 if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
   header("Location: ../guest/login.php");
@@ -46,10 +46,6 @@ $fila = mysqli_fetch_array($result);
 <body>
     <nav>
         <img class="logo" src="../../assets/icons/logo.png">
-        <h1><?php echo "$name_user $lastname_user";?><h1>
-        <ul>
-    
-        </ul>
     </nav>
 
     <div class="login-page">

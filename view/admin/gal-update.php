@@ -1,6 +1,6 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/galeriaControlador.php");
+include("../../controller/admin/galeryController.php");
 
 session_start();
 $name_user = $_SESSION['name_user'];
@@ -10,13 +10,26 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 	header("Location: ../guest/login.php");
 }
 
-$obj = new Galeria();
+$obj = new Galery();
 if($_POST){
 
-    $obj->idGaleria = $_POST['idGaleria'];
-	$obj->id_inm = $_POST['id_inm'];
-    $obj->nombreGaleria = $_FILES['nombreGaleria']['tmp_name'];
+    $obj->id_galery_property = $_POST['id_galery_property'];
+	$obj->id_property = $_POST['id_property'];
+	$obj->name_galery_property = $_FILES['name_galery_property']['tmp_name'];
+
 }
+
+$key=$_GET['key'];
+$conet = new Conexion();
+$c = $conet->conectando();
+
+$query="SELECT * FROM galery_property WHERE id_galery_property = '$key'";
+$resultado = mysqli_query($c, $query);
+$arreglo = mysqli_fetch_array($resultado); 
+
+$obj->id_galery_property = $arreglo[0];
+$obj->id_property = $arreglo[1];
+$obj->name_galery_property = $arreglo[2];
 
 ?>
 <!DOCTYPE html>
@@ -61,9 +74,9 @@ if($_POST){
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
-						Administrador
+						<?php echo "$name_user $lastname_user";?>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
@@ -233,13 +246,10 @@ if($_POST){
 		</section>
 
 		<!-- Page content -->
-<section class="full-box page-content">
+		<section class="full-box page-content">
 			<nav class="full-box navbar-info">
 				<a href="#" class="float-left show-nav-lateral">
 					<i class="fas fa-exchange-alt"></i>
-				</a>
-				<a href="../index.php">
-					<i class="fas fa-pager"></i>
 				</a>
 				<a href="#" class="btn-exit-system">
 					<i class="fas fa-power-off"></i>
@@ -271,25 +281,29 @@ if($_POST){
 			<div class="container-fluid">
 				<form class="form-neon" action="" method="POST" autocomplete="off" enctype="multipart/form-data">
 					<fieldset>
-						<legend class="text-center"><i class="fas fa-images"></i> &nbsp; Ingresa el Codigo de Galeria Inmueble</legend>
-						<p class="text-center">Para Actualizar</p>
+						<legend class="text-center"><i class="fas fa-images"></i> &nbsp; Actualizar Galeria Inmueble</legend>
 
 						<div class="container-fluid">
 							<div class="row">
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label class="bmd-label-floating">CODIGO DEL GALERIA INMUEBLE</label>
-										<input type="number" class="form-control" name="idGaleria" id="idGaleria">
+										<label class="bmd-label-floating">ID GALERIA INMUEBLE:</label>
+										<input type="number" readonly class="form-control" name="id_galery_property" id="id_galery_property" value ="<?php echo $obj->id_galery_property ?>">
 									</div>
 								</div>
 
-								<input type="hidden" name="id_inm" id="id_inm">
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label class="bmd-label-floating">ID INMUEBLE:</label>
+										<input type="number" readonly class="form-control" name="id_property" id="id_property" value ="<?php echo $obj->id_property ?>">
+									</div>
+								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label class="bmd-label-floating">IMAGEN INMUEBLE:</label>
-										<input type="file" class="form-control" name="nombreGaleria" id="nombreGaleria">
+										<label class="bmd-label-floating">NUEVA IMAGEN PARA EL INMUEBLE:</label>
+										<input type="file" class="form-control" name="name_galery_property" id="name_galery_property" value ="<?php echo $obj->name_galery_property ?>" required>
 									</div>
 								</div>
 

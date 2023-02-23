@@ -41,26 +41,26 @@
                                         }
                                        
 
-                    function modificar(){$c = new Conexion();
-                                          $cone = $c->conectando();
-                                          $sql = "select * from user where id_user ='$this->id_user'";
-                                          $r = mysqli_query($cone,$sql);
-                                          if(!mysqli_fetch_array($r)){
-                                         echo "<script> alert('El Usuario no Existe en el Sistema')</script>";
-                                         }else{
-                                           $id = "update user set
-                                                                  type_document = '$this->type_document',
-                                                                  name_user = '$this->name_user',
-                                                                  lastname_user = '$this->lastname_user',
-                                                                  phone_user = '$this->phone_user',
-                                                                  email_user = '$this->email_user',
-                                                                  update_user = '$this->update_user' 
-                                                                  where id_user = '$this->id_user'";
-                                            echo $id;
-                                            mysqli_query($cone,$id);
-                                            echo "<script> alert('El Usuario fue Modificado ')</script>";
-                                         }
-                                       }
+                  function modificar(){$c = new Conexion();
+                                        $cone = $c->conectando();
+                                        $sql = "select * from user where id_user ='$this->id_user'";
+                                        $r = mysqli_query($cone,$sql);
+                                        if(!mysqli_fetch_array($r)){
+                                        echo "<script> alert('El Usuario no Existe en el Sistema')</script>";
+                                        }else{
+                                          $id = "update user set
+                                                                type_document = '$this->type_document',
+                                                                name_user = '$this->name_user',
+                                                                lastname_user = '$this->lastname_user',
+                                                                phone_user = '$this->phone_user',
+                                                                email_user = '$this->email_user',
+                                                                update_user = '$this->update_user' 
+                                                                where id_user = '$this->id_user'";
+                                          echo $id;
+                                          mysqli_query($cone,$id);
+                                          echo "<script> alert('El Usuario fue Modificado ')</script>";
+                                        }
+                                      }
    
                     function eliminar(){
      

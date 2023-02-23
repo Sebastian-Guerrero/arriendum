@@ -244,13 +244,10 @@ $obj->name_rol_user = $arreglo[1];
 		</section>
 
 		<!-- Page content -->
-<section class="full-box page-content">
+		<section class="full-box page-content">
 			<nav class="full-box navbar-info">
 				<a href="#" class="float-left show-nav-lateral">
 					<i class="fas fa-exchange-alt"></i>
-				</a>
-				<a href="../index.php">
-					<i class="fas fa-pager"></i>
 				</a>
 				<a href="#" class="btn-exit-system">
 					<i class="fas fa-power-off"></i>
@@ -287,8 +284,12 @@ $obj->name_rol_user = $arreglo[1];
 						<div class="container-fluid">
 							<div class="row">
 
-								<input type="hidden" name="id_rol_user" id="id_rol_user" value ="<?php echo $obj->id_rol_user ?>">
-
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label class="bmd-label-floating">ID ROL USUARIO:</label>
+										<input type="number" readonly class="form-control" name="id_rol_user" id="id_rol_user" value ="<?php echo $obj->id_rol_user ?>">
+									</div>
+								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">

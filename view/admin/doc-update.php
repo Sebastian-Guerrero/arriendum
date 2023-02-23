@@ -244,13 +244,10 @@ $obj->name_type_document = $arreglo[1];
 		</section>
 
 		<!-- Page content -->
-<section class="full-box page-content">
+		<section class="full-box page-content">
 			<nav class="full-box navbar-info">
 				<a href="#" class="float-left show-nav-lateral">
 					<i class="fas fa-exchange-alt"></i>
-				</a>
-				<a href="../index.php">
-					<i class="fas fa-pager"></i>
 				</a>
 				<a href="#" class="btn-exit-system">
 					<i class="fas fa-power-off"></i>
@@ -287,12 +284,17 @@ $obj->name_type_document = $arreglo[1];
 						<div class="container-fluid">
 							<div class="row">
 
-								<input type="hidden" name="id_type_document" id="id_type_document" value ="<?php echo $obj->id_type_document ?>">
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label class="bmd-label-floating">ID TIPO DOCUMENTO:</label>
+										<input type="number" readonly class="form-control" name="id_type_document" id="id_type_document" value ="<?php echo $obj->id_type_document ?>">
+									</div>
+								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">NUEVO NOMBRE PARA TIPO DOCUMENTO:</label>
-										<input type="text" class="form-control" name="name_type_document" id="name_type_document" value ="<?php echo $obj->name_type_document ?>">
+										<input type="text" class="form-control" name="name_type_document" id="name_type_document" value ="<?php echo $obj->name_type_document ?>" required>
 									</div>
 								</div>
 

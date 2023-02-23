@@ -229,9 +229,6 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 				<a href="#" class="float-left show-nav-lateral">
 					<i class="fas fa-exchange-alt"></i>
 				</a>
-				<a href="../user/index-user.php">
-					<i class="fas fa-pager"></i>
-				</a>
 				<a href="#" class="btn-exit-system">
 					<i class="fas fa-power-off"></i>
 				</a>
@@ -289,7 +286,6 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 	<!-- Bootstrap Material Design V4.0 -->
 	<script src="../../config/js/bootstrap-material-design.min.js" ></script>
 	<script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
-
 	<script src="../../config/js/main.js" ></script>
 </body>
 </html>

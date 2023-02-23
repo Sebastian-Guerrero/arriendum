@@ -262,13 +262,10 @@ if(isset($_POST['search'])){
 		</section>
 
 		<!-- Page content -->
-<section class="full-box page-content">
+		<section class="full-box page-content">
 			<nav class="full-box navbar-info">
 				<a href="#" class="float-left show-nav-lateral">
 					<i class="fas fa-exchange-alt"></i>
-				</a>
-				<a href="../index.php">
-					<i class="fas fa-pager"></i>
 				</a>
 				<a href="#" class="btn-exit-system">
 					<i class="fas fa-power-off"></i>
@@ -304,7 +301,7 @@ if(isset($_POST['search'])){
 						<div class="row justify-content-md-center">
 							<div class="col-12 col-md-6">
 								<div class="form-group">
-									<label class="bmd-label-floating">INGRESA NUMERO DE IDENTIFICACION</label>
+									<label class="bmd-label-floating">INGRESA NUMERO DE IDENTIFICACION:</label>
 									<input class="form-control me-2" type="search" name="id_user" aria-label="Search">
 								</div>
 							</div>
@@ -323,7 +320,7 @@ if(isset($_POST['search'])){
 					<table class="table table-dark table-sm">
 						<thead>
 							<tr class="text-center roboto-medium">
-								<th>CODIGO INMUEBLE</th>
+								<th>ID INMUEBLE</th>
 								<th>USUARIO</th>
 								<th>ESTADO</th>
 								<th>DIRECCION</th>

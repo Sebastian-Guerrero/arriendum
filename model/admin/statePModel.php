@@ -24,7 +24,7 @@
 
                     function modificar(){$c = new Conexion();
                                           $cone = $c->conectando();
-                                          $sql = "SELECT * FROM state_property WHERE name_state_property ='$this->name_state_property'";
+                                          $sql = "SELECT * FROM state_property WHERE id_state_property ='$this->id_state_property'";
                                           $r = mysqli_query($cone,$sql);
                                           if(!mysqli_fetch_array($r))
                                          {
