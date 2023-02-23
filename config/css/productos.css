@@ -72,7 +72,8 @@
 
 .catalogo{
     padding: 1px;
-    
+    margin: auto;
+    height: 1800px;
 }
 
 
@@ -80,7 +81,7 @@
     padding-top: 10%;
     width: 100%;
     max-width: 1200px;
-    height: 600px;
+    height: 450px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -124,5 +125,4 @@
     font-weight: 500;
     text-decoration: none;
     color: #00ADB5;
-
 }

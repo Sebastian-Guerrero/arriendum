@@ -19,7 +19,7 @@ nav{
     padding-left: 10%;
     padding-right: 10%;
 }
-nav h1{
+nav i{
     color: #fff;
     font-size: 25px;
     
@@ -486,22 +486,7 @@ footer{
     .titulo-final{
         font-size: 20px;
     }
+    
 
-    .porros{
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
 
-    .pepe{
-        width: 100px;
-        height: 50px;
-        margin-left: 80px;
-    }
-
-    .footer{
-    margin-top:50px;
-    width:100%;
-    height:200px;
-    }
 }

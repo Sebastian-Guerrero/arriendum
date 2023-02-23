@@ -1,22 +1,43 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controller/admin/usuarioControlador.php");
+include("../../controller/admin/userController.php");
 
-$obj = new Usuario();
+session_start();
+$name_user = $_SESSION['name_user'];
+$lastname_user = $_SESSION['lastname_user'];
+
+if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
+	header("Location: ../guest/login.php");
+}
+
+$obj = new User();
 if($_POST){
 
-    $obj->numeroDocumento = $_POST['numeroDocumento'];
-	$obj->rolUsuario = $_POST['rolUsuario'];
-    $obj->tipoDocumento = $_POST['tipoDocumento'];
-    $obj->nombreUsuario = $_POST['nombreUsuario'];
-    $obj->apellidoUsuario = $_POST['apellidoUsuario'];
-    $obj->emailUsuario = $_POST['emailUsuario'];
-    $obj->contraUsuario = $_POST['contraUsuario'];
-    $obj->celUsuario = $_POST['celUsuario'];
-    $obj->fechaCUsuario = $_POST['fechaCUsuario'];
-    $obj->fechaAUsuario = $_POST['fechaAUsuario'];
+    $obj->id_user = $_POST['id_user'];
+    $obj->state_user = $_POST['state_user'];
+    $obj->rol_user = $_POST['rol_user'];
+    $obj->type_document = $_POST['type_document'];
+    $obj->name_user = $_POST['name_user'];
+    $obj->lastname_user = $_POST['lastname_user'];
+    $obj->phone_user = $_POST['phone_user'];
+    $obj->email_user = $_POST['email_user'];
+    $obj->password_user = $_POST['password_user'];
+    $obj->create_user = $_POST['create_user'];
+    $obj->update_user = $_POST['update_user'];
 
 }
+
+$conet = new Conexion();
+$c = $conet->conectando();
+
+$query ="SELECT * FROM rol_user";
+$result = mysqli_query($c, $query);
+$fila = mysqli_fetch_array($result);
+
+$query1 ="SELECT * FROM type_document";
+$result1 = mysqli_query($c, $query1);
+$fila1 = mysqli_fetch_array($result1);
+
 date_default_timezone_set('America/Bogota');
 $fecha = Date('Y-m-d H:i:s');
 
@@ -64,9 +85,9 @@ $fecha = Date('Y-m-d H:i:s');
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/icons//logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
-						Administrador
+						<?php echo "$name_user $lastname_user";?>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
@@ -75,6 +96,8 @@ $fecha = Date('Y-m-d H:i:s');
 						<li>
 							<a href="index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
 						</li>
+
+						<br>
 
 						<li>
 							<a href="#" class="nav-btn-submenu"><i class="fas fa-user"></i> &nbsp; USUARIO <i class="fas fa-chevron-down"></i></a>
@@ -92,7 +115,22 @@ $fecha = Date('Y-m-d H:i:s');
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-user-tag"></i> &nbsp; ROL USUARIO <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-user-check"></i> &nbsp; ESTADO USUARIO<i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="sta-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Estado Usuario</a>
+								</li>
+								<li>
+									<a href="sta-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista Estado Usuario</a>
+								</li>
+								<li>
+									<a href="sta-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Estado Usuario</a>
+								</li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-user-tag"></i> &nbsp; ROL USUARIO<i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="rol-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Rol Usuario</a>
@@ -113,7 +151,7 @@ $fecha = Date('Y-m-d H:i:s');
 									<a href="doc-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Tipo Documento</a>
 								</li>
 								<li>
-									<a href="doc-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista Tipo Documento</a>
+									<a href="doc-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista Tipo Documentos</a>
 								</li>
 								<li>
 									<a href="doc-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Tipo Documento</a>
@@ -121,23 +159,25 @@ $fecha = Date('Y-m-d H:i:s');
 							</ul>
 						</li>
 
+						<br>
+
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-city"></i> &nbsp; INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-house-user"></i> &nbsp; INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="inm-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Inmueble</a>
 								</li>
 								<li>
-									<a href="inm-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista inmueble</a>
+									<a href="inm-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista Inmueble</a>
 								</li>
 								<li>
-									<a href="inm-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar inmueble</a>
+									<a href="inm-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Inmueble</a>
 								</li>
 							</ul>
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-check"></i> &nbsp; ESTADO INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-house-damage"></i> &nbsp; ESTADO INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="est-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Estado Inmueble</a>
@@ -152,7 +192,7 @@ $fecha = Date('Y-m-d H:i:s');
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-list"></i> &nbsp; TIPO INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-warehouse"></i> &nbsp; TIPO INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="tipo-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Tipo Inmueble</a>
@@ -167,7 +207,7 @@ $fecha = Date('Y-m-d H:i:s');
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-laptop-house"></i> &nbsp; OPCION INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-handshake"></i> &nbsp; OPCION INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="opc-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Opcion Inmueble</a>
@@ -222,9 +262,6 @@ $fecha = Date('Y-m-d H:i:s');
 				<a href="#" class="float-left show-nav-lateral">
 					<i class="fas fa-exchange-alt"></i>
 				</a>
-				<a href="../index.php">
-					<i class="fas fa-pager"></i>
-				</a>
 				<a href="#" class="btn-exit-system">
 					<i class="fas fa-power-off"></i>
 				</a>
@@ -255,35 +292,69 @@ $fecha = Date('Y-m-d H:i:s');
 			<div class="container-fluid">
 				<form action="" name="agregarUsuario"  class="form-neon" autocomplete="off" method="POST">
 					<fieldset>
-						<legend class="text-center"><i class="fas fa-user"></i> &nbsp; Registro de Usuario</legend>
+						<legend class="text-center"><i class="fas fa-user"></i> &nbsp; Registrar Usuario</legend>
 						<div class="container-fluid">
 							<div class="row">
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">NUMERO DE IDENTIFICACION:</label>
-										<input type="number" class="form-control" name="numeroDocumento" id="numeroDocumento" required>
+										<input type="number" class="form-control" name="id_user" id="id_user" required>
 									</div>
 								</div>
 
+								<input type="hidden" name="state_user" id="state_user" value="1">
+
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<select class="form-control" name="rolUsuario" id="rolUsuario" required>
-											<option selected disabled>SELECCIONE ROL DE USUARIO:</option>
-											<option value="1">Administrador</option>
-											<option value="2">Usuario</option>
+										<select class="form-control" name="rol_user" id="rol_user" required>
+											<option selected disabled>SELECCIONE ROL DEl USUARIO:</option>
+												<?php
+													do {
+													$id = $fila['id_rol_user'];
+													$name = $fila['name_rol_user'];
+
+													if ($id==0) {
+														echo "<option>No hay registros</option>";
+													}else {
+														echo "<option value=$id>$name</option>";
+													}
+
+													}while($fila = mysqli_fetch_array($result));			 	
+														$row = mysqli_num_rows($result);
+														$rows = 0;
+													if($rows>0){
+														mysqli_data_seek($result, 0);
+														$fila = mysqli_fetch_array($result);
+													}
+												?>
 										</select>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<select class="form-control" name="tipoDocumento" id="tipoDocumento" required>
+										<select class="form-control" name="type_document" id="type_document" required>
 											<option selected disabled>SELECCIONE TIPO DE DOCUMENTO:</option>
-											<option value="1">Cedula de Ciudadania</option>
-											<option value="2">Tarjeta de Identidad</option>
-											<option value="3">Cedula Extranjeria</option>
-											<option value="4">Registro Civil</option>
+											<?php
+												do {
+												$id1 = $fila1['id_type_document'];
+												$name1 = $fila1['name_type_document'];
+
+												if ($id1==0) {
+													echo "<option>No hay registros</option>";
+												}else {
+													echo "<option value=$id1>$name1</option>";
+												}
+
+												}while($fila1 = mysqli_fetch_array($result1));			 	
+													$row1 = mysqli_num_rows($result1);
+													$rows1 = 0;
+												if($rows1>0){
+													mysqli_data_seek($result1, 0);
+													$fila1 = mysqli_fetch_array($result1);
+												}
+											?>
 										</select>
 									</div>
 								</div>
@@ -291,41 +362,41 @@ $fecha = Date('Y-m-d H:i:s');
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">NOMBRE:</label>
-										<input type="text" class="form-control" name="nombreUsuario" id="nombreUsuario" required>
+										<input type="text" class="form-control" name="name_user" id="name_user" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">APELLIDO:</label>
-										<input type="text"  class="form-control" name="apellidoUsuario" id="apellidoUsuario" required>
+										<input type="text"  class="form-control" name="lastname_user" id="lastname_user" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">NUMERO DE CELULAR:</label>
-										<input type="number"  class="form-control" name="celUsuario" id="celUsuario" required>
+										<input type="number"  class="form-control" name="phone_user" id="phone_user" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">EMAIL:</label>
-										<input type="email" class="form-control" name="emailUsuario" id="emailUsuario" required>
+										<input type="email" class="form-control" name="email_user" id="email_user" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">CONTRASEÑA:</label>
-										<input type="password" class="form-control" name="contraUsuario" id="contraUsuario" required>
+										<input type="password" class="form-control" name="password_user" id="password_user" required>
 									</div>
 								</div>
 
-								<input type="hidden" name="fechaCUsuario" id="fechaCUsuario" value="<?php echo $fecha ?>">
+								<input type="hidden" name="create_user" id="create_user" value="<?php echo $fecha ?>">
 
-								<input type="hidden" name="fechaAUsuario" id="fechaAUsuario" value="<?php echo $fecha ?>">
+								<input type="hidden" name="update_user" id="update_user" value="<?php echo $fecha ?>">
 
 							</div>
 						</div> 

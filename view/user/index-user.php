@@ -32,16 +32,19 @@ $result = mysqli_query($c, $query);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">    <link
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="../../config/css/productos.css"/>
+    
+    <link rel="stylesheet" href="../../config/a/css/all.css">
 </head>
 
 <body>
     <header>
     <nav>
       <img class="logo" src="../../assets/icons/logo.png">
-        <ul>
-          <li><button class="ba" type="button"><a href="../../index.php">INICIO</a></button></li>
-          <li><button class="ba" type="button"><a href="../../view/guest/product.php">INMUEBLES</button></li>
-          <li><button class="bb" type="button"><a href="../../view/user/pub-inm.php">PUBLICA TU INMUEBLE</a></button></li>
+      <ul>
+            <li><button class="ba" type="button"><a href="index-user.php">INICIO</a></button></li>
+            <li><button class="ba" type="button"><a href="product.php">INMUEBLES</a></button></li>
+            <li><button class="ba" type="button"><a href="../../view/user/profile.php?id_user=<?php echo $_SESSION['id_user']; ?>">MI PERFIL</a></button></li>
+            <li><a href="../../connect/logout.php" class="btn-exit-system"><i class="fas fa-power-off"></i></a></li>
         </ul>
     </nav>
                 
@@ -66,13 +69,13 @@ $result = mysqli_query($c, $query);
             <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="../../assets/img/casa1.jpg" class="d-block w-100" alt="...">
+              <img src="../../assets/img/img/casa1.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-              <img src="../../assets/img/casa 2.jpg" class="d-block w-100" alt="...">
+              <img src="../../assets/img/img/casa2.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-              <img src="../../assets/img/casa 3.jpg" class="d-block w-100" alt="...">
+              <img src="../../assets/img/img/casa3.jpg" class="d-block w-100" alt="...">
               </div>
               </div>
           </div>
@@ -169,19 +172,25 @@ $result = mysqli_query($c, $query);
         ?>
 
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <section class="clients">
             <section class="clientes contenedor">
             <h2 class="titulo">Que dicen nuestros clientes</h2>
             <div class="cards">
                 <div class="card">
-                    <img src="../../assets/img/hombre perfil.jpg" alt="">
+                    <img src="../../assets/img/img/hombre perfil - copia.jpg" alt="">
                     <div class="contenido-texto-card">
                         <h4>Jersson</h4>
                         <p>plataform is super easy to use and is getting better and more versatile all the time !</p>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="../../assets/img/mujer perfil.jpg" alt="">
+                    <img src="../../assets/img/img/mujer perfil - copia.jpg" alt="">
                     <div class="contenido-texto-card">
                         <h4> gabriela </h4>
                         <p>plataform is super easy to use and is getting better and more versatile all the time!</p>
@@ -195,20 +204,20 @@ $result = mysqli_query($c, $query);
                 <h2 class="titulo">Puedes Encontrar Tu Lugar en:</h2>
                 <div class="servicio-cont">
                     <div class="servicio-ind" >
-                        <img  src="../../assets/img/ciudadbolivar.jpg" alt="" >
+                        <img  src="../../assets/img/img/ciudadbolivar.jpg" alt="" >
                         <br>
                         <br>
                         <a href="vistas/productos1.php" type="button" class="btn btn-outline-secondary"><h4>Ciudad Bolivar</h4></a>  
                     
                     </div>
                     <div class="servicio-ind">
-                        <img src="../../assets/img/kennedy.jpg" alt="">
+                        <img src="../../assets/img/img/kennedy.jpg" alt="">
                         <br>
                         <br>
                         <a href="vistas/productos1.php" type="button" class="btn btn-outline-secondary"><h4>Kennedy</h4></a>                    
                     </div>
                     <div class="servicio-ind">
-                        <img src="../../assets/img/bosa.jpg" alt="">
+                        <img src="../../assets/img/img/bosa.jpg" alt="">
                         <br>
                         <br>
                         <a href="vistas/productos1.php" type="button" class="btn btn-outline-secondary"><h4>BOSA</h4></a>  
@@ -234,6 +243,17 @@ $result = mysqli_query($c, $query);
                 <p>Bogota D.C </p>
             </div>
         </div>
+
+        <div class="wrapper">
+            <div class="social-icons">
+
+            <a class="social_icon twitter" src="https://icons8.com/icon/102907/twitter" target="_blank" rel="author">
+                <i class="fab fa-twitter"></i>
+            </a>
+            </div>
+        </div>
+
+        
         <h2 class="titulo-final">&copy; Arriendum </h2>
     </footer>
     <script src="https://unpkg.com/scrollreveal"></script>
