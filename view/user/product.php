@@ -94,9 +94,9 @@ if(isset($_POST['search'])){
                                                         <label  class="form-label">¿Que localidad deseas?</label>
                                                         <script>
                                                                 function validar(){
-                                                                    var Localidadinmueble=document.getElementBy('location_property');
+                                                                    var Localidadinmueble=document.getElementById('location_property');
                                                                     if (Localidadinmueble.value==0 ||
-                                                                        Localidainmueble.value=="")
+                                                                        Localidadinmueble.value=="")
                                                                     {
                                                                         alert("Selecciona una localidad para continuar");
                                                                         Localidadinmueble.focus();
@@ -128,7 +128,7 @@ if(isset($_POST['search'])){
                                                         </select>
                                                                     <br>
                                                                     <br>
-                                                                    <button type="submit" onclick="validar();" value="validar" class="btn btn-raised btn-info" name="search"><i class="fas fa-search"></i> &nbsp; BUSCAR</button>
+                                                                    <button type="submit" onclick="validar();" class="btn btn-raised btn-info" name="search"><i class="fas fa-search"></i> &nbsp; BUSCAR</button>
                                                                     <a href="product.php">
                                                                         <button class="btn btn-raised btn-info"><i class="fas fa-sync-alt"></i> &nbsp;REINICIAR </button>
                                                                     </a>
