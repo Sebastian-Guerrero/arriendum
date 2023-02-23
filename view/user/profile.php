@@ -56,7 +56,7 @@ if($_SESSION['id_user'] != $id_user) {
                 <li><button class="ba" type="button"><a href="index-user.php">INICIO</a></button></li>
                 <li><button class="ba" type="button"><a href="product.php">INMUEBLES</a></button></li>
                 <li><button class="bb" type="button"><a href="pub-inm.php">PUBLICAR INMUEBLE</a></button></li>
-                <li><a href="../../connect/logout.php" class="btn-exit-system"><i class="fas fa-power-off"></i></a></li>
+                <li><a onclick="cerrar_sesion()" class="btn-exit-system"><i class="fas fa-power-off"></i></a></li>
             </ul>
         </nav>
         <div class="login-page">
@@ -121,6 +121,8 @@ if($_SESSION['id_user'] != $id_user) {
           }
       }
   </script>
+  <script src="../../config/js/alert.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

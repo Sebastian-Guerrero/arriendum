@@ -80,7 +80,7 @@ $obj->update_user = $arreglo[10];
                 <li><button class="ba" type="button"><a href="index-user.php">INICIO</a></button></li>
                 <li><button class="ba" type="button"><a href="product.php">INMUEBLES</a></button></li>
                 <li><button class="bb" type="button"><a href="pub-inm.php">PUBLICAR INMUEBLE</a></button></li>
-                <li><a href="../../connect/logout.php" class="btn-exit-system"><i class="fas fa-power-off"></i></a></li>
+                <li><a onclick="cerrar_sesion()" class="btn-exit-system"><i class="fas fa-power-off"></i></a></li>
             </ul>
         </nav>
         <div class="login-page">
@@ -162,10 +162,10 @@ $obj->update_user = $arreglo[10];
         <h2 class="titulo-final">&copy; Arriendum </h2>
     </footer>
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="../../config/js/js/main.js"></script>
     <script src="../../config/js/sweetalert2.min.js" ></script>
     <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
-    <script src="../../config/js/main.js" ></script>
+    <script src="../../config/js/alert.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

@@ -42,7 +42,7 @@ $result = mysqli_query($c, $query);
             <li><button class="ba" type="button"><a href="index-user.php">INICIO</a></button></li>
             <li><button class="ba" type="button"><a href="product.php">INMUEBLES</a></button></li>
             <li><button class="ba" type="button"><a href="../../view/user/profile.php?id_user=<?php echo $_SESSION['id_user']; ?>"> MI PERFIL </a></button></li>
-            <li><a href="../../connect/logout.php" class="btn-exit-system"><i class="fas fa-power-off"></i></a></li>
+            <li><a onclick="cerrar_sesion()" class="btn-exit-system"><i class="fas fa-power-off"></i></a></li>
         </ul>
     </nav>
               
@@ -242,7 +242,8 @@ $result = mysqli_query($c, $query);
         <h2 class="titulo-final">&copy; Arriendum </h2>
     </footer>
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="js/main.js"></script>
+    <script src="../../config/js/alert.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
 </body>

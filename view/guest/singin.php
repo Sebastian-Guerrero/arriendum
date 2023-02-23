@@ -66,7 +66,7 @@ $fecha = Date('Y-m-d H:i:s');
         <p class="name">Registro</p>
         <hr>
         <div class="select">
-          <select name="type_document" required>
+          <select name="type_document" id="type_document" required>
           <option value="1" selected disabled>Selecciona Tipo de Documento:
             <?php
                 do {
