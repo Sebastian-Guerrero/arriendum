@@ -50,6 +50,7 @@ $result = mysqli_query($c, $query);
         <?php
         
         while ($fila = mysqli_fetch_array($result)) {
+            $id = $fila['id_user'];
             $img = $fila['id_property'];
             $estado = $fila['state_property'];
             $tipo = $fila['type_property'];
@@ -117,56 +118,65 @@ $result = mysqli_query($c, $query);
 
                 <p>Precio: <?php echo $fila['cost_property']; ?></p>
 
-<br>
 
                 <div class="boton-modal">
                     <label for="btn-modal">
-                        Abrir Modal
+                        Mas Informacion...
                     </label>
                 </div>
 
-                <input type="checkbox" id="btn-modal">
-                    <div class="container-modal">
-                        <div class="content-modal">
-                            <h2>¡Bienvenido!</h2>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur, nostrum!</p>
-                            <div class="btn-cerrar">
-                                <label for="btn-modal">Cerrar</label>
-                            </div>
-                        </div>
-                        <label for="btn-modal" class="cerrar-modal"></label>
-                    </div>
-
             </div>
-            
+
+            <?php
+
+                $query6 = "SELECT * FROM user WHERE id_user = $id";
+                $result6 = mysqli_query($c, $query6);
+                $fila6 = mysqli_fetch_array($result6); 
+
+            ?>
+
+<input type="checkbox" id="btn-modal">
+        <div class="container-modal">
+            <div class="content-modal">
+                <h2>Inmueble: <?php echo $fila['id_property']; ?> - Dueño: <?php echo $fila6['name_user']; ?> <?php echo $fila6['lastname_user']; ?></h2>
+                
+                <div class="mi">
+                <img src="<?php echo $fila5['name_galery_property']; ?>">
+                </div>
+                <h3>Datos del Dueño:</h3>
+
+                <p class="pi"><b>Celular:</b> <?php echo $fila6['phone_user']; ?></p>
+
+                <p class="pf"><b>Email:</b> <?php echo $fila6['email_user']; ?></p>
+
+                <h3>Datos de la Propiedad:</h3>
+
+                <p class="pi"><b>Localidad:</b> <?php echo $fila4['name_location_property']; ?></p>
+
+                <p><b>Barrio:</b> <?php echo $fila['neighborhood_property']; ?></p>
+
+                <p><b>Dirreccion:</b> <?php echo $fila['direction_property']; ?></p>
+
+                <p><b>Informacion:</b> <?php echo $fila['information_property']; ?></p>
+
+                <p><b>Descripcion:</b> <?php echo $fila['description_property']; ?></p>
+
+                <p class="pf"><b>Precio:</b> <?php echo $fila['cost_property']; ?></p>
+
+                <div class="btn-cerrar">
+                    <label for="btn-modal">Cerrar</label>
+                </div>
+
+        </div>
+            <label for="btn-modal" class="cerrar-modal"></label>
+        </div> 
+
         <?php
         }
         ?>
-
         </div>
     </section>
-
-    <!--Boton-->
-    <div class="boton-modal">
-        <label for="btn-modal">
-            Abrir Modal
-        </label>
-    </div>
-<!--Fin de Boton-->
-<!--Ventana Modal-->
-    <input type="checkbox" id="btn-modal">
-    <div class="container-modal">
-        <div class="content-modal">
-            <h2>¡Bienvenido!</h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur, nostrum!</p>
-            <div class="btn-cerrar">
-                <label for="btn-modal">Cerrar</label>
-            </div>
-        </div>
-        <label for="btn-modal" class="cerrar-modal"></label>
-    </div>
-<!--Fin de Ventana Modal-->
-
+        
     <footer>  
         <div class="contenedor-footer">
             <div class="content-foo">
