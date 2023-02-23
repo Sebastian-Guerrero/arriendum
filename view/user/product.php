@@ -241,10 +241,8 @@ if(isset($_POST['search'])){
                                                     </div>
 
                                                 </div>
-                                            <?php
-                                            }
-                                            ?>
-                                                 <?php
+
+                                                <?php
 
 $query6 = "SELECT * FROM user WHERE id_user = $id";
 $result6 = mysqli_query($c, $query6);
@@ -285,6 +283,10 @@ $fila6 = mysqli_fetch_array($result6);
 </div>
 <label for="btn-modal" class="cerrar-modal"></label>
 </div>    
+                                            <?php
+                                            }
+                                            ?>
+                                                 
                                                     <?php
                                                     }
                                                     ?>   
