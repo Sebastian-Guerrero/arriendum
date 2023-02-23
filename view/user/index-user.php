@@ -54,6 +54,7 @@ $result = mysqli_query($c, $query);
         <section class="textos-header">
             <h1>VENTA Y ARRIENDO</h1>
             <h2>Realiza la publicacion de tu inmueble o propiedad</h2>
+            
         </section>
         <div class="wave" style="height: 200px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
                 style="height: 100%; width: 100%;">
@@ -88,6 +89,7 @@ $result = mysqli_query($c, $query);
             <span class="visually-hidden">Next</span>
           </button>
             </section>
+
         </section>
         <h2 class="titulo">Inmuebles para el publico</h2>
         <div class="productos">
@@ -165,6 +167,7 @@ $result = mysqli_query($c, $query);
 
                 <a href="#">Mas Informacion...</a>
 
+
             </div>
             
         <?php
@@ -198,20 +201,24 @@ $result = mysqli_query($c, $query);
                 </div>
             </div>
             </section>
+            
         </section>
         <section class="about-services">
             <div class="contenedor">
                 <h2 class="titulo">Puedes Encontrar Tu Lugar en:</h2>
                 <div class="servicio-cont">
+
                     <div class="servicio-ind" >
                         <img  src="../../assets/img/img/ciudadbolivar.jpg" alt="" >
                         <br>
                         <br>
                         <a href="vistas/productos1.php" type="button" class="btn btn-outline-secondary"><h4>Ciudad Bolivar</h4></a>  
+
                     
                     </div>
                     <div class="servicio-ind">
                         <img src="../../assets/img/img/kennedy.jpg" alt="">
+                        
                         <br>
                         <br>
                         <a href="vistas/productos1.php" type="button" class="btn btn-outline-secondary"><h4>Kennedy</h4></a>                    
@@ -221,6 +228,7 @@ $result = mysqli_query($c, $query);
                         <br>
                         <br>
                         <a href="vistas/productos1.php" type="button" class="btn btn-outline-secondary"><h4>BOSA</h4></a>  
+
                      
                     </div>
                 </div>

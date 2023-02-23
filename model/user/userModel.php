@@ -61,6 +61,7 @@
                                           echo "<script> alert('El Usuario fue Modificado ')</script>";
                                         }
                                       }
+
    
                     function eliminar(){
      

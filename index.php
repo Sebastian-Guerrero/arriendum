@@ -19,13 +19,16 @@ $result = mysqli_query($c, $query);
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Arriendum</title>
     <link rel="stylesheet" href="config/css/estilos.css"/>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">    <link
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="config/css/productos.css"/>
+
 </head>
 
 <body>
     <header>
+
     <nav>
       <img class="logo" src="assets/icons/logo.png">
         <ul>
@@ -63,6 +66,7 @@ $result = mysqli_query($c, $query);
             </div>
             <div class="carousel-item">
               <img src="assets/img/img/casa3.jpg" class="d-block w-100" alt="...">
+
               </div>
               </div>
           </div>
@@ -165,6 +169,7 @@ $result = mysqli_query($c, $query);
         <br>
         <br>
         <section class="clients">
+
             <section class="clientes contenedor">
             <h2 class="titulo">Que dicen nuestros clientes</h2>
             <div class="cards">
@@ -184,6 +189,7 @@ $result = mysqli_query($c, $query);
                 </div>
             </div>
             </section>
+
         </section>
         <section class="about-services">
             <div class="contenedor">
@@ -193,6 +199,7 @@ $result = mysqli_query($c, $query);
                         <img  src="assets/img/img/ciudadbolivar.jpg" alt="" >
                         <br>
                         <br>
+
                         <a href="vistas/productos1.php" type="button" class="btn btn-outline-secondary"><h4>Ciudad Bolivar</h4></a>  
                     
                     </div>
@@ -200,14 +207,18 @@ $result = mysqli_query($c, $query);
                         <img src="assets/img/img/kennedy.jpg" alt="">
                         <br>
                         <br>
+
                         <a href="vistas/productos1.php" type="button" class="btn btn-outline-secondary"><h4>Kennedy</h4></a>                    
+
                     </div>
                     <div class="servicio-ind">
                         <img src="assets/img/img/bosa.jpg" alt="">
                         <br>
                         <br>
+
                         <a href="vistas/productos1.php" type="button" class="btn btn-outline-secondary"><h4>BOSA</h4></a>  
                      
+
                     </div>
                 </div>
             </div>
