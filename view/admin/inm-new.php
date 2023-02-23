@@ -1,27 +1,49 @@
 <?php
 include("../../connect/conectar.php");
-include("../../controlador/admin/inmuebleControlador.php");
+include("../../controller/admin/propertyController.php");
 
+session_start();
+$name_user = $_SESSION['name_user'];
+$lastname_user = $_SESSION['lastname_user'];
 
-$obj = new Inmueble();
+if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
+	header("Location: ../guest/login.php");
+}
+
+$obj = new Property();
 if($_POST)
 {
 
-	$obj->id_inm = $_POST['id_inm'];
-    $obj->id_usuario = $_POST['id_usuario'];
-    $obj->estado_inm = $_POST['estado_inm'];
-    $obj->direccion_inm = $_POST['direccion_inm'];
-    $obj->tipo_inm = $_POST['tipo_inm'];
-    $obj->opcion_inm = $_POST['opcion_inm'];
-    $obj->localidad_inm = $_POST['localidad_inm'];
-    $obj->barrio_inm = $_POST['barrio_inm'];
-    $obj->inf_inm = $_POST['inf_inm'];
-    $obj->desc_inm = $_POST['desc_inm'];
-    $obj->precio_inm = $_POST['precio_inm'];
-    $obj->fechaC_inm = $_POST['fechaC_inm'];
-    $obj->fechaA_inm = $_POST['fechaA_inm'];
+    $obj->id_property = $_POST['id_property'];
+    $obj->id_user = $_POST['id_user'];
+    $obj->state_property = $_POST['state_property'];
+    $obj->direction_property = $_POST['direction_property'];
+    $obj->type_property = $_POST['type_property'];
+    $obj->option_property = $_POST['option_property'];
+    $obj->location_property = $_POST['location_property'];
+    $obj->neighborhood_property = $_POST['neighborhood_property'];
+    $obj->information_property = $_POST['information_property'];
+    $obj->description_property = $_POST['description_property'];
+    $obj->cost_property = $_POST['cost_property'];
+    $obj->create_property = $_POST['create_property'];
+    $obj->update_property = $_POST['update_property'];
 
 }
+
+$conet = new Conexion();
+$c = $conet->conectando();
+
+$query ="SELECT * FROM type_property";
+$result = mysqli_query($c, $query);
+$fila = mysqli_fetch_array($result);
+
+$query1 ="SELECT * FROM option_property";
+$result1 = mysqli_query($c, $query1);
+$fila1 = mysqli_fetch_array($result1);
+
+$query2 ="SELECT * FROM location_property";
+$result2 = mysqli_query($c, $query2);
+$fila2 = mysqli_fetch_array($result2);
 
 date_default_timezone_set('America/Bogota');
 $fecha = Date('Y-m-d H:i:s');
@@ -69,17 +91,19 @@ $fecha = Date('Y-m-d H:i:s');
 			<div class="full-box nav-lateral-bg show-nav-lateral"></div>
 			<div class="full-box nav-lateral-content">
 				<figure class="full-box nav-lateral-avatar">
-					<img src="../../assets/img/img/logo.png" class="img-fluid" alt="Logo">
+					<img src="../../assets/icons/logo.png" class="img-fluid" alt="Logo">
 					<figcaption class="roboto-medium text-center">
-						Administrador
+						<?php echo "$name_user $lastname_user";?>
 					</figcaption>
 				</figure>
 				<div class="full-box nav-lateral-bar"></div>
 				<nav class="full-box nav-lateral-menu">
 				<ul>
 						<li>
-							<a href="../index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
+							<a href="index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
 						</li>
+
+						<br>
 
 						<li>
 							<a href="#" class="nav-btn-submenu"><i class="fas fa-user"></i> &nbsp; USUARIO <i class="fas fa-chevron-down"></i></a>
@@ -97,7 +121,22 @@ $fecha = Date('Y-m-d H:i:s');
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-user-tag"></i> &nbsp; ROL USUARIO <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-user-check"></i> &nbsp; ESTADO USUARIO<i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="sta-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Estado Usuario</a>
+								</li>
+								<li>
+									<a href="sta-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista Estado Usuario</a>
+								</li>
+								<li>
+									<a href="sta-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Estado Usuario</a>
+								</li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-user-tag"></i> &nbsp; ROL USUARIO<i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="rol-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Rol Usuario</a>
@@ -118,7 +157,7 @@ $fecha = Date('Y-m-d H:i:s');
 									<a href="doc-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Tipo Documento</a>
 								</li>
 								<li>
-									<a href="doc-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista Tipo Documento</a>
+									<a href="doc-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista Tipo Documentos</a>
 								</li>
 								<li>
 									<a href="doc-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Tipo Documento</a>
@@ -126,23 +165,25 @@ $fecha = Date('Y-m-d H:i:s');
 							</ul>
 						</li>
 
+						<br>
+
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-city"></i> &nbsp; INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-house-user"></i> &nbsp; INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="inm-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Inmueble</a>
 								</li>
 								<li>
-									<a href="inm-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista inmueble</a>
+									<a href="inm-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista Inmueble</a>
 								</li>
 								<li>
-									<a href="inm-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar inmueble</a>
+									<a href="inm-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Inmueble</a>
 								</li>
 							</ul>
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-check"></i> &nbsp; ESTADO INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-house-damage"></i> &nbsp; ESTADO INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="est-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Estado Inmueble</a>
@@ -157,7 +198,7 @@ $fecha = Date('Y-m-d H:i:s');
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-list"></i> &nbsp; TIPO INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-warehouse"></i> &nbsp; TIPO INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="tipo-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Tipo Inmueble</a>
@@ -172,7 +213,7 @@ $fecha = Date('Y-m-d H:i:s');
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-laptop-house"></i> &nbsp; OPCION INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-handshake"></i> &nbsp; OPCION INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="opc-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Opcion Inmueble</a>
@@ -222,13 +263,10 @@ $fecha = Date('Y-m-d H:i:s');
 		</section>
 
 		<!-- Page content -->
-<section class="full-box page-content">
+		<section class="full-box page-content">
 			<nav class="full-box navbar-info">
 				<a href="#" class="float-left show-nav-lateral">
 					<i class="fas fa-exchange-alt"></i>
-				</a>
-				<a href="../index.php">
-					<i class="fas fa-pager"></i>
 				</a>
 				<a href="#" class="btn-exit-system">
 					<i class="fas fa-power-off"></i>
@@ -266,42 +304,74 @@ $fecha = Date('Y-m-d H:i:s');
 						<div class="container-fluid">
 							<div class="row">
 
-								<input type="hidden" name="id_inm" id="id_inm">
+								<input type="hidden" name="id_property" id="id_property">
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label class="bmd-label-floating">NUMERO DE IDENTIFICACION:</label>
-										<input type="number" class="form-control" name="id_usuario" id="id_usuario" required>
+										<label class="bmd-label-floating">NUMERO DE IDENTIFICACION DEL USUARIO:</label>
+										<input type="number" class="form-control" name="id_user" id="id_user" required>
 									</div>
 								</div>
 							
-								<input type="hidden" name="estado_inm" id="estado_inm" value="1">
+								<input type="hidden" name="state_property" id="state_property" value="1">
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label class="bmd-label-floating">DIRRECION:</label>
-										<input type="text" class="form-control" name="direccion_inm" id="direccion_inm" required>
+										<label class="bmd-label-floating">DIRRECION DEL INMUEBLE:</label>
+										<input type="text" class="form-control" name="direction_property" id="direction_property" required>
 									</div>
 								</div>
-					
+
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<select class="form-control" name="tipo_inm" id="tipo_inm" required>
-											<option selected disabled>TIPO INMUEBLE:</option>
-											<option value="1">Apartamento</option>
-											<option value="2">Casa</option>
-											<option value="3">Finca</option>
-											<option value="4">Lote</option>
+										<select class="form-control" name="type_property" id="type_property" required>
+											<option selected disabled>TIPO DEL INMUEBLE:</option>
+												<?php
+													do {
+													$id = $fila['id_type_property'];
+													$name = $fila['name_type_property'];
+
+													if ($id==0) {
+														echo "<option>No hay registros</option>";
+													}else {
+														echo "<option value=$id>$name</option>";
+													}
+
+													}while($fila = mysqli_fetch_array($result));			 	
+														$row = mysqli_num_rows($result);
+														$rows = 0;
+													if($rows>0){
+														mysqli_data_seek($result, 0);
+														$fila = mysqli_fetch_array($result);
+													}
+												?>
 										</select>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<select class="form-control" name="opcion_inm" id="opcion_inm" required>
-											<option selected disabled>OPCION INMUEBLE:</option>
-											<option value="1">Arrendar</option>
-											<option value="2">Vender</option>
+										<select class="form-control" name="option_property" id="option_property" required>
+										<option selected disabled>INMUEBLE DESTINADO A:</option>
+											<?php
+												do {
+												$id1 = $fila1['id_option_property'];
+												$name1 = $fila1['name_option_property'];
+
+												if ($id1==0) {
+													echo "<option>No hay registros</option>";
+												}else {
+													echo "<option value=$id1>$name1</option>";
+												}
+
+												}while($fila1 = mysqli_fetch_array($result1));			 	
+													$row1 = mysqli_num_rows($result1);
+													$rows1 = 0;
+												if($rows1>0){
+													mysqli_data_seek($result1, 0);
+													$fila1 = mysqli_fetch_array($result1);
+												}
+											?>
 										</select>
 									</div>
 								</div>
@@ -309,28 +379,27 @@ $fecha = Date('Y-m-d H:i:s');
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label  class="bmd-label-floating">LOCALIDAD:</label>
-										<select class="form-control" name="localidad_inm" id="localidad_inm" required>
-											<option selected disabled>Seleccione la localidad:</option>
-											<option value="1">Usaquén</option>
-											<option value="2">Chapinero</option>
-											<option value="3">Santa Fe</option>
-											<option value="4">San Cristóbal</option>
-											<option value="5">Usme</option>
-											<option value="6">Tunjuelito</option>
-											<option value="7">Bosa</option>
-											<option value="8">Kennedy</option>
-											<option value="9">Fontibón</option>
-											<option value="10">Engativá</option>
-											<option value="11">Suba</option>
-											<option value="12">Barrios Unidos</option>
-											<option value="13">Teusaquillo</option>
-											<option value="14">Los Mártires</option>
-											<option value="15">Antonio Nariño</option>
-											<option value="16">Puente Aranda</option>
-											<option value="17">Candelaria</option>
-											<option value="18">Rafael Uribe Uribe</option>
-											<option value="19">Ciudad Bolívar</option>
-											<option value="20">Sumapaz</option>
+										<select class="form-control" name="location_property" id="location_property" required>
+										<option selected disabled>LOCALIDAD DEL INMUEBLE:</option>
+										<?php
+											do {
+											$id2 = $fila2['id_location_property'];
+											$name2 = $fila2['name_location_property'];
+
+											if ($id2==0) {
+												echo "<option>No hay registros</option>";
+											}else {
+												echo "<option value=$id2>$name2</option>";
+											}
+
+											}while($fila2 = mysqli_fetch_array($result2));			 	
+												$row2 = mysqli_num_rows($result2);
+												$rows2 = 0;
+											if($rows2>0){
+												mysqli_data_seek($result2, 0);
+												$fila2 = mysqli_fetch_array($result2);
+											}
+										?>
 										</select>
 									</div>
 								</div>
@@ -338,34 +407,34 @@ $fecha = Date('Y-m-d H:i:s');
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label  class="bmd-label-floating">BARRIO:</label>
-										<input type="text" class="form-control" name="barrio_inm" id="barrio_inm" required>
+										<input type="text" class="form-control" name="neighborhood_property" id="neighborhood_property" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">INFORMACION TECNICA:</label>
-										<input type="text" class="form-control" name="inf_inm" id="inf_inm" required>
+										<input type="text" class="form-control" name="information_property" id="information_property" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label  class="bmd-label-floating">DESCRIPCION:</label>
-										<input type="text" class="form-control" name="desc_inm" id="desc_inm" required>
+										<input type="text" class="form-control" name="description_property" id="description_property" required>
 									</div>
 								</div>
 
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">PRECIO DE LA PROPIEDAD:</label>
-										<input type="number" class="form-control" name="precio_inm" id="precio_inm" required>
+										<input type="number" class="form-control" name="cost_property" id="cost_property" required>
 									</div>
 								</div>
 
-								<input type="hidden" name="fechaC_inm" id="fechaC_inm" value="<?php echo $fecha ?>">
+								<input type="hidden" name="create_property" id="create_property" value="<?php echo $fecha ?>">
 
-								<input type="hidden" name="fechaA_inm" id="fechaA_inm" value="<?php echo $fecha ?>">
+								<input type="hidden" name="update_property" id="update_property" value="<?php echo $fecha ?>">
 
 						</div> 
 					<p class="text-center" style="margin-top: 40px;">

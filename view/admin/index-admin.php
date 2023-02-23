@@ -64,6 +64,8 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 							<a href="#"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
 						</li>
 
+						<br>
+
 						<li>
 							<a href="#" class="nav-btn-submenu"><i class="fas fa-user"></i> &nbsp; USUARIO <i class="fas fa-chevron-down"></i></a>
 							<ul>
@@ -75,6 +77,21 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 								</li>
 								<li>
 									<a href="user-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Usuario</a>
+								</li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-user-check"></i> &nbsp; ESTADO USUARIO<i class="fas fa-chevron-down"></i></a>
+							<ul>
+								<li>
+									<a href="sta-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Nuevo Estado Usuario</a>
+								</li>
+								<li>
+									<a href="sta-list.php"><i class="fas fa-clipboard-list fa-fw"></i> &nbsp; Lista Estado Usuario</a>
+								</li>
+								<li>
+									<a href="sta-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; Buscar Estado Usuario</a>
 								</li>
 							</ul>
 						</li>
@@ -109,8 +126,10 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 							</ul>
 						</li>
 
+						<br>
+
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-city"></i> &nbsp; INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-house-user"></i> &nbsp; INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="inm-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Inmueble</a>
@@ -125,7 +144,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-check"></i> &nbsp; ESTADO INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-house-damage"></i> &nbsp; ESTADO INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="est-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Estado Inmueble</a>
@@ -140,7 +159,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-list"></i> &nbsp; TIPO INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-warehouse"></i> &nbsp; TIPO INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="tipo-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Tipo Inmueble</a>
@@ -155,7 +174,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 						</li>
 
 						<li>
-							<a href="#" class="nav-btn-submenu"><i class="fas fa-laptop-house"></i> &nbsp; OPCION INMUEBLE <i class="fas fa-chevron-down"></i></a>
+							<a href="#" class="nav-btn-submenu"><i class="fas fa-handshake"></i> &nbsp; OPCION INMUEBLE <i class="fas fa-chevron-down"></i></a>
 							<ul>
 								<li>
 									<a href="opc-new.php"><i class="fas fa-plus fa-fw"></i> &nbsp; Agregar Opcion Inmueble</a>
@@ -210,9 +229,6 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 				<a href="#" class="float-left show-nav-lateral">
 					<i class="fas fa-exchange-alt"></i>
 				</a>
-				<a href="../index.php">
-					<i class="fas fa-pager"></i>
-				</a>
 				<a href="#" class="btn-exit-system">
 					<i class="fas fa-power-off"></i>
 				</a>
@@ -228,16 +244,16 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 			<!-- Content -->
 			<div class="full-box tile-container">
 
-				<a href="admin/inm-list.php" class="tile">
+				<a href="inm-list.php" class="tile">
 					<div class="tile-tittle">INMUEBLES</div>
 					<div class="tile-icon">
-						<i class="fas fa-store-alt fa-fw"></i>
+						<i class="fas fa-city"></i>
 						<!--<p># Registrados</p>-->
 					</div>
 				</a>
 
 
-				<a href="admin/user-list.php" class="tile">
+				<a href="user-list.php" class="tile">
 					<div class="tile-tittle">USUARIOS</div>
 					<div class="tile-icon">
 						<i class="fas fa-users fa-fw"></i>
