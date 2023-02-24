@@ -43,12 +43,13 @@ if (typeof update_ok !== "undefined") {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Por favor selecciona una localidad!',
-                
+                text: 'Por favor selecciona una localidad!',  
               }).then((result) => {
-              var filtro= document.getElementById('location_property');
+              var filtro=document.getElementById('location_property');
               if (filtro.value==0 ||
                   filtro.value==""){
                 }
               })
         }
+
+        

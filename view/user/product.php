@@ -77,7 +77,7 @@ if(isset($_POST['search'])){
             <img class="logo" src="../../assets/icons/logo.png">
             <ul>
 
-                <li><button class="ba" type="button"><a href="../../index.php">INICIO</a></button></li>
+                <li><button class="ba" type="button"><a href="../../view/user/index-user.php">INICIO</a></button></li>
                 <li><button class="bb" type="button"><a href="../../view/user/pub-inm.php">PUBLICA TU INMUEBLE</a></button></li>
             </ul>
         </nav>
@@ -129,7 +129,7 @@ if(isset($_POST['search'])){
                                                         </select>
                                                                     <br>
                                                                     <br>
-                                                                    <button type="submit" onclick="validar();" class="btn btn-raised btn-info" name="search"><i class="fas fa-search"></i> &nbsp; BUSCAR</button>
+                                                                    <button type="submit" onclick="error_filtro();" class="btn btn-raised btn-info" name="search"><i class="fas fa-search"></i> &nbsp; BUSCAR</button>
                                                                     <a href="product.php">
                                                                         <button class="btn btn-raised btn-info"><i class="fas fa-sync-alt"></i> &nbsp;REINICIAR </button>
                                                                     </a>
@@ -165,6 +165,7 @@ if(isset($_POST['search'])){
                                             <?php
 
                                             while ($fila = mysqli_fetch_array($result)) {
+                                                $id = $fila['id_user'];
                                                 $img = $fila['id_property'];
                                                 $estado = $fila['state_property'];
                                                 $tipo = $fila['type_property'];
@@ -228,9 +229,57 @@ if(isset($_POST['search'])){
 
                                         <br>
 
-                                                    <a href="../../view/user/pepe.php">Mas Informacion...</a>
+                                        <div class="boton-modal">
+                                                        <label for="btn-modal">
+                                                            Mas Informacion...
+                                                        </label>
+                                                    </div>
 
                                                 </div>
+
+                                                <?php
+
+$query6 = "SELECT * FROM user WHERE id_user = $id";
+$result6 = mysqli_query($c, $query6);
+$fila6 = mysqli_fetch_array($result6); 
+
+?>
+
+<input type="checkbox" id="btn-modal">
+<div class="container-modal">
+<div class="content-modal">
+<h2>Inmueble: <?php echo $fila['id_property']; ?> - Dueño: <?php echo $fila6['name_user']; ?> <?php echo $fila6['lastname_user']; ?></h2>
+
+<div class="mi">
+<img src="<?php echo $fila5['name_galery_property']; ?>">
+</div>
+<h3>Datos del Dueño:</h3>
+
+<p class="pi"><b>Celular:</b> <?php echo $fila6['phone_user']; ?></p>
+
+<p class="pf"><b>Email:</b> <?php echo $fila6['email_user']; ?></p>
+
+<h3>Datos de la Propiedad:</h3>
+
+<p class="pi"><b>Localidad:</b> <?php echo $fila4['name_location_property']; ?></p>
+
+<p><b>Barrio:</b> <?php echo $fila['neighborhood_property']; ?></p>
+
+<p><b>Dirreccion:</b> <?php echo $fila['direction_property']; ?></p>
+
+<p><b>Informacion:</b> <?php echo $fila['information_property']; ?></p>
+
+<p><b>Descripcion:</b> <?php echo $fila['description_property']; ?></p>
+
+<p class="pf"><b>Precio:</b> <?php echo $fila['cost_property']; ?></p>
+<div class="btn-cerrar">
+    <label for="btn-modal">Cerrar</label>
+</div>
+</div>
+<label for="btn-modal" class="cerrar-modal"></label>
+</div>    
+
+                            
                                                 
                                             <?php
                                             }
@@ -436,7 +485,9 @@ if(isset($_POST['search'])){
         <h2 class="titulo-final">&copy; Arriendum </h2>
     </footer>
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../config/js/alert.js"></script>
+
 </body>
 
 </html>

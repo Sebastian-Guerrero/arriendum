@@ -76,7 +76,7 @@ $fecha = Date('Y-m-d H:i:s');
 
             <li><button class="ba" type="button"><a href="../../view/user/profile.php?id_user=<?php echo $_SESSION['id_user']; ?>">MI PERFIL</a></button></li>
 
-            <li><a href="../../connect/logout.php" class="btn-exit-system"><i class="fas fa-power-off"></i></a></li>
+            <li><a onclick="cerrar_sesion()" class="btn-exit-system"><i class="fas fa-power-off"></i></a></li>
         </ul>
     </nav>
 
@@ -191,5 +191,7 @@ $fecha = Date('Y-m-d H:i:s');
   </div>
 
 <script src="../../config/js/java.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../config/js/alert.js"></script>
 </body>
 </html>
