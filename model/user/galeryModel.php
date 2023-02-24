@@ -2,20 +2,9 @@
     class Galery{
                   public $id_galery_property;
                   public $id_property;
-                  public $name_galery_property;
 
                     function agregar(){
-                                      $conet = new Conexion();
-                                      $c = $conet->conectando();
-                                      $ruta = '../../assets/img/inmuebles/'.$_FILES['name_galery_property']['name'];
-									                    move_uploaded_file($_FILES['name_galery_property']['tmp_name'],$ruta);
-                                      $insertar = "INSERT INTO galery_property VALUE(
-                                                                              '$this->id_galery_property',
-                                                                              '$this->id_property',
-                                                                              '$ruta'                            
-                                      )";
-                                      mysqli_query($c,$insertar);
-                                      header("location: product.php");
+                                      
                                       }
 
                     function modificar(){$c = new Conexion();

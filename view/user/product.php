@@ -18,13 +18,19 @@ if($_POST){
 
 }
 
+$query7 ="SELECT * FROM location_property";
+$result7 = mysqli_query($c, $query7);
+$fila7 = mysqli_fetch_array($result7);
+
 $query = "SELECT * FROM property";
 $result = mysqli_query($c, $query);
 $num_rows_i = mysqli_num_rows($result);
 $_SESSION ["contador"] = "1";
 
+
 $conet = new Conexion();
 $c = $conet->conectando();
+
 $query="select count(*) as totalRegistros from property";
 $resultado = mysqli_query($c, $query);
 $arreglo = mysqli_fetch_array($resultado); 
@@ -106,29 +112,30 @@ if(isset($_POST['search'])){
                                                                     }
                                                                 }
                                                         </script>
-                                                        <select name="location_property" id="location_property" required>
-                                                                <option value="0" >Seleccione la localidad:</option>
-                                                                <option value="1">Usaquén</option>
-                                                                <option value="2">Chapinero</option>
-                                                                <option value="3">Santa Fe</option>
-                                                                <option value="4">San Cristóbal</option>
-                                                                <option value="5">Usme</option>
-                                                                <option value="6">Tunjuelito</option>
-                                                                <option value="7">Bosa</option>
-                                                                <option value="8">Kennedy</option>
-                                                                <option value="9">Fontibón</option>
-                                                                <option value="10">Engativá</option>
-                                                                <option value="11">Suba</option>
-                                                                <option value="12">Barrios Unidos</option>
-                                                                <option value="13">Teusaquillo</option>
-                                                                <option value="14">Los Mártires</option>
-                                                                <option value="15">Antonio Nariño</option>
-                                                                <option value="16">Puente Aranda</option>
-                                                                <option value="17">Candelaria</option>
-                                                                <option value="18">Rafael Uribe Uribe</option>
-                                                                <option value="19">Ciudad Bolívar</option>
-                                                                <option value="20">Sumapaz</option>
-                                                        </select>
+
+                                                            <select name="location_property" required="">
+                                                                <option selected disabled>SELECIONE LA LOCALIDAD DEL INMUEBLE:</option>
+                                                                <?php
+                                                                    do {
+                                                                    $id7 = $fila7['id_location_property'];
+                                                                    $name7 = $fila7['name_location_property'];
+
+                                                                    if ($id7==0) {
+                                                                        echo "<option>No hay registros</option>";
+                                                                    }else {
+                                                                        echo "<option value=$id7>$name7</option>";
+                                                                    }
+
+                                                                    }while($fila7 = mysqli_fetch_array($result7));			 	
+                                                                        $row7 = mysqli_num_rows($result7);
+                                                                        $rows7 = 0;
+                                                                    if($rows7>0){
+                                                                        mysqli_data_seek($result7, 0);
+                                                                        $fila7 = mysqli_fetch_array($result7);
+                                                                    }
+                                                                ?>
+                                                            </select>
+
                                                                     <br>
                                                                     <br>
                                                                     <button type="submit" onclick="validar();" value="validar" class="btn btn-raised btn-info" name="search"><i class="fas fa-search"></i> &nbsp; BUSCAR</button>
@@ -324,22 +331,24 @@ $fila6 = mysqli_fetch_array($result6);
                             </li>
                             <?php
                             }
-                            ?>		
+                            ?>
+                            </ul>
+                        </nav>
 		</section>
 
- <footer>  
+        <footer>  
         <div class="contenedor-footer">
             <div class="content-foo">
                 <h4>Phone</h4>
-                <p>8296312</p>
+                <p>3203635362</p>
             </div>
             <div class="content-foo">
                 <h4>Email</h4>
-                <p>8296312</p>
+                <p>arriendum@gmail.com</p>
             </div>
             <div class="content-foo">
                 <h4>Location</h4>
-                <p>8296312</p>
+                <p>Bogota D.C </p>
             </div>
         </div>
         <h2 class="titulo-final">&copy; Arriendum </h2>

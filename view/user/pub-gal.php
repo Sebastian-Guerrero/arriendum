@@ -1,15 +1,6 @@
 <?php
   include("../../connect/conectar.php");
-  include("../../controller/user/galeryController.php");
 
-$obj = new Galery();
-if($_POST)
-{
-  $obj->id_galery_property = $_POST['id_galery_property'];
-  $obj->id_property = $_POST['id_property'];
-  $obj->name_galery_property = $_FILES['name_galery_property']['tmp_name'];
-}
-  
 session_start();
 $id_user = $_SESSION['id_user'];
 $name_user = $_SESSION['name_user'];
@@ -52,7 +43,7 @@ $fila = mysqli_fetch_array($result);
 
     <div class="form">
 
-      <form class="register-form" action="" method="POST" enctype="multipart/form-data">
+      <form class="register-form" action="../../controller/user/galeryController.php" method="POST" enctype="multipart/form-data">
         <p class="name">Fotos del Inmueble</p>
         <hr>
 
@@ -60,8 +51,7 @@ $fila = mysqli_fetch_array($result);
 
         <input type="hidden" name="id_property" id="id_property" value="<?php echo $fila[0];?>">
 
-        <input type="file" name="name_galery_property" id="name_galery_property">
-        
+        <input type="file" name="imagenes[]" multiple>
 
         <button type="submit" name="guarda">PUBLICAR</button>
         
