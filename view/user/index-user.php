@@ -29,6 +29,7 @@ $result = mysqli_query($c, $query);
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Arriendum</title>
     <link rel="stylesheet" href="../../config/css/estilos.css"/>
+    <link rel="stylesheet" href="../../config/icomoon/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">    <link
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="../../config/css/productos.css"/>
@@ -252,14 +253,16 @@ $result = mysqli_query($c, $query);
             </div>
         </div>
 
-        <div class="wrapper">
-            <div class="social-icons">
-
-            <a class="social_icon twitter" src="https://icons8.com/icon/102907/twitter" target="_blank" rel="author">
-                <i class="fab fa-twitter"></i>
-            </a>
-            </div>
-        </div>
+        <div class="icons">
+        <div class="icons">
+    <div class="social">
+		<ul>
+			<li><a href="https://www.facebook.com/profile.php?id=100090515414959&mibextid=ZbWKwL" target="_blank" class="icon-facebook"></a></li>
+			<li><a href="https://twitter.com/arriendum" target="_blank" class="icon-twitter"></a></li>
+			<li><a href="https://www.instagram.com/arriendum/" target="_blank" class="icon-instagram"></a></li>
+			<li><a href="mailto:arriendum@gmail.com" class="icon-mail"></a></li>
+		</ul>
+	</div>
 
         
         <h2 class="titulo-final">&copy; Arriendum </h2>

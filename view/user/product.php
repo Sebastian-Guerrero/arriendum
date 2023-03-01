@@ -43,15 +43,16 @@ $totalPaginas=ceil($totalRegistros/$maximoRegistros);
 //echo $totalPaginas;
 
 if(isset($_POST['search'])){
-    $query2="select * from property where location_property = $obj->location_property limit $desde,$maximoRegistros";
-    $result=mysqli_query($c,$query2);
-    $num_rows = mysqli_num_rows($result);
-    unset($_POST['search'] );
-}else{
-    $query2="select * from location_property limit $desde,$maximoRegistros";
-    $resultado2=mysqli_query($c,$query2);
-    $arreglo2 = mysqli_fetch_array($resultado2);
-    
+    if ($obj->location_property == 0) {
+        $_SESSION["alerta_vacio"] = "1";
+        $query2="select * from location_property limit $desde,$maximoRegistros";
+        $resultado2=mysqli_query($c,$query2);
+        $num_rows = mysqli_num_rows($result);
+    }else{
+        $query2="select * from property where location_property = $obj->location_property limit $desde,$maximoRegistros";
+        $result=mysqli_query($c,$query2);
+        $num_rows = mysqli_num_rows($result);
+    }
 }
 
 ?>
@@ -66,6 +67,7 @@ if(isset($_POST['search'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">    <link
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="../../config/css/estilos.css"/>
+    <link rel="stylesheet" href="../../config/icomoon/style.css">
     <link rel="stylesheet" href="../../config/css/productos.css"/>
     <link rel="stylesheet" href="../../config/css/sweetalert2.min.css"/>
     
@@ -93,17 +95,6 @@ if(isset($_POST['search'])){
                                                 <div class="col-12 row">
                                                         <div class="col-11">
                                                         <label  class="form-label">¿Que localidad deseas?</label>
-                                                        <script>
-                                                                function validar(){
-                                                                    var Localidadinmueble=document.getElementById('location_property');
-                                                                    if (Localidadinmueble.value==0 ||
-                                                                        Localidadinmueble.value=="")
-                                                                    {
-                                                                        alert("Selecciona una localidad para continuar");
-                                                                        Localidadinmueble.focus();
-                                                                    }
-                                                                }
-                                                        </script>
                                                         <select name="location_property" id="location_property" required>
                                                                 <option value="0">Seleccione la localidad:</option required >
                                                                 <option value="1">Usaquén</option>
@@ -129,22 +120,17 @@ if(isset($_POST['search'])){
                                                         </select>
                                                                     <br>
                                                                     <br>
-                                                                    <button type="submit" onclick="error_filtro();" class="btn btn-raised btn-info" name="search"><i class="fas fa-search"></i> &nbsp; BUSCAR</button>
+                                                                    <button type="submit"  class="btn btn-raised btn-info" name="search"><i class="fas fa-search"></i> &nbsp; BUSCAR</button>
                                                                     <a href="product.php">
                                                                         <button class="btn btn-raised btn-info"><i class="fas fa-sync-alt"></i> &nbsp;REINICIAR </button>
                                                                     </a>
                                                         </div>
                                                 </div>
-
-
-                                               
                                         </form>
                                 </div>
                         </div>
                 </div>
         </div>
-
-
     </div>
 </div>
 		
@@ -483,11 +469,36 @@ $fila6 = mysqli_fetch_array($result6);
             </div>
         </div>
         <h2 class="titulo-final">&copy; Arriendum </h2>
+        <div class="icons">
+    <div class="social">
+		<ul>
+			<li><a href="https://www.facebook.com/profile.php?id=100090515414959&mibextid=ZbWKwL" target="_blank" class="icon-facebook"></a></li>
+			<li><a href="https://twitter.com/arriendum" target="_blank" class="icon-twitter"></a></li>
+			<li><a href="https://www.instagram.com/arriendum/" target="_blank" class="icon-instagram"></a></li>
+			<li><a href="mailto:arriendum@gmail.com" class="icon-mail"></a></li>
+		</ul>
+	</div>
     </footer>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        <?php 
+                if(isset($_SESSION["alerta_vacio"])){
+                    if ($_SESSION["alerta_vacio"]!="0") {
+                        echo "var alerta_vacio = '1';";
+                        // echo "var alerta_agenda = '1';";
+                        unset($_SESSION["alerta_vacio"]);
+                    // }else {
+                    //     echo "var alerta_vacio = '0';";
+                    //     echo "var alerta_agenda = '1';";
+                    //     unset($_SESSION["prof_agenda"]);
+                    // }
+                    }
+                }
+        ?>
+
+
+    </script>
     <script src="../../config/js/alert.js"></script>
-
 </body>
-
 </html>
