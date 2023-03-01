@@ -42,10 +42,10 @@
         <div>
         <br>
         <button type="submit">Ingresar</button>
-        </br>
- 
+        <br>
+        <br>
+        <a class="olvide_contra" href="recovery.php">¿Olvidaste tu contraseña?</a>
       </form>
-
     </div>
   </div>
   <script>
