@@ -476,6 +476,8 @@ $fila6 = mysqli_fetch_array($result6);
 			<li><a href="https://twitter.com/arriendum" target="_blank" class="icon-twitter"></a></li>
 			<li><a href="https://www.instagram.com/arriendum/" target="_blank" class="icon-instagram"></a></li>
 			<li><a href="mailto:arriendum@gmail.com" class="icon-mail"></a></li>
+            <li><a href="https://github.com/Sebastian-Guerrero/arriendum.git" target="_blank"class="icon-github"></a></li>
+
 		</ul>
 	</div>
     </footer>

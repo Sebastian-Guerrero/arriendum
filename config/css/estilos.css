@@ -558,3 +558,6 @@ footer{
 		background: #000; /* Cambiamos el fondo cuando el usuario pase el mouse */
 		padding: 10px 30px; /* Hacemos mas grande el espacio cuando el usuario pase el mouse */
 	}
+    .icon-github:before {
+        content: "\eab0";
+      }
