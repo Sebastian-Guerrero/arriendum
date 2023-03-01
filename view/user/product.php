@@ -255,10 +255,20 @@ $fila6 = mysqli_fetch_array($result6);
 <div class="content-modal">
 <h2>Inmueble: <?php echo $fila['id_property']; ?> - Dueño: <?php echo $fila6['name_user']; ?> <?php echo $fila6['lastname_user']; ?></h2>
 
+<?php
+
+ $query7 = "SELECT name_galery_property FROM galery_property WHERE id_property  =  $img";
+ $result7 = mysqli_query($c, $query7);
+ $fila7 = mysqli_fetch_array($result7);
+
+?>
+
 <div class="mi">
-<img src="<?php echo $fila5['name_galery_property']; ?>">
+<img src="<?php echo $fila7[0]; ?>">
+<img src="<?php echo $fila7[1]; ?>">
+<img src="<?php echo $fila7[2]; ?>">
 </div>
-<h3>Datos del Dueño:</h3>
+<h3>Datos del Dueño: <?php echo $fila7[1]; ?></h3>
 
 <p class="pi"><b>Celular:</b> <?php echo $fila6['phone_user']; ?></p>
 
