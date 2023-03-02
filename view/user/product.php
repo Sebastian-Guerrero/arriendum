@@ -68,6 +68,7 @@ if(isset($_POST['search'])){
     <link rel="stylesheet" href="../../config/css/productos.css"/>
     <link rel="stylesheet" href="../../config/a/css/all.css">
 
+
     
     <title>Arriendum</title>
 </head>
@@ -236,13 +237,16 @@ if(isset($_POST['search'])){
 
                                                     <div class="boton-modal">
                                                         <label for="btn-modal">
-                                                            Mas Informacion...
+                                                        Mas Informacion...
                                                         </label>
                                                     </div>
 
                                                 </div>
+                                                
 
-                                                <?php
+                                                
+
+<?php
 
 $query6 = "SELECT * FROM user WHERE id_user = $id";
 $result6 = mysqli_query($c, $query6);
@@ -257,18 +261,24 @@ $fila6 = mysqli_fetch_array($result6);
 
 <?php
 
- $query7 = "SELECT name_galery_property FROM galery_property WHERE id_property  =  $img";
+ $query7 = "SELECT All name_galery_property FROM galery_property WHERE id_property  =  $img";
  $result7 = mysqli_query($c, $query7);
- $fila7 = mysqli_fetch_array($result7);
+
+?>
+<?php  
+while ($fila7 = mysqli_fetch_array($result7)) {
+
 
 ?>
 
 <div class="mi">
-<img src="<?php echo $fila7[0]; ?>">
-<img src="<?php echo $fila7[1]; ?>">
-<img src="<?php echo $fila7[2]; ?>">
+<img src="<?php echo $fila7['name_galery_property']; ?>">
 </div>
-<h3>Datos del Dueño: <?php echo $fila7[1]; ?></h3>
+
+<?php
+};
+?>
+<h3>Datos del Dueño:</h3>
 
 <p class="pi"><b>Celular:</b> <?php echo $fila6['phone_user']; ?></p>
 
@@ -277,7 +287,7 @@ $fila6 = mysqli_fetch_array($result6);
 <h3>Datos de la Propiedad:</h3>
 
 <p class="pi"><b>Localidad:</b> <?php echo $fila4['name_location_property']; ?></p>
-
+ 
 <p><b>Barrio:</b> <?php echo $fila['neighborhood_property']; ?></p>
 
 <p><b>Dirreccion:</b> <?php echo $fila['direction_property']; ?></p>
@@ -293,48 +303,16 @@ $fila6 = mysqli_fetch_array($result6);
 </div>
 <label for="btn-modal" class="cerrar-modal"></label>
 </div>    
-                                            <?php
+<?php
                                             }
                                             ?>
-                                                 
+ 
                                                     <?php
                                                     }
                                                     ?>   
                                                 </div>
                                         </section>
-                    <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        <?php 
-                        if($pagina!=1){
-                        ?>
-                        <li class="page-item ">
-                            <a class="page-link" href="?pagina=<?php echo 1; ?>"><</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="?pagina=<?php echo $pagina-1; ?>"><<</a>
-                        </li>
-                        <?php
-                        }
-                        for($i=1; $i<=$totalPaginas; $i++){
-                            if($i==$pagina){
-                                echo'<li class="page-item active" aria-current="page"><a class="page-link" href="?pagina='.$i.'">'.$i.'</a></li>';    
-                            }
-                            else{
-                                echo'<li class="page-item "><a class="page-link" href="?pagina='.$i.'">'.$i.'</a></li>'; 
-                            }
-                        }
-                        if($pagina !=$totalPaginas){
-                            ?>
-                            
-                            <li class="page-item">
-                                <a class="page-link" href="?pagina=<?php echo $pagina+1; ?>">>></a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="?pagina=<?php echo $totalPaginas; ?>">></a>
-                            </li>
-                            <?php
-                            }
-                            ?>		
+                   
 		</section>
 
  <footer>  
@@ -354,6 +332,7 @@ $fila6 = mysqli_fetch_array($result6);
         </div>
         <h2 class="titulo-final">&copy; Arriendum </h2>
     </footer>
+    
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="../../config/js/alert.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
