@@ -64,12 +64,12 @@ if(isset($_POST['search'])){
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="../../config/a/css/all.css"/>
     <link rel="stylesheet" href="../../config/css/estilos.css"/>
     <link rel="stylesheet" href="../../config/icomoon/style.css">
     <link rel="stylesheet" href="../../config/css/productos.css"/>
     <link rel="stylesheet" href="../../config/css/sweetalert2.min.css"/>
+    <link rel="stylesheet" href="../../config/css/estilos_filtro.css"/>
     
     <title>Arriendum</title>
 </head>
@@ -84,19 +84,25 @@ if(isset($_POST['search'])){
             </ul>
         </nav>
 		</header>
-		<div class="container mt-5">
+        <br>
+        <br>
+        <div class="form_filtro" >
+<form  action="" method="POST">
+  <p class="name">FILTRO LOCALIDAD</p>
+  <hr>
+  <div class="container mt-5">
     <div class="col-12">
         <div class="row">
                 <div class="col-12 grid-margin">
                         <div class="card">
                                 <div class="card-body">
-                                        <h4 class="card-title">Buscador</h4>
+                                    <br>
                                         <form id="form2" name="form2" method="POST" action="product.php">
                                                 <div class="col-12 row">
                                                         <div class="col-11">
-                                                        <label  class="form-label">¿Que localidad deseas?</label>
-                                                        <select name="location_property" id="location_property" required>
-                                                                <option value="0">Seleccione la localidad:</option required >
+                                                        <label  class="name">¿Que localidad deseas?</label>
+                                                        <select class="boton_select" name="location_property" id="location_property" required>
+                                                                <option value="0">Seleccione la localidad</option required >
                                                                 <option value="1">Usaquén</option>
                                                                 <option value="2">Chapinero</option>
                                                                 <option value="3">Santa Fe</option>
@@ -120,9 +126,9 @@ if(isset($_POST['search'])){
                                                         </select>
                                                                     <br>
                                                                     <br>
-                                                                    <button type="submit"  class="btn btn-raised btn-info" name="search"><i class="fas fa-search"></i> &nbsp; BUSCAR</button>
+                                                                    <button type="submit"  class="ba" name="search"><i class="fas fa-search"></i> &nbsp; BUSCAR</button>
                                                                     <a href="product.php">
-                                                                        <button class="btn btn-raised btn-info"><i class="fas fa-sync-alt"></i> &nbsp;REINICIAR </button>
+                                                                        <button class="ba"><i class="fas fa-sync-alt"></i> &nbsp;REINICIAR</button>
                                                                     </a>
                                                         </div>
                                                 </div>
@@ -132,6 +138,11 @@ if(isset($_POST['search'])){
                 </div>
         </div>
     </div>
+</div>  
+</form>
+
+</div>
+
 </div>
 		
 

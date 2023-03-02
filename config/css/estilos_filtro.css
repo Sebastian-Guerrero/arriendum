@@ -1,0 +1,31 @@
+.form_filtro {
+    position: relative;
+    z-index: 1;
+    width: 1000px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    justify-content: space-between;
+    box-shadow: 0 0 20px 0 rgba(51, 177, 240, 0.2), 0 5px 5px 0 rgba(52, 223, 223, 0.24);
+    margin-left: 180px;
+    border-radius: 0.3%;
+  }
+.name{
+    color: #fff;
+    font-size: 30px;
+    padding: 5px;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+  }
+
+.boton_select{
+    border: none;
+    background: #ffffff;
+    padding: 12px 30px;
+    border-radius: 30px;
+    color: #00ADB5(255, 255, 255);
+    font-weight: bold;
+    font-size: 15px;
+    transition: .4s;
+}
