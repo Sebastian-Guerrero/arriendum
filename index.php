@@ -193,20 +193,20 @@ $result = mysqli_query($c, $query);
                         <img  src="assets/img/img/ciudadbolivar.jpg" alt="" >
                         <br>
                         <br>
-                        <a href="vistas/productos1.php" type="button" class="btn btn-outline-secondary"><h4>Ciudad Bolivar</h4></a>  
+                        <a href="view/guest/product.php" type="button" class="btn btn-outline-secondary"><h4>Ciudad Bolivar</h4></a>  
                     
                     </div>
                     <div class="servicio-ind">
                         <img src="assets/img/img/kennedy.jpg" alt="">
                         <br>
                         <br>
-                        <a href="vistas/productos1.php" type="button" class="btn btn-outline-secondary"><h4>Kennedy</h4></a>                    
+                        <a href="view/guest/product.php"type="button" class="btn btn-outline-secondary"><h4>Kennedy</h4></a>                    
                     </div>
                     <div class="servicio-ind">
                         <img src="assets/img/img/bosa.jpg" alt="">
                         <br>
                         <br>
-                        <a href="vistas/productos1.php" type="button" class="btn btn-outline-secondary"><h4>BOSA</h4></a>  
+                        <a href="view/guest/product.php" type="button" class="btn btn-outline-secondary"><h4>BOSA</h4></a>  
                      
                     </div>
                 </div>

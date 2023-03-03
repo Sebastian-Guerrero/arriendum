@@ -67,7 +67,7 @@ $fecha = Date('Y-m-d H:i:s');
         <hr>
         <div class="select">
           <select name="type_document" id="type_document" required>
-          <option value="1" selected disabled>Selecciona Tipo de Documento:
+          <option  selected disabled value="">Selecciona Tipo de Documento:
             <?php
                 do {
                   $id = $fila['id_type_document'];

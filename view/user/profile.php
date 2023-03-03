@@ -72,7 +72,7 @@ if($_SESSION['id_user'] != $id_user) {
             <div>
                 </div>                                              
                 <div class="col-12 col-md-6">
-                <input type="password" placeholder="Contraseña:" autocomplete="off" name="password_user" id="password" />
+                <input type="password" placeholder="Contraseña:" autocomplete="off" name="password_user" id="password" required />
                 <div>
                     <input class="contra" style="margin-left:-254px" type="checkbox" onclick="verpassword()">
                     <p class="contra">Mostrar Contraseña</p>

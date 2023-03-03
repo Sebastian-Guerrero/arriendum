@@ -30,7 +30,7 @@ try {
     $mail->addAddress($email_user, 'Cliente Arriendum');      
     $mail->isHTML(true);                                  
     $mail->Subject = 'Recuperar clave';
-    $mail->Body    = 'Hola, este es un correo generado para solicitar tu recuperación de contraseña, por favor, visita la página de <a href="http://localhost:8080/arriendum/cambiar_contra.php?id_user='.$row['id_user'].'">Recuperación de contraseña</a>';
+    $mail->Body    = 'Hola, este es un correo generado para solicitar tu recuperación de contraseña, por favor, visita la página de <a href="http://localhost:8080/arriendum/view/guest/cambiar_contra.php?id_user='.$row['id_user'].'">Recuperación de contraseña</a>';
     
     
     $mail->send();

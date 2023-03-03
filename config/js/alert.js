@@ -37,17 +37,22 @@ if (typeof update_ok !== "undefined") {
               })
         }
 
-
-        function error_filtro(){
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Por favor selecciona una localidad!',
-                
-              }).then((result) => {
-              var filtro= document.getElementById('location_property');
-              if (filtro.value==0 ||
-                  filtro.value==""){
-                }
-              })
-        }
+        //Alert the filtro
+        if (typeof alerta_vacio !== "undefined") {
+          if (alerta_vacio == "1") {
+              Swal.fire({
+                  icon: 'warning',
+                  title: 'Por Favor Seleccione una Localidad',
+                  text: 'presione aceptar'
+                    	
+                })
+          }
+          else(
+              Swal.fire({
+                  icon: 'warning',
+                  title: 'No se pudo actualizar, revise los campos',
+                  text: 'presione aceptar para continuar'
+                  
+                })
+          )
+          }

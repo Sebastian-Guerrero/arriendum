@@ -94,7 +94,7 @@ $fecha = Date('Y-m-d H:i:s');
 
         <div class="select">
           <select name="type_property" required="">
-            <option selected disabled>TIPO DEL INMUEBLE:</option>
+            <option selected disabled value="">TIPO DEL INMUEBLE:</option>
             <?php
                 do {
                   $id = $fila['id_type_property'];
@@ -119,7 +119,7 @@ $fecha = Date('Y-m-d H:i:s');
 
         <div class="select" >
           <select name="option_property" required>
-            <option selected disabled>INMUEBLE DESTINADO A:</option>
+            <option selected disabled value="">INMUEBLE DESTINADO A:</option>
             <?php
                 do {
                   $id1 = $fila1['id_option_property'];
@@ -144,7 +144,7 @@ $fecha = Date('Y-m-d H:i:s');
 
         <div class="select">
           <select name="location_property" required="">
-            <option selected disabled>SELECIONE LA LOCALIDAD DEL INMUEBLE:</option>
+            <option selected disabled value="">SELECIONE LA LOCALIDAD DEL INMUEBLE:</option>
             <?php
                 do {
                   $id2 = $fila2['id_location_property'];

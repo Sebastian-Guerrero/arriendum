@@ -43,17 +43,17 @@ $totalPaginas=ceil($totalRegistros/$maximoRegistros);
 //echo $totalPaginas;
 
 if(isset($_POST['search'])){
-    $query2="select * from property where location_property = $obj->location_property limit $desde,$maximoRegistros";
-    $result=mysqli_query($c,$query2);
-    $num_rows = mysqli_num_rows($result);
-    unset($_POST['search'] );
-}else{
-    $query2="select * from location_property limit $desde,$maximoRegistros";
-    $resultado2=mysqli_query($c,$query2);
-    $arreglo2 = mysqli_fetch_array($resultado2);
-    
+    if ($obj->location_property == 0) {
+        $_SESSION["alerta_vacio"] = "1";
+        $query2="select * from location_property limit $desde,$maximoRegistros";
+        $resultado2=mysqli_query($c,$query2);
+        $num_rows = mysqli_num_rows($result);
+    }else{
+        $query2="select * from property where location_property = $obj->location_property limit $desde,$maximoRegistros";
+        $result=mysqli_query($c,$query2);
+        $num_rows = mysqli_num_rows($result);
+    }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -67,11 +67,12 @@ if(isset($_POST['search'])){
     <link rel="stylesheet" href="../../config/css/estilos.css"/>
     <link rel="stylesheet" href="../../config/css/productos.css"/>
     <link rel="stylesheet" href="../../config/a/css/all.css">
+    <link rel="stylesheet" href="../../config/css/sweetalert2.min.css"/>
+    <link rel="stylesheet" href="../../config/css/estilos_filtro.css"/>
 
     
     <title>Arriendum</title>
 </head>
-
 <body>
         <nav>
             <img class="logo" src="../../assets/icons/logo.png">
@@ -82,32 +83,27 @@ if(isset($_POST['search'])){
                 <li><a onclick="cerrar_sesion()" class="btn-exit-system"><i class="fas fa-power-off"></i></a></li>
             </ul>
         </nav>
-		</header>
-		<div class="container mt-5">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="form_filtro" >
+<form  action="" method="POST">
+  <p class="name">FILTRO LOCALIDAD</p>
+  <hr>
+  <div class="container mt-5">
     <div class="col-12">
         <div class="row">
                 <div class="col-12 grid-margin">
                         <div class="card">
                                 <div class="card-body">
-                                        <h4 class="card-title">Buscador</h4>
+                                    <br>
                                         <form id="form2" name="form2" method="POST" action="product.php">
                                                 <div class="col-12 row">
                                                         <div class="col-11">
-                                                        <label  class="form-label">¿Que localidad deseas?</label>
-                                                        <script>
-                                                                function validar(){
-                                                                    var Localidadinmueble=document.getElementById('location_property');
-                                                                    if (Localidadinmueble.value==0 ||
-                                                                        Localidadinmueble.value=="")
-                                                                    {
-                                                                        alert("Selecciona una localidad para continuar");
-                                                                        Localidadinmueble.focus();
-                                                                        
-                                                                    }
-                                                                }
-                                                        </script>
-                                                        <select name="location_property" id="location_property" required>
-                                                                <option value="0" >Seleccione la localidad:</option>
+                                                        <label  class="name">¿Que localidad deseas?</label>
+                                                        <select class="boton_select" name="location_property" id="location_property" required>
+                                                                <option value="0">Seleccione la localidad</option required >
                                                                 <option value="1">Usaquén</option>
                                                                 <option value="2">Chapinero</option>
                                                                 <option value="3">Santa Fe</option>
@@ -131,25 +127,22 @@ if(isset($_POST['search'])){
                                                         </select>
                                                                     <br>
                                                                     <br>
-                                                                    <button type="submit" onclick="validar();" value="validar" class="btn btn-raised btn-info" name="search"><i class="fas fa-search"></i> &nbsp; BUSCAR</button>
+                                                                    <button type="submit"  class="ba" name="search"><i class="fas fa-search"></i> &nbsp; BUSCAR</button>
                                                                     <a href="product.php">
-                                                                        <button class="btn btn-raised btn-info"><i class="fas fa-sync-alt"></i> &nbsp;REINICIAR</button>
+                                                                        <button class="ba"><i class="fas fa-sync-alt"></i> &nbsp;REINICIAR</button>
                                                                     </a>
                                                         </div>
                                                 </div>
-
-                                                
                                         </form>
-
-
                                 </div>
                         </div>
                 </div>
         </div>
-
-
     </div>
+</div>  
+</form>
 </div>
+
                                     <?php
                                         if($_SESSION ["contador"] !="1"){
                                         //echo "No hay registro";
@@ -345,8 +338,24 @@ $fila6 = mysqli_fetch_array($result6);
         <h2 class="titulo-final">&copy; Arriendum </h2>
     </footer>
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="../../config/js/alert.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        <?php 
+                if(isset($_SESSION["alerta_vacio"])){
+                    if ($_SESSION["alerta_vacio"]!="0") {
+                        echo "var alerta_vacio = '1';";
+                        // echo "var alerta_agenda = '1';";
+                        unset($_SESSION["alerta_vacio"]);
+                    // }else {
+                    //     echo "var alerta_vacio = '0';";
+                    //     echo "var alerta_agenda = '1';";
+                    //     unset($_SESSION["prof_agenda"]);
+                    // }
+                    }
+                }
+        ?>
+    </script>
+    <script src="../../config/js/alert.js"></script>
 </body>
 
 </html>

@@ -51,7 +51,7 @@ $fila = mysqli_fetch_array($result);
 
         <input type="hidden" name="id_property" id="id_property" value="<?php echo $fila[0];?>">
 
-        <input type="file" name="imagenes[]" multiple>
+        <input type="file" name="imagenes[]" multiple required>
 
         <button type="submit" name="guarda">PUBLICAR</button>
         

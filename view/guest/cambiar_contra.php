@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <link rel="stylesheet" href="config/css/estiloslogin.css">
+    <link rel="stylesheet" href="../../config/css/estiloslogin.css">
 
     <title>Recuperar contraseña</title>
 
@@ -16,13 +16,13 @@
 <body>
 
     <nav>
-      <img class="logo" src="assets/icons/logo.png">
+      <img class="logo" src="../../assets/icons/logo.png">
     </nav>
 
   <div class="login-page">
     <div class="form">
 
-      <form class="login-form" action="connect/change_password.php" method="POST">
+      <form class="login-form" action="../../connect/change_password.php" method="POST">
 
         <p class="name">Recupera tu contraseña</p>
         <hr>
