@@ -184,7 +184,7 @@ if(isset($_POST['search'])){
                                                 <div class="card">
 
                                                     <?php
-
+                                                
                                                     $query5 = "SELECT name_galery_property FROM galery_property WHERE id_property = $img";
                                                     $result5 = mysqli_query($c, $query5);
                                                     $fila5 = mysqli_fetch_array($result5); 
@@ -263,7 +263,35 @@ $fila6 = mysqli_fetch_array($result6);
 <h2>Inmueble: <?php echo $fila['id_property']; ?> - Dueño: <?php echo $fila6['name_user']; ?> <?php echo $fila6['lastname_user']; ?></h2>
 
 <div class="mi">
-<img src="<?php echo $fila5['name_galery_property']; ?>">
+    <?php
+        $query5 = "SELECT name_galery_property FROM galery_property WHERE id_property = $img";
+        $result5 = mysqli_query($c, $query5);
+        $fila5 = mysqli_fetch_array($result5); 
+    ?>
+    
+<?php
+    do {
+    $id7 = $fila7['id_location_property'];
+    $name7 = $fila7['name_location_property'];
+
+    if ($id7==0) {
+        echo "<option>No hay registros</option>";
+    }else {
+        echo "<option value=$id7>$name7</option>";
+    }
+
+    }while($fila7 = mysqli_fetch_array($result7));			 	
+        $row7 = mysqli_num_rows($result7);
+        $rows7 = 0;
+    if($rows7>0){
+       mysqli_data_seek($result7, 0);
+        $fila7 = mysqli_fetch_array($result7);
+    }
+?>
+    
+<img src="<?php echo $fila5[0]; ?>">
+<img src="<?php echo $fila5[1]; ?>">
+<img src="<?php echo $fila5[2]; ?>">
 </div>
 <h3>Datos del Dueño:</h3>
 

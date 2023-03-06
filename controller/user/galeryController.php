@@ -15,8 +15,8 @@ if(isset($_POST['guarda'])){
 
             $ruta = "../../assets/img/inmuebles/".$_FILES['imagenes']['name'][$key];
             $insertar = "INSERT INTO galery_property VALUE(
-              '$galery_property',
-              '$property',
+              '$id_galery_property',
+              '$id_property',
               '$ruta'                            
             )";
             mysqli_query($c,$insertar);
