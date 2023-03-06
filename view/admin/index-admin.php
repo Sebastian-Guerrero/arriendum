@@ -61,7 +61,7 @@ if (!isset($_SESSION['logueado']) || !$_SESSION['logueado']) {
 				<nav class="full-box nav-lateral-menu">
 					<ul>
 						<li>
-							<a href="#"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
+							<a href="index-admin.php"><i class="fab fa-dashcube fa-fw"></i> &nbsp; INICIO </a>
 						</li>
 
 						<br>

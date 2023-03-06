@@ -142,6 +142,7 @@ if(isset($_POST['search'])){
 </div>  
 </form>
 </div>
+</div>
 
                                     <?php
                                         if($_SESSION ["contador"] !="1"){
@@ -284,43 +285,7 @@ $fila6 = mysqli_fetch_array($result6);
                                                     }
                                                     ?>   
                                                 </div>
-                                        </section>
-                    <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        <?php 
-                        if($pagina!=1){
-                        ?>
-                        <li class="page-item ">
-                            <a class="page-link" href="?pagina=<?php echo 1; ?>"><</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="?pagina=<?php echo $pagina-1; ?>"><<</a>
-                        </li>
-                        <?php
-                        }
-                        for($i=1; $i<=$totalPaginas; $i++){
-                            if($i==$pagina){
-                                echo'<li class="page-item active" aria-current="page"><a class="page-link" href="?pagina='.$i.'">'.$i.'</a></li>';    
-                            }
-                            else{
-                                echo'<li class="page-item "><a class="page-link" href="?pagina='.$i.'">'.$i.'</a></li>'; 
-                            }
-                        }
-                        if($pagina !=$totalPaginas){
-                            ?>
-                            
-                            <li class="page-item">
-                                <a class="page-link" href="?pagina=<?php echo $pagina+1; ?>">>></a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="?pagina=<?php echo $totalPaginas; ?>">></a>
-                            </li>
-                            <?php
-                            }
-                            ?>		
-		</section>
-
- <footer>  
+ <footer style="margin-top:1140px">  
         <div class="contenedor-footer">
             <div class="content-foo">
                 <h4>Phone</h4>
@@ -336,7 +301,7 @@ $fila6 = mysqli_fetch_array($result6);
             </div>
         </div>
         <h2 class="titulo-final">&copy; Arriendum </h2>
-    </footer>
+</footer>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>

@@ -298,7 +298,14 @@ if(isset($_POST['search'])){
 					<li>
 						<a href="inm-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR INMUEBLE</a>
 					</li>
-				</ul>	
+				</ul>
+				<button styel="margin-right:120px;">
+					<a href="../../connect/excelinm.php"><i class="fas fa-file-excel"></i>&nbsp; EXCEL INMUEBLES</a>
+				</button>
+				<button styel="margin-right:120px;">
+					<a href="../../connect/reportinm.php"><i class="fas fa-file-pdf"></i>&nbsp; PDF INMUEBLES</a>
+				</button>			
+				
 			</div>
 			
 			<!-- Content -->

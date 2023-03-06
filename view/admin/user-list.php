@@ -296,8 +296,15 @@ if(isset($_POST['search'])){
 					<li>
 						<a href="user-search.php"><i class="fas fa-search fa-fw"></i> &nbsp; BUSCAR USUARIO</a>
 					</li>
-				</ul>	
+				</ul>
+				<button>
+					<a href="../../connect/excelusers.php"><i class="fas fa-file-excel"></i> &nbsp; EXCEL USUARIOS</a>
+				</button>
+				<button>
+					<a href="../../connect/reportusers.php"><i class="fas fa-file-pdf"></i> &nbsp; PDF USUARIOS</a>
+				</button>		
 			</div>
+			
 
 			<!-- Content -->
 			<div class="container-fluid">
