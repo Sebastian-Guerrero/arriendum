@@ -51,7 +51,13 @@ $fila = mysqli_fetch_array($result);
 
         <input type="hidden" name="id_property" id="id_property" value="<?php echo $fila[0];?>">
 
+<<<<<<< HEAD
         <input type="file" name="imagenes[]" multiple required>
+=======
+        <input type="file" name="imagenes[]" id="file" multiple>
+
+        <div id="preview" class="styleimage"></div>
+>>>>>>> 0387b958e0f8ca3dd717eec952b4bb7c501a023f
 
         <button type="submit" name="guarda">PUBLICAR</button>
         
@@ -62,6 +68,6 @@ $fila = mysqli_fetch_array($result);
 
   </div>
 
-<script src="../../config/js/java.js"></script>
+<script src="../../config/js/preview.js"></script>
 </body>
 </html>

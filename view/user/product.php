@@ -70,6 +70,7 @@ if(isset($_POST['search'])){
     <link rel="stylesheet" href="../../config/css/sweetalert2.min.css"/>
     <link rel="stylesheet" href="../../config/css/estilos_filtro.css"/>
 
+
     
     <title>Arriendum</title>
 </head>
@@ -171,7 +172,7 @@ if(isset($_POST['search'])){
                                                 <div class="card">
 
                                                     <?php
-
+                                                
                                                     $query5 = "SELECT name_galery_property FROM galery_property WHERE id_property = $img";
                                                     $result5 = mysqli_query($c, $query5);
                                                     $fila5 = mysqli_fetch_array($result5); 
@@ -230,13 +231,16 @@ if(isset($_POST['search'])){
 
                                                     <div class="boton-modal">
                                                         <label for="btn-modal">
-                                                            Mas Informacion...
+                                                        Mas Informacion...
                                                         </label>
                                                     </div>
 
                                                 </div>
+                                                
 
-                                                <?php
+                                                
+
+<?php
 
 $query6 = "SELECT * FROM user WHERE id_user = $id";
 $result6 = mysqli_query($c, $query6);
@@ -249,9 +253,53 @@ $fila6 = mysqli_fetch_array($result6);
 <div class="content-modal">
 <h2>Inmueble: <?php echo $fila['id_property']; ?> - Dueño: <?php echo $fila6['name_user']; ?> <?php echo $fila6['lastname_user']; ?></h2>
 
+<?php
+
+ $query7 = "SELECT All name_galery_property FROM galery_property WHERE id_property  =  $img";
+ $result7 = mysqli_query($c, $query7);
+
+?>
+<?php  
+while ($fila7 = mysqli_fetch_array($result7)) {
+
+
+?>
+
 <div class="mi">
-<img src="<?php echo $fila5['name_galery_property']; ?>">
+
+    <?php
+        $query5 = "SELECT name_galery_property FROM galery_property WHERE id_property = $img";
+        $result5 = mysqli_query($c, $query5);
+        $fila5 = mysqli_fetch_array($result5); 
+    ?>
+    
+<?php
+    do {
+    $id7 = $fila7['id_location_property'];
+    $name7 = $fila7['name_location_property'];
+
+    if ($id7==0) {
+        echo "<option>No hay registros</option>";
+    }else {
+        echo "<option value=$id7>$name7</option>";
+    }
+
+    }while($fila7 = mysqli_fetch_array($result7));			 	
+        $row7 = mysqli_num_rows($result7);
+        $rows7 = 0;
+    if($rows7>0){
+       mysqli_data_seek($result7, 0);
+        $fila7 = mysqli_fetch_array($result7);
+    }
+?>
+
+<img src="<?php echo $fila7['name_galery_property']; ?>">
+
 </div>
+
+<?php
+};
+?>
 <h3>Datos del Dueño:</h3>
 
 <p class="pi"><b>Celular:</b> <?php echo $fila6['phone_user']; ?></p>
@@ -261,7 +309,7 @@ $fila6 = mysqli_fetch_array($result6);
 <h3>Datos de la Propiedad:</h3>
 
 <p class="pi"><b>Localidad:</b> <?php echo $fila4['name_location_property']; ?></p>
-
+ 
 <p><b>Barrio:</b> <?php echo $fila['neighborhood_property']; ?></p>
 
 <p><b>Dirreccion:</b> <?php echo $fila['direction_property']; ?></p>
@@ -277,15 +325,23 @@ $fila6 = mysqli_fetch_array($result6);
 </div>
 <label for="btn-modal" class="cerrar-modal"></label>
 </div>    
-                                            <?php
+<?php
                                             }
                                             ?>
-                                                 
+ 
                                                     <?php
                                                     }
                                                     ?>   
                                                 </div>
+<<<<<<< HEAD
  <footer style="margin-top:1140px">  
+=======
+                                        </section>
+                   
+		</section>
+
+ <footer>  
+>>>>>>> 0387b958e0f8ca3dd717eec952b4bb7c501a023f
         <div class="contenedor-footer">
             <div class="content-foo">
                 <h4>Phone</h4>
@@ -301,7 +357,12 @@ $fila6 = mysqli_fetch_array($result6);
             </div>
         </div>
         <h2 class="titulo-final">&copy; Arriendum </h2>
+<<<<<<< HEAD
 </footer>
+=======
+    </footer>
+    
+>>>>>>> 0387b958e0f8ca3dd717eec952b4bb7c501a023f
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
