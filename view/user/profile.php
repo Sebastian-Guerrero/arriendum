@@ -63,7 +63,7 @@ if($_SESSION['id_user'] != $id_user) {
 
 <div class="form" style="margin-top: 50px;">
 
-        <form class="card-body" action="../../connect/validate2.php" method="POST">
+        <form class="card-body" action="../../connect/validateprofile.php" method="POST">
             <p class="name"> Mi  perfil
             <br>
             <p>Ingrese por favor su contraseña, para poder actualizar sus datos:</p>

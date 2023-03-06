@@ -51,7 +51,9 @@ $fila = mysqli_fetch_array($result);
 
         <input type="hidden" name="id_property" id="id_property" value="<?php echo $fila[0];?>">
 
-        <input type="file" name="imagenes[]" multiple>
+        <input type="file" name="imagenes[]" id="file" multiple>
+
+        <div id="preview" class="styleimage"></div>
 
         <button type="submit" name="guarda">PUBLICAR</button>
         
@@ -62,6 +64,6 @@ $fila = mysqli_fetch_array($result);
 
   </div>
 
-<script src="../../config/js/java.js"></script>
+<script src="../../config/js/preview.js"></script>
 </body>
 </html>

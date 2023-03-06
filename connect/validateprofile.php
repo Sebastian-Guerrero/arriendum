@@ -12,7 +12,7 @@ $query = "SELECT * FROM user WHERE id_user = '$id_user'";
 $result = mysqli_query($c, $query);
 $fila = mysqli_fetch_array($result);
 
-if($id_user = $_SESSION ['id_user']&&(password_verify($password_user, $fila ["password_user"])))
+if((password_verify($password_user, $fila ["password_user"])))
 {
     echo "<script> alert('Contraseña Correcta');window.location= '../view/user/updateuser.php'</script>";  
 }
