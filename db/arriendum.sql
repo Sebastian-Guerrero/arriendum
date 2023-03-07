@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-02-2023 a las 00:49:11
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 7.4.29
+-- Tiempo de generación: 07-03-2023 a las 23:35:38
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,16 +31,7 @@ CREATE TABLE `galery_property` (
   `id_galery_property` int(11) NOT NULL,
   `id_property` int(11) NOT NULL,
   `name_galery_property` blob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `galery_property`
---
-
-INSERT INTO `galery_property` (`id_galery_property`, `id_property`, `name_galery_property`) VALUES
-(1, 1, 0x2e2e2f2e2e2f6173736574732f696d672f696e6d7565626c65732f756e6b6e6f776e2e706e67),
-(3, 3, 0x2e2e2f2e2e2f6173736574732f696d672f696e6d7565626c65732f63617361312e6a7067),
-(4, 4, 0x2e2e2f2e2e2f6173736574732f696d672f696e6d7565626c65732f63617361332e6a7067);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -51,7 +42,7 @@ INSERT INTO `galery_property` (`id_galery_property`, `id_property`, `name_galery
 CREATE TABLE `location_property` (
   `id_location_property` int(11) NOT NULL,
   `name_location_property` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `location_property`
@@ -88,7 +79,7 @@ INSERT INTO `location_property` (`id_location_property`, `name_location_property
 CREATE TABLE `option_property` (
   `id_option_property` int(11) NOT NULL,
   `name_option_property` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `option_property`
@@ -118,16 +109,7 @@ CREATE TABLE `property` (
   `cost_property` decimal(10,0) NOT NULL,
   `create_property` datetime NOT NULL,
   `update_property` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `property`
---
-
-INSERT INTO `property` (`id_property`, `id_user`, `state_property`, `direction_property`, `type_property`, `option_property`, `location_property`, `neighborhood_property`, `information_property`, `description_property`, `cost_property`, `create_property`, `update_property`) VALUES
-(1, 12345, 1, 'calle 89 # 64 - 15', 2, 2, 2, 'La sureña', '12 x 15 mtrs', 'Tiene una Rana, Tiene ventanas, Tiene una puerta', '200000000', '2022-12-13 12:37:15', '2022-12-13 12:37:15'),
-(3, 111111, 1, 'carrera 15', 2, 2, 6, 'Unidos', '5 metros cubicos', 'dos baños, una alcoba, cocina', '1500000000', '2022-12-13 15:26:20', '2022-12-13 15:26:20'),
-(4, 111111, 1, 'carrer 80', 3, 1, 14, 'los angeles', 'dfsdf', 'qfwlñemgñkwe', '80000000', '2022-12-13 15:29:16', '2022-12-13 15:29:16');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -138,7 +120,7 @@ INSERT INTO `property` (`id_property`, `id_user`, `state_property`, `direction_p
 CREATE TABLE `rol_user` (
   `id_rol_user` int(11) NOT NULL,
   `name_rol_user` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `rol_user`
@@ -157,7 +139,7 @@ INSERT INTO `rol_user` (`id_rol_user`, `name_rol_user`) VALUES
 CREATE TABLE `state_property` (
   `id_state_property` int(11) NOT NULL,
   `name_state_property` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `state_property`
@@ -177,7 +159,7 @@ INSERT INTO `state_property` (`id_state_property`, `name_state_property`) VALUES
 CREATE TABLE `state_user` (
   `id_state_user` int(11) NOT NULL,
   `name_state_user` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `state_user`
@@ -196,7 +178,7 @@ INSERT INTO `state_user` (`id_state_user`, `name_state_user`) VALUES
 CREATE TABLE `type_document` (
   `id_type_document` int(11) NOT NULL,
   `name_type_document` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `type_document`
@@ -216,7 +198,7 @@ INSERT INTO `type_document` (`id_type_document`, `name_type_document`) VALUES
 CREATE TABLE `type_property` (
   `id_type_property` int(11) NOT NULL,
   `name_type_property` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `type_property`
@@ -245,18 +227,20 @@ CREATE TABLE `user` (
   `password_user` varchar(255) NOT NULL,
   `create_user` datetime NOT NULL,
   `update_user` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `user`
 --
 
 INSERT INTO `user` (`id_user`, `state_user`, `rol_user`, `type_document`, `name_user`, `lastname_user`, `phone_user`, `email_user`, `password_user`, `create_user`, `update_user`) VALUES
+(1111, 1, 2, 1, 'sahiel', 'romero', '320887123', 'shaiel.romero@misena.edu.co', '$2y$10$Aap71zxpL1Yf6m0vtn8Uqe3b5Bm102ClzxorckZhrpK1ZxODJQ8ki', '2023-02-24 22:08:06', '2023-02-24 22:08:06'),
 (1234, 1, 2, 1, 'shaiel', 'pepe', '32032', 'juan@gmail.com', '$2y$10$1QQ0rchqRnBi2mK15GPWMekqZU3qoLfvPBqQLRKns1YcQ9hQK9Jni', '2022-12-13 16:52:11', '2022-12-13 16:52:11'),
 (12345, 1, 2, 1, 'Arriendum ', 'User', '12345', 'user@gmail.com', '$2y$10$cgSDdTnUqxjC2FjcnMfyHuJlARRL90mbH.lPRuoDrRJi77xwLPV3q', '2022-12-13 12:33:43', '2022-12-13 16:24:43'),
 (111111, 1, 2, 2, 'Pedro', 'Navajas', '222222', 'navaja@gmail.com', '$2y$10$NIxC8uU3sJTMatNEQ1Xvku8uUtpKFXr4OeNjgACQK6Wwb2j6XEhEO', '2022-12-13 15:12:31', '2022-12-13 15:12:31'),
-(123456, 1, 1, 1, 'Arriendum', 'Admin', '123456', 'admin@gmail.com', '$2y$10$in211nXcb2MnvXX.hh6Rle/.cE62l13zjAjfXXMCj5kJJxPwrTCdu', '2022-12-13 12:32:48', '2022-12-13 12:32:48'),
-(1000035011, 1, 2, 1, 'shaiel esteban ', 'romero ', '3203635362', 'alejo@gmail.com', '$2y$10$amuru.9icuzoa3hzBDjMNewPyEkucZX3iD3rcRqmQXIvUSUBcKPr6', '2022-12-13 15:48:04', '2022-12-13 16:25:29');
+(123456, 1, 1, 1, 'Arriendum', 'Admin', '123456', 'admin@gmail.com', '$2y$10$in211nXcb2MnvXX.hh6Rle/.cE62l13zjAjfXXMCj5kJJxPwrTCdu', '2022-12-13 12:32:48', '2023-02-15 12:58:55'),
+(1000035011, 1, 2, 1, 'shaiel esteban ', 'romero as', '3203635362', 'jaortiz703@misena.edu.co', '$2y$10$u6vHp19E4vYekcNL0nz3Zugzjkb6wSu/GhUz4yCchGBNCsukJrjeu', '2022-12-13 15:48:04', '2023-02-24 21:18:30'),
+(1000162392, 1, 2, 1, 'jhon ', 'alejandro', '3208819777', 'jaoe31@gmail.com', '$2y$10$YzJBzj6OX4/uv6LknifiuOnr3u6obFXcZTE94EZlnfCnXB3t7htW6', '2023-02-24 21:33:32', '2023-03-06 16:12:56');
 
 --
 -- Índices para tablas volcadas
@@ -340,7 +324,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `galery_property`
 --
 ALTER TABLE `galery_property`
-  MODIFY `id_galery_property` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_galery_property` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `location_property`
@@ -358,7 +342,7 @@ ALTER TABLE `option_property`
 -- AUTO_INCREMENT de la tabla `property`
 --
 ALTER TABLE `property`
-  MODIFY `id_property` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_property` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `rol_user`
@@ -398,7 +382,7 @@ ALTER TABLE `type_property`
 -- Filtros para la tabla `galery_property`
 --
 ALTER TABLE `galery_property`
-  ADD CONSTRAINT `galery_property_ibfk_1` FOREIGN KEY (`id_property`) REFERENCES `property` (`id_property`);
+  ADD CONSTRAINT `galery_property_ibfk_1` FOREIGN KEY (`id_property`) REFERENCES `property` (`id_property`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `property`

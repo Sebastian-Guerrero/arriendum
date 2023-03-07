@@ -35,7 +35,6 @@
 					header("location: pub-gal.php");
 					}									
 				 				
-
 				function modificar(){$c = new Conexion();
 								$cone = $c->conectando();
 								$sql = "select * from inmueble where id_inm ='$this->id_inm'";

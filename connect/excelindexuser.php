@@ -23,16 +23,19 @@ $arreglo2 = mysqli_fetch_array($resultado2);
 					<table class="table table-dark table-sm">
 						<thead>
 							<tr class="text-center roboto-medium">
-								<th>ID</th>
+								<th>ID INMUEBLE</th>
+								<th>USUARIO</th>
 								<th>ESTADO</th>
-								<th>ROL</th>
-								<th>DOCUMENTO</th>
-								<th>NOMBRE</th>
-								<th>APELLIDO</th>
-								<th>CELULAR</th>
-                                <th>CORREO</th>
-								<th>USUARIO CREADO</th>
-								<th>ULTIMA ACTUALIZACION </th>
+								<th>DIRECCION</th>
+								<th>TIPO</th>
+								<th>OPCION</th>
+								<th>LOCALIDAD</th>
+                                <th>BARRIO</th>
+								<th>INFORMACION</th>
+								<th>DESCRIPCION</th>
+								<th>PRECIO</th>
+								<th>CREACION INMUEBLE</th>
+								<th>ULTIMA ACTUALIZACION</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -60,8 +63,11 @@ $arreglo2 = mysqli_fetch_array($resultado2);
 								<td><?php echo $arreglo2[5] ?></td>
 								<td><?php echo $arreglo2[6] ?></td>
 								<td><?php echo $arreglo2[7] ?></td>
+								<td><?php echo $arreglo2[8] ?></td>
 								<td><?php echo $arreglo2[9] ?></td>
 								<td><?php echo $arreglo2[10] ?></td>
+								<td><?php echo $arreglo2[11] ?></td>
+								<td><?php echo $arreglo2[12] ?></td>
 								<td>
 									<a  class="btn btn-success" href="<?php 
 										if($arreglo2[0]<>''){
