@@ -166,6 +166,9 @@ if(isset($_POST['search'])){
                        		}
                         	?>
 					</table>
+                    <button class="excel">
+					    <a href="../../connect/excelindexuser.php"><i style="font-size: 20px;" class="fas fa-file-excel"></i> &nbsp; REPORTE INMUEBLES</a>
+				    </button>
 				</div>
                 <nav class="paginador" aria-label="Page navigation example">
 					<ul class="pagination justify-content-center">

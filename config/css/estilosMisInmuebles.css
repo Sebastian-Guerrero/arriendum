@@ -39,3 +39,11 @@ tr:hover td{
 .No_registro{
     color: white;
 }
+
+.excel{
+    background-color: #00ADB5;
+    border: none;
+    padding: 1%;
+    font-size: 15px;
+    
+}
