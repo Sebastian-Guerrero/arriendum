@@ -61,7 +61,7 @@ if(isset($_POST['search'])){
     <link rel="stylesheet" href="../../config/css/productos.css"/>
     <link rel="stylesheet" href="../../config/css/sweetalert2.min.css"/>
     <link rel="stylesheet" href="../../config/css/estilos_filtro.css"/>
-    
+    <link rel="stylesheet" href="https://i.icomoon.io/public/temp/076135d1b4/UntitledProject/style.css">
     <title>Arriendum</title>
 </head>
 
@@ -471,7 +471,7 @@ $fila6 = mysqli_fetch_array($result6);
                 <p>8296312</p>
             </div>
         </div>
-        <h2 class="titulo-final">&copy; Arriendum </h2>
+        <div class="icons">
         <div class="icons">
     <div class="social">
 		<ul>
@@ -480,7 +480,7 @@ $fila6 = mysqli_fetch_array($result6);
 			<li><a href="https://www.instagram.com/arriendum/" target="_blank" class="icon-instagram"></a></li>
 			<li><a href="mailto:arriendum@gmail.com" class="icon-mail"></a></li>
             <li><a href="https://github.com/Sebastian-Guerrero/arriendum.git" target="_blank"class="icon-github"></a></li>
-
+            <li><a href="../../preguntas.php"class="icon-question"></a></li>
 		</ul>
 	</div>
     </footer>

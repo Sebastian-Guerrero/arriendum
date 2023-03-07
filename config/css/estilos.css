@@ -561,3 +561,8 @@ footer{
     .icon-github:before {
         content: "\eab0";
       }
+
+      .icon-question:before {
+        content: "\ea09";
+        color: #00ADB5;
+      }

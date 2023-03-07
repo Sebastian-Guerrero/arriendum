@@ -23,18 +23,16 @@ $result = mysqli_query($c, $query);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">    <link
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="config/css/productos.css"/>
-
 </head>
 
 <body>
     <header>
-
     <nav>
       <img class="logo" src="assets/icons/logo.png">
         <ul>
+          <li><button class="ba" type="button"><a href="view/guest/product.php">INMUEBLES</a></button></li>
           <li><button class="ba" type="button"><a href="view/guest/login.php">INGRESA</button></li>
           <li><button class="bb" type="button"><a href="view/guest/singin.php">REGISTRATE</a></button></li>
-          <li><button class="ba" type="button"><a href="view/guest/product.php">INMUEBLES</button></li>
         </ul>
     </nav>
                 
@@ -248,7 +246,7 @@ $result = mysqli_query($c, $query);
 			<li><a href="https://www.instagram.com/arriendum/" target="_blank" class="icon-instagram"></a></li>
 			<li><a href="mailto:arriendum@gmail.com" class="icon-mail"></a></li>
             <li><a href="https://github.com/Sebastian-Guerrero/arriendum.git" target="_blank"class="icon-github"></a></li>
-
+            <li><a href="preguntas.php"class="icon-question"></a></li>
 		</ul>
 	</div>
        
@@ -261,3 +259,5 @@ $result = mysqli_query($c, $query);
 </body>
 
 </html>
+
+

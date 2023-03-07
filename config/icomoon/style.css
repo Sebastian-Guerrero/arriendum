@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?p0px0h');
-  src:  url('fonts/icomoon.eot?p0px0h#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?p0px0h') format('truetype'),
-    url('fonts/icomoon.woff?p0px0h') format('woff'),
-    url('fonts/icomoon.svg?p0px0h#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?j1mbah');
+  src:  url('fonts/icomoon.eot?j1mbah#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?j1mbah') format('truetype'),
+    url('fonts/icomoon.woff?j1mbah') format('woff'),
+    url('fonts/icomoon.svg?j1mbah#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -27,6 +27,9 @@
 
 .icon-envelop:before {
   content: "\e945";
+}
+.icon-question:before {
+  content: "\ea09";
 }
 .icon-mail:before {
   content: "\ea83";
