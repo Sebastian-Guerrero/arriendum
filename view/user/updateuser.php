@@ -67,6 +67,7 @@ $obj->update_user = $arreglo[10];
     <link rel="stylesheet" href="../../config/css/estilosperfil.css">
     
     
+    
     <title>Arriendum</title>
 
 </head>
@@ -137,6 +138,11 @@ $obj->update_user = $arreglo[10];
                 <input type="hidden" name="create_user">
                 <input type="hidden" name="update_user" value="<?php echo $fecha;?>">
                 <button type="submit" name="modifica_usuario">Actualizar perfil</button>
+                <br>
+                <br>
+                <a href="MisInmuebles.php">
+                    <button type="button">Mis inmuebles</button>
+                </a>
                 <br>
                 <br>
                 

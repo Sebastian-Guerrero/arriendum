@@ -1,0 +1,41 @@
+.main-container{
+    margin: 150px auto;
+    width: 1000px;
+    margin-left: 120px;
+    margin-top: 20px;
+}
+table{
+    background-color: white;
+    text-align: left;
+    width: 130%;
+    border-collapse: collapse;
+}
+th, td{
+    padding: 20px; 
+}
+thead{
+    background-color: #00ADB5;
+    border-bottom: solid 5px black;
+    color: white;
+}
+tr:nth-child(even){
+    background-color: #ddd;
+}
+tr:hover td{
+    background-color: rgb(59, 146, 168);
+    color: #ddd;
+}
+.titulo_muro{
+    margin-left: 822px;
+    margin-top: 160px;
+    color:white;
+    
+}
+.paginador{
+    margin-left: 630px;
+    margin-top: -150px;
+    
+}
+.No_registro{
+    color: white;
+}

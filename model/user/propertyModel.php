@@ -64,7 +64,7 @@
 				function eliminar(){
 								$c = new Conexion();
 								$cone = $c->conectando();
-								$sql= "delete from inmueble where id_inm ='$this->id_inm'";
+								$sql= "Delete from property where id_property ='$this->id_property'";
 								if(mysqli_query($cone,$sql))
 								{
 								echo "<script> alert('El Inmueble fue Eliminado del Sistema');</script>";
