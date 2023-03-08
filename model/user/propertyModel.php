@@ -37,26 +37,26 @@
 				 				
 				function modificar(){$c = new Conexion();
 								$cone = $c->conectando();
-								$sql = "select * from inmueble where id_inm ='$this->id_inm'";
+								$sql = "select * from property where id_property ='$this->id_property'";
 								$r = mysqli_query($cone,$sql);
 								if(!mysqli_fetch_array($r)){
 							echo "<script> alert('El Usuario ha Modificado Inmueble')</script>";
 							}else{
-								$id = "update inmueble set
-														id_inm = '$this->id_inm',
-														estado_inm = '$this->estado_inm',
-														direccion_inm = '$this->direccion_inm',
-														tipo_inm = '$this->tipo_inm',
-														opcion_inm = '$this->opcion_inm',
-														localidad_inm = '$this->localidad_inm',
-														barrio_inm = '$this->barrio_inm',
-														inf_inm = '$this->inf_inm',
-														desc_inm = '$this->desc_inm',
-														precio_inm = '$this->precio_inm',
-														fechaA_inm = '$this->fechaA_inm' 
-														where id_inm = '$this->id_inm'";
+								$id = "update property set
+														id_property = '$this->id_property',
+														state_property = '$this->state_property',
+														direction_property = '$this->direction_property',
+														type_property = '$this->type_property',
+														option_property = '$this->option_property',
+														location_property = '$this->location_property',
+														neighborhood_property = '$this->neighborhood_property',
+														information_property = '$this->information_property',
+														description_property= '$this->description_property',
+														cost_property = '$this->cost_property',
+														update_property = '$this->update_property' 
+														where id_property = '$this->id_property'";
 								mysqli_query($cone,$id);
-								echo "<script> alert('El Usuario Modifico un Inmueble ')</script>";
+								echo "<script> alert('Se ha modificado el inmueble')</script>";
 							}
 				 }
 

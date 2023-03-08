@@ -133,7 +133,7 @@ if(isset($_POST['search'])){
 								<td>
 									<a  class="btn btn-success" href="<?php 
 										if($arreglo2[0]<>''){
-												echo "inm-update.php?key=".urlencode($arreglo2[0]) ;
+												echo "updateinmuser.php?key=".urlencode($arreglo2[0]) ;
 											}
 										?>" >
 										<i style="color: black;" class="fas fa-edit"></i>

@@ -18,6 +18,7 @@ $result = mysqli_query($c, $query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Arriendum</title>
+    <link rel="stylesheet" href="config/icomoon/style.css">
     <link rel="stylesheet" href="config/css/estilos.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">    <link
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"/>
@@ -34,10 +35,8 @@ $result = mysqli_query($c, $query);
           <li><button class="bb" type="button"><a href="view/guest/singin.php">REGISTRATE</a></button></li>
         </ul>
     </nav>
-                
                 </div>
             </div>
-
         <section class="textos-header">
             <h1>VENTA Y ARRIENDO</h1>
             <h2>Realiza la publicacion de tu inmueble o propiedad</h2>
@@ -215,7 +214,7 @@ $result = mysqli_query($c, $query);
     </main>
 
     <footer>  
-        <div class="contenedor-footer">
+        <div style="margin-top:30px;" class="contenedor-footer">
             <div class="content-foo">
                 <h4>Phone</h4>
                 <p>3203635362</p>
@@ -229,6 +228,18 @@ $result = mysqli_query($c, $query);
                 <p>Bogota D.C </p>
             </div>
         </div>
+        <div class="icons">
+        <div class="icons">
+    <div class="social">
+		<ul>
+			<li><a href="https://www.facebook.com/profile.php?id=100090515414959&mibextid=ZbWKwL" target="_blank" class="icon-facebook"></a></li>
+			<li><a href="https://twitter.com/arriendum" target="_blank" class="icon-twitter"></a></li>
+			<li><a href="https://www.instagram.com/arriendum/" target="_blank" class="icon-instagram"></a></li>
+			<li><a href="mailto:arriendum@gmail.com" class="icon-mail"></a></li>
+            <li><a href="https://github.com/Sebastian-Guerrero/arriendum.git" target="_blank"class="icon-github"></a></li>
+            <li><a href="view/guest/preguntas.php"class="icon-question"></a></li>
+		</ul>
+	</div>
         <h2 class="titulo-final">&copy; Arriendum </h2>
     </footer>
     <script src="https://unpkg.com/scrollreveal"></script>

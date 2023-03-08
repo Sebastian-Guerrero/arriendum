@@ -69,6 +69,7 @@ if(isset($_POST['search'])){
     <link rel="stylesheet" href="../../config/a/css/all.css">
     <link rel="stylesheet" href="../../config/css/sweetalert2.min.css"/>
     <link rel="stylesheet" href="../../config/css/estilos_filtro.css"/>
+    <link rel="stylesheet" href="../../config/icomoon/style.css">
 
 
     
@@ -333,15 +334,13 @@ while ($fila7 = mysqli_fetch_array($result7)) {
                                                     }
                                                     ?>   
                                                 </div>
-<<<<<<< HEAD
- <footer style="margin-top:1140px">  
-=======
+
                                         </section>
                    
 		</section>
 
  <footer>  
->>>>>>> 0387b958e0f8ca3dd717eec952b4bb7c501a023f
+
         <div class="contenedor-footer">
             <div class="content-foo">
                 <h4>Phone</h4>
@@ -356,13 +355,16 @@ while ($fila7 = mysqli_fetch_array($result7)) {
                 <p>8296312</p>
             </div>
         </div>
+        <div class="social">
+		<ul>
+			<li><a href="https://www.facebook.com/profile.php?id=100090515414959&mibextid=ZbWKwL" target="_blank" class="icon-facebook"></a></li>
+			<li><a href="https://twitter.com/arriendum" target="_blank" class="icon-twitter"></a></li>
+			<li><a href="https://www.instagram.com/arriendum/" target="_blank" class="icon-instagram"></a></li>
+			<li><a href="mailto:arriendum@gmail.com" class="icon-mail"></a></li>
+            <li><a href="https://github.com/Sebastian-Guerrero/arriendum.git" target="_blank"class="icon-github"></a></li>
+		</ul>
+	</div>
         <h2 class="titulo-final">&copy; Arriendum </h2>
-<<<<<<< HEAD
-</footer>
-=======
-    </footer>
-    
->>>>>>> 0387b958e0f8ca3dd717eec952b4bb7c501a023f
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
