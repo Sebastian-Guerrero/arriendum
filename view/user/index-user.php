@@ -32,6 +32,7 @@ $result = mysqli_query($c, $query);
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="../../config/css/productos.css"/>
     <link rel="stylesheet" href="../../config/a/css/all.css">
+     <link rel="stylesheet" href="../../config/icomoon/style.css">
 </head>
 
 <body>
@@ -239,6 +240,15 @@ $result = mysqli_query($c, $query);
                 <p>Bogota D.C </p>
             </div>
         </div>
+    <div class="social">
+		<ul>
+			<li><a href="https://www.facebook.com/profile.php?id=100090515414959&mibextid=ZbWKwL" target="_blank" class="icon-facebook"></a></li>
+			<li><a href="https://twitter.com/arriendum" target="_blank" class="icon-twitter"></a></li>
+			<li><a href="https://www.instagram.com/arriendum/" target="_blank" class="icon-instagram"></a></li>
+			<li><a href="mailto:arriendum@gmail.com" class="icon-mail"></a></li>
+            <li><a href="https://github.com/Sebastian-Guerrero/arriendum.git" target="_blank"class="icon-github"></a></li>
+		</ul>
+	</div>
         <h2 class="titulo-final">&copy; Arriendum </h2>
     </footer>
     <script src="https://unpkg.com/scrollreveal"></script>
