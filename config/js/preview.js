@@ -6,6 +6,7 @@ document.getElementById('file').onchange = function(e) {
       imagen = document.createElement('img');
       imagen.src = reader.result;
       imagen.style.width = "200px";
+      imagen.style.height = "110px";
       preview.append(imagen);
     }
   }
