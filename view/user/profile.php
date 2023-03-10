@@ -51,7 +51,6 @@ if($_SESSION['id_user'] != $id_user) {
     <header>
         <nav>
             <img class="logo" src="../../assets/icons/logo.png">
-            <h1><?php echo "$name_user";?><h1>
             <ul>
                 <li><button class="ba" type="button"><a href="index-user.php">INICIO</a></button></li>
                 <li><button class="ba" type="button"><a href="product.php">INMUEBLES</a></button></li>

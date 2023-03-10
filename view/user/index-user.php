@@ -41,7 +41,7 @@ $result = mysqli_query($c, $query);
       <img class="logo" src="../../assets/icons/logo.png">
       <ul>
             <li><button class="ba" type="button"><a href="index-user.php">INICIO</a></button></li>
-            <li><button class="ba" type="button"><a href="product.php?key=1">INMUEBLES</a></button></li>
+            <li><button class="ba" type="button"><a href="product.php">INMUEBLES</a></button></li>
             <li><button class="ba" type="button"><a href="../../view/user/profile.php?id_user=<?php echo $_SESSION['id_user']; ?>"> MI PERFIL </a></button></li>
             <li><a onclick="cerrar_sesion()" class="btn-exit-system"><i class="fas fa-power-off"></i></a></li>
         </ul>
@@ -49,8 +49,8 @@ $result = mysqli_query($c, $query);
               
 
         <section class="textos-header">
-            <h1>VENTA Y ARRIENDO</h1>
-            <h2>Realiza la publicacion de tu inmueble o propiedad</h2>
+            <h1>BIENVENIDO</h1>
+            <h2><?php echo $name_user," ", $lastname_user;?></h2>
         </section>
         <div class="wave" style="height: 200px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
                 style="height: 100%; width: 100%;">
