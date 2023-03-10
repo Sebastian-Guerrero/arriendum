@@ -36,7 +36,13 @@ $result = mysqli_query($c, $query);
     
     <link rel="stylesheet" href="../../config/a/css/all.css">
 </head>
-
+<script>
+    let baslik = document.title;
+     window.onblur = () =>
+     document.title = "por favor regresa :(";
+     window.onfocus = () =>
+     document.title = baslik
+</script>
 <body>
     <header>
     <nav>
@@ -264,7 +270,6 @@ $result = mysqli_query($c, $query);
 			<li><a href="https://www.instagram.com/arriendum/" target="_blank" class="icon-instagram"></a></li>
 			<li><a href="mailto:arriendum@gmail.com" class="icon-mail"></a></li>
             <li><a href="https://github.com/Sebastian-Guerrero/arriendum.git" target="_blank"class="icon-github"></a></li>
-            <li><a href="preguntas.php"class="icon-question"></a></li>
 		</ul>
 	</div>
        

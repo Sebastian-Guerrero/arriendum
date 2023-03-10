@@ -51,6 +51,31 @@ if(isset($_POST['search'])){
     $arreglo2 = mysqli_fetch_array($resultado2);
 }
 
+if($arreglo2==0){
+    //echo("No hay registros");
+}else{
+    $id_state_property = $arreglo2[2];
+    $query3= "SELECT * FROM state_property WHERE id_state_property = '$id_state_property'";
+    $resultado3 = mysqli_query($c,$query3);
+    $arreglo3=mysqli_fetch_array($resultado3);
+
+    $id_type_property = $arreglo2[4];
+    $query4= "SELECT * FROM type_property WHERE id_type_property = '$id_type_property'";
+    $resultado4 = mysqli_query($c,$query4);
+    $arreglo4=mysqli_fetch_array($resultado4);
+
+    $id_option_property = $arreglo2[5];
+    $query5= "SELECT * FROM option_property WHERE id_option_property = '$id_option_property'";
+    $resultado5 = mysqli_query($c,$query5);
+    $arreglo5=mysqli_fetch_array($resultado5);
+
+    $id_location_property = $arreglo2[6];
+    $query6= "SELECT * FROM location_property WHERE id_location_property = '$id_location_property'";
+    $resultado6 = mysqli_query($c,$query6);
+    $arreglo6=mysqli_fetch_array($resultado6);
+    }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -67,6 +92,7 @@ if(isset($_POST['search'])){
     <link rel="stylesheet" href="../../config/css/sweetalert2.min.css">
     <link rel="stylesheet" href="../../config/css/estilosperfil.css">
     <link rel="stylesheet" href="../../config/css/estilosMisInmuebles.css">
+     <link rel="stylesheet" href="style.css"> 
     
     <title>Arriendum</title>
 
@@ -121,11 +147,11 @@ if(isset($_POST['search'])){
 							<tr >
 								<td><?php echo $arreglo2[0];?></td>
 								<td><?php echo $arreglo2[1];?></td>
-								<td><?php echo $arreglo2[2];?></td>
+								<td><?php echo $arreglo3[1];?></td>
 								<td><?php echo $arreglo2[3];?></td>
-								<td><?php echo $arreglo2[4];?></td>
-								<td><?php echo $arreglo2[5];?></td>
-								<td><?php echo $arreglo2[6];?></td>
+								<td><?php echo $arreglo4[1];?></td>
+								<td><?php echo $arreglo5[1];?></td>
+								<td><?php echo $arreglo6[1];?></td>
 								<td><?php echo $arreglo2[7];?></td>
 								<td><?php echo $arreglo2[8];?></td>
 								<td><?php echo $arreglo2[9];?></td>
@@ -167,7 +193,7 @@ if(isset($_POST['search'])){
                         	?>
 					</table>
                     <button class="excel">
-					    <a href="../../connect/excelindexuser.php"><i style="font-size: 20px;" class="fas fa-file-excel"></i> &nbsp; REPORTE INMUEBLES</a>
+					    <a href="../../connect/excelindexuser.php"><i style="font-size: 27px; margin-left:7px;" class="fas fa-file-excel"></i> &nbsp;</a>
 				    </button>
 				</div>
                 <nav class="paginador" aria-label="Page navigation example">
@@ -205,11 +231,6 @@ if(isset($_POST['search'])){
                         ?>                                                                                                                                                                                                                               
 					</ul>
 				</nav>
-
-          
-	
-
-
     </header>
     <footer style="margin-top:390px">  
         <div class="contenedor-footer">

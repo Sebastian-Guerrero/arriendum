@@ -24,7 +24,13 @@ $result = mysqli_query($c, $query);
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="config/css/productos.css"/>
 </head>
-
+<script>
+    let baslik = document.title;
+     window.onblur = () =>
+     document.title = "por favor regresa :(";
+     window.onfocus = () =>
+     document.title = baslik
+</script>
 <body>
     <header>
     <nav>
