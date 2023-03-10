@@ -135,7 +135,6 @@ if(isset($_POST['search'])){
 </form>
 </div>
 </div>
-
                                     <?php
                                         if($_SESSION ["contador"] !="1"){
                                         //echo "No hay registro";
@@ -151,7 +150,8 @@ if(isset($_POST['search'])){
                                             <div class="productos">
                                             <?php
 
-                                            while ($fila = mysqli_fetch_array($result)) {
+                                            foreach ($result as $fila) {
+
                                                 $id = $fila['id_user'];
                                                 $img = $fila['id_property'];
                                                 $estado = $fila['state_property'];
@@ -220,99 +220,48 @@ if(isset($_POST['search'])){
 
                                                     <p>Precio: <?php echo $fila['cost_property']; ?></p>
 
-                                                    <div class="boton-modal">
-                                                        <label for="btn-modal">
-                                                        Mas Informacion...
-                                                        </label>
-                                                    </div>
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editChildresn<?php echo $fila['id_property']; ?>">
+                                                        Mas Informacion
+                                                    </button>
 
                                                 </div>
-                                                
 
-                                                
+                                                <?php  include('modal.php'); ?>
 
-<?php
+                                                <?php
+                                                    }
+                                                    ?>
 
-$query6 = "SELECT * FROM user WHERE id_user = $id";
-$result6 = mysqli_query($c, $query6);
-$fila6 = mysqli_fetch_array($result6); 
-
-?>
-
-<input type="checkbox" id="btn-modal">
-<div class="container-modal">
-<div class="content-modal">
-<h2>Inmueble: <?php echo $fila['id_property']; ?> - Dueño: <?php echo $fila6['name_user']; ?> <?php echo $fila6['lastname_user']; ?></h2>
-
-<?php
-
- $query7 = "SELECT All name_galery_property FROM galery_property WHERE id_property  =  $img";
- $result7 = mysqli_query($c, $query7);
-
-?>
-<?php  
-while ($fila7 = mysqli_fetch_array($result7)) {
-
-?>
-
-<img src="<?php echo $fila7['name_galery_property']; ?>">
-
-
-
-<?php
-};
-?>
-<h3>Datos del Dueño:</h3>
-
-<p class="pi"><b>Celular:</b> <?php echo $fila6['phone_user']; ?></p>
-
-<p class="pf"><b>Email:</b> <?php echo $fila6['email_user']; ?></p>
-
-<h3>Datos de la Propiedad:</h3>
-
-<p class="pi"><b>Localidad:</b> <?php echo $fila4['name_location_property']; ?></p>
  
-<p><b>Barrio:</b> <?php echo $fila['neighborhood_property']; ?></p>
+                                                </div>
 
-<p><b>Dirreccion:</b> <?php echo $fila['direction_property']; ?></p>
+                                        </section>
 
-<p><b>Informacion:</b> <?php echo $fila['information_property']; ?></p>
-
-<p><b>Descripcion:</b> <?php echo $fila['description_property']; ?></p>
-
-<p class="pf"><b>Precio:</b> <?php echo $fila['cost_property']; ?></p>
-<div class="btn-cerrar">
-    <label for="btn-modal">Cerrar</label>
-</div>
-</div>
-<label for="btn-modal" class="cerrar-modal"></label>
-</div>    
-<?php
+                                       
+                   
+        <?php
                                             }
                                             ?>
- 
-                                                    <?php
-                                                    }
-                                                    ?>   
-                                                </div> 
-                                        </section>  
-		</section>
+
  <footer>  
 
         <div class="contenedor-footer">
-            <div class="content-foo">
-                <h4>Phone</h4>
-                <p>8296312</p>
-            </div>
-            <div class="content-foo">
-                <h4>Email</h4>
-                <p>8296312</p>
-            </div>
-            <div class="content-foo">
-                <h4>Location</h4>
-                <p>8296312</p>
-            </div>
-        </div>
+        <div class="content-foo">
+                    <h4>Phone</h4>
+                    <p>3203635362</p>
+                </div>
+                <div class="content-foo">
+                    <h4>Email</h4>
+                    <p>arriendum@gmail.com</p>
+                </div>
+                <div class="content-foo">
+                    <h4>¿Que es Arriendum?</h4>
+                    <p>Arriendum es un aplicativo que permite<br>a las personas realizar la publicacion de sus Inmuebles.</p>
+                </div>
+                <div class="content-foo">
+                    <img class="logo" src="../../assets/icons/logo.png">
+                </div>
+            </div> 
         <div class="social">
 		<ul>
 			<li><a href="https://www.facebook.com/profile.php?id=100090515414959&mibextid=ZbWKwL" target="_blank" class="icon-facebook"></a></li>
@@ -323,6 +272,8 @@ while ($fila7 = mysqli_fetch_array($result7)) {
 		</ul>
 	</div>
         <h2 class="titulo-final">&copy; Arriendum </h2>
+
+</footer>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
@@ -342,6 +293,9 @@ while ($fila7 = mysqli_fetch_array($result7)) {
         ?>
     </script>
     <script src="../../config/js/alert.js"></script>
+    <script src="../../config/js/jquery.min.js"></script>
+    <script src="../../config/js/popper.min.js"></script>
+    <script src="../../config/js/bootstrap.min.js"></script>
 </body>
 
 </html>

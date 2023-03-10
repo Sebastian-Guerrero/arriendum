@@ -15,13 +15,13 @@ $query2="select * from user";
 $resultado2=mysqli_query($c,$query2);
 $arreglo2 = mysqli_fetch_array($resultado2);
 
+
 ?>
 <div>
-				<div >
+<img src='../assets/icons/logo.png'> 
 					<table border="1" >
-						<thead >
 							<tr >
-							<p  style="text-align:center;">DATOS DE USUARIOS</p>
+								<h1 style="text-align:center;">DATOS DE USUARIOS</h1>
 								<th>ID</th>
 								<th>ESTADO</th>
 								<th>ROL</th>
@@ -33,9 +33,7 @@ $arreglo2 = mysqli_fetch_array($resultado2);
 								<th>USUARIO CREADO</th>
 								<th>ULTIMA ACTUALIZACION </th>
 							</tr>
-						</thead>
 						<tbody>
-							<tr>
 								<?php
                                 	if($arreglo2==0){
                                     //echo "No existen Registros";
@@ -48,9 +46,7 @@ $arreglo2 = mysqli_fetch_array($resultado2);
                                  else{
                                     do{   
                                ?>
-							</tr>
-
-							<tr class="text-center">
+							<tr style="background: #00ADB5;" class="text-center">
 								<td><?php echo $arreglo2[0] ?></td>
 								<td><?php echo $arreglo2[1] ?></td>
 								<td><?php echo $arreglo2[2] ?></td>
@@ -68,5 +64,4 @@ $arreglo2 = mysqli_fetch_array($resultado2);
                         	?>
 						</tbody>
 					</table>
-				</div>
 </div>

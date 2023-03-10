@@ -60,7 +60,7 @@ $arreglo2 = mysqli_fetch_array($resultado2);
 $pdf = new PDF();
 
 $pdf->AliasNbPages();
-$pdf->AddPage();
+$pdf->AddPage("landscape");
 $pdf->SetFont('Arial','',10);
 //$pdf->SetWidths(array(10, 30, 27, 27, 20, 20, 20, 20, 22));
 while ($row=$resultado2->fetch_assoc()) {

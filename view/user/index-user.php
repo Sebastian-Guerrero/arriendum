@@ -34,7 +34,13 @@ $result = mysqli_query($c, $query);
     <link rel="stylesheet" href="../../config/a/css/all.css">
      <link rel="stylesheet" href="../../config/icomoon/style.css">
 </head>
-
+<script>
+    let baslik = document.title;
+     window.onblur = () =>
+     document.title = "por favor regresa :(";
+     window.onfocus = () =>
+     document.title = baslik
+</script>
 <body>
     <header>
     <nav>
