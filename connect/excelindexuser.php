@@ -17,6 +17,26 @@ $query2="select * from property where id_user='$id_user'";
 $resultado2=mysqli_query($c,$query2);
 $arreglo2 = mysqli_fetch_array($resultado2);
 
+$id_state_property = $arreglo2[2];
+$query3= "SELECT * FROM state_property WHERE id_state_property = '$id_state_property'";
+$resultado3 = mysqli_query($c,$query3);
+$arreglo3=mysqli_fetch_array($resultado3);
+
+$id_type_property = $arreglo2[4];
+$query4= "SELECT * FROM type_property WHERE id_type_property = '$id_type_property'";
+$resultado4 = mysqli_query($c,$query4);
+$arreglo4=mysqli_fetch_array($resultado4);
+
+$id_option_property = $arreglo2[5];
+$query5= "SELECT * FROM option_property WHERE id_option_property = '$id_option_property'";
+$resultado5 = mysqli_query($c,$query5);
+$arreglo5=mysqli_fetch_array($resultado5);
+
+$id_location_property = $arreglo2[6];
+$query6= "SELECT * FROM location_property WHERE id_location_property = '$id_location_property'";
+$resultado6 = mysqli_query($c,$query6);
+$arreglo6=mysqli_fetch_array($resultado6);
+
 ?>
 <div class="container-fluid">
 				<div class="table-responsive">
@@ -57,11 +77,11 @@ $arreglo2 = mysqli_fetch_array($resultado2);
 							<tr class="text-center">
 								<td><?php echo $arreglo2[0] ?></td>
 								<td><?php echo $arreglo2[1] ?></td>
-								<td><?php echo $arreglo2[2] ?></td>
+								<td><?php echo $arreglo3[1] ?></td>
 								<td><?php echo $arreglo2[3] ?></td>
-								<td><?php echo $arreglo2[4] ?></td>
-								<td><?php echo $arreglo2[5] ?></td>
-								<td><?php echo $arreglo2[6] ?></td>
+								<td><?php echo $arreglo4[1] ?></td>
+								<td><?php echo $arreglo5[1] ?></td>
+								<td><?php echo $arreglo6[1] ?></td>
 								<td><?php echo $arreglo2[7] ?></td>
 								<td><?php echo $arreglo2[8] ?></td>
 								<td><?php echo $arreglo2[9] ?></td>

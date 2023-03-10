@@ -163,6 +163,7 @@ $result = mysqli_query($c, $query);
         <br>
         <br>
         <br>
+        <br>
         <section class="clients">
             <section class="clientes contenedor">
             <h2 class="titulo">Que dicen nuestros clientes</h2>
