@@ -49,8 +49,8 @@ $result = mysqli_query($c, $query);
               
 
         <section class="textos-header">
-            <h1>VENTA Y ARRIENDO</h1>
-            <h2>Realiza la publicacion de tu inmueble o propiedad</h2>
+            <h1>BIENVENIDO</h1>
+            <h2><?php echo $name_user," ", $lastname_user;?></h2>
         </section>
         <div class="wave" style="height: 200px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
                 style="height: 100%; width: 100%;">
