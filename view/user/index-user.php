@@ -237,22 +237,24 @@ $result = mysqli_query($c, $query);
         </section>
     </main>
 
-    <footer>  
-        <div class="contenedor-footer">
-            <div class="content-foo">
-                <h4>Phone</h4>
-                <p>3203635362</p>
-            </div>
-            <div class="content-foo">
-                <h4>Email</h4>
-                <p>arriendum@gmail.com</p>
-            </div>
-            <div class="content-foo">
-                <h4>Location</h4>
-                <p>Bogota D.C </p>
-            </div>
-        </div>
-
+    <footer >  
+     <div class="contenedor-footer">
+                <div class="content-foo">
+                    <h4>Phone</h4>
+                    <p>3203635362</p>
+                </div>
+                <div class="content-foo">
+                    <h4>Email</h4>
+                    <p>arriendum@gmail.com</p>
+                </div>
+                <div class="content-foo">
+                    <h4>¿Que es Arriendum?</h4>
+                    <p>Arriendum es un aplicativo que permite<br>a las personas realizar la publicacion de sus Inmuebles</p>
+                </div>
+                <div class="content-foo">
+                    <img class="logo" src="../../assets/icons/logo.png">
+                </div>
+            </div> 
         <div class="icons">
         <div class="icons">
     <div class="social">
@@ -262,10 +264,10 @@ $result = mysqli_query($c, $query);
 			<li><a href="https://www.instagram.com/arriendum/" target="_blank" class="icon-instagram"></a></li>
 			<li><a href="mailto:arriendum@gmail.com" class="icon-mail"></a></li>
             <li><a href="https://github.com/Sebastian-Guerrero/arriendum.git" target="_blank"class="icon-github"></a></li>
+            <li><a href="preguntas.php"class="icon-question"></a></li>
 		</ul>
 	</div>
-
-        
+       
         <h2 class="titulo-final">&copy; Arriendum </h2>
     </footer>
     <script src="https://unpkg.com/scrollreveal"></script>

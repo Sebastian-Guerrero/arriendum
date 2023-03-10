@@ -67,6 +67,7 @@ $obj->update_user = $arreglo[10];
     <link rel="stylesheet" href="../../config/css/estilosperfil.css">
     
     
+    
     <title>Arriendum</title>
 
 </head>
@@ -139,6 +140,11 @@ $obj->update_user = $arreglo[10];
                 <button type="submit" name="modifica_usuario">Actualizar perfil</button>
                 <br>
                 <br>
+                <a href="MisInmuebles.php">
+                    <button type="button">Mis inmuebles</button>
+                </a>
+                <br>
+                <br>
                 
         </form>
     </div>
@@ -162,11 +168,10 @@ $obj->update_user = $arreglo[10];
         <h2 class="titulo-final">&copy; Arriendum </h2>
     </footer>
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="../../config/js/js/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../../config/js/alert.js"></script>
+    <script src="../../config/js/sweetalert2.min.js" ></script>
     <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
-    <script src="../../config/js/main.js" ></script>
+    <script src="../../config/js/alert.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

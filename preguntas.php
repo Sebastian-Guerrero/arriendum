@@ -105,6 +105,23 @@
 	<script src="config/js/preguntasFrecuentes.js"></script>
 </body>
 <footer>  
+     <div class="contenedor-footer">
+                <div class="content-foo">
+                    <h4>Phone</h4>
+                    <p>3203635362</p>
+                </div>
+                <div class="content-foo">
+                    <h4>Email</h4>
+                    <p>arriendum@gmail.com</p>
+                </div>
+                <div class="content-foo">
+                    <h4>¿Que es Arriendum?</h4>
+                    <p>Arriendum es un aplicativo que permite<br>a las personas realizar la publicacion de sus Inmuebles</p>
+                </div>
+                <div class="content-foo">
+                    <img class="logo" src="assets/icons/logo.png">
+                </div>
+            </div> 
         <div class="icons">
         <div class="icons">
     <div class="social">
@@ -117,5 +134,7 @@
             <li><a href="preguntas.php"class="icon-question"></a></li>
 		</ul>
 	</div>
+       
+        <h2 class="titulo-final">&copy; Arriendum </h2>
     </footer>
 </html>
