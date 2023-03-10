@@ -298,10 +298,10 @@ if(isset($_POST['search'])){
 					</li>
 				</ul>
 				<button>
-					<a href="../../connect/excelusers.php"><i class="fas fa-file-excel"></i> &nbsp; EXCEL USUARIOS</a>
+					<a href="../../connect/excelusers.php"><i class="fas fa-file-excel"></i> &nbsp; EXCEL </a>
 				</button>
-				<button>
-					<a href="../../connect/reportusers.php"><i class="fas fa-file-pdf"></i> &nbsp; PDF USUARIOS</a>
+				<button style="margin-left:1px">
+					<a href="../../connect/reportusers.php"><i class="fas fa-file-pdf"></i> &nbsp; PDF </a>
 				</button>		
 			</div>
 			

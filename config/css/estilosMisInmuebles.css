@@ -1,15 +1,17 @@
 .main-container{
     margin: 150px auto;
-    width: 1000px;
     margin-left: 120px;
     margin-top: 20px;
+    
 }
+
+
 table{
     background-color: white;
     text-align: left;
-    width: 130%;
     border-collapse: collapse;
 }
+
 th, td{
     padding: 20px; 
 }
@@ -44,6 +46,4 @@ tr:hover td{
     background-color: #00ADB5;
     border: none;
     padding: 1%;
-    font-size: 15px;
-    
 }

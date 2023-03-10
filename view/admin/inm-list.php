@@ -300,10 +300,10 @@ if(isset($_POST['search'])){
 					</li>
 				</ul>
 				<button styel="margin-right:120px;">
-					<a href="../../connect/excelinm.php"><i class="fas fa-file-excel"></i>&nbsp; EXCEL INMUEBLES</a>
+					<a href="../../connect/excelinm.php"><i class="fas fa-file-excel"></i>&nbsp; EXCEL </a>
 				</button>
 				<button styel="margin-right:120px;">
-					<a href="../../connect/reportinm.php"><i class="fas fa-file-pdf"></i>&nbsp; PDF INMUEBLES</a>
+					<a href="../../connect/reportinm.php"><i class="fas fa-file-pdf"></i>&nbsp; PDF </a>
 				</button>			
 				
 			</div>
