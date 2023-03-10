@@ -302,7 +302,7 @@ if(isset($_POST['search'])){
 				</button>
 				<button style="margin-left:1px">
 					<a href="../../connect/reportusers.php"><i class="fas fa-file-pdf"></i> &nbsp; PDF </a>
-				</button>		
+				</button>			
 			</div>
 			
 

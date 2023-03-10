@@ -16,11 +16,12 @@ $resultado2=mysqli_query($c,$query2);
 $arreglo2 = mysqli_fetch_array($resultado2);
 
 ?>
-<div class="container-fluid">
-				<div class="table-responsive">
-					<table class="table table-dark table-sm">
-						<thead>
-							<tr class="text-center roboto-medium">
+<div>
+				<div >
+					<table border="1" >
+						<thead >
+							<tr >
+							<p  style="text-align:center;">DATOS DE USUARIOS</p>
 								<th>ID</th>
 								<th>ESTADO</th>
 								<th>ROL</th>
@@ -60,15 +61,6 @@ $arreglo2 = mysqli_fetch_array($resultado2);
 								<td><?php echo $arreglo2[7] ?></td>
 								<td><?php echo $arreglo2[9] ?></td>
 								<td><?php echo $arreglo2[10] ?></td>
-								<td>
-									<a  class="btn btn-success" href="<?php 
-										if($arreglo2[0]<>''){
-											echo "user-update.php?key=".urlencode($arreglo2[0]) ;
-									}
-									?>" >
-	  									<i class="fas fa-sync-alt"></i>	
-									</a>
-								</td>	
                         	</tr>
                         	<?php
                             	}while($arreglo2 = mysqli_fetch_array($resultado2));
@@ -77,3 +69,4 @@ $arreglo2 = mysqli_fetch_array($resultado2);
 						</tbody>
 					</table>
 				</div>
+</div>

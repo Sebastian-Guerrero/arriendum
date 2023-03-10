@@ -227,19 +227,22 @@ $result = mysqli_query($c, $query);
 
     <footer>  
         <div class="contenedor-footer">
-            <div class="content-foo">
-                <h4>Phone</h4>
-                <p>3203635362</p>
-            </div>
-            <div class="content-foo">
-                <h4>Email</h4>
-                <p>arriendum@gmail.com</p>
-            </div>
-            <div class="content-foo">
-                <h4>Location</h4>
-                <p>Bogota D.C </p>
-            </div>
-        </div>
+        <div class="content-foo">
+                    <h4>Phone</h4>
+                    <p>3203635362</p>
+                </div>
+                <div class="content-foo">
+                    <h4>Email</h4>
+                    <p>arriendum@gmail.com</p>
+                </div>
+                <div class="content-foo">
+                    <h4>¿Que es Arriendum?</h4>
+                    <p>Arriendum es un aplicativo que permite<br>a las personas realizar la publicacion de sus Inmuebles</p>
+                </div>
+                <div class="content-foo">
+                    <img class="logo" src="../../assets/icons/logo.png">
+                </div>
+            </div> 
     <div class="social">
 		<ul>
 			<li><a href="https://www.facebook.com/profile.php?id=100090515414959&mibextid=ZbWKwL" target="_blank" class="icon-facebook"></a></li>
