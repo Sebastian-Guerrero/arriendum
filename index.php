@@ -44,9 +44,6 @@ $result = mysqli_query($c, $query);
                 <li><button class="ba" type="button"><a href="view/guest/login.php">INGRESA</button></li>
                 <li><button class="bb" type="button"><a href="view/guest/singin.php">REGISTRATE</a></button></li>
             </ul>
-            <span>
-                <i class=""></i>
-            </span>
         </nav>
     
         <section class="textos-header">
@@ -103,14 +100,6 @@ $result = mysqli_query($c, $query);
             </section>
         </section>
 
-        <section>
-            <h2 class="titulo">Inmuebles para el publico</h2>
-
-            <div class="productos">
-       
-            </div>
-
-        </section>
 
         <section class="clients">
             <section class="clientes contenedor">
@@ -142,20 +131,20 @@ $result = mysqli_query($c, $query);
                         <img  src="assets/img/img/ciudadbolivar.jpg" alt="" >
                         <br>
                         <br>
-                        <a href="view/guest/product.php" type="button" class="btn btn-outline-secondary"><h4>Ciudad Bolivar</h4></a>  
+                      <h4>Ciudad Bolivar</h4></a>  
                     
                     </div>
                     <div class="servicio-ind">
                         <img src="assets/img/img/kennedy.jpg" alt="">
                         <br>
                         <br>
-                        <a href="view/guest/product.php"type="button" class="btn btn-outline-secondary"><h4>Kennedy</h4></a>                    
+                        <h4>Kennedy</h4></a>                    
                     </div>
                     <div class="servicio-ind">
                         <img src="assets/img/img/bosa.jpg" alt="">
                         <br>
                         <br>
-                        <a href="view/guest/product.php" type="button" class="btn btn-outline-secondary"><h4>BOSA</h4></a>  
+                       <h4>BOSA</h4></a>  
                      
                     </div>
                 </div>
