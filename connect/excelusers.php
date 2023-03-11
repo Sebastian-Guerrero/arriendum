@@ -18,7 +18,6 @@ $arreglo2 = mysqli_fetch_array($resultado2);
 
 ?>
 <div>
-<img src='../assets/icons/logo.png'> 
 					<table border="1" >
 							<tr >
 								<h1 style="text-align:center;">DATOS DE USUARIOS</h1>

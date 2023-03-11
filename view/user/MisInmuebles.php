@@ -172,6 +172,9 @@ if(isset($_POST['search'])){
                     <button class="excel">
 					    <a href="../../connect/excelindexuser.php"><i style="font-size: 27px; margin-left:7px;" class="fas fa-file-excel"></i> &nbsp;</a>
 				    </button>
+                    <button class="excel">
+					    <a href="../../connect/reportindexuser.php"><i style="font-size: 27px; margin-left:7px;" class="fas fa-file-pdf"></i> &nbsp;</a>
+				    </button>
 				</div>
                 <nav class="paginador" aria-label="Page navigation example">
 					<ul class="pagination justify-content-center">

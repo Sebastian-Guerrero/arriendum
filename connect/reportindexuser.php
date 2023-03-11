@@ -16,7 +16,7 @@ function Header()
     $this->Cell(85);
 
     // Título
-    $this->Cell(85,30,'Tabla de inmuebles ',0,0,'C');
+    $this->Cell(85,30,'Mis inmuebles ',0,0,'C');
     // Salto de línea
    
     $this->Ln(30);
@@ -52,10 +52,12 @@ function Footer()
     //$this->Ln(0.5);
 }
 }
+session_start();
+$id_user = $_SESSION ['id_user'];
 
 $conet = new Conexion();
 $c = $conet->conectando();
-$query2="select * from property ";
+$query2="select * from property where id_user='$id_user'";
 $resultado2=mysqli_query($c,$query2);
 $arreglo2 = mysqli_fetch_array($resultado2);
 
