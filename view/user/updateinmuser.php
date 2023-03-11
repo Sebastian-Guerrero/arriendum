@@ -156,9 +156,9 @@ $arreglo7 = mysqli_fetch_array($resultado7);
 								</div>
                                 <div>
                                     <p>DIRRECION:</p>
-									<div class="select">
+
 										<input type="text" class="form-control" name="direction_property" id="direction_property" value ="<?php echo $obj->direction_property ?>" required>
-									</div>
+
 								</div>
 
 								<div >
