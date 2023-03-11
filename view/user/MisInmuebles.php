@@ -67,7 +67,6 @@ if(isset($_POST['search'])){
     <link rel="stylesheet" href="../../config/css/estilos.css"/>
     <link rel="stylesheet" href="../../config/a/css/all.css">
     <link rel="stylesheet" href="../../config/css/sweetalert2.min.css">
-    <link rel="stylesheet" href="../../config/css/estilosperfil.css">
     <link rel="stylesheet" href="../../config/css/estilosMisInmuebles.css">
      <link rel="stylesheet" href="style.css"> 
     
@@ -76,103 +75,133 @@ if(isset($_POST['search'])){
 </head>
 
 <body>
-    <header>
+
         <nav>
+
             <img class="logo" src="../../assets/icons/logo.png">
-            <h1><?php echo "$name_user";?><h1>
+
             <ul>
                 <li><button class="ba" type="button"><a href="index-user.php">INICIO</a></button></li>
                 <li><button class="ba" type="button"><a href="product.php">INMUEBLES</a></button></li>
                 <li><button class="bb" type="button"><a href="pub-inm.php">PUBLICAR INMUEBLE</a></button></li>
                 <li><a onclick="cerrar_sesion()" class="btn-exit-system"><i class="fas fa-power-off"></i></a></li>
             </ul>
-        </nav>
-        <h1 class="titulo_muro">MIS INMUEBLES</h1>
-				<div class="main-container">
-					<table >
-						<thead>
-							<tr >
-								<th>ID INMUEBLE</th>
-								<th>USUARIO</th>
-								<th>ESTADO</th>
-								<th>DIRECCION</th>
-								<th>TIPO</th>
-								<th>OPCION</th>
-								<th>LOCALIDAD</th>
-								<th>BARRIO</th>
-								<th>INFORMACION</th>
-								<th>DESCRIPCION</th>
-								<th>PRECIO</th>
-								<th>ACTUALIZAR</th>
-								<th>ELIMINAR</th>
-							</tr>
-						</thead>
-							<tr>
-							<?php
-                            if($arreglo2==0){
-                                //echo "No hay registro";
-                            ?>
-                            <div class="No_registro">
-                                <?php echo "No tienes inmuebles publicados" ?>
-                            </div>
-                            <?php
-                            }
-                             else{
-                                do{
-                            ?>
-							</tr>
-							<tr >
-								<td><?php echo $arreglo2[0];?></td>
-								<td><?php echo $arreglo2[1];?></td>
-								<td><?php echo $arreglo2[2];?></td>
-								<td><?php echo $arreglo2[3];?></td>
-								<td><?php echo $arreglo2[4];?></td>
-								<td><?php echo $arreglo2[5];?></td>
-								<td><?php echo $arreglo2[6];?></td>
-								<td><?php echo $arreglo2[7];?></td>
-								<td><?php echo $arreglo2[8];?></td>
-								<td><?php echo $arreglo2[9];?></td>
-								<td><?php echo $arreglo2[10];?></td>
-								<td>
-									<a  class="btn btn-success" href="<?php 
-										if($arreglo2[0]<>''){
-												echo "updateinmuser.php?key=".urlencode($arreglo2[0]) ;
-											}
-										?>" >
-										<i style="color: black;" class="fas fa-edit"></i>
-									</a>
-								</td>
-								<td>
-									<form action="" name="eliminaInmueble" method="POST">
-										<input type="hidden" name="id_property" value="<?php echo $arreglo2[0];?>">
-										<input type="hidden" name="id_user"></input>
-										<input type="hidden" name="state_property"></input>
-										<input type="hidden" name="direction_property"></input>
-										<input type="hidden" name="type_property"></input>
-										<input type="hidden" name="option_property"></input>
-										<input type="hidden" name="location_property"></input>
-										<input type="hidden" name="neighborhood_property"></input>
-										<input type="hidden" name="information_property"></input>
-										<input type="hidden" name="description_property"></input>
-										<input type="hidden" name="cost_property"></input>
-										<input type="hidden" name="create_property"></input>
-										<input type="hidden" name="update_property"></input>
-										<button type="submit" class="btn btn-warning" name="elimina">
-                                            <i class="fas fa-trash"></i>
-										</button>
 
-									</form>
-								</td>
-							</tr>
-							<?php
-                            }while($arreglo2 = mysqli_fetch_array($resultado2));
-                       		}
-                        	?>
-					</table>
-                    <button class="excel">
-					    <a href="../../connect/excelindexuser.php"><i style="font-size: 27px; margin-left:7px;" class="fas fa-file-excel"></i> &nbsp;</a>
-				    </button>
-				</div>
+        </nav>
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+        <div class="container-fluid">
+            
+        <button>
+			<a href="../../connect/excelindexuser.php"><i style="font-size: 27px; margin-left:7px;" class="fas fa-file-excel"></i> &nbsp;</a>
+		</button>
+
+        <button>
+			<a href="../../connect/reportindexuser.php"><i style="font-size: 27px; margin-left:7px;" class="fas fa-file-pdf"></i> &nbsp;</a>
+		</button>
+
+        <div class="table-responsive">
+
+        <table class="table table-bordered table-striped table-hover">
+
+            <thead class="thead-dark">
+
+                <tr class="text-center">
+                    <th>ID INMUEBLE</th>
+					<th>USUARIO</th>
+					<th>ESTADO</th>
+					<th>DIRECCION</th>
+					<th>TIPO</th>
+					<th>OPCION</th>
+					<th>LOCALIDAD</th>
+					<th>BARRIO</th>
+					<th>INFORMACION</th>
+					<th>DESCRIPCION</th>
+					<th>PRECIO</th>
+					<th>ACTUALIZAR</th>
+					<th>ELIMINAR</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+				    <?php
+                    if($arreglo2==0){
+                    ?>
+                    <div class="No_registro">
+                        <?php echo "No tienes inmuebles publicados" ?>
+                    </div>
+                    <?php
+                    }
+                    else{
+                        do{
+                    ?>
+				</tr>
+
+				<tr class="text-center">
+					<td><?php echo $arreglo2[0];?></td>
+					<td><?php echo $arreglo2[1];?></td>
+					<td><?php echo $arreglo2[2];?></td>
+					<td><?php echo $arreglo2[3];?></td>
+					<td><?php echo $arreglo2[4];?></td>
+					<td><?php echo $arreglo2[5];?></td>
+					<td><?php echo $arreglo2[6];?></td>
+					<td><?php echo $arreglo2[7];?></td>
+					<td><?php echo $arreglo2[8];?></td>
+					<td><?php echo $arreglo2[9];?></td>
+					<td><?php echo $arreglo2[10];?></td>
+					<td>
+						<a  class="btn btn-success" href="<?php 
+							if($arreglo2[0]<>''){
+								echo "updateinmuser.php?key=".urlencode($arreglo2[0]) ;
+							}
+							?>" >
+							<i style="color: black;" class="fas fa-edit"></i>
+						</a>
+					</td>
+					<td>
+						<form action="" name="eliminaInmueble" method="POST">
+
+							<input type="hidden" name="id_property" value="<?php echo $arreglo2[0];?>">
+							<input type="hidden" name="id_user"></input>
+							<input type="hidden" name="state_property"></input>
+							<input type="hidden" name="direction_property"></input>
+							<input type="hidden" name="type_property"></input>
+							<input type="hidden" name="option_property"></input>
+							<input type="hidden" name="location_property"></input>
+							<input type="hidden" name="neighborhood_property"></input>
+							<input type="hidden" name="information_property"></input>
+							<input type="hidden" name="description_property"></input>
+							<input type="hidden" name="cost_property"></input>
+							<input type="hidden" name="create_property"></input>
+							<input type="hidden" name="update_property"></input>
+							<button type="submit" class="btn btn-warning" name="elimina">
+                                <i class="fas fa-trash"></i>
+							</button>
+
+						</form>
+					</td>
+				</tr>
+				    <?php
+                    }while($arreglo2 = mysqli_fetch_array($resultado2));
+                    }
+                    ?>
+            </tbody>
+
+        </table>
+
+        </div>
+
+        </div>
+
                 <nav class="paginador" aria-label="Page navigation example">
 					<ul class="pagination justify-content-center">
 					<?php 
@@ -208,7 +237,7 @@ if(isset($_POST['search'])){
                         ?>                                                                                                                                                                                                                               
 					</ul>
 				</nav>
-    </header>
+    
     <footer style="margin-top:390px">  
         <div class="contenedor-footer">
             <div class="content-foo">

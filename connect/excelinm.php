@@ -18,9 +18,8 @@ $arreglo2 = mysqli_fetch_array($resultado2);
 ?>
 <div class="container-fluid">
 				<div class="table-responsive">
-					<table border="1" class="table table-dark table-sm">
-						<thead>
-							<tr class="text-center roboto-medium">
+					<table border="1" >
+							<h1 style="text-align:center;">DATOS DE INMUEBLES</h1>
 								<th>ID INMUEBLE</th>
 								<th>USUARIO</th>
 								<th>ESTADO</th>
@@ -34,9 +33,7 @@ $arreglo2 = mysqli_fetch_array($resultado2);
 								<th>PRECIO</th>
                                 <th>INMUEBLE CREADO</th>
 							</tr>
-						</thead>
 						<tbody>
-							<tr>
 							<?php
                             if($arreglo2==0){
                                 //echo "No hay registro";
@@ -49,8 +46,7 @@ $arreglo2 = mysqli_fetch_array($resultado2);
                              else{
                                 do{
                             ?>
-							</tr>
-							<tr class="text-center" >
+							<tr style="background: #00ADB5;" class="text-center" >
 								<td><?php echo $arreglo2[0];?></td>
 								<td><?php echo $arreglo2[1];?></td>
 								<td><?php echo $arreglo2[2];?></td>
