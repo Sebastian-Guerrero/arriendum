@@ -48,7 +48,7 @@ if($_SESSION['id_user'] != $id_user) {
 </head>
 
 <body>
-    <header>
+
         <nav>
             <img class="logo" src="../../assets/icons/logo.png">
             <ul>
@@ -84,24 +84,9 @@ if($_SESSION['id_user'] != $id_user) {
         </form>
     </div>
 </div>
-    </header>
-    <footer style="margin-top:390px">  
-        <div class="contenedor-footer">
-            <div class="content-foo">
-                <h4>Phone</h4>
-                <p>8296312</p>
-            </div>
-            <div class="content-foo">
-                <h4>Email</h4>
-                <p>arriendum@gmail.com</p>
-            </div>
-            <div class="content-foo">
-                <h4>Location</h4>
-                <p>8296312</p>
-            </div>
-        </div>
-        <h2 class="titulo-final">&copy; Arriendum </h2>
-    </footer>
+
+   
+    
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="../../config/js/js/main.js"></script>
     <script src="../../config/js/sweetalert2.min.js" ></script>

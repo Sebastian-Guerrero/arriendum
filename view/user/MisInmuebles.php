@@ -52,7 +52,6 @@ if(isset($_POST['search'])){
 }
 
 
-
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +67,6 @@ if(isset($_POST['search'])){
     <link rel="stylesheet" href="../../config/a/css/all.css">
     <link rel="stylesheet" href="../../config/css/sweetalert2.min.css">
     <link rel="stylesheet" href="../../config/css/estilosMisInmuebles.css">
-     <link rel="stylesheet" href="style.css"> 
     
     <title>Arriendum</title>
 
@@ -114,7 +112,6 @@ if(isset($_POST['search'])){
 
                 <tr class="text-center">
                     <th>ID INMUEBLE</th>
-					<th>USUARIO</th>
 					<th>ESTADO</th>
 					<th>DIRECCION</th>
 					<th>TIPO</th>
@@ -144,16 +141,40 @@ if(isset($_POST['search'])){
                     else{
                         do{
                     ?>
+                    <?php
+                        $state_property = $arreglo2[2];
+                        $type_property = $arreglo2[4];
+                        $option_property = $arreglo2[5];
+                        $location_property = $arreglo2[6];?>
 				</tr>
 
 				<tr class="text-center">
 					<td><?php echo $arreglo2[0];?></td>
-					<td><?php echo $arreglo2[1];?></td>
-					<td><?php echo $arreglo2[2];?></td>
+                    <?php
+                    $query3 = "SELECT name_state_property FROM state_property WHERE id_state_property = '$state_property '";
+                    $result3 = mysqli_query($c, $query3);
+                    $array3 = mysqli_fetch_array($result3)
+                    ?>
+					<td><?php echo $array3["name_state_property"];?></td>
 					<td><?php echo $arreglo2[3];?></td>
-					<td><?php echo $arreglo2[4];?></td>
-					<td><?php echo $arreglo2[5];?></td>
-					<td><?php echo $arreglo2[6];?></td>
+                    <?php
+                    $query4 = "SELECT name_type_property FROM type_property WHERE id_type_property = '$type_property '";
+                    $result4 = mysqli_query($c, $query4);
+                    $array4 = mysqli_fetch_array($result4)
+                    ?>
+					<td><?php echo $array4["name_type_property"];?></td>
+                    <?php
+                    $query5 = "SELECT name_option_property FROM option_property WHERE id_option_property = '$option_property '";
+                    $result5 = mysqli_query($c, $query5);
+                    $array5 = mysqli_fetch_array($result5)
+                    ?>
+					<td><?php echo $array5["name_option_property"];?></td>
+                    <?php
+                    $query6 = "SELECT name_location_property FROM location_property WHERE id_location_property = '$location_property '";
+                    $result6 = mysqli_query($c, $query6);
+                    $array6 = mysqli_fetch_array($result6)
+                    ?>
+					<td><?php echo $array6["name_location_property"];?></td>
 					<td><?php echo $arreglo2[7];?></td>
 					<td><?php echo $arreglo2[8];?></td>
 					<td><?php echo $arreglo2[9];?></td>
@@ -238,23 +259,7 @@ if(isset($_POST['search'])){
 					</ul>
 				</nav>
     
-    <footer style="margin-top:390px">  
-        <div class="contenedor-footer">
-            <div class="content-foo">
-                <h4>Phone</h4>
-                <p>8296312</p>
-            </div>
-            <div class="content-foo">
-                <h4>Email</h4>
-                <p>arriendum@gmail.com</p>
-            </div>
-            <div class="content-foo">
-                <h4>Location</h4>
-                <p>8296312</p>
-            </div>
-        </div>
-        <h2 class="titulo-final">&copy; Arriendum </h2>
-    </footer>
+
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="../../config/js/sweetalert2.min.js" ></script>
     <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>

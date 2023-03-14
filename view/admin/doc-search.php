@@ -15,6 +15,7 @@ if($_POST){
 
 $conet = new Conexion();
 $c = $conet->conectando();
+
 $query="select count(*) as totalRegistros from type_document";
 $resultado = mysqli_query($c, $query);
 $arreglo = mysqli_fetch_array($resultado); 

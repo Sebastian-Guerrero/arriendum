@@ -73,7 +73,7 @@ $obj->update_user = $arreglo[10];
 </head>
 
 <body>
-    <header>
+  
         <nav>
             <img class="logo" src="../../assets/icons/logo.png">
             <ul>
@@ -83,18 +83,21 @@ $obj->update_user = $arreglo[10];
                 <li><a onclick="cerrar_sesion()" class="btn-exit-system"><i class="fas fa-power-off"></i></a></li>
             </ul>
         </nav>
-        <div class="login-page">
 
-<div class="form" style="margin-top: 50px;">
+
+
+
+<div class="login-page">
+            
+
+<div class="form">
 
         <form class="card-body" action="" method="POST">
-            <p class="name"> Mi  perfil
+            <p class="name"> Mi Informacion:
             <br>
             <?php echo $obj->id_user ?> </p>
         
             <hr>
-            <div>
-                </div>
                 <td>
 
                 </td>    
@@ -136,36 +139,17 @@ $obj->update_user = $arreglo[10];
                 <input type="hidden" placeholder="verify_password" autocomplete="off" name="verify_password" id="verify_password"  />
                 <input type="hidden" name="create_user">
                 <input type="hidden" name="update_user" value="<?php echo $fecha;?>">
-                <button type="submit" name="modifica_usuario">Actualizar perfil</button>
+                <button type="submit" name="modifica_usuario">Actualizar</button>
                 <br>
                 <br>
                 <a href="MisInmuebles.php">
                     <button type="button">Mis inmuebles</button>
                 </a>
-                <br>
-                <br>
                 
         </form>
     </div>
 </div>
-    </header>
-    <footer style="margin-top:390px">  
-        <div class="contenedor-footer">
-            <div class="content-foo">
-                <h4>Phone</h4>
-                <p>8296312</p>
-            </div>
-            <div class="content-foo">
-                <h4>Email</h4>
-                <p>arriendum@gmail.com</p>
-            </div>
-            <div class="content-foo">
-                <h4>Location</h4>
-                <p>8296312</p>
-            </div>
-        </div>
-        <h2 class="titulo-final">&copy; Arriendum </h2>
-    </footer>
+    
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="../../config/js/sweetalert2.min.js" ></script>
     <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
