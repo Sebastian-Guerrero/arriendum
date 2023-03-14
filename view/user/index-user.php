@@ -31,7 +31,7 @@ $result = mysqli_query($c, $query);
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="../../config/css/productos.css"/>
     <link rel="stylesheet" href="../../config/a/css/all.css">
-     <link rel="stylesheet" href="../../config/icomoon/style.css">
+    <link rel="stylesheet" href="../../config/icomoon/style.css">
 </head>
 <script>
     let baslik = document.title;
@@ -194,6 +194,7 @@ $result = mysqli_query($c, $query);
     <script src="../../config/js/jquery.min.js"></script>
     <script src="../../config/js/popper.min.js"></script>
     <script src="../../config/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

@@ -254,7 +254,6 @@ if(isset($_POST['search'])){
                                             ?>
 
  <footer>  
-
         <div class="contenedor-footer">
         <div class="content-foo">
                     <h4>Phone</h4>
