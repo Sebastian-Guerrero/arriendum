@@ -9,20 +9,19 @@ if($_POST){
 
 }
 
-$query = "SELECT * FROM property";
-$result = mysqli_query($c, $query);
-$num_rows_i = mysqli_num_rows($result);
+session_start();
 $_SESSION ["contador"] = "1";
+
 
 $conet = new Conexion();
 $c = $conet->conectando();
-$query="select count(*) as totalRegistros from property";
+$query="SELECT count(*) AS totalRegistros FROM property";
 $resultado = mysqli_query($c, $query);
 $arreglo = mysqli_fetch_array($resultado); 
 $totalRegistros = $arreglo['totalRegistros'];
 //echo $totalRegistros;
 
-$maximoRegistros = 10;
+$maximoRegistros = 9;
 //echo $totalRegistros;
 if(empty($_GET['pagina'])){
     $pagina=1;
@@ -33,18 +32,19 @@ $desde = ($pagina-1)*$maximoRegistros;
 $totalPaginas=ceil($totalRegistros/$maximoRegistros);
 //echo $totalPaginas;
 
-if(isset($_POST['search'])){
-    if ($obj->location_property == 0) {
+$consulta = "SELECT * FROM property limit $desde,$maximoRegistros";
+$resultado = mysqli_query($c, $consulta);
+$fila = mysqli_fetch_array($resultado);
+
+if (isset($_POST['search'])){
+    if ($obj->location_property==0) {
         $_SESSION["alerta_vacio"] = "1";
-        $query2="select * from location_property limit $desde,$maximoRegistros";
-        $resultado2=mysqli_query($c,$query2);
-        $num_rows = mysqli_num_rows($result);
-    }else{
-        $query2="select * from property where location_property = $obj->location_property limit $desde,$maximoRegistros";
-        $result=mysqli_query($c,$query2);
-        $num_rows = mysqli_num_rows($result);
-    }
-}
+    }else {
+        $consulta = "SELECT * FROM property WHERE location_property = $obj->location_property limit $desde,$maximoRegistros";
+        $resultado = mysqli_query($c, $consulta);
+        $fila = mysqli_fetch_array($resultado);
+
+}}
 ?>
 
 <!DOCTYPE html>
@@ -150,7 +150,7 @@ if(isset($_POST['search'])){
                                             <div class="productos">
                                             <?php
 
-                                            foreach ($result as $fila) {
+                                            foreach ($resultado as $fila) {
 
                                                 $id = $fila['id_user'];
                                                 $img = $fila['id_property'];
@@ -242,7 +242,41 @@ if(isset($_POST['search'])){
         <?php
                                             }
                                             ?>
-
+<nav class="paginador" aria-label="Page navigation example">
+					<ul class="pagination justify-content-center">
+					<?php 
+                        if($pagina!=1){
+                        ?>
+                        <li class="page-item ">
+                            <a class="page-link" href="?pagina=<?php echo 1; ?>"><</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?pagina=<?php echo $pagina-1; ?>"><<</a>
+                        </li>
+                        <?php
+                        }
+                        for($i=1; $i<=$totalPaginas; $i++){
+                            if($i==$pagina){
+                                echo'<li class="page-item active" aria-current="page"><a class="page-link" href="?pagina='.$i.'">'.$i.'</a></li>';    
+                            }
+                            else{
+                                echo'<li class="page-item "><a class="page-link" href="?pagina='.$i.'">'.$i.'</a></li>'; 
+                            }
+                        }
+                        if($pagina !=$totalPaginas){
+                        ?>
+                        
+                        <li class="page-item">
+                            <a class="page-link" href="?pagina=<?php echo $pagina+1; ?>">>></a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?pagina=<?php echo $totalPaginas; ?>">></a>
+                        </li>
+                        <?php
+                        }
+                        ?>                                                                                                                                                                                                                               
+					</ul>
+				</nav>
  <footer>  
 
         <div class="contenedor-footer">

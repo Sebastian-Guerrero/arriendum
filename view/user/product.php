@@ -288,33 +288,6 @@ if (isset($_POST['search'])){
                         ?>                                                                                                                                                                                                                               
 					</ul>
 				</nav>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  <footer>  
         <div class="contenedor-footer">
         <div class="content-foo">
